@@ -6,9 +6,9 @@ import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
-} from 'firebase/auth';
+} from "firebase/auth";
 
-import { app } from './firebase';
+import { app } from "./firebase";
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
@@ -58,7 +58,7 @@ const registerWithEmailAndPassword = async (
 const sendPasswordReset = async (email: string) => {
   try {
     await sendPasswordResetEmail(auth, email);
-    alert('Password reset link sent!');
+    alert("Password reset link sent!");
   } catch (err: any) {
     console.error(err);
     alert(err.message);

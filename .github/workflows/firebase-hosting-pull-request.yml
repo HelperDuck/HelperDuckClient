@@ -10,6 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm ci
+      - run: npm run format
       - run: npm run format:check
       - run: npm lint
       - run: npm test

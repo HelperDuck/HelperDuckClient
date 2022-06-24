@@ -7,4 +7,4 @@ export type HelpRequestType = {
   techStack: string[];
   createdBy: UserType;
   createdAt: Date;
-}
+};

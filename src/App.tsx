@@ -1,9 +1,9 @@
-import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './views/userLogIn/Login';
-import Register from './views/userLogIn/Register';
-import Reset from './views/userLogIn/Reset';
-import Dashboard from './views/Dashboard';
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "./views/userLogIn/Login";
+import Register from "./views/userLogIn/Register";
+import Reset from "./views/userLogIn/Reset";
+import Dashboard from "./views/Dashboard";
 
 function App() {
   return (

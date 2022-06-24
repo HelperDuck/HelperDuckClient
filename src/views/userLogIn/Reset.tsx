@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { auth, sendPasswordReset } from '../../services/authentication';
-import './Reset.css';
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { auth, sendPasswordReset } from "../../services/authentication";
+import "./Reset.css";
 
 function Reset() {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (loading) return;
-    if (user) navigate('/dashboard');
+    if (user) navigate("/dashboard");
   }, [user, loading]); //eslint-disable-line
 
   return (
     <div className="reset">
-      <div>{error ? error.message : ''}</div>
+      <div>{error ? error.message : ""}</div>
       <div className="reset__container">
         <input
           type="text"
