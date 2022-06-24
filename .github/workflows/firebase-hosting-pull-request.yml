@@ -12,7 +12,7 @@ jobs:
       - run: npm ci
       - run: npm run format
       - run: npm run format:check
-      - run: npm lint
+      - run: npm run lint
       - run: npm test
       - run: npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
