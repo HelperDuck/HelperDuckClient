@@ -23,7 +23,7 @@
     "start": "react-scripts start",
     "format": "prettier --write \"src/**/*.{jsx,ts,tsx}\"",
     "format:check": "prettier --check \"src/**/*.{jsx,ts,tsx}\"",
-    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
+    "lint": "eslint \"src/**/*.{jsx,ts,tsx}\" --quiet",
     "build": "react-scripts build",
     "test-dev": "react-scripts test --watchAll",
     "test": "react-scripts test",
