@@ -13,10 +13,6 @@
     "jsx-a11y",
     "react-hooks"
   ],
-  "rules": {
-    "react/prop-types": 0,
-    "react/react-in-jsx-scope": 0
-  },
   "parserOptions": {
     "ecmaVersion": 2022,
     "sourceType": "module",
