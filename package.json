@@ -21,6 +21,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --quiet",
     "build": "react-scripts build",
     "test-dev": "react-scripts test --watchAll",
     "test": "react-scripts test",
