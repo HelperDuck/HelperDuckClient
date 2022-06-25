@@ -7,8 +7,8 @@ export type requestAskedType = {
   status: string;
   subjectLine: string;
   description: string;
-  codeSnippet: string;
-  linkToSandbox: string;
+  codeSnippet?: string;
+  linkToSandbox?: string;
   languages: string[];
   technologies: string[];
 }
