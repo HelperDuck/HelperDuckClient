@@ -1,9 +1,10 @@
-import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './views/userLogIn/Login';
-import Register from './views/userLogIn/Register';
-import Reset from './views/userLogIn/Reset';
-import Dashboard from './views/Dashboard';
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "./views/userLogIn/Login";
+import Register from "./views/userLogIn/Register";
+import Reset from "./views/userLogIn/Reset";
+import Dashboard from "./views/Dashboard";
+import { ProfilePage } from "./Pages/ProfilePage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/reset" element={<Reset />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </Router>
     </div>
