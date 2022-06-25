@@ -18,3 +18,13 @@ export async function postUserProfile( user: UserType ) {
     console.log('Error at postUserProfile Service: ', err)
   }
 }
+
+//logic needs to be getUserProfileByID
+export async function getUserProfileById(uid: UserType): Promise<any> {
+  try {
+    const userProfileById = await fetch(`${BASE_URL}/profile/get/:${uid}`);
+    return await userProfileById.json();
+  } catch (err) {
+      console.log('Error at getUserProfile Service: ', err);
+  }
+}
