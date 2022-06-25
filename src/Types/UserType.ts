@@ -1,11 +1,16 @@
 export type UserType = {
-  userId: string;
-  username: string,
+  uid: string;
+  firstName: string;
+  lastName: string;
+  userName: string;
+  email: string;
   userBio: string;
-  profilePic?: string,
+  profilePic?: string;
+  technologies?: string[];
   languages: string[];
-  openedRequests: Number;
-  acceptedRequests: Number;
-  avgTip: Number;
-  rating: Number; 
-}
+  gitHubProfile?: string;
+  openedRequests?: Number;
+  acceptedRequests?: Number;
+  avgTip?: Number;
+  rating?: Number;
+};
