@@ -4,7 +4,7 @@ type Props = {
   
 }
 
-export const IncomingRequestCarrousel = (props: Props)  =>{
+export const NavBar = (props: Props)  =>{
   return (
     
     <div>
