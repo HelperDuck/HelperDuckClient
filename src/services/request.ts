@@ -1,5 +1,5 @@
 import { requestAskedType } from "../Types/RequestAskedType";
-import { UserType } from "../Types/UserType";
+
 
 const BASE_URL = 'http://localhost:3002'
 
