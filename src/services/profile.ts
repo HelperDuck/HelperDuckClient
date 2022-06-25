@@ -25,6 +25,6 @@ export async function getUserProfileById(uid: UserType): Promise<any> {
     const userProfileById = await fetch(`${BASE_URL}/profile/get/:${uid}`);
     return await userProfileById.json();
   } catch (err) {
-      console.log('Error at getUserProfile Service: ', err);
+      console.log('Error at getUserProfileById Service: ', err);
   }
 }
