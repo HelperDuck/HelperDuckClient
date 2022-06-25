@@ -5,7 +5,7 @@ export type requestAskedType = {
   createdBy: UserType;
   createdAt: Date;
   status: string;
-  subjectLine: string;
+  subject: string;
   description: string;
   codeSnippet?: string;
   linkToSandbox?: string;
