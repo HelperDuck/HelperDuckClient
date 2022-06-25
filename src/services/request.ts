@@ -1,7 +1,7 @@
 import { requestAskedType } from "../Types/RequestAskedType";
 
 
-const BASE_URL = 'http://localhost:3002'
+const BASE_URL:string = 'http://localhost:3002'
 
 export async function postRequest( request: requestAskedType) {
   try {
