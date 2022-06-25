@@ -1,0 +1,12 @@
+{
+  "uid": "adaWxX",
+  "createdBy": "John Doe",
+  "createdAt": "2022-06-25T14:29:49.317Z",
+  "status": "open",
+  "subjectLine": "Help CSS",
+  "description": "I need help to center a Div",
+  "codeSnippet": "console.log(helloWorld)",
+  "linkToSandbox": "https://codesandbox.io/s/rlkjz2n43q",
+  "languages": "['English', 'Portuguese']",
+  "technologies": "['React', 'Javascript']"
+}
