@@ -18,10 +18,16 @@ const db = {
   socialMedia: "https://github.com/fegananca",
   description: "+10 years experience in blablabla",
 };
-const optionsList = [
+const stackList = [
   { value: "React", label: "React" },
   { value: "Redux", label: "Redux" },
   { value: "Angular", label: "Angular" },
+];
+
+const idiomsList = [
+  { value: "Portuguese", label: "Portuguese" },
+  { value: "Spanish", label: "Spanish" },
+  { value: "English", label: "English" },
 ];
 
 type Props = {};
@@ -51,9 +57,13 @@ export const ProfilePage = (props: Props) => {
     setSocialMediaInput("");
   };
 
-  // const handleSelectedData = (data: any) => {
-  //   setStackInput(data);
-  // };
+  const handleStackData = (data: any) => {
+    setStackInput(data);
+  };
+
+  const handleIdiomData = (data: any) => {
+    setLanguageInput(data);
+  };
 
   return (
     <div className="profile-container">
@@ -116,23 +126,43 @@ export const ProfilePage = (props: Props) => {
                 onChange={(e) => setAboutMeInput(e.target.value)}
               ></textarea>
               <div className="input-expertise">
+                <label
+                  className="label-profileForm"
+                  htmlFor="programminglanguages"
+                >
+                  Programming languages
+                </label>
                 <Select
-                  options={optionsList}
+                  options={stackList}
                   className="profile-input"
                   id="profile-programminglanguages"
                   placeholder="Choose stack options"
-                  value={stackInput}
-                  onChange={(e: any) => setStackInput(e.target.value)}
+                  defaultValue={stackInput.map((data: any) => {
+                    return { label: data };
+                  })}
+                  onChange={handleStackData}
+                  isMulti
                 ></Select>
-                <input
+                <label
+                  className="label-profileForm"
+                  htmlFor="speakinglanguages"
+                >
+                  Speaking languages
+                </label>
+                <Select
+                  options={idiomsList}
                   className="profile-input"
                   id="profile-speakinglanguages"
-                  type="text"
                   placeholder="Choose languages options"
-                  value={languageInput}
-                  onChange={(e) => setLanguageInput(e.target.value)}
-                ></input>
-
+                  defaultValue={languageInput.map((data: any) => {
+                    return { label: data };
+                  })}
+                  onChange={handleIdiomData}
+                  isMulti
+                ></Select>
+                <label className="label-profileForm" htmlFor="socialmedia">
+                  Your Git profile
+                </label>
                 <input
                   className="profile-input"
                   id="profile-socialmedia"
