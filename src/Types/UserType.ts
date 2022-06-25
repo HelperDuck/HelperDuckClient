@@ -9,8 +9,8 @@ export type UserType = {
   technologies?: string[];
   languages: string[];
   gitHubProfile?: string;
-  openedRequests: Number;
-  acceptedRequests: Number;
-  avgTip: Number;
-  rating: Number;
+  openedRequests?: Number;
+  acceptedRequests?: Number;
+  avgTip?: Number;
+  rating?: Number;
 };
