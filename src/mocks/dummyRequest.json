@@ -8,5 +8,6 @@
   "codeSnippet": "console.log(helloWorld)",
   "linkToSandbox": "https://codesandbox.io/s/rlkjz2n43q",
   "languages": "['English', 'Portuguese']",
-  "technologies": "['React', 'Javascript']"
+  "technologies": "['React', 'Javascript']",
+  "roomId": "xSXDffaf23567"
 }
