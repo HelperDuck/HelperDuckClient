@@ -1,0 +1,16 @@
+{
+ "uid":"aadahdZD1",
+ "firstName": "John",
+ "lastName": "Doe",
+ "userName": "jd",
+ "email": "john.doe@abc.com",
+ "userBio": "I am John Doe, Junior Developer based in LA",
+ "profilePic": "http://google.com/",
+ "technologies": "['JavaScript', 'React', 'Redux']",
+ "languages": "['English', 'Spanish']",
+ "gitHubProfile": "https://github.com/johndoe",
+ "openedRequests": "20",
+ "acceptedRequests": "2",
+ "avgTip": "20",
+ "rating": "4.5" 
+}

@@ -1,26 +1,26 @@
-import React, { useEffect } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
-import './Dashboard.css';
-import { auth, logout } from '../services/authentication';
+import React, { useEffect } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+import "./Dashboard.css";
+import { auth, logout } from "../services/authentication";
 
 function Dashboard() {
-  const [user, loading, error] = useAuthState(auth);
+  const [isAuthUser, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
 
-  console.log('user', user);
+  console.log("isAuthUser", isAuthUser);
 
   useEffect(() => {
     if (loading) return;
-    if (!user) return navigate('/');
-  }, [user, loading]); //eslint-disable-line
+    if (!isAuthUser) return navigate("/");
+  }, [isAuthUser, loading]); //eslint-disable-line
 
   return (
     <div className="dashboard">
       <div className="dashboard__container">
         Logged in as
-        <div>{error ? error.message : ''}</div>
-        <div>{user?.email}</div>
+        <div>{error ? error.message : ""}</div>
+        <div>{isAuthUser?.email}</div>
         <button className="dashboard__btn" onClick={logout}>
           Logout
         </button>
