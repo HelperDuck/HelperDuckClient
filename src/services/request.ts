@@ -24,5 +24,3 @@ export async function getAllIncomingRequests(): Promise<any> {
       console.log('Error at getAllIncomingRequests Service: ', err);
   }
 }
-
-//TODO: 

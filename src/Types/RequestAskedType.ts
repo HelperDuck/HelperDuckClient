@@ -9,6 +9,7 @@ export type requestAskedType = {
   description: string;
   codeSnippet?: string;
   linkToSandbox?: string;
+  roomId?: string;
   languages: string[];
   technologies: string[];
 }
