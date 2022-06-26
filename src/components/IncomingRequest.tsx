@@ -15,7 +15,7 @@ export const IncomingRequest = (props: Props)  =>{
       </div>
       <div className='info-container'>
         <div className='profile-info-container'>
-          <div className='picture-container'><img className='profile-pic' src='https://i.ibb.co/35ZbKjP/fernanda.png'></img></div>
+          <div className='picture-container'><img className='profile-pic' src='https://i.ibb.co/35ZbKjP/fernanda.png' alt='profile pic'></img></div>
           <div className='info'>
           <div className='subject'>React Form</div>
           <div className='user'>by Fernanda Gananca</div>
