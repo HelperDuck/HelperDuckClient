@@ -8,6 +8,7 @@
   background: #F5F5F7;
   border-radius: 14px;
   margin: 50px;
+  font-family: 'Roboto', sans-serif;
 }
 
 
@@ -43,6 +44,7 @@ justify-content: space-evenly;
 .subject{
 font-size: 16px;
 font-weight: bold;
+font-family: 'Baloo Bhai';
 }
 
 .user{
