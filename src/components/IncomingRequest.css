@@ -1,0 +1,123 @@
+.IncomingRequest-wrapper{
+  /* the width and the margin should be changed after all components are made */
+  max-width: 620px;
+  max-height: 240px;
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 20px;
+  background: #F5F5F7;
+  border-radius: 14px;
+  margin: 50px;
+}
+
+
+
+.euro-icon {
+width: 20px;
+margin-right: 5px;
+}
+
+.fire-icon {
+  width: 20px;
+  margin-right: 2px;
+  }
+
+.picture-container{
+  margin: 0 15px 15px 0;
+}
+.profile-pic{
+  width: 80px;
+  border-radius: 12px;
+}
+
+.profile-info-container{
+  display: flex;
+}
+
+.info{
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+}
+
+.subject{
+font-size: 16px;
+font-weight: bold;
+}
+
+.user{
+font-size: 13px;
+
+}
+
+.avg-tip, .avg-score{
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center ;
+  justify-content: center;
+  margin-right: 10px;
+  
+}
+
+.IncomingRequest-description{
+  width: 80%;
+  max-height:100px;
+  word-wrap: break-word;
+  overflow-y: scroll;
+
+}
+.IncomingRequest-description::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+.IncomingRequest-description::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.1);
+}
+
+.IncomingRequest-description::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background: rgba(0,0,0,0.2);
+}
+
+
+/* ########  BUTTONS  ########### */
+.buttons-container{
+  height: 60%;
+ 
+}
+.accept-button {
+  font-size:15px;
+  font-family:Verdana;
+width: 100px;
+  height:40px;
+  color:#fff;
+  font-weight:bold;
+  border-radius: 8px;
+  background:rgba(0, 0, 0, 1);
+  cursor: pointer;
+  border: none;
+  margin: 0px 0px 15px 0px;
+}
+
+.accept-button:hover {
+  background: rgba(0, 0, 0, 0.7)
+}
+
+.decline-button {
+  font-size:15px;
+  font-family:Verdana;
+width: 100px;
+  height:40px;
+  color:#fff;
+  font-weight:bold;
+  border-radius: 8px;
+  background: rgb(207, 47, 47);
+  cursor: pointer;
+  border: none;
+  margin: 0px 0px 15px 0px;
+}
+
+.decline-button:hover {
+background: rgba(207, 47, 47, 0.8)
+}
