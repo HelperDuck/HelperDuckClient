@@ -2,9 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Peer, { Instance, SimplePeer } from 'simple-peer';
 import { Socket } from 'socket.io-client';
-import { io } from "socket.io-client";
+import io from "socket.io-client";
 import socketIOClient from 'socket.io-client';
 import { WebRTCUser } from '../Types/WebRTCUser'
+import { SocketType } from 'dgram';
 // console.log(socketIO);
 
 
@@ -45,11 +46,15 @@ type Props = {
 
 export const VideoCallPage = (props: Props)  =>{
     //HOOKS for classroom state management
-    // const [peers, setPeers] = useState([]); //this will track the peers for rendering purposes
-     const socketRef = useRef(); //will handle the sockets communications for signaling
-    // const userVideo = useRef();
-    // const peersRef = useRef([]); //this will be used to track and handle the RTC Connections
-    // const userStream = useRef();
+    const [peers, setPeers] = useState<WebRTCUser[]>([]); //this will track the peers for rendering purposes
+    const socketRef = useRef<Socket>(); //will handle the sockets communications for signaling //TODO: check type works 
+    const userVideo = useRef<HTMLVideoElement>(null); //TODO: may need to remove the null value
+    const peersRef = useRef< Socket[]>([]); //this will be used to track and handle the RTC Connections //TODO: check type works
+    const userStream = useRef<MediaStream>();
+    
+    const currentPath = useLocation();
+    const roomId: string | undefined = currentPath.pathname.split('/').pop();
+    console.log('roomId:', roomId);
   
     
     useEffect(() => {
