@@ -2,7 +2,7 @@
 .profilePerformanceInfo-wrapper{
   display: flex;
   flex-direction: column;
-  max-width: 400px;
+  max-width: 300px;
   margin: 50px;
   font-family: "Baloo Bhai"
   /* the margin and width above must be changed after all components are done */
@@ -28,7 +28,7 @@
   background: #F5F5F7;
   border-radius: 14px;
   display: flex;
-  width: 40%;
+  width: 45%;
   justify-content: space-evenly;
   flex-wrap: wrap;
   min-width: fit-content;

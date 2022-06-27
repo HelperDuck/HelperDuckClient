@@ -1,6 +1,6 @@
 .IncomingRequest-wrapper{
   /* the width and the margin should be changed after all components are made */
-  max-width: 350px;
+   width: 40%;
   max-height: 240px;
   display: flex;
   flex-direction: column;
