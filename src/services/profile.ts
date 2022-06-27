@@ -1,6 +1,6 @@
 import { UserType } from "../Types/UserType";
 
-const BASE_URL: string = 'http://localhost:3002'
+const BASE_URL: string = 'https://helperduck-dev.herokuapp.com'
 
 // export async function createNewProfile(user: any, profileName: string) {
 //   console.log('function not yet implemented');
@@ -8,7 +8,7 @@ const BASE_URL: string = 'http://localhost:3002'
 
 export async function postUserProfile( user: UserType ) {
   try {
-  const newUserProfile: any = await fetch(`${BASE_URL}/profile/create`, {
+  const newUserProfile: any = await fetch(`${BASE_URL}/user`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(user),
@@ -22,8 +22,12 @@ export async function postUserProfile( user: UserType ) {
 //logic needs to be getUserProfileByID
 export async function getUserProfile(user: UserType): Promise<any> {
   try {
-    const userProfileById = await fetch(`${BASE_URL}/profile/get/:${user.uid}`);
-    return await userProfileById.json();
+    console.log(user.uid, 'dentro do service')
+    const userProfileById = await fetch(`${BASE_URL}/user/${user.uid}`);
+    console.log(userProfileById, 'duserProfileByIde')
+    let result = await userProfileById.json();
+    console.log(result, 'result')
+    return result
   } catch (err) {
       console.log('Error at getUserProfile Service: ', err);
   }
@@ -31,7 +35,7 @@ export async function getUserProfile(user: UserType): Promise<any> {
 
 export async function editUserProfile( user: UserType ) {
   try {
-  const editedUserProfile: any = await fetch(`${BASE_URL}/profile/edit/${user.uid}`, {
+  const editedUserProfile: any = await fetch(`${BASE_URL}/user/${user.uid}`, {
     method: 'PUT',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(user),
