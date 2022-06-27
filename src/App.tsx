@@ -7,6 +7,15 @@ import Dashboard from "./views/Dashboard";
 import { ProfilePage } from "./Pages/ProfilePage";
 import { DashboardPage } from "./Pages/DashboardPage";
 
+type Props = {
+  setFirstNameInput: React.Dispatch<React.SetStateAction<string>>;
+  setLastNameInput: React.Dispatch<React.SetStateAction<string>>;
+  setStackInput: React.Dispatch<any>;
+  setLanguageInput: React.Dispatch<any>;
+  setSocialMediaInput: React.Dispatch<any>;
+  setAboutMeInput: React.Dispatch<React.SetStateAction<string>>;
+};
+
 function App() {
   return (
     <div className="app">
@@ -17,7 +26,7 @@ function App() {
           <Route path="/reset" element={<Reset />} />
           <Route path="/dashboard" element={<Dashboard />} />
           {/* the dashboard above should be another name */}
-          <Route path="/dashboard2" element={<DashboardPage/>} />   
+          <Route path="/dashboard2" element={<DashboardPage />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </Router>
