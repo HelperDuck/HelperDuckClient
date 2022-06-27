@@ -17,7 +17,7 @@ function App() {
           <Route path="/reset" element={<Reset />} />
           <Route path="/dashboard" element={<Dashboard />} />
           {/* the dashboard above should be another name */}
-          <Route path="/dashboard2" element={<DashboardPage/>} />   
+          <Route path="/dashboard2" element={<DashboardPage />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </Router>
