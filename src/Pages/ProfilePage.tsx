@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import Select from "react-select";
 import "./ProfilePage.css";
+//import { motion } from "framer-motion";
 
 //TODO: install packages "@iconify/react" and "react-select"
 //TODO: add image profile
@@ -104,14 +105,25 @@ export const ProfilePage = (props: Props) => {
             <div id="aboutme">{aboutMeInput}</div>
             <div className="profile-expertise">
               <div className="profile-boxes" id="programming-box">
-                <label
-                  className="label-profileForm"
-                  htmlFor="programminglanguages"
-                >
-                  Programming languages
-                </label>
-
-                <div id="programminglanguage">{stackInput}</div>
+                <div className="wrapper-box">
+                  <div className="icons-box-profile-page">
+                    <Icon
+                      icon="healthicons:eyeglasses-outline"
+                      id="icon-profileStack"
+                      height={50}
+                      width={50}
+                    />
+                  </div>
+                  <div className="box-info">
+                    <label
+                      className="label-profileForm"
+                      htmlFor="programminglanguages"
+                    >
+                      Programming languages
+                    </label>
+                    <div id="programminglanguage">{stackInput}</div>
+                  </div>
+                </div>
               </div>
               <div className="profile-boxes" id="language-box">
                 <div className="wrapper-box">
@@ -123,7 +135,7 @@ export const ProfilePage = (props: Props) => {
                       width={50}
                     />
                   </div>
-                  <div className="language-info">
+                  <div className="box-info">
                     <label
                       className="label-profileForm"
                       htmlFor="speakinglanguages"
@@ -135,46 +147,60 @@ export const ProfilePage = (props: Props) => {
                 </div>
               </div>
               <div className="profile-boxes" id="socialmedia-box">
-                <label className="label-profileForm" htmlFor="socialmedia">
-                  Your Git profile
-                </label>
-                <div id="socialmedia">{socialMediaInput}</div>
+                <div className="wrapper-box">
+                  <div className="icons-box-profile-page">
+                    <Icon
+                      icon="ic:baseline-connect-without-contact"
+                      id="icon-profileSocialMedia"
+                      height={50}
+                      width={50}
+                    />
+                  </div>
+                  <div className="box-info">
+                    <label className="label-profileForm" htmlFor="socialmedia">
+                      Social media
+                    </label>
+                    <div id="socialmedia">{socialMediaInput}</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         ) : (
           <>
             <form className="profile-form">
-              <img
-                className="img-input"
-                src={fileInput}
-                alt="profilePic"
-                style={{ maxHeight: "188px", maxWidth: "171px" }}
-              />
-              <input
-                className="upload-image"
-                id="img-input"
-                type="file"
-                accept="image/*"
-                onChange={handleFileInputChange}
-              ></input>
-              <div className="input-name">
+              <div className="profile-header">
+                <img
+                  className="img-input"
+                  src={fileInput}
+                  alt="profilePic"
+                  style={{ maxHeight: "188px", maxWidth: "171px" }}
+                />
                 <input
-                  className="profile-input"
-                  id="profile-firstname"
-                  type="text"
-                  placeholder="First Name"
-                  value={firstNameInput}
-                  onChange={(e) => setFirstNameInput(e.target.value)}
+                  className="upload-image"
+                  id="img-input"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileInputChange}
                 ></input>
-                <input
-                  className="profile-input"
-                  id="profile-lastname"
-                  type="text"
-                  placeholder="Last Name"
-                  value={lastNameInput}
-                  onChange={(e) => setLastNameInput(e.target.value)}
-                ></input>
+                <div className="input-name">
+                  <input
+                    className="profile-input"
+                    id="profile-firstname"
+                    type="text"
+                    placeholder="First Name"
+                    value={firstNameInput}
+                    onChange={(e) => setFirstNameInput(e.target.value)}
+                  ></input>
+                  <input
+                    className="profile-input"
+                    id="profile-lastname"
+                    type="text"
+                    placeholder="Last Name"
+                    value={lastNameInput}
+                    onChange={(e) => setLastNameInput(e.target.value)}
+                  ></input>
+                </div>
               </div>
               <label className="label-profileForm" htmlFor="profile-aboutme">
                 About me
