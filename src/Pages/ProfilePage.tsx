@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import ProfileInfo from "../components/ProfileInfo";
 import ProfileForm from "../components/ProfileForm";
@@ -26,7 +26,7 @@ const user = [
 //TODO: change permission in button edit to only if is your profile
 //TODO: make button to change picture to work
 
-type Props = {};
+// type Props = {};
 
 export const ProfilePage = () => {
   const [isInEditMode, setIsInEditMode] = useState<any>(true);

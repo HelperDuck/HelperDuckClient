@@ -7,15 +7,6 @@ import Dashboard from "./views/Dashboard";
 import { ProfilePage } from "./Pages/ProfilePage";
 import { DashboardPage } from "./Pages/DashboardPage";
 
-type Props = {
-  setFirstNameInput: React.Dispatch<React.SetStateAction<string>>;
-  setLastNameInput: React.Dispatch<React.SetStateAction<string>>;
-  setStackInput: React.Dispatch<any>;
-  setLanguageInput: React.Dispatch<any>;
-  setSocialMediaInput: React.Dispatch<any>;
-  setAboutMeInput: React.Dispatch<React.SetStateAction<string>>;
-};
-
 function App() {
   return (
     <div className="app">
