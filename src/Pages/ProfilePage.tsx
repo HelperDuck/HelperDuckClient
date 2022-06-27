@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
 import ProfileInfo from "../components/ProfileInfo";
 import ProfileForm from "../components/ProfileForm";
@@ -39,7 +39,7 @@ export const ProfilePage = () => {
 
   const updateInfo = (e: any) => {
     e.preventDefault();
-    //TODO: Create function onEdit(firstNameInput etc)
+    //TODO: Create function onEdit(userInfo)
     console.log("hi");
     setUserInfo([]);
   };

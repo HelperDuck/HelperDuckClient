@@ -96,7 +96,7 @@ const ProfileForm = ({ userInfo, setUserInfo }: Props) => {
             name="aboutme"
             defaultValue={userInfo[0].description}
             //onChange={(e) => setAboutMeInput(e.target.value)}
-            rows={8}
+            rows={4}
           ></textarea>
         </div>
         <div className="input-expertise">
@@ -183,7 +183,7 @@ const ProfileForm = ({ userInfo, setUserInfo }: Props) => {
                   className="label-profileForm"
                   htmlFor="profile-socialmedia"
                 >
-                  Your Git profile
+                  Social media
                 </label>
                 <input
                   className="profile-input"

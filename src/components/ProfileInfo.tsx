@@ -3,6 +3,7 @@ import { Icon } from "@iconify/react";
 import "../Pages/ProfilePage.css";
 
 //TODO: check the correct type
+//TODO: check how to update the profile pic
 
 type Props = {
   userInfo: any;
@@ -10,6 +11,11 @@ type Props = {
 
 export const ProfileInfo = ({ userInfo }: Props) => {
   const [fileInput, setFileInput] = useState("");
+
+  //TODO: use this once redux-toolkit is set up
+  //const dispatch = useDispatch();
+  //const user = userSelector((state) => state.users.value)
+  //state.users.value (users is the name given in reducers, value is the key given in the initial state in reducers )
 
   const handleFileInputChange = (e: any) => {
     setFileInput(URL.createObjectURL(e.target.files[0]));
@@ -47,6 +53,8 @@ export const ProfileInfo = ({ userInfo }: Props) => {
             )}
           </button>
         </div>
+        {/* //TODO: set up this function once redux is ready */}
+        {/* {user.map((data) => { return (//everything below)} )} */}
         <div id="full-name">{`${userInfo[0].firstName} ${userInfo[0].lastName}`}</div>
       </div>
       <div id="aboutme">{userInfo[0].description}</div>
