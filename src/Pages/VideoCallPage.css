@@ -1,0 +1,10 @@
+.video-container {
+  background-color: black;
+  width: 720px;
+  height: 480px;
+  display: flex;
+  margin-left: 0em;
+  justify-content: flex;
+  align-items: justify;
+  z-index: 999;
+}
