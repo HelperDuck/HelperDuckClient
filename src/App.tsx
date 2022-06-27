@@ -6,6 +6,7 @@ import Reset from "./views/userLogIn/Reset";
 import Dashboard from "./views/Dashboard";
 import { ProfilePage } from "./Pages/ProfilePage";
 import { DashboardPage } from "./Pages/DashboardPage";
+import { VideoCallPage } from "./Pages/VideoCallPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           {/* the dashboard above should be another name */}
           <Route path="/dashboard2" element={<DashboardPage/>} />   
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/call" element={<VideoCallPage />} />
         </Routes>
       </Router>
     </div>
