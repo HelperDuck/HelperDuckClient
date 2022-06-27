@@ -5,6 +5,7 @@ import Register from "./views/userLogIn/Register";
 import Reset from "./views/userLogIn/Reset";
 import Dashboard from "./views/Dashboard";
 import { ProfilePage } from "./Pages/ProfilePage";
+import { DashboardPage } from "./Pages/DashboardPage";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/reset" element={<Reset />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          {/* the dashboard above should be another name */}
+          <Route path="/dashboard2" element={<DashboardPage />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </Router>
