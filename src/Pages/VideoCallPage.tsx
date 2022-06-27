@@ -55,6 +55,14 @@ export const VideoCallPage = (props: Props)  =>{
     const currentPath = useLocation();
     const roomId: string | undefined = currentPath.pathname.split('/').pop();
     console.log('roomId:', roomId);
+    
+    const videoConstraints = {
+      video: {
+        width: { ideal: 1920, max: 7680 },
+        height: { ideal: 1080, max: 4320 },
+      },
+      audio: true,
+    };
   
     
     useEffect(() => {
@@ -62,6 +70,16 @@ export const VideoCallPage = (props: Props)  =>{
       // const testSocket = socketIOClient.connect(SOCKET_SERVER_URL);
       const socket = io(SOCKET_SERVER_URL);
       console.log(socket, 'success on client side')
+      
+      navigator.mediaDevices
+        .getUserMedia(videoConstraints)
+        .then((stream) => {
+          if (userVideo.current) userVideo.current.srcObject = stream;
+          userStream.current = stream;
+          
+          if (socketRef.current) socketRef.current.emit('joiningRoom', roomId);
+        })
+      
     },[]);
     
 
