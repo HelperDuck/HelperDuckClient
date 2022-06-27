@@ -10,6 +10,13 @@
   /* width and margin should be changed after all components are done */
 }
 
+.subject-user-container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+}
+
 .outer-container{
   width: 45%;
  
@@ -19,6 +26,7 @@
   font-size: 24px;
   font-family: 'Baloo Bhai 2', cursive;
   font-weight: 800;
+  margin-bottom: 10px;
 
 }
 
@@ -44,6 +52,11 @@
   border-radius: 12px;
 }
 
+
+
+.subject{
+  word-wrap: break-word;
+}
 .tip{
   display: flex;
   align-content: flex-start;
