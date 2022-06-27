@@ -1,15 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&family=Roboto&display=swap');
-@import url('//db.onlinewebfonts.com/c/dc16e79503324279aeea803fcb36ac99?family=Baloo+Bhai');
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&family=Roboto&display=swap");
+@import url("//db.onlinewebfonts.com/c/dc16e79503324279aeea803fcb36ac99?family=Baloo+Bhai");
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  padding: 0;
 }
