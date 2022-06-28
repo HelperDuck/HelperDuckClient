@@ -140,6 +140,28 @@ export const VideoCallPage = (props: Props)  =>{
             );
             targetPeer.peer.signal(data.signal);
           });
+          
+          if (socketRef.current) //TODO: this if statement is preventing unresolved promises -> get back to it if needed
+          socketRef.current.on('leftCall', (id: any) => {
+            const peerObj = peersRef.current.find(
+              (target) => target.peerId === id
+            );
+            if (peerObj) {
+              peerObj.peer.destroy();
+            }
+            console.log('the peer being deleted', peerObj); //TODO: this is not logging
+  
+            /*filter out the participant that is leaving
+            and re-render video containers to all participants based on the updated state*/
+            const peers = peersRef.current.filter(
+              (target) => target.peerId !== id
+            );
+            peersRef.current = peers;
+            setPeers(peers);
+          });
+        })
+          .catch((err) => {
+            console.log('Error at useEffect: ', err);
         })
       
     },[]);
