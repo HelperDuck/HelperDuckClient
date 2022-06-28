@@ -45,7 +45,7 @@ export const ProfilePage = () => {
   };
 
   return (
-    <>
+    <div className="profile-wrapper">
       <NavBar></NavBar>
       <div className="profile-container">
         <div className="form-container">
@@ -68,6 +68,6 @@ export const ProfilePage = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };

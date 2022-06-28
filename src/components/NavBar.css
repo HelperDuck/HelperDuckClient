@@ -1,10 +1,9 @@
 .navBar {
   background-color: black;
   display: flex;
-  position: absolute;
+  position: fixed;
   width: 8vw;
-  margin-left: 3%;
-  height: 97vh;
+  height: 90vh;
   border-radius: 20px;
 }
 

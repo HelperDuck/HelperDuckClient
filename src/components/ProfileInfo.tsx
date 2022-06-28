@@ -59,62 +59,67 @@ export const ProfileInfo = ({ userInfo }: Props) => {
       </div>
       <div id="aboutme">{userInfo[0].description}</div>
       <div className="profile-expertise">
-        <div className="profile-boxes" id="programming-box">
-          <div className="wrapper-box">
-            <div className="icons-box-profile-page">
-              <Icon
-                icon="healthicons:eyeglasses-outline"
-                id="icon-profileStack"
-                height={50}
-                width={50}
-              />
-            </div>
-            <div className="box-info">
-              <label
-                className="label-profileForm"
-                htmlFor="programminglanguages"
-              >
-                Programming languages
-              </label>
-              <div id="programminglanguage">
-                {userInfo[0].programmingLanguage}
+        <div className="profile-boxes-wrapper">
+          <div className="profile-boxes" id="programming-box">
+            <div className="wrapper-box">
+              <div className="icons-box-profile-page">
+                <Icon
+                  icon="healthicons:eyeglasses-outline"
+                  id="icon-profileStack"
+                  height={50}
+                  width={50}
+                />
+              </div>
+              <div className="box-info">
+                <label
+                  className="label-profileForm"
+                  htmlFor="programminglanguages"
+                >
+                  Programming languages
+                </label>
+                <div id="programminglanguage">
+                  {userInfo[0].programmingLanguage}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="profile-boxes" id="language-box">
-          <div className="wrapper-box">
-            <div className="icons-box-profile-page">
-              <Icon
-                icon="clarity:language-line"
-                id="icon-profileLanguage"
-                height={50}
-                width={50}
-              />
-            </div>
-            <div className="box-info">
-              <label className="label-profileForm" htmlFor="speakinglanguages">
-                Speaking languages
-              </label>
-              <div id="speakinglanguage">{userInfo[0].speakingLanguage}</div>
+          <div className="profile-boxes" id="language-box">
+            <div className="wrapper-box">
+              <div className="icons-box-profile-page">
+                <Icon
+                  icon="clarity:language-line"
+                  id="icon-profileLanguage"
+                  height={50}
+                  width={50}
+                />
+              </div>
+              <div className="box-info">
+                <label
+                  className="label-profileForm"
+                  htmlFor="speakinglanguages"
+                >
+                  Speaking languages
+                </label>
+                <div id="speakinglanguage">{userInfo[0].speakingLanguage}</div>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="profile-boxes" id="socialmedia-box">
-          <div className="wrapper-box">
-            <div className="icons-box-profile-page">
-              <Icon
-                icon="ic:baseline-connect-without-contact"
-                id="icon-profileSocialMedia"
-                height={50}
-                width={50}
-              />
-            </div>
-            <div className="box-info">
-              <label className="label-profileForm" htmlFor="socialmedia">
-                Social media
-              </label>
-              <div id="socialmedia">{userInfo[0].socialMedia}</div>
+          <div className="profile-boxes" id="socialmedia-box">
+            <div className="wrapper-box">
+              <div className="icons-box-profile-page">
+                <Icon
+                  icon="ic:baseline-connect-without-contact"
+                  id="icon-profileSocialMedia"
+                  height={50}
+                  width={50}
+                />
+              </div>
+              <div className="box-info">
+                <label className="label-profileForm" htmlFor="socialmedia">
+                  Social media
+                </label>
+                <div id="socialmedia">{userInfo[0].socialMedia}</div>
+              </div>
             </div>
           </div>
         </div>

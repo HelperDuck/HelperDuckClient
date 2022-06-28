@@ -100,100 +100,102 @@ const ProfileForm = ({ userInfo, setUserInfo }: Props) => {
           ></textarea>
         </div>
         <div className="input-expertise">
-          <div className="profile-boxes" id="input-programming-box">
-            <div className="wrapper-box">
-              <div className="icons-box-profile-page">
-                <Icon
-                  icon="healthicons:eyeglasses-outline"
-                  id="icon-profileStack"
-                  height={50}
-                  width={50}
-                />
-              </div>
-              <div className="box-info">
-                <label
-                  className="label-profileForm"
-                  htmlFor="profile-programminglanguages"
-                >
-                  Programming languages
-                </label>
-                <Select
-                  options={stackList}
-                  className="select-input"
-                  id="profile-programminglanguages"
-                  placeholder="Choose stack options"
-                  name="programmingLanguage"
-                  defaultValue={userInfo[0].programmingLanguage.map(
-                    (data: any) => {
-                      return { label: data };
-                    }
-                  )}
-                  //onChange={handleStackData}
-                  isMulti
-                ></Select>
-              </div>
-            </div>
-          </div>
-          <div className="profile-boxes" id="input-language-box">
-            <div className="wrapper-box">
-              <div className="icons-box-profile-page">
-                <Icon
-                  icon="clarity:language-line"
-                  id="icon-profileLanguage"
-                  height={50}
-                  width={50}
-                />
-              </div>
-              <div className="box-info">
-                <label
-                  className="label-profileForm"
-                  htmlFor="profile-speakinglanguages"
-                >
-                  Speaking languages
-                </label>
-                <Select
-                  options={idiomsList}
-                  className="select-input"
-                  id="profile-speakinglanguages"
-                  placeholder="Choose languages options"
-                  name="speakingLanguage"
-                  defaultValue={userInfo[0].speakingLanguage.map(
-                    (item: any) => {
-                      return { label: item };
-                    }
-                  )}
-                  //onChange={handleIdiomData}
-                  isMulti
-                ></Select>
+          <div className="profile-boxes-wrapper">
+            <div className="profile-boxes" id="input-programming-box">
+              <div className="wrapper-box">
+                <div className="icons-box-profile-page">
+                  <Icon
+                    icon="healthicons:eyeglasses-outline"
+                    id="icon-profileStack"
+                    height={50}
+                    width={50}
+                  />
+                </div>
+                <div className="box-info">
+                  <label
+                    className="label-profileForm"
+                    htmlFor="profile-programminglanguages"
+                  >
+                    Programming languages
+                  </label>
+                  <Select
+                    options={stackList}
+                    className="select-input"
+                    id="profile-programminglanguages"
+                    placeholder="Choose stack options"
+                    name="programmingLanguage"
+                    defaultValue={userInfo[0].programmingLanguage.map(
+                      (data: any) => {
+                        return { label: data };
+                      }
+                    )}
+                    //onChange={handleStackData}
+                    isMulti
+                  ></Select>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="profile-boxes" id="input-socialmedia-box">
-            <div className="wrapper-box">
-              <div className="icons-box-profile-page">
-                <Icon
-                  icon="ic:baseline-connect-without-contact"
-                  id="icon-profileSocialMedia"
-                  height={50}
-                  width={50}
-                />
+            <div className="profile-boxes" id="input-language-box">
+              <div className="wrapper-box">
+                <div className="icons-box-profile-page">
+                  <Icon
+                    icon="clarity:language-line"
+                    id="icon-profileLanguage"
+                    height={50}
+                    width={50}
+                  />
+                </div>
+                <div className="box-info">
+                  <label
+                    className="label-profileForm"
+                    htmlFor="profile-speakinglanguages"
+                  >
+                    Speaking languages
+                  </label>
+                  <Select
+                    options={idiomsList}
+                    className="select-input"
+                    id="profile-speakinglanguages"
+                    placeholder="Choose languages options"
+                    name="speakingLanguage"
+                    defaultValue={userInfo[0].speakingLanguage.map(
+                      (item: any) => {
+                        return { label: item };
+                      }
+                    )}
+                    //onChange={handleIdiomData}
+                    isMulti
+                  ></Select>
+                </div>
               </div>
-              <div className="box-info">
-                <label
-                  className="label-profileForm"
-                  htmlFor="profile-socialmedia"
-                >
-                  Social media
-                </label>
-                <input
-                  className="profile-input"
-                  id="profile-socialmedia"
-                  type="text"
-                  placeholder="Add the URL here"
-                  name="socialMedia"
-                  defaultValue={userInfo[0].socialMedia}
-                  //onChange={(e) => setSocialMediaInput(e.target.value)}
-                ></input>
+            </div>
+            <div className="profile-boxes" id="input-socialmedia-box">
+              <div className="wrapper-box">
+                <div className="icons-box-profile-page">
+                  <Icon
+                    icon="ic:baseline-connect-without-contact"
+                    id="icon-profileSocialMedia"
+                    height={50}
+                    width={50}
+                  />
+                </div>
+                <div className="box-info">
+                  <label
+                    className="label-profileForm"
+                    htmlFor="profile-socialmedia"
+                  >
+                    Social media
+                  </label>
+                  <input
+                    className="profile-input"
+                    id="profile-socialmedia"
+                    type="text"
+                    placeholder="Add the URL here"
+                    name="socialMedia"
+                    defaultValue={userInfo[0].socialMedia}
+                    //onChange={(e) => setSocialMediaInput(e.target.value)}
+                  ></input>
+                </div>
               </div>
             </div>
           </div>
