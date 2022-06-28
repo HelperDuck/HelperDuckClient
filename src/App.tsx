@@ -112,7 +112,3 @@ function App() {
 }
 
 export default App;
-function useDispatch() {
-  throw new Error("Function not implemented.");
-}
-
