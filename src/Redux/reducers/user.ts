@@ -21,18 +21,19 @@ const initialState: UserType = {
 
 
 
+
 export const userSlice = createSlice({
-  name: 'user',
-  initialState: {value: initialState},
+  name: "user",
+  initialState: { value: initialState },
   reducers: {
        loginProfile: (state: { value: UserType }, action: { payload: UserType }) => {
       state.value = { ...state.value, ...action.payload };
     },
       
   },
-})
+});
 
 // Action creators are generated for each case reducer function
-export const {  loginProfile } = userSlice.actions
+export const { loginProfile } = userSlice.actions;
 
-export default userSlice.reducer
+export default userSlice.reducer;

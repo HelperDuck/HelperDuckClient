@@ -19,6 +19,7 @@ import { allLanguages } from "./Redux/reducers/languages";
 import { getAllLanguages, getAllTechnologies } from "./services/languages";
 import { Technologies } from "./Redux/reducers/technologies";
 import { getAllHelpRequests } from "./services/request";
+import { CreateRequestPage } from "./Pages/CreateRequestPage";
 
 function App() {
   const [isAuthUser, loading] = useAuthState(auth);
@@ -101,6 +102,7 @@ function App() {
           {/* the dashboard above should be another name */}
           <Route path="/dashboard2" element={<DashboardPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/newrequest" element={<CreateRequestPage />} />
         </Routes>
       </Router>
     </div>
