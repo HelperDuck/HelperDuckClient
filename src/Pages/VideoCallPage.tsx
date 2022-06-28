@@ -14,6 +14,7 @@ const SOCKET_SERVER_URL = 'http://localhost:3002/';
 type VideoProps = {
   stream?: MediaStream
   peer: Instance ; 
+  className?: string;
 }
 
 const Video = (props: VideoProps) => {
@@ -209,10 +210,35 @@ export const VideoCallPage = (props: Props)  =>{
   //TODO: line for Video will most likely be changed, but it compiles for now
   return (
     
+    <>
+        <video
+                playsInline
+                muted
+                ref={userVideo}
+                autoPlay
+                className="video-container"
+              />
+    <>
+      <div className="video-controls">
+        <button className="cam-input-btn">
+          📸
+        </button>
+        <button className="mic-input-btn">
+          🎙️
+        </button>
+        <button className="phone-input-btn">
+          ☎️
+        </button>
+      </div>
+    </>
     <div>
-      "Hello World"
-      <Video peer={new Peer()} /> 
-    </div>
+        "Peers videos will be displayed below"
+        {peers.map((peer) => {
+          return (
+            <Video key={peer.peerId} peer={peer.peer} className="video-container" />
+          );
+        })}
+      </div></>
   );
 }
 
