@@ -1,0 +1,57 @@
+{
+  id: 1,
+userId: 1,
+createdAt: new Date() ,
+updatedAt:new Date(),
+status: 'open',
+subject:' center a div',
+description: 'I need some help with this',
+codeSnippet: 'console.log(helloWorld)',
+linkToSandbox:' https://codesandbox.io/s/rlkjz2n43q',
+roomId: 'testRoom',
+user: {
+  uid: 'jcLzJnBP2mZnKA53NhpYmp3gpkl1',
+  firstName: 'Siebe',
+  id: 1,
+  lastName: 'Kylstra',
+  userName: 'Siebe',
+  email: "siebe.kylstra@gmail.com",
+  userBio: "DevOps nerd",
+  profilePic: "https://firebasestorage.googleapis.com/v0/b/helper-duck.appspot.com/o/profilePics%2Fhackercat.jpg?alt=media&token=3cd1ed19-6dd5-47b1-8f19-9da64389cbb8",
+  gitHubProfile: "siebekylstra",
+  updatedAt: "2022-06-28T14:29:56.688Z",
+},
+technologies: [
+    {
+        helpRequestId: 1,
+        technologyId: 78,
+        technology: {
+            id: 78,
+            name: 'Python',
+            icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'
+        }
+    },
+    {
+        helpRequestId: 1,
+        technologyId: 54,
+        technology: {
+            id: 54,
+            name: 'Java',
+            icon:' https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg'
+        }
+    }
+],
+languages: [
+    {
+        helpRequestId: 1,
+        languageId: 40,
+        language: {
+            id: 40,
+            code: 'en',
+            name: 'English',
+            nativeName: 'English',
+            icon:' https://countryflagsapi.com/png/en'
+        }
+    }
+]
+}
