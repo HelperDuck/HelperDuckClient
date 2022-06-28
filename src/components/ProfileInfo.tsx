@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import "../Pages/ProfilePage.css";
 import { ProfilePerformanceInfo } from "../components/ProfilePerformanceInfo";
+import { useSelector } from "react-redux";
 
 //TODO: check the correct type
 //TODO: check how to update the profile pic
@@ -11,12 +12,12 @@ type Props = {
 };
 
 export const ProfileInfo = ({ userInfo }: Props) => {
+  const user = useSelector((state: any) => state.user.value);
+  console.log(user);
   const [fileInput, setFileInput] = useState("");
 
   //TODO: use this once redux-toolkit is set up
   //const dispatch = useDispatch();
-  //const user = userSelector((state) => state.users.value)
-  //state.users.value (users is the name given in reducers, value is the key given in the initial state in reducers )
 
   const handleFileInputChange = (e: any) => {
     setFileInput(URL.createObjectURL(e.target.files[0]));
@@ -37,10 +38,10 @@ export const ProfileInfo = ({ userInfo }: Props) => {
               ></input>
             )}
           >
-            {fileInput ? (
+            {user.profilePic ? (
               <img
                 className="img-input"
-                src={fileInput}
+                src={user.profilePic}
                 alt="profilePic"
                 style={{ maxHeight: "188px", maxWidth: "171px" }}
               />
@@ -54,11 +55,9 @@ export const ProfileInfo = ({ userInfo }: Props) => {
             )}
           </button>
         </div>
-        {/* //TODO: set up this function once redux is ready */}
-        {/* {user.map((data) => { return (//everything below)} )} */}
-        <div id="full-name">{`${userInfo[0].firstName} ${userInfo[0].lastName}`}</div>
+        <div id="full-name">{`${user.firstName} ${user.lastName}`}</div>
       </div>
-      <div id="aboutme">{userInfo[0].description}</div>
+      <div id="aboutme">{user.userBio}</div>
       <div className="profile-expertise">
         <div className="profile-boxes-wrapper">
           <div className="profile-boxes" id="programming-box">
@@ -79,7 +78,13 @@ export const ProfileInfo = ({ userInfo }: Props) => {
                   Programming languages
                 </label>
                 <div id="programminglanguage">
-                  {userInfo[0].programmingLanguage}
+                  {user.technologies.length &&
+                    user.technologies.map((item: any) => {
+                      return item.technology.name;
+                    })}
+                  {/* {user.technologies.map((item: any) => {
+                    return item.technology.name;
+                  })} */}
                 </div>
               </div>
             </div>
