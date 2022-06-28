@@ -1,11 +1,11 @@
 .navBar {
   background-color: black;
   display: flex;
+  position: absolute;
   width: 8vw;
+  margin-left: 3%;
+  height: 97vh;
   border-radius: 20px;
-  height: 97%;
-  margin: 10px;
- 
 }
 
 /* .navBar-icons {
@@ -14,18 +14,23 @@
 } */
 
 .navBar-icons {
-  height: 100%;
-  margin-left: 1vw;
+  position: relative;
   height: 95%;
-  width: 2vw;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5%;
 }
 
-li {
+/* li {
   padding-left: 2.5vw;
   padding-top: 4vh;
   padding-bottom: 6vh;
-}
+} */
 
-#logo-navBar {
-  padding-left: 1vw;
+.icons {
+  position: relative;
+  width: 100%;
 }

@@ -8,9 +8,10 @@ export const NavBar = (props: Props) => {
   return (
     <div className="navBar">
       <div className="navBar-icons">
-        <li id="logo-navBar">
+        <li>
           <Icon
             icon="icon-park-solid:duck"
+            className="icons"
             color="white"
             hFlip={true}
             height={70}
@@ -18,7 +19,13 @@ export const NavBar = (props: Props) => {
           />
         </li>
         <li>
-          <Icon icon="codicon:home" color="white" height={25} width={25} />
+          <Icon
+            icon="codicon:home"
+            color="white"
+            height={25}
+            width={25}
+            className="icons"
+          />
         </li>
         <li>
           <Icon
@@ -26,6 +33,7 @@ export const NavBar = (props: Props) => {
             color="white"
             height={25}
             width={25}
+            className="icons"
           />
         </li>
         <li>
@@ -35,10 +43,17 @@ export const NavBar = (props: Props) => {
             hFlip={true}
             height={25}
             width={25}
+            className="icons"
           />
         </li>
         <li>
-          <Icon icon="uil:signout" color="white" height={25} width={25} />
+          <Icon
+            icon="uil:signout"
+            color="white"
+            height={25}
+            width={25}
+            className="icons"
+          />
         </li>
       </div>
     </div>
