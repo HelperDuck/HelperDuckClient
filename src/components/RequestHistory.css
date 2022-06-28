@@ -5,9 +5,12 @@
 .RequestHistory-wrapper{
   display: flex;
   justify-content: space-between;
-
-  margin: 0 50px;
   /* width and margin should be changed after all components are done */
+}
+
+.past-request-carrousel{
+  max-height: 23vh;
+  overflow-y: scroll;
 }
 
 .subject-user-container{
@@ -18,8 +21,7 @@
 }
 
 .outer-container{
-  width: 45%;
- 
+  width: 47.5%;
 }
 
 .title{
@@ -39,7 +41,7 @@
   min-height: 105px;
   padding: 5px 10px;
   flex-wrap: wrap;
-
+  margin: 5px;
 }
 
 .past-request div{
@@ -98,4 +100,19 @@
 
 @media only screen and (max-width: 960px) {
 
+}
+
+
+.past-request-carrousel::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+.past-request-carrousel::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.past-request-carrousel::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
 }

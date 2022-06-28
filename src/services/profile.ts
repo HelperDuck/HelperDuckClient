@@ -26,13 +26,21 @@ export async function postUserProfile(user: UserType) {
 //logic needs to be getUserProfileByID
 export async function getUserProfile(user: UserType): Promise<any> {
   try {
-
-    console.log(user.uid, 'dentro do service')
+   
     const userProfileById = await fetch(`${BASE_URL}/user/${user.uid}`);
-    console.log(userProfileById, 'duserProfileByIde')
-    let result = await userProfileById.json();
-    console.log(result, 'result')
-    return result
+    return await userProfileById.json();
+
+  } catch (err) {
+    console.log("Error at getUserProfile Service: ", err);
+  }
+}
+
+
+export async function getAllUsers(): Promise<any> {
+  try {
+   
+    const userProfileById = await fetch(`${BASE_URL}/users`);
+    return await userProfileById.json();
 
   } catch (err) {
     console.log("Error at getUserProfile Service: ", err);
@@ -53,3 +61,4 @@ export async function editUserProfile(user: UserType) {
     console.log("Error at editUserProfile Service: ", err);
   }
 } //use the returned value to set or manage state;
+

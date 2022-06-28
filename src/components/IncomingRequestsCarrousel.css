@@ -1,0 +1,27 @@
+.carrousel-outer-container{
+  margin-top: 2%;
+}
+.request-carrousel{
+
+  display: flex;
+  max-height: 24vh;
+  min-height: 300px;
+  overflow-x:scroll;
+  width: 100% ;
+ 
+}
+
+
+.request-carrousel::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+.request-carrousel::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.request-carrousel::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}

@@ -1,14 +1,15 @@
 .IncomingRequest-wrapper {
   /* the width and the margin should be changed after all components are made */
-   width: 40%;
+  margin: 20px 0;
   max-height: 240px;
   display: flex;
   flex-direction: column;
   padding: 20px;
   background: #f5f5f7;
   border-radius: 14px;
-  margin: 50px;
   font-family: "Roboto", sans-serif;
+  margin-right: 1%;
+  min-height: 255px;
 }
 
 .info-container{
@@ -74,6 +75,7 @@ margin-right: 5px;
   max-height:100px;
   word-wrap: break-word;
   overflow-y: scroll;
+ 
 }
 .IncomingRequest-description::-webkit-scrollbar {
   width: 3px;
