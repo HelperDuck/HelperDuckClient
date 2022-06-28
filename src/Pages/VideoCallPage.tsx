@@ -5,8 +5,10 @@ import io from "socket.io-client";
 import { WebRTCUser } from '../Types/WebRTCUser'
 import './VideoCallPage.css'
 
-
-const SOCKET_SERVER_URL = 'http://localhost:3002/';
+const LOCAL_SERVER = 'http://localhost:3002/';
+const DEV_SERVER = 'https://helperduck-dev.herokuapp.com/';
+const PROD_SERVER = 'https://helperduck.herokuapp.com/';
+const SOCKET_SERVER_URL = PROD_SERVER;
 
 type VideoProps = {
   stream?: MediaStream
@@ -59,10 +61,15 @@ export const VideoCallPage = (props: Props)  =>{
     
     const videoConstraints = {
       video: {
+        cursor: 'always',
         width: {min: 640, ideal: 1920, max: 1920},
         height: {min: 480, ideal: 1080, max: 1080},
       },
-      audio: true,
+      audio: {
+        echoCancellation: true,
+        noiseSuppression: true,
+        sampleRate: 44100
+      },
     };
      
     useEffect(() => {
@@ -246,30 +253,9 @@ export const VideoCallPage = (props: Props)  =>{
       userStream.current.getVideoTracks()[0].enabled = false;
       window.location.replace('/dashboard2');
     };
-    
 
     
-    
-    // const screenSharing = () => {
-    //   if (userStream.current) {
-    //     navigator.mediaDevices.getDisplayMedia().then(stream => {
-    //       user
-    //     })
-    //   }
-    // }
-    
-    
-    // const screenSharing = () => {
-    //   navigator.mediaDevices.getDisplayMedia({}).then(stream => {
-    //     const screenTrack = stream.getTracks()[0];
-    //     peersRef.current.find(peer => peer.track.kind === 'video').replaceTrack(screenTrack);
-    //     screenTrack.onended = () => {
-    //       peersRef.current.find(peer => peer.track.kind === 'video').replaceTrack(userStream.current?.getTracks()[1]);
-    //     }
-    //   })
-    // }
-    
-    const switchStream = (stream: MediaStream) => {
+    const streamToggler = (stream: MediaStream) => {
       setStream(stream);
       if (userStream.current)
       setScreenSharingId(userStream.current.id);
@@ -277,44 +263,36 @@ export const VideoCallPage = (props: Props)  =>{
     
     const screenShare = async () => {
       try {
-      if (screenSharingId) {
-        console.log('line 281')
-        navigator.mediaDevices
-          .getUserMedia(videoConstraints)
-          .then(switchStream);
-      } else {
-        const mediaTracks = await navigator.mediaDevices.getDisplayMedia({});
-        const screenSharingTrack = mediaTracks.getTracks()[0]; //GET SCREEN TRACK
-        console.log(mediaTracks, 'screeentrack 287')
-        console.log(screenSharingTrack, 'experience gettracks 289')
-        
-        if (userStream.current) {
-        let videoTrack = userStream.current
-          .getTracks()[1]; //GET VIDEO TRACK
+        //check if user is already sharing the screen
+        if (screenSharingId) {
+          navigator.mediaDevices
+            .getUserMedia(videoConstraints)
+            .then(streamToggler);
+        } else {
+          const mediaTracks = await navigator.mediaDevices.getDisplayMedia({});
+          const screenSharingTrack = mediaTracks.getTracks()[0]; //GET SCREEN TRACK
+      
+          if (userStream.current) {
+          let videoTrack = userStream.current
+            .getTracks()[1]; //GET VIDEO TRACK
+            
+          //Replace Cam Stream by Screen Stream
+          userStream.current.removeTrack(videoTrack);
+          userStream.current.addTrack(screenSharingTrack);
           
-        console.log(videoTrack, 'videoTrack at 293')
-        
-        userStream.current.removeTrack(videoTrack);
-        
-        // if(userStream && userStream.current)
-        // userStream.current.onremovetrack = (e) => {
-        //   console.log('onremovetrack');
-        // }
-        userStream.current.addTrack(screenSharingTrack);
-        
-        screenSharingTrack.onended = () => {
-                if (userStream.current)
-                userStream.current.removeTrack(screenSharingTrack);
-                if (userStream.current)
-                userStream.current.addTrack(videoTrack);
+          //event listener for reversing streams when user stops sharing screen 
+          screenSharingTrack.onended = () => {
+                  if (userStream.current)
+                  userStream.current.removeTrack(screenSharingTrack);
+                  if (userStream.current)
+                  userStream.current.addTrack(videoTrack);
+            }
           }
         
         }
-      
+      } catch(err) {
+          console.log('Errot at screenshare function: ', err);
       }
-    } catch(err) {
-      console.log('err at screenshare function', err);
-    }
 
       // if(userStream.current) {
       //   userStream.current.getVideoTracks()[0].enabled = false;
