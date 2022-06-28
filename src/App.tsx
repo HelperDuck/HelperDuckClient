@@ -8,50 +8,42 @@ import { ProfilePage } from "./Pages/ProfilePage";
 import { DashboardPage } from "./Pages/DashboardPage";
 import { useDispatch } from "react-redux";
 import { getUserProfile } from "./services/profile";
-import {loginProfile} from "./Redux/reducers/user"
+import { loginProfile } from "./Redux/reducers/user";
 import { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./services/authentication";
 import { UserType } from "./Types/UserType";
-
-
+import { CreateRequestPage } from "./Pages/CreateRequestPage";
 
 function App() {
-
-const [isAuthUser, loading] = useAuthState(auth);
+  const [isAuthUser, loading] = useAuthState(auth);
   // const navigate = useNavigate();
-const dispatch = useDispatch();
-  
+  const dispatch = useDispatch();
+
   console.log("isAuthUser inside app", isAuthUser);
-  
+
   useEffect(() => {
     if (loading) return;
-    if(isAuthUser){ fetchProfile()}
+    if (isAuthUser) {
+      fetchProfile();
+    }
   }, [isAuthUser]); //eslint-disable-line
-  
+
   const fetchProfile = async () => {
     try {
-      console.log('aquiii')
-      const profileFound =  await getUserProfile(isAuthUser as unknown as UserType);
-      console.log(profileFound, 'profileFOund')
+      console.log("aquiii");
+      const profileFound = await getUserProfile(
+        isAuthUser as unknown as UserType
+      );
+      console.log(profileFound, "profileFOund");
       dispatch(loginProfile(profileFound));
-    
     } catch (err) {
       console.error(err);
     }
   };
-  
-
-
-
-
-
-
-
 
   return (
     <div className="app">
-        
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -61,9 +53,9 @@ const dispatch = useDispatch();
           {/* the dashboard above should be another name */}
           <Route path="/dashboard2" element={<DashboardPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/newrequest" element={<CreateRequestPage />} />
         </Routes>
       </Router>
-  
     </div>
   );
 }

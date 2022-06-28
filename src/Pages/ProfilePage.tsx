@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { Icon } from "@iconify/react";
 import ProfileInfo from "../components/ProfileInfo";
 import ProfileForm from "../components/ProfileForm";
@@ -45,7 +46,7 @@ export const ProfilePage = () => {
   };
 
   return (
-    <>
+    <div className="profile-wrapper">
       <NavBar></NavBar>
       <div className="profile-container">
         <div className="form-container">
@@ -68,6 +69,6 @@ export const ProfilePage = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
