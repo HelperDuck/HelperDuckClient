@@ -132,6 +132,14 @@ export const VideoCallPage = (props: Props)  =>{
                 console.log('Error handling userHasJoined Socket Event: ', err);
             }
           });
+          
+          if (socketRef.current) //TODO: this if statement is preventing unresolved promises -> get back to it if needed
+          socketRef.current.on('serverReceivedTheReturnedSignal', (data: { id: any; signal: any; }) => {
+            const targetPeer = peersRef.current.find(
+              (target) => target.peerId === data.id
+            );
+            targetPeer.peer.signal(data.signal);
+          });
         })
       
     },[]);
