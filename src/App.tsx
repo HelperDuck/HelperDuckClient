@@ -7,18 +7,19 @@ import Dashboard from "./views/Dashboard";
 import { ProfilePage } from "./Pages/ProfilePage";
 import { DashboardPage } from "./Pages/DashboardPage";
 import { useDispatch } from "react-redux";
-import { getAllUsers, getUserProfile } from "./services/profile";
-import { loginProfile } from "./Redux/reducers/user";
-import { allUsers } from "./Redux/reducers/AllUsers";
+import { VideoCallPage } from "./Pages/VideoCallPage";
 import { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "./services/authentication";
-import { UserType } from "./Types/UserType";
+import { allUsers } from "./Redux/reducers/AllUsers";
 import { helpRequests } from "./Redux/reducers/helpRequest";
 import { allLanguages } from "./Redux/reducers/languages";
-import { getAllLanguages, getAllTechnologies } from "./services/languages";
 import { Technologies } from "./Redux/reducers/technologies";
+import { loginProfile } from "./Redux/reducers/user";
+import { auth } from "./services/authentication";
+import { getAllLanguages, getAllTechnologies } from "./services/languages";
+import { getUserProfile, getAllUsers } from "./services/profile";
 import { getAllHelpRequests } from "./services/request";
+import { UserType } from "./Types/UserType";
 import { CreateRequestPage } from "./Pages/CreateRequestPage";
 
 function App() {
@@ -102,6 +103,7 @@ function App() {
           {/* the dashboard above should be another name */}
           <Route path="/dashboard2" element={<DashboardPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/call/:roomId" element={<VideoCallPage />} />
           <Route path="/newrequest" element={<CreateRequestPage />} />
         </Routes>
       </Router>
