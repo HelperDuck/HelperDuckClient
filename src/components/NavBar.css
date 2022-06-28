@@ -1,12 +1,11 @@
 .navBar {
   background-color: black;
   display: flex;
-  position: fixed;
   width: 8vw;
-  height: 90%;
-  margin-left: 5%;
-  margin-top: 1%;
   border-radius: 20px;
+  height: 97%;
+  margin: 10px;
+ 
 }
 
 /* .navBar-icons {
