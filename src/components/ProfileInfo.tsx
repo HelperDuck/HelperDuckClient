@@ -14,13 +14,13 @@ type Props = {
 export const ProfileInfo = ({ userInfo }: Props) => {
   const user = useSelector((state: any) => state.user.value);
   console.log(user);
-  const [fileInput, setFileInput] = useState("");
+  //const [fileInput, setFileInput] = useState("");
 
   //TODO: use this once redux-toolkit is set up
   //const dispatch = useDispatch();
 
   const handleFileInputChange = (e: any) => {
-    setFileInput(URL.createObjectURL(e.target.files[0]));
+    //setFileInput(URL.createObjectURL(e.target.files[0]));
   };
 
   return (
