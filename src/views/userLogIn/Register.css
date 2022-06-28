@@ -1,12 +1,18 @@
 .register {
+  background-image: url("/Users/fernandarodrigues/Codeworks/HelperDuckClient/src/mocks/pexels-andre-moura-2764989.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right 35% bottom 45%;
   height: 100vh;
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: red solid;
 }
 
 .register__container {
+  border: red solid;
   display: flex;
   flex-direction: column;
   text-align: center;
