@@ -6,8 +6,7 @@ import Reset from "./views/userLogIn/Reset";
 import Dashboard from "./views/Dashboard";
 import { ProfilePage } from "./Pages/ProfilePage";
 import { DashboardPage } from "./Pages/DashboardPage";
-import { Provider, useDispatch } from "react-redux";
-
+import { useDispatch } from "react-redux";
 import { getUserProfile } from "./services/profile";
 import {loginProfile} from "./Redux/reducers/user"
 import { useEffect } from "react";
