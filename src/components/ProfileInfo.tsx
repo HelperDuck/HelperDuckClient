@@ -78,10 +78,10 @@ export const ProfileInfo = ({ userInfo }: Props) => {
                   Programming languages
                 </label>
                 <div id="programminglanguage">
-                  {user.technologies.length &&
+                  {/* {user.technologies.length &&
                     user.technologies.map((item: any) => {
                       return item.technology.name;
-                    })}
+                    })} */}
                   {/* {user.technologies.map((item: any) => {
                     return item.technology.name;
                   })} */}
