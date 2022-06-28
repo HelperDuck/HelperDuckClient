@@ -64,6 +64,9 @@ export const CreateRequestPage = (props: Props) => {
               isMulti
             ></Select>
           </div>
+          <button className="btn-request" onClick={() => console.log("hi")}>
+            <p id="btn-request">Submit</p>
+          </button>
         </form>
       </div>
     </div>

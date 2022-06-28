@@ -26,7 +26,8 @@
 .input-request-box {
   display: flex;
   flex-direction: column;
-  padding: 1.5%;
+  padding-left: 1.5%;
+  padding-right: 1.5%;
 }
 
 .request-form {
@@ -35,17 +36,40 @@
 
 h2 {
   color: white;
-  margin-left: 3%;
+  margin-left: 2%;
   font-family: "Baloo Bhai 2", cursive;
+  font-size: 25px;
 }
 
 label {
   color: white;
   font-family: "Baloo Bhai 2", cursive;
+  margin-top: 1%;
 }
 
 .input-request {
   border-radius: 5px;
   background-color: lightgray;
   padding: 1%;
+}
+
+.btn-request {
+  margin-top: 1vh;
+  margin-left: 1.5%;
+  border-radius: 10px;
+  width: 10%;
+  height: 5vh;
+  background-color: green;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#btn-request {
+  font-family: "Baloo Bhai 2", cursive;
+  font-weight: 800;
+  font-size: 15px;
+  flex-wrap: wrap;
+  word-wrap: break-word;
 }
