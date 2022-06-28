@@ -1,13 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { Dispatch, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Peer, { Instance, SimplePeer } from 'simple-peer';
-import { Socket } from 'socket.io-client';
 import io from "socket.io-client";
-import socketIOClient from 'socket.io-client';
 import { WebRTCUser } from '../Types/WebRTCUser'
-import { SocketType } from 'dgram';
 import './VideoCallPage.css'
-// console.log(socketIO);
 
 
 const SOCKET_SERVER_URL = 'http://localhost:3002/';
@@ -19,7 +15,7 @@ type VideoProps = {
 }
 
 const Video = (props: VideoProps) => {
-  const ref = useRef<HTMLVideoElement>(null);
+  const ref = useRef<HTMLVideoElement | any>();
 
   useEffect(() => {
     //@ts-ignore
@@ -43,16 +39,19 @@ const Video = (props: VideoProps) => {
 
 
 type Props = {
-  
+  // setScreenSharingId: React.Dispatch<React.SetStateAction<any>>
  }
 
 export const VideoCallPage = (props: Props)  =>{
     //HOOKS for classroom state management
     const [peers, setPeers] = useState<WebRTCUser[]>([]); //this will track the peers for rendering purposes
+    const [stream, setStream] = useState<MediaStream>();
+    const [screenSharingId, setScreenSharingId] = useState<string>('');
     const socketRef = useRef<any>(); //will handle the sockets communications for signaling //TODO: check type works 
-    const userVideo = useRef<HTMLVideoElement>(null); //TODO: may need to remove the null value
+    const userVideo = useRef<HTMLVideoElement | any>(); //TODO: may need to remove the null value
     const peersRef = useRef<any[]>([]); //this will be used to track and handle the RTC Connections //TODO: check type works
     const userStream = useRef<MediaStream>();
+    
     
     const currentPath = useLocation();
     const roomId: string | undefined = currentPath.pathname.split('/').pop();
@@ -60,12 +59,12 @@ export const VideoCallPage = (props: Props)  =>{
     
     const videoConstraints = {
       video: {
-        width: window.innerWidth/2,
-        height: window.innerHeight/2,
+        width: {min: 640, ideal: 1920, max: 1920},
+        height: {min: 480, ideal: 1080, max: 1080},
       },
       audio: true,
     };
-    
+     
     useEffect(() => {
       //@ts-ignore
       // const testSocket = socketIOClient.connect(SOCKET_SERVER_URL);
@@ -144,7 +143,7 @@ export const VideoCallPage = (props: Props)  =>{
           });
           
           if (socketRef.current) //TODO: this if statement is preventing unresolved promises -> get back to it if needed
-          socketRef.current.on('leftCall', (id: any) => {
+          socketRef.current.on('leftCall', (id: Instance) => {
             const peerObj = peersRef.current.find(
               (target) => target.peerId === id
             );
@@ -242,7 +241,77 @@ export const VideoCallPage = (props: Props)  =>{
         }
     };
     
+    const exitCall = () => {
+      if(userStream.current)
+      userStream.current.getVideoTracks()[0].enabled = false;
+      window.location.replace('/dashboard2');
+    };
     
+
+    
+    
+    // const screenSharing = () => {
+    //   if (userStream.current) {
+    //     navigator.mediaDevices.getDisplayMedia().then(stream => {
+    //       user
+    //     })
+    //   }
+    // }
+    
+    
+    // const screenSharing = () => {
+    //   navigator.mediaDevices.getDisplayMedia({}).then(stream => {
+    //     const screenTrack = stream.getTracks()[0];
+    //     peersRef.current.find(peer => peer.track.kind === 'video').replaceTrack(screenTrack);
+    //     screenTrack.onended = () => {
+    //       peersRef.current.find(peer => peer.track.kind === 'video').replaceTrack(userStream.current?.getTracks()[1]);
+    //     }
+    //   })
+    // }
+    
+    const switchStream = (stream: MediaStream) => {
+      setStream(stream);
+      if (userStream.current)
+      setScreenSharingId(userStream.current.id);
+    }
+    
+    const screenShare = async () => {
+      try {
+      if (screenSharingId) {
+        console.log('line 281')
+        navigator.mediaDevices
+          .getUserMedia(videoConstraints)
+          .then(switchStream);
+      } else {
+        const screenTrack = await navigator.mediaDevices.getDisplayMedia({});
+        const experienceTrack = screenTrack.getTracks()[0]; //GET SCREEN TRACK
+        console.log(screenTrack, 'screeentrack 287')
+        console.log(experienceTrack, 'experience gettracks 289')
+        
+        if (userStream.current) {
+        let videoTrack = userStream.current
+          .getTracks()[1]; //GET SCREEN TRACK
+        console.log(videoTrack, 'videoTrack at 293')
+        
+        userStream.current.removeTrack(videoTrack);
+        
+        // if(userStream && userStream.current)
+        // userStream.current.onremovetrack = (e) => {
+        //   console.log('onremovetrack');
+        // }
+        userStream.current.addTrack(experienceTrack);
+        
+        }
+      
+      }
+    } catch(err) {
+      console.log('err at screenshare function', err);
+    }
+
+      // if(userStream.current) {
+      //   userStream.current.getVideoTracks()[0].enabled = false;
+      // }
+    }
     
   
   return (
@@ -253,18 +322,22 @@ export const VideoCallPage = (props: Props)  =>{
                   muted
                   ref={userVideo}
                   autoPlay
+                  controls
                   className="video-container"
                 />
       
         <div className="video-controls">
-          <button className="cam-btn" onClick={toggleCam}>
+          <button className="cam-btn video-btn" onClick={toggleCam}>
             📸
           </button>
-          <button className="mic-btn" onClick={toggleMic}>
+          <button className="mic-btn video-btn" onClick={toggleMic}>
             🎙️
           </button>
-          <button className="phone-btn">
+          <button className="phone-btn video-btn" onClick={exitCall}>
             ☎️
+          </button>
+          <button className="screen-btn video-btn" onClick={screenShare}>
+          🖥️
           </button>
         </div>
       </div>
@@ -273,7 +346,9 @@ export const VideoCallPage = (props: Props)  =>{
           "Peers videos will be displayed below"
           {peers.map((peer) => {
             return (
+              <div className = "my-video-wrapper">
               <Video key={peer.peerId} peer={peer.peer} className="video-container" />
+              </div>
             );
           })}
         </div>

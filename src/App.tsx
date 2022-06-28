@@ -20,7 +20,7 @@ function App() {
           {/* the dashboard above should be another name */}
           <Route path="/dashboard2" element={<DashboardPage/>} />   
           <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/call" element={<VideoCallPage />} />
+          <Route path="/call/:roomId" element={<VideoCallPage />} />
         </Routes>
       </Router>
     </div>
