@@ -1,5 +1,5 @@
 .profile-wrapper {
-  padding: 3%;
+  padding: 1.5%;
 }
 
 .profile-container {
@@ -14,8 +14,10 @@
 
 .profile-expertise {
   display: flex;
-
   position: relative;
+}
+.form-container {
+  padding: 1.5%;
 }
 
 .profile-header {
@@ -69,8 +71,9 @@
   align-items: center;
   position: absolute;
   margin-left: 1%;
-  width: 40%;
+  width: 100%;
   position: absolute;
+  flex-wrap: wrap;
 }
 
 .box-info {
@@ -123,4 +126,5 @@
 #socialmedia,
 #speakinglanguage {
   font-family: "Roboto", sans-serif;
+  word-wrap: break-word;
 }

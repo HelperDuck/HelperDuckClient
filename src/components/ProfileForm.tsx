@@ -96,7 +96,7 @@ const ProfileForm = ({ userInfo, setUserInfo }: Props) => {
             name="aboutme"
             defaultValue={userInfo[0].description}
             //onChange={(e) => setAboutMeInput(e.target.value)}
-            rows={4}
+            rows={6}
           ></textarea>
         </div>
         <div className="input-expertise">

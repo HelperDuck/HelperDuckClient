@@ -9,6 +9,7 @@
   top: -1475px;
   background: url("/Users/fernandarodrigues/Codeworks/HelperDuckClient/src/mocks/pexels-andre-moura-2764989.jpg");
   opacity: 0.75;
+  position: absolute;
 }
 
 .register__container {
