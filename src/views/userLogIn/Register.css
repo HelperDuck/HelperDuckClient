@@ -2,14 +2,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  background-image: url("/Users/fernandarodrigues/Codeworks/HelperDuckClient/src/mocks/ducky.png");
+}
+.register::before {
+  content: "";
   position: absolute;
-  width: 2887px;
-  height: 3850px;
-  left: -574px;
-  top: -1475px;
-  background: url("/Users/fernandarodrigues/Codeworks/HelperDuckClient/src/mocks/pexels-andre-moura-2764989.jpg");
-  opacity: 0.75;
-  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .register__container {
@@ -17,9 +23,8 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  background-color: #dcdcdc;
   background-color: transparent;
-  margin-right: 40%;
+  margin-right: 45%;
 }
 
 .register__textBox {
@@ -37,13 +42,28 @@
   border: none;
   border-radius: 20px;
   color: white;
-  background-color: black;
+  background-color: #514f4f;
+  font-family: "Baloo Bhai 2", cursive;
 }
 
 .register__google {
-  background-color: #4285f4;
+  background-color: #514f4f;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: "Baloo Bhai 2", cursive;
 }
 
 .register div {
   margin-top: 7px;
+}
+
+#haveaccount,
+#linkToLogin {
+  color: white;
+  font-family: "Baloo Bhai 2", cursive;
+}
+
+::placeholder {
+  font-family: "Baloo Bhai 2", cursive;
 }

@@ -7,6 +7,7 @@ import {
   signInWithGoogle,
 } from "../../services/authentication";
 import "./Register.css";
+import { Icon } from "@iconify/react";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -57,11 +58,21 @@ function Register() {
           className="register__btn register__google"
           onClick={signInWithGoogle}
         >
+          <Icon
+            id="google-icon"
+            icon="flat-color-icons:google"
+            color="white"
+            hFlip={true}
+          />
           Register with Google
         </button>
 
-        <div>
-          Already have an account? <Link to="/">Login</Link> now.
+        <div id="haveaccount">
+          Already have an account?{" "}
+          <Link id="linkToLogin" to="/">
+            Login
+          </Link>{" "}
+          now.
         </div>
       </div>
     </div>
