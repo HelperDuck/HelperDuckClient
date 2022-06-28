@@ -27,8 +27,7 @@ const dispatch = useDispatch();
   useEffect(() => {
     if (loading) return;
     if(isAuthUser){ fetchProfile()}
-   
-  }, [isAuthUser]);
+  }, [isAuthUser]); //eslint-disable-line
   
   const fetchProfile = async () => {
     try {

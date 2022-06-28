@@ -2,8 +2,8 @@ import { Icon } from '@iconify/react';
 import React from 'react';
 import brainBook from '../media/brainBook.svg'
 import './DashUserInfo.css'
-import { useSelector, useDispatch } from "react-redux";
-import { UserType } from '../Types/UserType';
+import { useSelector } from "react-redux";
+
 
 type Props = {
 
@@ -11,7 +11,7 @@ type Props = {
 
 export const DashUserInfo = (props: Props) =>{
 
-  const dispatch = useDispatch();
+
   const user = useSelector((state:any) => state.user.value);
 
 console.log(user, 'state final')
