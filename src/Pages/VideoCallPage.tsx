@@ -206,6 +206,23 @@ export const VideoCallPage = (props: Props)  =>{
       peer.signal(newSignalIncoming);
       return peer;
     };
+    
+    const toggleCam = () => {
+      if (userStream.current) {
+      let videoTrack = userStream.current
+        .getVideoTracks()
+        .find((track) => track.kind === 'video');
+        
+      if (videoTrack && videoTrack.enabled) {
+        videoTrack.enabled = !videoTrack.enabled;
+      } else {
+        if (videoTrack)
+        videoTrack.enabled = true;
+      }
+      if (videoTrack)
+      console.log(videoTrack.enabled, 'myCam');
+      }
+    };
   
   //TODO: line for Video will most likely be changed, but it compiles for now
   return (
@@ -220,7 +237,7 @@ export const VideoCallPage = (props: Props)  =>{
               />
     <>
       <div className="video-controls">
-        <button className="cam-input-btn">
+        <button className="cam-input-btn" onClick={toggleCam}>
           📸
         </button>
         <button className="mic-input-btn">
