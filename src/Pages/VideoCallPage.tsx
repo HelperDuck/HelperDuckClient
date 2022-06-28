@@ -1,12 +1,12 @@
-import React, { Dispatch, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import Peer, { Instance, SimplePeer } from 'simple-peer';
+import Peer, { Instance } from 'simple-peer';
 import io from "socket.io-client";
 import { WebRTCUser } from '../Types/WebRTCUser'
 import './VideoCallPage.css'
 
-const LOCAL_SERVER = 'http://localhost:3002/';
-const DEV_SERVER = 'https://helperduck-dev.herokuapp.com/';
+// const LOCAL_SERVER = 'http://localhost:3002/';
+// const DEV_SERVER = 'https://helperduck-dev.herokuapp.com/';
 const PROD_SERVER = 'https://helperduck.herokuapp.com/';
 const SOCKET_SERVER_URL = PROD_SERVER;
 
@@ -24,7 +24,7 @@ const Video = (props: VideoProps) => {
     props.peer.on('stream', (stream) => {
       if(ref.current) ref.current.srcObject = stream;
     });
-  }, []);
+  }, []); //eslint-disable-line
 
   return (
     <>
@@ -47,7 +47,7 @@ type Props = {
 export const VideoCallPage = (props: Props)  =>{
     //HOOKS for classroom state management
     const [peers, setPeers] = useState<WebRTCUser[]>([]); //this will track the peers for rendering purposes
-    const [stream, setStream] = useState<MediaStream>();
+    const [stream, setStream] = useState<MediaStream>(); //eslint-disable-line
     const [screenSharingId, setScreenSharingId] = useState<string>('');
     const socketRef = useRef<any>(); //will handle the sockets communications for signaling //TODO: check type works 
     const userVideo = useRef<HTMLVideoElement | any>(); //TODO: may need to remove the null value
@@ -172,7 +172,7 @@ export const VideoCallPage = (props: Props)  =>{
             console.log('Error at useEffect: ', err);
         })
       
-    },[]);
+    },[]); //eslint-disable-line
     
     const generateNewPeer = (userToSignal: string, callerId: string, stream: MediaStream) => {
       const peer = new Peer({
