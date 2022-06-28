@@ -1,6 +1,9 @@
+import { Instance } from "simple-peer";
+
 export type WebRTCUser = {
   id?: string;
   stream?: MediaStream; 
-  peer?: any;
-  peerId?: any;
+  peer: Instance;
+  peerId?: string;
+  className?: string;
 }

@@ -5,18 +5,19 @@ import io from "socket.io-client";
 import { WebRTCUser } from '../Types/WebRTCUser'
 import './VideoCallPage.css'
 
-// const LOCAL_SERVER = 'http://localhost:3002/';
+const LOCAL_SERVER = 'http://localhost:3002/';
 // const DEV_SERVER = 'https://helperduck-dev.herokuapp.com/';
-const PROD_SERVER = 'https://helperduck.herokuapp.com/';
-const SOCKET_SERVER_URL = PROD_SERVER;
+// const PROD_SERVER = 'https://helperduck.herokuapp.com/';
+const SOCKET_SERVER_URL = LOCAL_SERVER;
 
-type VideoProps = {
-  stream?: MediaStream
-  peer: Instance ; 
-  className?: string;
-}
+//TODO: Mark to Delete
+// type VideoProps = {
+//   stream?: MediaStream
+//   peer: Instance ; 
+//   className?: string;
+// }
 
-const Video = (props: VideoProps) => {
+const Video = (props: WebRTCUser) => {
   const ref = useRef<HTMLVideoElement | any>();
 
   useEffect(() => {
@@ -50,7 +51,7 @@ export const VideoCallPage = (props: Props)  =>{
     const [stream, setStream] = useState<MediaStream>(); //eslint-disable-line
     const [screenSharingId, setScreenSharingId] = useState<string>('');
     const socketRef = useRef<any>(); //will handle the sockets communications for signaling //TODO: check type works 
-    const userVideo = useRef<HTMLVideoElement | any>(); //TODO: may need to remove the null value
+    const userVideo = useRef<HTMLVideoElement | any>(null); //TODO: may need to remove the null value
     const peersRef = useRef<any[]>([]); //this will be used to track and handle the RTC Connections //TODO: check type works
     const userStream = useRef<MediaStream>();
     
@@ -62,8 +63,8 @@ export const VideoCallPage = (props: Props)  =>{
     const videoConstraints = {
       video: {
         cursor: 'always',
-        width: {min: 640, ideal: 1920, max: 1920},
-        height: {min: 480, ideal: 1080, max: 1080},
+        width: {ideal: 1920, max: 1920},
+        height: {ideal: 1080, max: 1080},
       },
       audio: {
         echoCancellation: true,
@@ -71,25 +72,32 @@ export const VideoCallPage = (props: Props)  =>{
         sampleRate: 44100
       },
     };
-     
+  
     useEffect(() => {
       //@ts-ignore
-      // const testSocket = socketIOClient.connect(SOCKET_SERVER_URL);
-      const socket = io(SOCKET_SERVER_URL);
-      console.log(socket, 'success on client side')
+      socketRef.current = io.connect(SOCKET_SERVER_URL);
+      console.log(socketRef, 'success on client side')
       
       navigator.mediaDevices
         .getUserMedia(videoConstraints)
         .then((stream) => {
-          if (userVideo.current) userVideo.current.srcObject = stream;
+          userVideo.current.srcObject = stream;
           userStream.current = stream;
           
-          if (socketRef.current) socketRef.current.emit('joiningRoom', roomId);
+          if (socketRef) 
+            socketRef.current.emit('joiningRoom', roomId);
+          
+          if (socketRef.current) socketRef.current.on('me', ((socket: any) => {
+            console.log(socket.id, 'socket on MEEEEEE');
+            }
+          ))
+          
           //TODO: attention to the next line --> the if statement is being suggested by TypeScript. Consider ignoring it if needed.
-          if (socketRef.current)
+          if (socketRef)
           socketRef.current.on(
             'allParticipants',
             (participantsInRoom: string[]) => {
+              console.log('FOOOOOOOOOOOOOOOOOOOOOOOOOOO')
               console.log(participantsInRoom, 'participantsInRoom');
               const peersArr: any[] = []; //array for rendering
   
