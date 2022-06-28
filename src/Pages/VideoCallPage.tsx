@@ -47,9 +47,9 @@ type Props = {
 export const VideoCallPage = (props: Props)  =>{
     //HOOKS for classroom state management
     const [peers, setPeers] = useState<WebRTCUser[]>([]); //this will track the peers for rendering purposes
-    const socketRef = useRef<Socket>(); //will handle the sockets communications for signaling //TODO: check type works 
+    const socketRef = useRef<any>(); //will handle the sockets communications for signaling //TODO: check type works 
     const userVideo = useRef<HTMLVideoElement>(null); //TODO: may need to remove the null value
-    const peersRef = useRef< Socket[]>([]); //this will be used to track and handle the RTC Connections //TODO: check type works
+    const peersRef = useRef<any[]>([]); //this will be used to track and handle the RTC Connections //TODO: check type works
     const userStream = useRef<MediaStream>();
     
     const currentPath = useLocation();
@@ -63,7 +63,6 @@ export const VideoCallPage = (props: Props)  =>{
       },
       audio: true,
     };
-  
     
     useEffect(() => {
       //@ts-ignore
@@ -78,13 +77,65 @@ export const VideoCallPage = (props: Props)  =>{
           userStream.current = stream;
           
           if (socketRef.current) socketRef.current.emit('joiningRoom', roomId);
+          //TODO: attention to the next line --> the if statement is being suggested by TypeScript. Consider ignoring it if needed.
+          if (socketRef.current)
+          socketRef.current.on(
+            'allParticipants',
+            (participantsInRoom: string[]) => {
+              console.log(participantsInRoom, 'participantsInRoom');
+              const peersArr: any[] = []; //array for rendering
+  
+              participantsInRoom.forEach((participantId: string) => {
+                const peer = generateNewPeer(
+                  participantId,
+                  //@ts-ignore
+                  socketRef.current.id,
+                  stream
+                );
+  
+                peersRef.current.push({
+                  peerId: participantId,
+                  peer,
+                });
+  
+                //the peer itself plus the peerId will be used when rendering
+                peersArr.push({
+                  peerId: participantId,
+                  peer,
+                });
+              });
+              console.log('peersArr before setting setPeers - used for rendering: ', peersArr);
+              setPeers(peersArr);
+            }
+          );
+          
         })
       
     },[]);
     
+    const generateNewPeer = (userToSignal: string, callerId: string, stream: MediaStream) => {
+      const peer = new Peer({
+        initiator: true, //to inform the others participants that "I" joined
+        trickle: false,
+        stream,
+      });
+  
+      peer.on('signal', (signal) => {
+        if (socketRef.current)
+        
+        //TODO: handle this emit event in the back end;
+        socketRef.current.emit('sendingSignalToServer', {
+          userToSignal,
+          callerId,
+          signal,
+        });
+      });
+  
+      return peer;
+    };
 
   
-  //TODO: line 69 will most likely be changed, but it compiles for now
+  //TODO: line 141 will most likely be changed, but it compiles for now
   return (
     
     <div>
