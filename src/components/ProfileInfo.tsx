@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Icon } from "@iconify/react";
 import "../Pages/ProfilePage.css";
 import { ProfilePerformanceInfo } from "../components/ProfilePerformanceInfo";
