@@ -109,6 +109,29 @@ export const VideoCallPage = (props: Props)  =>{
             }
           );
           
+          //TODO: this if statement is preventing unresolved promises -> get back to it if needed
+          if (socketRef.current)
+          socketRef.current.on('userHasJoined',  (data: { signal: any; callerId: string; }) => {
+          try {
+              const peer = addNewPeer(data.signal, data.callerId, stream);
+    
+              peersRef.current.push({
+                peerId: data.callerId,
+                peer,
+              });
+    
+              //this object will contain the peer plus the callerId
+              const peerObj = {
+                peer,
+                peerId: data.callerId,
+              };
+    
+              setPeers((participants) => [...participants, peerObj]);
+              
+            } catch (err) {
+                console.log('Error handling userHasJoined Socket Event: ', err);
+            }
+          });
         })
       
     },[]);
@@ -122,8 +145,6 @@ export const VideoCallPage = (props: Props)  =>{
   
       peer.on('signal', (signal) => {
         if (socketRef.current)
-        
-        //TODO: handle this emit event in the back end;
         socketRef.current.emit('sendingSignalToServer', {
           userToSignal,
           callerId,
@@ -134,8 +155,28 @@ export const VideoCallPage = (props: Props)  =>{
       return peer;
     };
 
+    const addNewPeer = (newSignalIncoming: string | Peer.SignalData, callerId: string, stream: MediaStream) => {
+      const peer = new Peer({
+        initiator: false,
+        trickle: false,
+        stream,
+      });
   
-  //TODO: line 141 will most likely be changed, but it compiles for now
+      /*we signal upon the newly incoming signal
+      whenever an offer is received, we send our signal back to the callerID*/
+      peer.on('signal', (signal) => {
+        socketRef.current.emit('returningSignalToServer', {
+          signal,
+          callerId,
+        });
+      });
+  
+      //we are accepting the signal and triggering the 'signal' socket event above
+      peer.signal(newSignalIncoming);
+      return peer;
+    };
+  
+  //TODO: line for Video will most likely be changed, but it compiles for now
   return (
     
     <div>
