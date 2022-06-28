@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import "../Pages/ProfilePage.css";
+import { ProfilePerformanceInfo } from "../components/ProfilePerformanceInfo";
 
 //TODO: check the correct type
 //TODO: check how to update the profile pic
@@ -123,6 +124,7 @@ export const ProfileInfo = ({ userInfo }: Props) => {
             </div>
           </div>
         </div>
+        <ProfilePerformanceInfo></ProfilePerformanceInfo>
       </div>
     </div>
   );

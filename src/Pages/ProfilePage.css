@@ -14,7 +14,7 @@
 
 .profile-expertise {
   display: flex;
-  flex-direction: column;
+
   position: relative;
 }
 
@@ -31,6 +31,7 @@
   padding-left: 5%;
   padding-top: 1%;
   padding-bottom: 1%;
+  font-size: 25px;
 }
 
 #aboutme {
@@ -44,6 +45,7 @@
 .label-profileForm {
   font-family: "Baloo Bhai 2", cursive;
   font-weight: 800;
+  font-size: 15px;
 }
 
 .profile-boxes-wrapper {

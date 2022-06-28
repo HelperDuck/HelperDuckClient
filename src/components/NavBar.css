@@ -5,6 +5,7 @@
   width: 8vw;
   height: 90vh;
   border-radius: 20px;
+  box-shadow: 5px -3px 10px rgb(75, 75, 75);
 }
 
 /* .navBar-icons {
