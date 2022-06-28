@@ -6,6 +6,7 @@ import io from "socket.io-client";
 import socketIOClient from 'socket.io-client';
 import { WebRTCUser } from '../Types/WebRTCUser'
 import { SocketType } from 'dgram';
+import './VideoCallPage.css'
 // console.log(socketIO);
 
 
@@ -59,8 +60,8 @@ export const VideoCallPage = (props: Props)  =>{
     
     const videoConstraints = {
       video: {
-        width: { ideal: 1920, max: 7680 },
-        height: { ideal: 1080, max: 4320 },
+        width: window.innerWidth/2,
+        height: window.innerHeight/2,
       },
       audio: true,
     };
@@ -244,38 +245,39 @@ export const VideoCallPage = (props: Props)  =>{
     
     
   
-  //TODO: line for Video will most likely be changed, but it compiles for now
   return (
-    
-    <>
-        <video
-                playsInline
-                muted
-                ref={userVideo}
-                autoPlay
-                className="video-container"
-              />
-    <>
-      <div className="video-controls">
-        <button className="cam-input-btn" onClick={toggleCam}>
-          📸
-        </button>
-        <button className="mic-input-btn" onClick={toggleMic}>
-          🎙️
-        </button>
-        <button className="phone-input-btn">
-          ☎️
-        </button>
+    <div className="videos-wrapper">
+      <div className="my-video-wrapper">
+          <video
+                  playsInline
+                  muted
+                  ref={userVideo}
+                  autoPlay
+                  className="video-container"
+                />
+      
+        <div className="video-controls">
+          <button className="cam-btn" onClick={toggleCam}>
+            📸
+          </button>
+          <button className="mic-btn" onClick={toggleMic}>
+            🎙️
+          </button>
+          <button className="phone-btn">
+            ☎️
+          </button>
+        </div>
       </div>
-    </>
-    <div>
-        "Peers videos will be displayed below"
-        {peers.map((peer) => {
-          return (
-            <Video key={peer.peerId} peer={peer.peer} className="video-container" />
-          );
-        })}
-      </div></>
+      
+      <div className="peers-video">
+          "Peers videos will be displayed below"
+          {peers.map((peer) => {
+            return (
+              <Video key={peer.peerId} peer={peer.peer} className="video-container" />
+            );
+          })}
+        </div>
+    </div>
   );
 }
 

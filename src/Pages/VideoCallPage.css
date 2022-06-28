@@ -1,10 +1,52 @@
+/*wraps all the video containers*/
+.videos-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/*wraps my video-container and video-controls*/
+.my-video-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+/*generic container for MyVideo and PeersVideo*/
 .video-container {
   background-color: black;
   width: 720px;
   height: 480px;
   display: flex;
   margin-left: 0em;
-  justify-content: flex;
-  align-items: justify;
-  z-index: 999;
+  z-index: 1;
+  display: block;
+  border-radius: 1%;
+}
+
+/*wraps buttons*/
+.video-controls {
+  position: relative;
+  bottom: 2.5em;
+  z-index: 2;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.cam-btn {
+border-radius: 20%;
+margin: 0.5em;
+}
+
+.mic-btn {
+  border-radius: 20%;
+  margin: 0.5em;
+}
+
+.phone-btn {
+  border-radius: 20%;
+  margin: 0.5em;
 }
