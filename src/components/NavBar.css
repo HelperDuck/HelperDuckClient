@@ -1,0 +1,31 @@
+.navBar {
+  background-color: black;
+  display: flex;
+  position: fixed;
+  width: 8vw;
+  height: 90vh;
+  border-radius: 20px;
+  box-shadow: 5px -3px 10px rgb(75, 75, 75);
+}
+
+.navBar-icons {
+  position: relative;
+  height: 95%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5%;
+}
+
+/* li {
+  padding-left: 2.5vw;
+  padding-top: 4vh;
+  padding-bottom: 6vh;
+} */
+
+.icons {
+  position: relative;
+  width: 100%;
+}
