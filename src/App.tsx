@@ -6,10 +6,52 @@ import Reset from "./views/userLogIn/Reset";
 import Dashboard from "./views/Dashboard";
 import { ProfilePage } from "./Pages/ProfilePage";
 import { DashboardPage } from "./Pages/DashboardPage";
+import { useDispatch } from "react-redux";
+import { getUserProfile } from "./services/profile";
+import {loginProfile} from "./Redux/reducers/user"
+import { useEffect } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "./services/authentication";
+import { UserType } from "./Types/UserType";
+
+
 
 function App() {
+
+const [isAuthUser, loading] = useAuthState(auth);
+  // const navigate = useNavigate();
+const dispatch = useDispatch();
+  
+  console.log("isAuthUser inside app", isAuthUser);
+  
+  useEffect(() => {
+    if (loading) return;
+    if(isAuthUser){ fetchProfile()}
+  }, [isAuthUser]); //eslint-disable-line
+  
+  const fetchProfile = async () => {
+    try {
+      console.log('aquiii')
+      const profileFound =  await getUserProfile(isAuthUser as unknown as UserType);
+      console.log(profileFound, 'profileFOund')
+      dispatch(loginProfile(profileFound));
+    
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  
+
+
+
+
+
+
+
+
   return (
     <div className="app">
+        
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -21,6 +63,7 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </Router>
+  
     </div>
   );
 }
