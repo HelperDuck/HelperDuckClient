@@ -1,14 +1,24 @@
 .register {
-  background-image: url("/Users/fernandarodrigues/Codeworks/HelperDuckClient/src/mocks/pexels-andre-moura-2764989.jpg");
+  /* background-image: url("/Users/fernandarodrigues/Codeworks/HelperDuckClient/src/mocks/pexels-armando-are-3759364.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: right 35% bottom 45%;
-  height: 100vh;
-  width: 100vw;
+  background-size: 80%;
+  background-position: 100%; */
+  /* height: 100vh;
+  width: 100%; */
   display: flex;
   align-items: center;
   justify-content: center;
-  border: red solid;
+  position: absolute;
+  width: 2887px;
+  height: 3850px;
+  left: -574px;
+  top: -1475px;
+  background: url("/Users/fernandarodrigues/Codeworks/HelperDuckClient/src/mocks/pexels-andre-moura-2764989.jpg");
+  opacity: 0.75;
+  /* border: red solid;
+  background-color: #161620;
+  opacity: 85%; */
 }
 
 .register__container {
