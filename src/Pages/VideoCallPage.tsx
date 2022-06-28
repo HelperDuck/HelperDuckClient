@@ -283,14 +283,15 @@ export const VideoCallPage = (props: Props)  =>{
           .getUserMedia(videoConstraints)
           .then(switchStream);
       } else {
-        const screenTrack = await navigator.mediaDevices.getDisplayMedia({});
-        const experienceTrack = screenTrack.getTracks()[0]; //GET SCREEN TRACK
-        console.log(screenTrack, 'screeentrack 287')
-        console.log(experienceTrack, 'experience gettracks 289')
+        const mediaTracks = await navigator.mediaDevices.getDisplayMedia({});
+        const screenSharingTrack = mediaTracks.getTracks()[0]; //GET SCREEN TRACK
+        console.log(mediaTracks, 'screeentrack 287')
+        console.log(screenSharingTrack, 'experience gettracks 289')
         
         if (userStream.current) {
         let videoTrack = userStream.current
-          .getTracks()[1]; //GET SCREEN TRACK
+          .getTracks()[1]; //GET VIDEO TRACK
+          
         console.log(videoTrack, 'videoTrack at 293')
         
         userStream.current.removeTrack(videoTrack);
@@ -299,7 +300,14 @@ export const VideoCallPage = (props: Props)  =>{
         // userStream.current.onremovetrack = (e) => {
         //   console.log('onremovetrack');
         // }
-        userStream.current.addTrack(experienceTrack);
+        userStream.current.addTrack(screenSharingTrack);
+        
+        screenSharingTrack.onended = () => {
+                if (userStream.current)
+                userStream.current.removeTrack(screenSharingTrack);
+                if (userStream.current)
+                userStream.current.addTrack(videoTrack);
+          }
         
         }
       
