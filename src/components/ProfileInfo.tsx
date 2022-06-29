@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import "../Pages/ProfilePage.css";
 import { ProfilePerformanceInfo } from "../components/ProfilePerformanceInfo";
@@ -14,13 +14,13 @@ type Props = {
 export const ProfileInfo = ({ userInfo }: Props) => {
   const user = useSelector((state: any) => state.user.value);
   console.log(user);
-  //const [fileInput, setFileInput] = useState("");
+  const [fileInput, setFileInput] = useState("");
 
   //TODO: use this once redux-toolkit is set up
   //const dispatch = useDispatch();
 
   const handleFileInputChange = (e: any) => {
-    //setFileInput(URL.createObjectURL(e.target.files[0]));
+    setFileInput(URL.createObjectURL(e.target.files[0]));
   };
 
   return (
@@ -78,13 +78,9 @@ export const ProfileInfo = ({ userInfo }: Props) => {
                   Programming languages
                 </label>
                 <div id="programminglanguage">
-                  {/* {user.technologies.length &&
-                    user.technologies.map((item: any) => {
-                      return item.technology.name;
-                    })} */}
-                  {/* {user.technologies.map((item: any) => {
+                  {user.technologies.map((item: any) => {
                     return item.technology.name;
-                  })} */}
+                  })}
                 </div>
               </div>
             </div>

@@ -1,35 +1,33 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { UserType } from '../../Types/UserType';
-
+import { createSlice } from "@reduxjs/toolkit";
+import { UserType } from "../../Types/UserType";
 
 const initialState: UserType = {
-  uid:'',
-  firstName: '',
-  lastName: '',
-  userName: '',
-  email:'',
-  userBio:'',
-  profilePic:'',
+  uid: "",
+  firstName: "",
+  lastName: "",
+  userName: "",
+  email: "",
+  userBio: "",
+  profilePic: "",
   technologies: [],
   languages: [],
-  gitHubProfile:'',
+  gitHubProfile: "",
   openedRequests: 0,
   acceptedRequests: 0,
   avgTip: 0,
-  rating: 0
-}
-
-
-
+  rating: 0,
+};
 
 export const userSlice = createSlice({
   name: "user",
   initialState: { value: initialState },
   reducers: {
-       loginProfile: (state: { value: UserType }, action: { payload: UserType }) => {
+    loginProfile: (
+      state: { value: UserType },
+      action: { payload: UserType }
+    ) => {
       state.value = { ...state.value, ...action.payload };
     },
-      
   },
 });
 

@@ -6,7 +6,7 @@
   background-repeat: no-repeat;
   height: 100vh;
   width: 100vw;
-  /* background-image: url("/Users/fernandarodrigues/Codeworks/HelperDuckClient/src/mocks/ducky.png"); */
+  background-image: url("/Users/fernandarodrigues/Codeworks/HelperDuckClient/src/media/ducky.png");
 }
 .register::before {
   content: "";
