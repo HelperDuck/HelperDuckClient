@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
   auth,
   logInWithEmailAndPassword,
   signInWithGoogle,
-} from '../../services/authentication';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import './Login.css';
+} from "../../services/authentication";
+import { useAuthState } from "react-firebase-hooks/auth";
+import "./Login.css";
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (loading) {
-      // maybe trigger a loading screen
+      // maybe trigger a loading screen/
       return;
     }
-    if (user) navigate('/dashboard');
+    if (user) navigate("/dashboard");
   }, [user, loading]); //eslint-disable-line
 
   return (
     <div className="login">
-      <div>{error ? error.message : ''}</div>
+      <div>{error ? error.message : ""}</div>
       <div className="login__container">
         <input
           type="text"
