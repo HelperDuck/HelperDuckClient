@@ -6,8 +6,92 @@ import Reset from "./views/userLogIn/Reset";
 import Dashboard from "./views/Dashboard";
 import { ProfilePage } from "./Pages/ProfilePage";
 import { DashboardPage } from "./Pages/DashboardPage";
+import { useDispatch } from "react-redux";
+import { VideoCallPage } from "./Pages/VideoCallPage";
+import { useEffect } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { allUsers } from "./Redux/reducers/AllUsers";
+import { helpRequests } from "./Redux/reducers/helpRequest";
+import { allLanguages } from "./Redux/reducers/languages";
+import { Technologies } from "./Redux/reducers/technologies";
+import { loginProfile } from "./Redux/reducers/user";
+import { auth } from "./services/authentication";
+import { getAllLanguages, getAllTechnologies } from "./services/languages";
+import { getUserProfile, getAllUsers } from "./services/profile";
+import { getAllHelpRequests } from "./services/request";
+import { UserType } from "./Types/UserType";
+import { CreateRequestPage } from "./Pages/CreateRequestPage";
 
 function App() {
+  const [isAuthUser, loading] = useAuthState(auth);
+  // const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  console.log("isAuthUser inside app", isAuthUser);
+
+  useEffect(() => {
+    if (loading) return;
+    if (isAuthUser) {
+      fetchProfile();
+    }
+  }, [isAuthUser]); //eslint-disable-line
+
+  useEffect(() => {
+    fetchLanguages();
+    fetchTechnologies();
+    fetchAllHelpRequests();
+    fetchAllUsers();
+  }, []); //eslint-disable-line
+
+  const fetchProfile = async () => {
+    try {
+      const profileFound = await getUserProfile(
+        isAuthUser as unknown as UserType
+      );
+      dispatch(loginProfile(profileFound));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const fetchLanguages = async () => {
+    try {
+      const AllLanguages = await getAllLanguages();
+      dispatch(allLanguages(AllLanguages));
+    } catch (err) {
+      console.error(err, "Error in All Languages Fetch reducer");
+    }
+  };
+
+  const fetchTechnologies = async () => {
+    try {
+      const allTechnologies = await getAllTechnologies();
+      dispatch(Technologies(allTechnologies));
+    } catch (err) {
+      console.error(err, "Error in All Languages Fetch reducer");
+    }
+  };
+
+  const fetchAllHelpRequests = async () => {
+    try {
+      const allHelpRequests = await getAllHelpRequests();
+      console.log(allHelpRequests, "allHelpRequests");
+      dispatch(helpRequests(allHelpRequests));
+    } catch (err) {
+      console.error(err, "Error in All Languages Fetch reducer");
+    }
+  };
+
+  const fetchAllUsers = async () => {
+    try {
+      const allUser = await getAllUsers();
+      console.log(allUser, "allUser");
+      dispatch(allUsers(allUser));
+    } catch (err) {
+      console.error(err, "Error in All Languages Fetch reducer");
+    }
+  };
+
   return (
     <div className="app">
       <Router>
@@ -19,6 +103,8 @@ function App() {
           {/* the dashboard above should be another name */}
           <Route path="/dashboard2" element={<DashboardPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/call/:roomId" element={<VideoCallPage />} />
+          <Route path="/newrequest" element={<CreateRequestPage />} />
         </Routes>
       </Router>
     </div>

@@ -1,0 +1,118 @@
+/* HAVE TO MAKE IT RESPONSIVE WITH MEDIA QUERY */
+
+
+
+.RequestHistory-wrapper{
+  display: flex;
+  justify-content: space-between;
+  /* width and margin should be changed after all components are done */
+}
+
+.past-request-carrousel{
+  max-height: 23vh;
+  overflow-y: scroll;
+}
+
+.subject-user-container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+}
+
+.outer-container{
+  width: 47.5%;
+}
+
+.title{
+  font-size: 24px;
+  font-family: 'Baloo Bhai 2', cursive;
+  font-weight: 800;
+  margin-bottom: 10px;
+
+}
+
+.past-request{
+  background: #F5F5F7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  min-height: 105px;
+  padding: 5px 10px;
+  flex-wrap: wrap;
+  margin: 5px;
+}
+
+.past-request div{
+ margin-right: 15px;
+
+}
+
+.profile-pic-past-request{
+  width: 50px;
+  border-radius: 12px;
+}
+
+
+
+.subject{
+  word-wrap: break-word;
+}
+.tip{
+  display: flex;
+  align-content: flex-start;
+
+}
+
+.score{
+  display: flex;
+  align-content: flex-start;
+
+}
+
+
+.detail-button-container{
+  display: flex;
+  align-items: center;
+  margin: 0!important;
+ 
+  
+}
+
+.detail-btn {
+  font-size:13px;
+  font-family:Verdana;
+  width: 100px;
+  height:30px;
+  color:#fff;
+  font-weight:bold;
+  border-radius: 8px;
+  background:rgba(0, 0, 0, 1);
+  cursor: pointer;
+  border: none;
+}
+
+.detail-btn:hover {
+  background: rgba(0, 0, 0, 0.7)
+}
+
+
+@media only screen and (max-width: 960px) {
+
+}
+
+
+.past-request-carrousel::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+.past-request-carrousel::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.past-request-carrousel::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}

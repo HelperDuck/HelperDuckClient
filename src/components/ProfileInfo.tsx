@@ -1,25 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { Icon } from "@iconify/react";
 import "../Pages/ProfilePage.css";
+import { ProfilePerformanceInfo } from "../components/ProfilePerformanceInfo";
+import { useSelector } from "react-redux";
 
 //TODO: check the correct type
 //TODO: check how to update the profile pic
 
-type Props = {
-  userInfo: any;
-};
-
-export const ProfileInfo = ({ userInfo }: Props) => {
-  const [fileInput, setFileInput] = useState("");
+export const ProfileInfo = () => {
+  const user = useSelector((state: any) => state.user.value);
+  console.log(user);
+  // const [fileInput, setFileInput] = useState("");
 
   //TODO: use this once redux-toolkit is set up
   //const dispatch = useDispatch();
-  //const user = userSelector((state) => state.users.value)
-  //state.users.value (users is the name given in reducers, value is the key given in the initial state in reducers )
 
-  const handleFileInputChange = (e: any) => {
-    setFileInput(URL.createObjectURL(e.target.files[0]));
-  };
+  // const handleFileInputChange = (e: any) => {
+  //   setFileInput(URL.createObjectURL(e.target.files[0]));
+  // };
 
   return (
     <div className="profile-display">
@@ -32,14 +30,14 @@ export const ProfileInfo = ({ userInfo }: Props) => {
                 id="img-input"
                 type="file"
                 accept="image/*"
-                onChange={handleFileInputChange}
+                // onChange={handleFileInputChange}
               ></input>
             )}
           >
-            {fileInput ? (
+            {user.profilePic ? (
               <img
                 className="img-input"
-                src={fileInput}
+                src={user.profilePic}
                 alt="profilePic"
                 style={{ maxHeight: "188px", maxWidth: "171px" }}
               />
@@ -53,71 +51,79 @@ export const ProfileInfo = ({ userInfo }: Props) => {
             )}
           </button>
         </div>
-        {/* //TODO: set up this function once redux is ready */}
-        {/* {user.map((data) => { return (//everything below)} )} */}
-        <div id="full-name">{`${userInfo[0].firstName} ${userInfo[0].lastName}`}</div>
+        <div id="full-name">{`${user.firstName} ${user.lastName}`}</div>
       </div>
-      <div id="aboutme">{userInfo[0].description}</div>
+      <div id="aboutme">{user.userBio}</div>
       <div className="profile-expertise">
-        <div className="profile-boxes" id="programming-box">
-          <div className="wrapper-box">
-            <div className="icons-box-profile-page">
-              <Icon
-                icon="healthicons:eyeglasses-outline"
-                id="icon-profileStack"
-                height={50}
-                width={50}
-              />
+        <div className="profile-boxes-wrapper">
+          <div className="profile-boxes" id="programming-box">
+            <div className="wrapper-box">
+              <div className="icons-box-profile-page">
+                <Icon
+                  icon="healthicons:eyeglasses-outline"
+                  id="icon-profileStack"
+                  height={50}
+                  width={50}
+                />
+              </div>
+              <div className="box-info">
+                <label
+                  className="label-profileForm"
+                  htmlFor="programminglanguages"
+                >
+                  Programming languages
+                </label>
+                {user.technologies.map((item: any) => {
+                  return (
+                    <div id="programminglanguage">{item.technology.name}</div>
+                  );
+                })}
+              </div>
             </div>
-            <div className="box-info">
-              <label
-                className="label-profileForm"
-                htmlFor="programminglanguages"
-              >
-                Programming languages
-              </label>
-              <div id="programminglanguage">
-                {userInfo[0].programmingLanguage}
+          </div>
+          <div className="profile-boxes" id="language-box">
+            <div className="wrapper-box">
+              <div className="icons-box-profile-page">
+                <Icon
+                  icon="clarity:language-line"
+                  id="icon-profileLanguage"
+                  height={50}
+                  width={50}
+                />
+              </div>
+              <div className="box-info">
+                <label
+                  className="label-profileForm"
+                  htmlFor="speakinglanguages"
+                >
+                  Speaking languages
+                </label>
+                {user.languages.map((item: any) => {
+                  return <div id="speakinglanguage">{item.language.name}</div>;
+                })}
+              </div>
+            </div>
+          </div>
+          <div className="profile-boxes" id="socialmedia-box">
+            <div className="wrapper-box">
+              <div className="icons-box-profile-page">
+                <Icon
+                  icon="ic:baseline-connect-without-contact"
+                  id="icon-profileSocialMedia"
+                  height={50}
+                  width={50}
+                />
+              </div>
+              <div className="box-info">
+                <label className="label-profileForm" htmlFor="socialmedia">
+                  Social media
+                </label>
+                <div id="socialmedia">{user.gitHubProfile}</div>
               </div>
             </div>
           </div>
         </div>
-        <div className="profile-boxes" id="language-box">
-          <div className="wrapper-box">
-            <div className="icons-box-profile-page">
-              <Icon
-                icon="clarity:language-line"
-                id="icon-profileLanguage"
-                height={50}
-                width={50}
-              />
-            </div>
-            <div className="box-info">
-              <label className="label-profileForm" htmlFor="speakinglanguages">
-                Speaking languages
-              </label>
-              <div id="speakinglanguage">{userInfo[0].speakingLanguage}</div>
-            </div>
-          </div>
-        </div>
-        <div className="profile-boxes" id="socialmedia-box">
-          <div className="wrapper-box">
-            <div className="icons-box-profile-page">
-              <Icon
-                icon="ic:baseline-connect-without-contact"
-                id="icon-profileSocialMedia"
-                height={50}
-                width={50}
-              />
-            </div>
-            <div className="box-info">
-              <label className="label-profileForm" htmlFor="socialmedia">
-                Social media
-              </label>
-              <div id="socialmedia">{userInfo[0].socialMedia}</div>
-            </div>
-          </div>
-        </div>
+        <ProfilePerformanceInfo></ProfilePerformanceInfo>
       </div>
     </div>
   );

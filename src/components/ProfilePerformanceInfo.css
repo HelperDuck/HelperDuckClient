@@ -1,47 +1,72 @@
-
-.profilePerformanceInfo-wrapper{
+.profilePerformanceInfo-wrapper {
   display: flex;
   flex-direction: column;
-  width: 400px;
-  margin: 50px;
-  font-family: "Baloo Bhai"
-  /* the margin and width above must be changed after all components are done */
+  margin-right: 1%;
+  margin-left: 10%;
+  font-family: "Baloo Bhai";
+  width: 80%;
 }
 
-.profile-requests-stats{
+.profile-requests-stats {
   display: flex;
   flex-direction: column;
 }
 
-.request-title{
- font-size: 24px;
- margin-bottom: 10px;
+.request-title {
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
-.stats-outer-container{
- display: flex;
+.stats-outer-container {
+  display: flex;
   justify-content: space-between;
 }
 
-
-.stats-inner-container{
-  background: #F5F5F7;
+.stats-inner-container {
+  background: #f5f5f7;
   border-radius: 14px;
   display: flex;
-  width: 40%;
+  width: 45%;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+  min-width: fit-content;
+  margin-right: 10px;
 }
 
-.number{
- font-size: 3rem;
- display: flex;
- align-items: center;
+.number {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
 }
 
-.word{
-font-size: 1.5rem;
-display: flex;
-align-items: center;
-font-family: 'Roboto', sans-serif!important;
+.word {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  font-family: "Roboto", sans-serif !important;
 }
 
+@media only screen and (max-width: 400px) {
+  .stats-outer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .stats-inner-container {
+    margin-bottom: 5px;
+    padding: 5px;
+  }
+
+  .stats-outer-container {
+    margin-bottom: 20px;
+  }
+
+  .number {
+    font-size: 1.7rem;
+  }
+
+  .word {
+    font-size: 1rem;
+  }
+}

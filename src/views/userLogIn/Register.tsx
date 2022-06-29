@@ -1,33 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link, useNavigate } from "react-router-dom";
 import {
   auth,
   registerWithEmailAndPassword,
   signInWithGoogle,
-} from '../../services/authentication';
-import './Register.css';
+} from "../../services/authentication";
+import "./Register.css";
+import { Icon } from "@iconify/react";
 
 function Register() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
 
   const register = () => {
-    if (!name) alert('Please enter name');
+    if (!name) alert("Please enter name");
     registerWithEmailAndPassword(name, email, password);
   };
 
   useEffect(() => {
     if (loading) return;
-    if (user) navigate('/dashboard');
+    if (user) navigate("/dashboard");
   }, [user, loading]); //eslint-disable-line
 
   return (
     <div className="register">
-      <div>{error ? error.message : ''}</div>
+      <div>{error ? error.message : ""}</div>
       <div className="register__container">
         <input
           type="text"
@@ -57,11 +58,21 @@ function Register() {
           className="register__btn register__google"
           onClick={signInWithGoogle}
         >
+          <Icon
+            id="google-icon"
+            icon="flat-color-icons:google"
+            color="white"
+            hFlip={true}
+          />
           Register with Google
         </button>
 
-        <div>
-          Already have an account? <Link to="/">Login</Link> now.
+        <div id="haveaccount">
+          Already have an account?{" "}
+          <Link id="linkToLogin" to="/">
+            Login
+          </Link>{" "}
+          now.
         </div>
       </div>
     </div>

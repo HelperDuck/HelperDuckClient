@@ -1,22 +1,10 @@
 import React, { useState } from "react";
+
 import { Icon } from "@iconify/react";
 import ProfileInfo from "../components/ProfileInfo";
 import ProfileForm from "../components/ProfileForm";
 import { NavBar } from "../components/NavBar";
 import "./ProfilePage.css";
-
-const user = [
-  {
-    firstName: "Fernanda",
-    lastName: "Ganança",
-    programmingLanguage: ["Redux", "React"],
-    speakingLanguage: ["Portuguese", "English", "Spanish"],
-    socialMedia: "https://github.com/fegananca",
-    image: "Users/fernandarodrigues/Desktop/Documentos/foto_linkedin1.JPG",
-    description:
-      "+10 years experience in blablabla+10 years experience in blablabla+10 years experience in blablabla +10 years experience in blablabla +10 years experience in blablabla +10 years experience in blablabla +10 years experience in blablabla +10 years experience in blablabla +10 years experience in blablabla +10 years experience in blablabla +10 years experience in blablabla +10 years experience in blablabla +10 years experience in blablabla +10 years experience in blablabla+10 years experience in blablabla +10 years experience in blablablaa",
-  },
-];
 
 //TODO: make update image profile work
 //TODO: check boolean type in attribute value
@@ -26,26 +14,16 @@ const user = [
 //TODO: change permission in button edit to only if is your profile
 //TODO: make button to change picture to work
 
-// type Props = {};
-
 export const ProfilePage = () => {
   const [isInEditMode, setIsInEditMode] = useState<any>(true);
-  const [userInfo, setUserInfo] = useState([user[0]]);
 
   const toggleEditMode = (e: any) => {
     e.preventDefault();
     setIsInEditMode(!isInEditMode);
   };
 
-  const updateInfo = (e: any) => {
-    e.preventDefault();
-    //TODO: Create function onEdit(userInfo)
-    console.log("hi");
-    setUserInfo([]);
-  };
-
   return (
-    <>
+    <div className="profile-wrapper">
       <NavBar></NavBar>
       <div className="profile-container">
         <div className="form-container">
@@ -54,20 +32,14 @@ export const ProfilePage = () => {
               Edit
               <Icon icon="ant-design:edit-filled" />
             </button>
-            <button onClick={updateInfo}>
-              <Icon icon="bi:check-lg" />
-            </button>
           </div>
           {isInEditMode ? (
-            <ProfileInfo userInfo={userInfo}></ProfileInfo>
+            <ProfileInfo></ProfileInfo>
           ) : (
-            <ProfileForm
-              userInfo={userInfo}
-              setUserInfo={setUserInfo}
-            ></ProfileForm>
+            <ProfileForm setIsInEditMode={setIsInEditMode}></ProfileForm>
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
