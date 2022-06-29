@@ -6,9 +6,9 @@ import { WebRTCUser } from "../Types/WebRTCUser";
 import "./VideoCallPage.css";
 
 // const LOCAL_SERVER = "http://localhost:3002/";
-const DEV_SERVER = 'https://helperduck-dev.herokuapp.com/';
-// const PROD_SERVER = 'https://helperduck.herokuapp.com/';
-const SOCKET_SERVER_URL = DEV_SERVER;
+// const DEV_SERVER = 'https://helperduck-dev.herokuapp.com/';
+const PROD_SERVER = 'https://helperduck.herokuapp.com/';
+const SOCKET_SERVER_URL = PROD_SERVER;
 
 //TODO: Mark to Delete
 // type VideoProps = {
@@ -56,8 +56,8 @@ export const VideoCallPage = (props: Props) => {
   const videoConstraints = {
     video: {
       cursor: "always",
-      width: { ideal: 1920, max: 1920 },
-      height: { ideal: 1080, max: 1080 },
+      width: { ideal: 1920, max: 7680 },
+      height: { ideal: 1080, max: 4320 },
     },
     audio: {
       echoCancellation: true,
@@ -66,7 +66,6 @@ export const VideoCallPage = (props: Props) => {
     },
   };
 
-  
   //TODO: new useEffect WIP
   // useEffect(() => {
   //   console.log(screening, "ling screening state");
