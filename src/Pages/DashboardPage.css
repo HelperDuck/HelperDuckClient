@@ -1,30 +1,35 @@
-.dashboard-wrapper{
-padding: 1%;
+.dashboard-wrapper {
+  padding: 1%;
 
 }
 
-.inner-wrapper{
+.inner-wrapper {
   display: flex;
 
 }
 
-.second-half-container, .first-half-container{
+.second-half-container {
   width: 50%;
   padding: 2%;
 }
 
-.bottom-container{
+.first-half-container {
+  width: 50%;
   padding: 2%;
 }
 
-.outer-wrapper{
+.bottom-container {
+  padding: 2%;
+}
+
+.outer-wrapper {
   margin-left: 8%;
   display: flex;
   flex-direction: column;
   padding: 0 1.5%;
 }
 
-.hello-container{
+.hello-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,7 +37,7 @@ padding: 1%;
   max-width: 50%;
 }
 
-.hello-wrapper{
+.hello-wrapper {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -41,10 +46,10 @@ padding: 1%;
   border-radius: 14px;
   min-height: 160px;
   flex-wrap: wrap;
- 
+
 }
 
-.hello{
+.hello {
   font-size: 36px;
   font-family: "Baloo Bhai";
   word-wrap: break-word;
@@ -52,20 +57,21 @@ padding: 1%;
 
 }
 
-.hello-msg{
+.hello-msg {
   font-size: 16px;
   font-family: "Roboto"
 }
 
-.img-boy{
+.img-boy {
 
   position: absolute;
-right:-50px;
-top:-100px;
-width: 160px;
+  right: -50px;
+  top: -100px;
+  width: 160px;
 
 }
-.about-me-icon{
- position: relative;
- 
+
+.about-me-icon {
+  position: relative;
+
 }
