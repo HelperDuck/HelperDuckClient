@@ -1,9 +1,9 @@
-import { useState } from "react";
+// import { useState } from "react";
 import "./CreateRequestPage.css";
 import Select from "react-select";
 import { v4 as uuid } from "uuid";
 import { useSelector } from "react-redux";
-import { requestAskedType } from "../Types/RequestAskedType";
+// import { requestAskedType } from "../Types/RequestAskedType";
 import { postRequest } from "../services/request";
 // import { TechnologiesSlice } from "../Redux/reducers/technologies";
 // import { createRequest } from "../Redux/reducers/helpRequest"
