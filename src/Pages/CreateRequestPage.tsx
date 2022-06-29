@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./CreateRequestPage.css";
 import Select from "react-select";
 import { v4 as uuid } from "uuid";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { requestAskedType } from "../Types/RequestAskedType";
 import { postRequest } from "../services/request";
-import { TechnologiesSlice } from "../Redux/reducers/technologies";
+// import { TechnologiesSlice } from "../Redux/reducers/technologies";
 // import { createRequest } from "../Redux/reducers/helpRequest"
 
 //Subject // Description // Code sandbox link // Tech stack
@@ -13,14 +13,14 @@ import { TechnologiesSlice } from "../Redux/reducers/technologies";
 type Props = {};
 
 //TODO: replace with real data
-const technologies = [
-  { value: "React", label: "React" },
-  { value: "Redux", label: "Redux" },
-  { value: "Angular", label: "Angular" },
-];
+// const technologies = [
+//   { value: "React", label: "React" },
+//   { value: "Redux", label: "Redux" },
+//   { value: "Angular", label: "Angular" },
+// ];
 
 export const CreateRequestPage = (props: Props) => {
-  const [newRequest, setNewRequest] = useState<requestAskedType>();
+  // const [newRequest, setNewRequest] = useState<requestAskedType>();
   // const [subject, setSubject] = useState<string>('');
   // const [description, setDescription] = useState<string>('');
   // const [linkToSandBox, setLinkToSandBox] = useState<string>('');
