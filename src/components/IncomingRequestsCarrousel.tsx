@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { requestAskedType } from "../Types/RequestAskedType";
 import { IncomingRequest } from "./IncomingRequest";
@@ -12,20 +11,14 @@ export const IncomingRequestsCarrousel = (props: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const userTechs = user.technologies.map((item: any) => item.technologyId);
 
-  const [filteredHRs, setFilteredHRs] = useState([]);
-
-  useEffect(() => {
-    const filteredHR = allHelpRequests.filter((helpRequest: any) => {
-      for (let i = 0; i < helpRequest.technologies.length; i++) {
-        if (userTechs.includes(helpRequest.technologies[i].technologyId)) {
-          return true;
-        }
+  const filteredHR = allHelpRequests.filter((helpRequest: any) => {
+    for (let i = 0; i < helpRequest.technologies.length; i++) {
+      if (userTechs.includes(helpRequest.technologies[i].technologyId)) {
+        return true;
       }
-      return false;
-    });
-
-    setFilteredHRs(filteredHR);
-  }, []); //eslint-disable-line
+    }
+    return false;
+  });
 
   return (
     <div className="carrousel-outer-container">
@@ -33,7 +26,7 @@ export const IncomingRequestsCarrousel = (props: Props) => {
         <span>Incomming Requests</span>
       </div>
       <div className="request-carrousel">
-        {filteredHRs.map((help: requestAskedType) => {
+        {filteredHR.map((help: requestAskedType) => {
           return (
             <IncomingRequest
               help={help}
