@@ -22,8 +22,8 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
       firstName: data.target.firstName.value,
       lastName: data.target.lastName.value,
       userBio: data.target.aboutme.value,
-      // technologies: data.target.programmingLanguage.value,
-      // languages: data.target.speakingLanguage.value,
+      technologies: data.target.programmingLanguage.value,
+      languages: data.target.speakingLanguage.value,
       gitHubProfile: data.target.socialMedia.value,
     };
 
