@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Icon } from "@iconify/react";
 import "../Pages/ProfilePage.css";
 import { ProfilePerformanceInfo } from "../components/ProfilePerformanceInfo";
@@ -10,14 +10,14 @@ import { useSelector } from "react-redux";
 export const ProfileInfo = () => {
   const user = useSelector((state: any) => state.user.value);
   console.log(user);
-  const [fileInput, setFileInput] = useState("");
+  // const [fileInput, setFileInput] = useState("");
 
   //TODO: use this once redux-toolkit is set up
   //const dispatch = useDispatch();
 
-  const handleFileInputChange = (e: any) => {
-    setFileInput(URL.createObjectURL(e.target.files[0]));
-  };
+  // const handleFileInputChange = (e: any) => {
+  //   setFileInput(URL.createObjectURL(e.target.files[0]));
+  // };
 
   return (
     <div className="profile-display">
@@ -30,7 +30,7 @@ export const ProfileInfo = () => {
                 id="img-input"
                 type="file"
                 accept="image/*"
-                onChange={handleFileInputChange}
+                // onChange={handleFileInputChange}
               ></input>
             )}
           >

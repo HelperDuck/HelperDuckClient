@@ -5,8 +5,6 @@ import ProfileInfo from "../components/ProfileInfo";
 import ProfileForm from "../components/ProfileForm";
 import { NavBar } from "../components/NavBar";
 import "./ProfilePage.css";
-import { useSelector, useDispatch } from "react-redux";
-import { updateUserInfo } from "../Redux/reducers/user";
 
 //TODO: make update image profile work
 //TODO: check boolean type in attribute value
