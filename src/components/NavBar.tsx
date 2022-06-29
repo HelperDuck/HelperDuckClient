@@ -1,10 +1,17 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import "./NavBar.css";
-
+import { useNavigate } from "react-router-dom";
+import { logout } from "../services/authentication";
 type Props = {};
 
 export const NavBar = (props: Props) => {
+  const navigate = useNavigate();
+  const logoutAndRedirect = () => {
+    logout();
+    navigate("/");
+  };
+
   return (
     <div className="navBar">
       <div className="navBar-icons">
@@ -18,7 +25,7 @@ export const NavBar = (props: Props) => {
             width={70}
           />
         </li>
-        <li>
+        <li onClick={() => navigate("/dashboard2")}>
           <Icon
             icon="codicon:home"
             color="white"
@@ -48,6 +55,7 @@ export const NavBar = (props: Props) => {
         </li>
         <li>
           <Icon
+            onClick={logoutAndRedirect}
             icon="uil:signout"
             color="white"
             height={25}
