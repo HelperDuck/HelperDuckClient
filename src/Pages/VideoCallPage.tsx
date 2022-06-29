@@ -87,13 +87,13 @@ export const VideoCallPage = (props: Props)  =>{
           if (socketRef) 
             socketRef.current.emit('joiningRoom', roomId);
           
-          if (socketRef.current) socketRef.current.on('me', ((socket: any) => {
-            console.log(socket.id, 'socket on MEEEEEE');
-            }
-          ))
+          // if (socketRef.current) socketRef.current.on('me', ((socket: any) => {
+          //   console.log(socket.id, 'socket on MEEEEEE');
+          //   }
+          // ))
           
           //TODO: attention to the next line --> the if statement is being suggested by TypeScript. Consider ignoring it if needed.
-          if (socketRef)
+          if (socketRef.current)
           socketRef.current.on(
             'allParticipants',
             (participantsInRoom: string[]) => {
@@ -339,12 +339,14 @@ export const VideoCallPage = (props: Props)  =>{
       <div className="peers-video">
           "Peers videos will be displayed below"
           {peers.map((peer) => {
-            return (
-              <div className = "my-video-wrapper">
-              <Video key={peer.peerId} peer={peer.peer} className="video-container" />
-              </div>
-            );
-          })}
+                return (
+                    <Video
+                      key={peer.peerId}
+                      peer={peer.peer}
+                      className="video-container"
+                    />
+                );
+              })}
         </div>
     </div>
   );
