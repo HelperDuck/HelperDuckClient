@@ -10,20 +10,21 @@
   font-family: "Roboto", sans-serif;
   margin-right: 1%;
   min-height: 255px;
+  min-width: 60vh;
 }
 
-.info-container{
+.info-container {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
-  }
+}
 
 
 
 .duck-icon {
-width: 20px;
-height: 20px;
-margin-right: 5px;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
 }
 
 .fire-icon {
@@ -36,6 +37,7 @@ margin-right: 5px;
 .picture-container {
   margin: 0 15px 15px 0;
 }
+
 .profile-pic {
   width: 80px;
   border-radius: 12px;
@@ -70,17 +72,19 @@ margin-right: 5px;
   margin-right: 10px;
 }
 
-.IncomingRequest-description{
+.IncomingRequest-description {
 
-  max-height:100px;
+  max-height: 100px;
   word-wrap: break-word;
   overflow-y: scroll;
- 
+
 }
+
 .IncomingRequest-description::-webkit-scrollbar {
   width: 3px;
   height: 3px;
 }
+
 .IncomingRequest-description::-webkit-scrollbar-track {
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.1);
@@ -92,19 +96,20 @@ margin-right: 5px;
 }
 
 /* ########  BUTTONS  ########### */
-.buttons-container{
+.buttons-container {
   display: flex;
   flex-direction: column;
   margin-left: 25px;
- 
+
 }
+
 .accept-button {
-  font-size:15px;
-  font-family:Verdana;
-width: 90px;
-  height:40px;
-  color:#fff;
-  font-weight:bold;
+  font-size: 15px;
+  font-family: Verdana;
+  width: 90px;
+  height: 40px;
+  color: #fff;
+  font-weight: bold;
   border-radius: 8px;
   background: rgba(0, 0, 0, 1);
   cursor: pointer;
@@ -117,12 +122,12 @@ width: 90px;
 }
 
 .decline-button {
-  font-size:15px;
-  font-family:Verdana;
-width: 90px;
-  height:40px;
-  color:#fff;
-  font-weight:bold;
+  font-size: 15px;
+  font-family: Verdana;
+  width: 90px;
+  height: 40px;
+  color: #fff;
+  font-weight: bold;
   border-radius: 8px;
   background: rgb(207, 47, 47);
   cursor: pointer;
@@ -131,28 +136,28 @@ width: 90px;
 }
 
 .decline-button:hover {
-background: rgba(207, 47, 47, 0.8)
+  background: rgba(207, 47, 47, 0.8)
 }
 
 
 @media only screen and (max-width: 400px) {
-  .info-container{
+  .info-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-   
-    }
 
-    .IncomingRequest-wrapper{
-      /* the width and the margin should be changed after all components are made */
-      max-width: 350px;
-      max-height: 500px;
-    }
+  }
 
-    .buttons-container{
+  .IncomingRequest-wrapper {
+    /* the width and the margin should be changed after all components are made */
+    max-width: 350px;
+    max-height: 500px;
+  }
+
+  .buttons-container {
     margin: 10px 0;
-      
-     
-    }
-    
+
+
+  }
+
 }
