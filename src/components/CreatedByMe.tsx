@@ -14,14 +14,14 @@ export const CreatedByMe = (props: Props) => {
     <div className="past-request">
       <div className="subject-user-container">
         <div className="subject">{help.subject}</div>
-        <div className="user">
-          by {help.user.firstName} {help.user.lastName}
-        </div>
+        {/* <div className="user">
+          // by {help.user.firstName} {help.user.lastName}
+        </div> */}
       </div>
       <div className="tip-container">
         <span className="tip">
           <Icon icon="icon-park-solid:duck" className="duck-icon" />
-          <span>{help.user.avgTip as any}</span>
+          {/* <span>{help.user.avgTip as any}</span> */}
           {/* //TODO this should display how much Tip i GAVE */}
         </span>
       </div>
