@@ -2,47 +2,47 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import Select from "react-select";
 import "../Pages/ProfilePage.css";
-
-//TODO: link to list options in database
-
-const stackList = [
-  { value: "React", label: "React" },
-  { value: "Redux", label: "Redux" },
-  { value: "Angular", label: "Angular" },
-];
-
-const idiomsList = [
-  { value: "Portuguese", label: "Portuguese" },
-  { value: "Spanish", label: "Spanish" },
-  { value: "English", label: "English" },
-];
+import { useSelector, useDispatch } from "react-redux";
+import { updateUserInfo } from "../Redux/reducers/user";
+import { editUserProfile } from "../services/profile";
 
 type Props = {
-  userInfo: any;
-  setUserInfo: any;
+  setIsInEditMode: any;
 };
 
-const ProfileForm = ({ userInfo, setUserInfo }: Props) => {
+const ProfileForm = ({ setIsInEditMode }: Props) => {
+  const dispatch = useDispatch();
+  const user = useSelector((state: any) => state.user.value);
+  const technologies = useSelector((state: any) => state.technologies.value);
+  const languages = useSelector((state: any) => state.languages.value);
+
   const formSubmitHandler = (data: any) => {
+    data.preventDefault();
     const editedData = {
       firstName: data.target.firstName.value,
-      lastLame: data.target.lastName.value,
-      description: data.target.aboutme.value,
-      programmingLanguage: data.target.programmingLanguage.value,
-      speakingLanguage: data.target.speakingLanguage.value,
-      socialMedia: data.target.socialMedia.value,
+      lastName: data.target.lastName.value,
+      userBio: data.target.aboutme.value,
+      technologies: data.target.programmingLanguage.value,
+      languages: data.target.speakingLanguage.value,
+      gitHubProfile: data.target.socialMedia.value,
     };
-    setUserInfo(editedData);
+
+    dispatch(updateUserInfo({ user: editedData }));
+    editUserProfile(editedData);
+    setIsInEditMode(true);
   };
 
   return (
     <>
       <form className="profile-form" onSubmit={formSubmitHandler}>
+        <button type="submit">
+          <Icon icon="bi:check-lg" />
+        </button>
         <div className="profile-header">
-          {userInfo.image ? (
+          {user.profilePic ? (
             <img
               className="img-input"
-              src={userInfo.image}
+              src={user.profilePic}
               alt="profilePic"
               style={{ maxHeight: "188px", maxWidth: "171px" }}
             />
@@ -65,8 +65,7 @@ const ProfileForm = ({ userInfo, setUserInfo }: Props) => {
                 type="text"
                 placeholder="First Name"
                 name="firstName"
-                defaultValue={userInfo[0].firstName}
-                //onChange={(e) => setFirstNameInput(e.target.value)}
+                defaultValue={user.firstName}
               ></input>
             </div>
             <div id="input-lastName">
@@ -79,8 +78,7 @@ const ProfileForm = ({ userInfo, setUserInfo }: Props) => {
                 type="text"
                 placeholder="Last Name"
                 name="lastName"
-                defaultValue={userInfo[0].lastName}
-                //onChange={(e) => setLastNameInput(e.target.value)}
+                defaultValue={user.lastName}
               ></input>
             </div>
           </div>
@@ -94,8 +92,7 @@ const ProfileForm = ({ userInfo, setUserInfo }: Props) => {
             id="profile-aboutme"
             placeholder="Brif description of your experience"
             name="aboutme"
-            defaultValue={userInfo[0].description}
-            //onChange={(e) => setAboutMeInput(e.target.value)}
+            defaultValue={user.userBio}
             rows={6}
           ></textarea>
         </div>
@@ -119,17 +116,16 @@ const ProfileForm = ({ userInfo, setUserInfo }: Props) => {
                     Programming languages
                   </label>
                   <Select
-                    options={stackList}
+                    options={technologies.map((item: any) => {
+                      return { value: item.name, label: item.name };
+                    })}
                     className="select-input"
                     id="profile-programminglanguages"
                     placeholder="Choose stack options"
                     name="programmingLanguage"
-                    defaultValue={userInfo[0].programmingLanguage.map(
-                      (data: any) => {
-                        return { label: data };
-                      }
-                    )}
-                    //onChange={handleStackData}
+                    defaultValue={user.technologies.map((item: any) => {
+                      return { label: item.technology.name };
+                    })}
                     isMulti
                   ></Select>
                 </div>
@@ -153,17 +149,16 @@ const ProfileForm = ({ userInfo, setUserInfo }: Props) => {
                     Speaking languages
                   </label>
                   <Select
-                    options={idiomsList}
+                    options={languages.map((item: any) => {
+                      return { value: item.name, label: item.name };
+                    })}
                     className="select-input"
                     id="profile-speakinglanguages"
                     placeholder="Choose languages options"
                     name="speakingLanguage"
-                    defaultValue={userInfo[0].speakingLanguage.map(
-                      (item: any) => {
-                        return { label: item };
-                      }
-                    )}
-                    //onChange={handleIdiomData}
+                    defaultValue={user.languages.map((item: any) => {
+                      return { label: item.language.name };
+                    })}
                     isMulti
                   ></Select>
                 </div>
@@ -192,8 +187,7 @@ const ProfileForm = ({ userInfo, setUserInfo }: Props) => {
                     type="text"
                     placeholder="Add the URL here"
                     name="socialMedia"
-                    defaultValue={userInfo[0].socialMedia}
-                    //onChange={(e) => setSocialMediaInput(e.target.value)}
+                    defaultValue={user.gitHubProfile}
                   ></input>
                 </div>
               </div>
