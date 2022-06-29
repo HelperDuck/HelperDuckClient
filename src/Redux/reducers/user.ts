@@ -31,6 +31,9 @@ export const userSlice = createSlice({
     updateUserInfo: (state, action) => {
       state.value = { ...state.value, ...action.payload.user };
     },
+    changeProfilePic: (state, action) => {
+      state.value.profilePic = action.payload;
+    },
   },
 });
 
