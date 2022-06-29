@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 import { auth, logout } from "../services/authentication";
 
+//Test for BUILD
 function Dashboard() {
   const [isAuthUser, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
