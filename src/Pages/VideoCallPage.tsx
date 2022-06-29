@@ -6,9 +6,9 @@ import { WebRTCUser } from "../Types/WebRTCUser";
 import "./VideoCallPage.css";
 
 // const LOCAL_SERVER = "http://localhost:3002/";
-const DEV_SERVER = 'https://helperduck-dev.herokuapp.com/';
-// const PROD_SERVER = 'https://helperduck.herokuapp.com/';
-const SOCKET_SERVER_URL = DEV_SERVER;
+// const DEV_SERVER = 'https://helperduck-dev.herokuapp.com/';
+const PROD_SERVER = 'https://helperduck.herokuapp.com/';
+const SOCKET_SERVER_URL = PROD_SERVER;
 
 //TODO: Mark to Delete
 // type VideoProps = {
