@@ -7,11 +7,7 @@ import { useSelector } from "react-redux";
 //TODO: check the correct type
 //TODO: check how to update the profile pic
 
-type Props = {
-  userInfo: any;
-};
-
-export const ProfileInfo = ({ userInfo }: Props) => {
+export const ProfileInfo = () => {
   const user = useSelector((state: any) => state.user.value);
   console.log(user);
   const [fileInput, setFileInput] = useState("");
@@ -77,11 +73,11 @@ export const ProfileInfo = ({ userInfo }: Props) => {
                 >
                   Programming languages
                 </label>
-                <div id="programminglanguage">
-                  {user.technologies.map((item: any) => {
-                    return item.technology.name;
-                  })}
-                </div>
+                {user.technologies.map((item: any) => {
+                  return (
+                    <div id="programminglanguage">{item.technology.name}</div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -102,7 +98,9 @@ export const ProfileInfo = ({ userInfo }: Props) => {
                 >
                   Speaking languages
                 </label>
-                <div id="speakinglanguage">{userInfo[0].speakingLanguage}</div>
+                {user.languages.map((item: any) => {
+                  return <div id="speakinglanguage">{item.language.name}</div>;
+                })}
               </div>
             </div>
           </div>
@@ -120,7 +118,7 @@ export const ProfileInfo = ({ userInfo }: Props) => {
                 <label className="label-profileForm" htmlFor="socialmedia">
                   Social media
                 </label>
-                <div id="socialmedia">{userInfo[0].socialMedia}</div>
+                <div id="socialmedia">{user.gitHubProfile}</div>
               </div>
             </div>
           </div>
