@@ -1,19 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { requestAskedType } from "../Types/RequestAskedType";
 import { IncomingRequest } from "./IncomingRequest";
+
 import "./IncomingRequestsCarrousel.css";
 
 type Props = {};
 
 export const IncomingRequestsCarrousel = (props: Props) => {
   const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
+  const user = useSelector((state: any) => state.user.value);
+  const userTechs = user.technologies.map((item: any) => item.technologyId);
 
-  // const filteredHR = allHelpRequests.filter((item) => {
-  //   item.technologies.map((tech) => {
-  //     if(user.technologies.map((userTech) => {userTech.technologyId === tech.technologyId }))
-  //     {return <IncomingRequest></IncomingRequest>}
-  //   })
+  const [filteredHRs, setFilteredHRs] = useState([]);
+
+  useEffect(() => {
+    const filteredHR = allHelpRequests.filter((helpRequest: any) => {
+      for (let i = 0; i < helpRequest.technologies.length; i++) {
+        if (userTechs.includes(helpRequest.technologies[i].technologyId)) {
+          return true;
+        }
+      }
+      return false;
+    });
+
+    setFilteredHRs(filteredHR);
+  }, []); //eslint-disable-line
 
   return (
     <div className="carrousel-outer-container">
@@ -21,8 +33,22 @@ export const IncomingRequestsCarrousel = (props: Props) => {
         <span>Incomming Requests</span>
       </div>
       <div className="request-carrousel">
-        {allHelpRequests.map((help: requestAskedType) => {
-          return <IncomingRequest help={help} key={help.id}></IncomingRequest>;
+        {filteredHRs.map((help: requestAskedType) => {
+          return (
+            <IncomingRequest
+              help={help}
+              key={help.id}
+              //    handleDelete={() => {
+              //   const newHRs = filteredHRs.filter((item: any) => {
+              //     console.log(item.id, "itemid");
+              //     console.log(help.id, "help.id");
+              //     return item.id !== help.id;
+              //   });
+
+              //   setFilteredHRs([...newHRs]);
+              // }}
+            ></IncomingRequest>
+          );
         })}
       </div>
     </div>
