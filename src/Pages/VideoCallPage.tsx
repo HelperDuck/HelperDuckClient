@@ -241,7 +241,6 @@ export const VideoCallPage = (props: Props)  =>{
     
     const toggleMic = ():void => {
       if (userStream.current) {
-        
         const audioTrack = userStream.current
           .getTracks()
           .find((track) => track.kind === 'audio');
@@ -270,6 +269,7 @@ export const VideoCallPage = (props: Props)  =>{
     }
     
     const screenShare = async () => {
+      /*For security reasons, users shall share only Window or Tab but not the entire screen*/
       try {
         //check if user is already sharing the screen
         if (screenSharingId) {
@@ -288,6 +288,25 @@ export const VideoCallPage = (props: Props)  =>{
           userStream.current.removeTrack(videoTrack);
           userStream.current.addTrack(screenSharingTrack);
           
+          /*Problem Description
+          User is able to share screen stream but is not updating the other peers 
+          Only when peers refresh
+          this is happening because Media changes require WebRTC peer connection renegotiation
+          https://stackoverflow.com/questions/31165316/webrtc-renegotiate-the-peer-connection-to-switch-streams
+          
+          Possible Solution: emit socket events to trigger renegotiation
+          
+          
+          */
+          // Option 1
+          // peersRef.current.find(peer => peer.track.kind === 'video').replaceTrack(screenSharingTrack);
+          
+          // Option 2 repeat the exact same steps as those for the userStream.current
+          // peersRef.current.find(peer => peer.track.kind === 'video').replaceTrack(screenSharingTrack);
+          // peersRef.current.removeTrack(videoTrack);
+          // peersRef.current.addTrack(screenSharingTrack);
+
+
           //event listener for reversing streams when user stops sharing screen 
           screenSharingTrack.onended = () => {
                   if (userStream.current)
