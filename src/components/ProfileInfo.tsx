@@ -7,21 +7,17 @@ import { useSelector } from "react-redux";
 //TODO: check the correct type
 //TODO: check how to update the profile pic
 
-type Props = {
-  userInfo: any;
-};
-
-export const ProfileInfo = ({ userInfo }: Props) => {
+export const ProfileInfo = () => {
   const user = useSelector((state: any) => state.user.value);
   console.log(user);
-  //const [fileInput, setFileInput] = useState("");
+  // const [fileInput, setFileInput] = useState("");
 
   //TODO: use this once redux-toolkit is set up
   //const dispatch = useDispatch();
 
-  const handleFileInputChange = (e: any) => {
-    //setFileInput(URL.createObjectURL(e.target.files[0]));
-  };
+  // const handleFileInputChange = (e: any) => {
+  //   setFileInput(URL.createObjectURL(e.target.files[0]));
+  // };
 
   return (
     <div className="profile-display">
@@ -34,7 +30,7 @@ export const ProfileInfo = ({ userInfo }: Props) => {
                 id="img-input"
                 type="file"
                 accept="image/*"
-                onChange={handleFileInputChange}
+                // onChange={handleFileInputChange}
               ></input>
             )}
           >
@@ -77,15 +73,11 @@ export const ProfileInfo = ({ userInfo }: Props) => {
                 >
                   Programming languages
                 </label>
-                <div id="programminglanguage">
-                  {/* {user.technologies.length &&
-                    user.technologies.map((item: any) => {
-                      return item.technology.name;
-                    })} */}
-                  {/* {user.technologies.map((item: any) => {
-                    return item.technology.name;
-                  })} */}
-                </div>
+                {user.technologies.map((item: any) => {
+                  return (
+                    <div id="programminglanguage">{item.technology.name}</div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -106,7 +98,9 @@ export const ProfileInfo = ({ userInfo }: Props) => {
                 >
                   Speaking languages
                 </label>
-                <div id="speakinglanguage">{userInfo[0].speakingLanguage}</div>
+                {user.languages.map((item: any) => {
+                  return <div id="speakinglanguage">{item.language.name}</div>;
+                })}
               </div>
             </div>
           </div>
@@ -124,7 +118,7 @@ export const ProfileInfo = ({ userInfo }: Props) => {
                 <label className="label-profileForm" htmlFor="socialmedia">
                   Social media
                 </label>
-                <div id="socialmedia">{userInfo[0].socialMedia}</div>
+                <div id="socialmedia">{user.gitHubProfile}</div>
               </div>
             </div>
           </div>
