@@ -56,8 +56,8 @@ export const VideoCallPage = (props: Props) => {
   const videoConstraints = {
     video: {
       cursor: "always",
-      width: { ideal: 1920, max: 1920 },
-      height: { ideal: 1080, max: 1080 },
+      width: { ideal: 1920, max: 7680 },
+      height: { ideal: 1080, max: 4320 },
     },
     audio: {
       echoCancellation: true,
@@ -66,7 +66,6 @@ export const VideoCallPage = (props: Props) => {
     },
   };
 
-  
   //TODO: new useEffect WIP
   // useEffect(() => {
   //   console.log(screening, "ling screening state");
