@@ -19,7 +19,7 @@ export const CreateRequestPage = (props: Props) => {
       const techs: { technology: { name: string } }[] = [];
       e.target.programmingLanguages.forEach((item: any) =>
       techs.push({ technology: { name: item.value } }));
-
+      
       const newRequest: requestAskedType = {
         userId: user.id,
         subject: e.target.subject.value,
@@ -31,6 +31,7 @@ export const CreateRequestPage = (props: Props) => {
     
       await postRequest(newRequest);
       e.target.reset();
+      window.location.replace("/dashboard2");
       
     } catch (err) {
       console.log('Error posting newRequest at CreateRequestPage', err);
