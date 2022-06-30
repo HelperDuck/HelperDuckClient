@@ -1,88 +1,118 @@
-.request-container {
-  background-color: #232526;
-  background-color: -webkit-linear-gradient(to right, #232526, #414345);
+.request-page-container {
+  background-color: white;
+  /* background-color: -webkit-linear-gradient(to right, #232526, #414345);
   background-color: linear-gradient(to right, #232526, #414345);
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: left 110% top 25%;
-  height: 100vh;
-  width: 100vw;
+  background-position: left 100% top 25%;
+  background-image: url("https://res.cloudinary.com/brnl/image/upload/v1656588390/brnl/wave-haikei_clmmil.svg"); */
+  padding: 1%;
+}
+
+.request-container {
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: left;
-  background-image: url("https://www.ausolan.com/src/img/svg/ico/r_arrow.svg");
-  padding: 2.5%;
+  justify-content: center;
+  padding: 1%;
+
 }
+
+.angle-brack {
+  height: 70vh;
+  width: 200px;
+  display: flex;
+  margin-left: 1%;
+  justify-content: flex-end;
+
+}
+
+.angle-brack1 {
+  height: 70vh;
+  width: 200px;
+  margin-right: 1%;
+  display: flex;
+  justify-content: flex-start;
+}
+
 
 .table-request-form {
   box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.3);
   height: 65vh;
-  width: 60vw;
+  width: 40vw;
   border-radius: 20px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #F5F5F7;
 }
+
+
 
 .request-form {
   width: 100%;
-  height: 95%;
-  position: absolute;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+
 }
+
 
 .input-box-wrapper {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  height: 80%;
 }
 
-/* @media screen and (min-width: 720px) {
-  body {
-    background-color: lightgreen;
-  }
-} */
 
-.table-request-form:hover {
-  transform: scale(1.05);
-}
 
 .input-request-box {
   display: flex;
   flex-direction: column;
-  padding-left: 1.5%;
-  padding-right: 1.5%;
+
   height: 40%;
+  padding: 0 1.5%;
+
 }
 
-h2 {
-  color: white;
-  margin-left: 2%;
+.create-title {
+  margin-top: 2%;
   font-family: "Baloo Bhai 2", cursive;
-  font-size: 25px;
+  font-size: 50px;
+  font-weight: 700;
 }
 
 label {
-  color: white;
+
   font-family: "Baloo Bhai 2", cursive;
   margin-top: 1%;
 }
 
 .input-request {
   border-radius: 5px;
-  background-color: lightgray;
+  border: 0.5px gray solid;
   padding: 1%;
 }
 
 .btn-request {
-  margin-top: 3vh;
-  margin-left: 1.5%;
-  border-radius: 10px;
-  width: 10%;
-  height: 5vh;
-  background-color: green;
+
+  width: 18%;
+  padding: 10px;
+  font-size: 18px;
+
   border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: black;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 1);
+  cursor: pointer;
+  border: none;
 }
 
 #btn-request {
@@ -91,4 +121,20 @@ label {
   font-size: 15px;
   flex-wrap: wrap;
   word-wrap: break-word;
+}
+
+.newrequest-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 2%;
+  padding: 0 1.5%;
+}
+
+.all-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10%;
 }
