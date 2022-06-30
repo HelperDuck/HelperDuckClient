@@ -1,14 +1,16 @@
-.carrousel-outer-container{
+.carrousel-outer-container {
   margin-top: 2%;
 }
-.request-carrousel{
+
+.request-carrousel {
 
   display: flex;
   max-height: 24vh;
   min-height: 310px;
-  overflow-x:scroll;
-  width: 100% ;
- 
+  overflow-y: auto;
+  width: 100%;
+  flex-direction: column;
+
 }
 
 
@@ -16,6 +18,7 @@
   width: 8px;
   height: 8px;
 }
+
 .request-carrousel::-webkit-scrollbar-track {
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.1);

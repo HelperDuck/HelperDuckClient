@@ -5,6 +5,7 @@
   flex-direction: column;
   font-family: "Baloo Bhai";
 
+
   /* widtch and mar should be changed after all componets are done */
 }
 
@@ -16,7 +17,7 @@
   font-size: 16px;
   word-wrap: break-word;
   max-height: 140px;
-  overflow-y: scroll;
+  overflow-y: auto;
 
 }
 
@@ -40,6 +41,8 @@
 
 .aboutme-outer-container {
   max-height: 220px;
+  border-radius: 14px;
+
 
 }
 
@@ -67,7 +70,7 @@
 .credits-taken-outer-container,
 .languages-outer-container,
 .aboutme-outer-container {
-  margin-bottom: 15px;
+  margin-bottom: 4%;
 }
 
 .credits-container,
@@ -147,8 +150,11 @@
   border-radius: 14px;
   margin-right: 10px;
   max-width: 20%;
-  min-width: 40px;
-  min-height: 40px;
+  min-width: 50px;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .languages-list,
@@ -214,7 +220,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 0 2%;
+  margin: 0 0 10%;
   height: 50px;
 }
 
