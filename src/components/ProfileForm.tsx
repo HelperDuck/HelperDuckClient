@@ -16,9 +16,9 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
   const technologies = useSelector((state: any) => state.technologies.value);
   const languages = useSelector((state: any) => state.languages.value);
 
-  const formSubmitHandler = (data: any) => {
+  const formSubmitHandler = async (data: any) => {
     data.preventDefault();
-
+    try {
     const techs: { technology: { name: string } }[] = [];
     data.target.programmingLanguage.forEach((item: any) =>
       techs.push({ technology: { name: item.value } })
@@ -39,9 +39,12 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
       gitHubProfile: data.target.socialMedia.value,
     };
 
-    postUpdateUser(editedData);
+    await postUpdateUser(editedData);
     dispatch(updateUserInfo({ user: editedData }));
     setIsInEditMode(true);
+    } catch (err) {
+        console.log('Error at formSubmitHandler: ', err);
+    }
   };
 
   const postUpdateUser = async (user: any) => {
