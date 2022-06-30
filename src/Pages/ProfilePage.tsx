@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-
-import { Icon } from "@iconify/react";
 import ProfileInfo from "../components/ProfileInfo";
 import ProfileForm from "../components/ProfileForm";
 import { NavBar } from "../components/NavBar";

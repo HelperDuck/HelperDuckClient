@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { storage } from "../services/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -19,6 +20,7 @@ type Props = {
 export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const toggleEditMode = (e: any) => {
     e.preventDefault();
@@ -100,9 +102,13 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
               )}
             </label>
           </div>
-
           <div id="full-name">{`${user.firstName} ${user.lastName}`}</div>
-          <button className="request-btn">Create a request</button>
+          <button
+            className="request-btn"
+            onClick={() => navigate("/newRequest")}
+          >
+            Create a request
+          </button>
         </div>
       </div>
       <div id="aboutme">{user.userBio}</div>
