@@ -7,10 +7,6 @@ type Props = {};
 
 export const NavBar = (props: Props) => {
   const navigate = useNavigate();
-  const logoutAndRedirect = () => {
-    logout();
-    navigate("/");
-  };
 
   return (
     <div className="navBar">
@@ -25,7 +21,7 @@ export const NavBar = (props: Props) => {
             width={70}
           />
         </li>
-        <li onClick={() => navigate("/dashboard2")}>
+        <li onClick={() => navigate("/dashboard")}>
           <Icon
             icon="codicon:home"
             color="white"
@@ -34,7 +30,7 @@ export const NavBar = (props: Props) => {
             className="icons"
           />
         </li>
-        <li>
+        <li onClick={() => navigate("/profile")}>
           <Icon
             icon="ooui:user-avatar-outline"
             color="white"
@@ -43,7 +39,7 @@ export const NavBar = (props: Props) => {
             className="icons"
           />
         </li>
-        <li>
+        <li onClick={() => navigate("/newrequest")}>
           <Icon
             icon="ic:outline-video-call"
             color="white"
@@ -55,7 +51,7 @@ export const NavBar = (props: Props) => {
         </li>
         <li>
           <Icon
-            onClick={logoutAndRedirect}
+            onClick={logout}
             icon="uil:signout"
             color="white"
             height={25}
