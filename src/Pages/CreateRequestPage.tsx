@@ -12,21 +12,13 @@ import { postRequest } from "../services/request";
 
 type Props = {};
 
-//TODO: replace with real data
-// const technologies = [
-//   { value: "React", label: "React" },
-//   { value: "Redux", label: "Redux" },
-//   { value: "Angular", label: "Angular" },
-// ];
+
 
 export const CreateRequestPage = (props: Props) => {
   // const [newRequest, setNewRequest] = useState<requestAskedType>();
-  // const [subject, setSubject] = useState<string>('');
-  // const [description, setDescription] = useState<string>('');
-  // const [linkToSandBox, setLinkToSandBox] = useState<string>('');
-  // const [technologies, setTechnologies] = useState<string[]>([]);
   const technologies = useSelector((state: any) => state.technologies.value);
   // const dispatch = useDispatch()
+  console.log(technologies, 'techSTack')
 
   const newRequestHandler = async (e: any) => {
     e.preventDefault();
@@ -41,33 +33,35 @@ export const CreateRequestPage = (props: Props) => {
       //   techs.push({ technology: { name: item.value } });
       // });
       
-      // const techs: technology: { name: any } string[] = [];
-      // e.target.technologies.forEach((item: any) =>
-      // techs.push({ technology: { name: item.value } })
-      // );
+      const techs: { technology: { name: string } }[] = [];
+      e.target.programmingLanguages.forEach((item: any) =>
+      techs.push({ technology: { name: item.value } })
+      );
 
       // console.log(techs, "techs");
 
       const newRequest = {
-        userId: 1,
+        userId: 3,
         subject: e.target.subject.value,
         description: e.target.description.value,
         linkToSandbox: e.target.linkToSandbox.value,
-        technologies: [{technology : { 
-          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-          id: 46,
-          name: "Express"
-       }}],
+        technologies: techs,
         roomId: id,
       };
+      //   [{technology : { 
+      //     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+      //     id: 46,
+      //     name: "Express"
+      //  }}],
 
-      console.log(newRequest, "newRequest at newRequestHandler");
+      console.log(newRequest.technologies, "newRequest at newRequestHandler");
 
-      await postRequest(newRequest);
+      await postRequest(newRequest) && console.log('success');
       e.target.reset();
+     
       // dispatch(createRequest( newRequest ))
     } catch (err) {
-      console.log(err);
+      console.log('Error posting newRequest at CreateRequestPage', err);
     }
   };
 
@@ -124,7 +118,7 @@ export const CreateRequestPage = (props: Props) => {
                   })}
                   className="input-request"
                   id="techStack-input"
-                  name="technologies"
+                  name="programmingLanguages"
                   isMulti
                 ></Select>
               </div>

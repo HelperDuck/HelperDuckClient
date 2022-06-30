@@ -5,8 +5,8 @@ export type TechnologiesType = {
 };
 
 export type Technology = {
-  icon: string;
-  id: number;
+  icon?: string;
+  id?: number;
   name: string;
 };
 
