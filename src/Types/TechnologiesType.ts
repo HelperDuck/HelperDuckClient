@@ -1,19 +1,17 @@
 export type TechnologiesType = {
-  technology: Technologie;
+  technology: Technology;
   technologyId: number;
   userId: number;
 };
 
-export type Technologie = {
+export type Technology = {
   icon: string;
   id: number;
   name: string;
 };
 
 export type TechnologiesInHelpRequestType = {
-  technology: Technologie;
-  technologyId: number;
-  helpRequestId: number;
+  technology: Technology;
 };
 
 // I believe this commented typing is the correct one

@@ -3,7 +3,7 @@ import { requestAskedType } from '../../Types/RequestAskedType';
 
 
 
-const initialState: requestAskedType[] = []
+const initialState: requestAskedType[] = [];
 
 
 

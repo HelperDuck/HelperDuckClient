@@ -26,7 +26,7 @@ export const DashUserInfo = (props: Props) => {
       <div className="credits-taken-outer-container">
         <div className="credits-container">
           <div className="number">
-            <span>55</span>
+            <span>{user.credits}</span>
           </div>
           <div className="word">
             <span>Credits</span>{" "}
