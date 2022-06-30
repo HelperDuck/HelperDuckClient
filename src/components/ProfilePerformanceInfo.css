@@ -26,6 +26,7 @@
   background: #f5f5f7;
   border-radius: 14px;
   display: flex;
+  height: 10vh;
   width: 45%;
   justify-content: space-evenly;
   flex-wrap: wrap;
