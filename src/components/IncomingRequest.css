@@ -1,45 +1,47 @@
 .IncomingRequest-wrapper {
   /* the width and the margin should be changed after all components are made */
-  margin: 20px 0;
-  max-height: 240px;
+  margin: 1% 0;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 3%;
   background: #f5f5f7;
   border-radius: 14px;
   font-family: "Roboto", sans-serif;
   margin-right: 1%;
-  min-height: 255px;
-  min-width: 60vh;
+  min-height: 25vh;
+  min-width: 90%;
 }
 
 .info-container {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin-bottom: 1%;
 }
 
 
 
 .duck-icon {
-  width: 20px;
-  height: 20px;
+  width: 1vw;
+  height: 2vh;
   margin-right: 5px;
 }
 
 .fire-icon {
-  width: 20px;
-  height: 20px;
+  width: 1vw;
+  height: 2vh;
 
   margin-right: 2px;
 }
 
 .picture-container {
   margin: 0 15px 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile-pic {
-  width: 80px;
+  width: 5vw;
   border-radius: 12px;
 }
 
@@ -54,7 +56,7 @@
 }
 
 .subject {
-  font-size: 16px;
+  font-size: 1.2rem;
   font-weight: bold;
   font-family: "Baloo Bhai";
 }
@@ -74,9 +76,9 @@
 
 .IncomingRequest-description {
 
-  max-height: 100px;
+  max-height: 10vh;
   word-wrap: break-word;
-  overflow-y: scroll;
+  overflow-y: auto;
 
 }
 
@@ -106,8 +108,8 @@
 .accept-button {
   font-size: 15px;
   font-family: Verdana;
-  width: 90px;
-  height: 40px;
+  width: 4.5vw;
+  height: 4vh;
   color: #fff;
   font-weight: bold;
   border-radius: 8px;
@@ -124,8 +126,8 @@
 .decline-button {
   font-size: 15px;
   font-family: Verdana;
-  width: 90px;
-  height: 40px;
+  width: 4.5vw;
+  height: 4vh;
   color: #fff;
   font-weight: bold;
   border-radius: 8px;
@@ -150,8 +152,8 @@
 
   .IncomingRequest-wrapper {
     /* the width and the margin should be changed after all components are made */
-    max-width: 350px;
-    max-height: 500px;
+
+    max-height: 50vh;
   }
 
   .buttons-container {

@@ -5,8 +5,8 @@ export type TechnologiesType = {
 };
 
 export type Technology = {
-  icon: string;
-  id: number;
+  icon?: string;
+  id?: number;
   name: string;
 };
 
@@ -31,3 +31,11 @@ export type TechnologiesInHelpRequestType = {
 //   id:  number;
 //   name: string;
 // };
+
+
+//FOR POST REQUESTS reference
+ //   [{technology : { 
+      //     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+      //     id: 46,
+      //     name: "Express"
+      //  }}],

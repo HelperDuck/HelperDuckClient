@@ -1,59 +1,123 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import { storage } from "../services/firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
 import "../Pages/ProfilePage.css";
 import { ProfilePerformanceInfo } from "../components/ProfilePerformanceInfo";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { changeProfilePic } from "../Redux/reducers/userById";
+import { editUserProfile } from "../services/profile";
 
 //TODO: check the correct type
-//TODO: check how to update the profile pic
 
-export const ProfileInfo = () => {
+type Props = {
+  isInEditMode: boolean;
+  setIsInEditMode: any;
+};
+
+export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
   const user = useSelector((state: any) => state.user.value);
-  console.log(user);
-  // const [fileInput, setFileInput] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  //TODO: use this once redux-toolkit is set up
-  //const dispatch = useDispatch();
+  const otherUser = useSelector((state: any) => state.userById.value);
 
-  // const handleFileInputChange = (e: any) => {
-  //   setFileInput(URL.createObjectURL(e.target.files[0]));
-  // };
+  const toggleEditMode = (e: any) => {
+    e.preventDefault();
+    setIsInEditMode(!isInEditMode);
+  };
+
+  const uploadFile = (profilePic: File) => {
+    if (profilePic == null) return;
+
+    //store image in firebase and display on FE
+    const imageRef = ref(storage, `profilePics/${profilePic.name + v4()}`);
+    uploadBytes(
+      imageRef,
+      profilePic as unknown as Blob | Uint8Array | ArrayBuffer
+    ).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        dispatch(changeProfilePic({ url }));
+        //----------------------
+        const editedImg = {
+          uid: user.uid,
+          profilePic: url,
+        };
+        postUpdateUser(editedImg);
+      });
+    });
+  };
+
+  const postUpdateUser = async (user: any) => {
+    try {
+      const updateUser = await editUserProfile(user);
+      console.log(updateUser, "updateUser");
+    } catch (err) {
+      console.error(err, "Error in updating user");
+    }
+  };
 
   return (
     <div className="profile-display">
-      <div className="profile-header">
-        <div id="profile-image">
-          <button
-            onClick={() => (
+      <div className="form-header">
+        {user.uid === otherUser.uid ? (
+          <button className="btn-edit" onClick={toggleEditMode}>
+            Edit
+            <Icon icon="ant-design:edit-filled" />
+          </button>
+        ) : (
+          <></>
+        )}
+      </div>
+      <div className="header-wrapper">
+        <div className="profile-header">
+          <div className="profile-image">
+            <label className="label-upload" htmlFor="img-input">
+              <Icon
+                className="icon-upload"
+                icon="clarity:edit-solid"
+                color="white"
+              />
               <input
                 className="upload-image"
                 id="img-input"
                 type="file"
                 accept="image/*"
-                // onChange={handleFileInputChange}
+                name="image"
+                onChange={(e?) => {
+                  let file = (e!.target as HTMLInputElement)!.files![0];
+                  uploadFile(file);
+                }}
               ></input>
-            )}
+              {otherUser.profilePic ? (
+                <img
+                  className="img-input"
+                  src={otherUser.profilePic}
+                  alt="profilePic"
+                  style={{ maxHeight: "188px", maxWidth: "171px" }}
+                />
+              ) : (
+                <Icon
+                  icon="ooui:user-avatar-outline"
+                  height={100}
+                  width={90}
+                  id="icon-avatar"
+                />
+              )}
+            </label>
+          </div>
+          <div id="full-name">{`${otherUser.firstName} ${otherUser.lastName}`}</div>
+          <button
+            className="request-btn"
+            onClick={() => navigate("/newRequest")}
           >
-            {user.profilePic ? (
-              <img
-                className="img-input"
-                src={user.profilePic}
-                alt="profilePic"
-                style={{ maxHeight: "188px", maxWidth: "171px" }}
-              />
-            ) : (
-              <Icon
-                icon="ooui:user-avatar-outline"
-                height={100}
-                width={90}
-                id="icon-avatar"
-              />
-            )}
+            Create a request
           </button>
         </div>
-        <div id="full-name">{`${user.firstName} ${user.lastName}`}</div>
       </div>
-      <div id="aboutme">{user.userBio}</div>
+      <div id="aboutme">{otherUser.userBio}</div>
       <div className="profile-expertise">
         <div className="profile-boxes-wrapper">
           <div className="profile-boxes" id="programming-box">
@@ -73,7 +137,7 @@ export const ProfileInfo = () => {
                 >
                   Programming languages
                 </label>
-                {user.technologies.map((item: any) => {
+                {otherUser.technologies.map((item: any) => {
                   return (
                     <div id="programminglanguage">{item.technology.name}</div>
                   );
@@ -98,7 +162,7 @@ export const ProfileInfo = () => {
                 >
                   Speaking languages
                 </label>
-                {user.languages.map((item: any) => {
+                {otherUser.languages.map((item: any) => {
                   return <div id="speakinglanguage">{item.language.name}</div>;
                 })}
               </div>
@@ -118,7 +182,7 @@ export const ProfileInfo = () => {
                 <label className="label-profileForm" htmlFor="socialmedia">
                   Social media
                 </label>
-                <div id="socialmedia">{user.gitHubProfile}</div>
+                <div id="socialmedia">{otherUser.gitHubProfile}</div>
               </div>
             </div>
           </div>

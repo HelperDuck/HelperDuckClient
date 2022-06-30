@@ -5,18 +5,19 @@
   flex-direction: column;
   font-family: "Baloo Bhai";
 
+
   /* widtch and mar should be changed after all componets are done */
 }
 
 .about-me-title {
-  font-size: 24px;
+  font-size: 1.6rem;
 }
 
 .about-me-description {
-  font-size: 16px;
+  font-size: 1rem;
   word-wrap: break-word;
-  max-height: 140px;
-  overflow-y: scroll;
+  max-height: 14vh;
+  overflow-y: auto;
 
 }
 
@@ -39,7 +40,9 @@
 
 
 .aboutme-outer-container {
-  max-height: 220px;
+  max-height: 22vh;
+  border-radius: 14px;
+
 
 }
 
@@ -51,9 +54,7 @@
 
 
 
-.dash-user-wrapper {
-  margin-bottom: 10px;
-}
+
 
 .credits-taken-outer-container,
 .languages-outer-container,
@@ -65,9 +66,8 @@
 }
 
 .credits-taken-outer-container,
-.languages-outer-container,
-.aboutme-outer-container {
-  margin-bottom: 15px;
+.languages-outer-container {
+  margin-bottom: 4%;
 }
 
 .credits-container,
@@ -106,7 +106,7 @@
   justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
-  min-height: 80px;
+  min-height: 8vh;
   padding: 5px 10px;
 }
 
@@ -115,12 +115,12 @@
 }
 
 .taken-container>.number {
-  font-size: 40px;
+  font-size: 2.5rem;
   margin-right: 5px;
 }
 
 .credits-container>.number {
-  font-size: 40px;
+  font-size: 2.5rem;
   margin-right: 5px;
 }
 
@@ -147,8 +147,11 @@
   border-radius: 14px;
   margin-right: 10px;
   max-width: 20%;
-  min-width: 40px;
-  min-height: 40px;
+  min-width: 50px;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .languages-list,
@@ -180,8 +183,29 @@
   display: none;
 }
 
+/* .test::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+.test::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.test::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+} */
+
+.test::-webkit-scrollbar {
+  display: none;
+}
+
 .test {
   word-wrap: break-word;
+  overflow-y: auto;
+  max-height: 10vh;
 
 
 
@@ -215,7 +239,7 @@
   justify-content: space-between;
   align-items: center;
   margin: 0 0 2%;
-  height: 50px;
+  height: 5vh;
 }
 
 /* ################### SEARCH BAR ############ */
@@ -242,7 +266,7 @@
   background: transparent;
   margin: 0;
   padding: 7px 8px;
-  font-size: 14px;
+  font-size: 1rem;
   color: inherit;
   border: 1px solid transparent;
   width: 100%;

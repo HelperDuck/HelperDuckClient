@@ -16,28 +16,54 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
   const technologies = useSelector((state: any) => state.technologies.value);
   const languages = useSelector((state: any) => state.languages.value);
 
-  const formSubmitHandler = (data: any) => {
+  const formSubmitHandler = async (data: any) => {
     data.preventDefault();
+    try {
+    const techs: { technology: { name: string } }[] = [];
+    data.target.programmingLanguage.forEach((item: any) =>
+      techs.push({ technology: { name: item.value } })
+    );
+
+    const idioms: { language: { name: string } }[] = [];
+    data.target.speakingLanguage.forEach((item: any) =>
+      idioms.push({ language: { name: item.value } })
+    );
+
     const editedData = {
+      uid: user.uid,
       firstName: data.target.firstName.value,
       lastName: data.target.lastName.value,
       userBio: data.target.aboutme.value,
-      technologies: data.target.programmingLanguage.value,
-      languages: data.target.speakingLanguage.value,
+      technologies: techs,
+      languages: idioms,
       gitHubProfile: data.target.socialMedia.value,
     };
 
+    await postUpdateUser(editedData);
     dispatch(updateUserInfo({ user: editedData }));
-    editUserProfile(editedData);
     setIsInEditMode(true);
+    } catch (err) {
+        console.log('Error at formSubmitHandler: ', err);
+    }
+  };
+
+  const postUpdateUser = async (user: any) => {
+    try {
+      const updateUser = await editUserProfile(user);
+      console.log(updateUser, "updateUser");
+    } catch (err) {
+      console.error(err, "Error in updating user");
+    }
   };
 
   return (
     <>
       <form className="profile-form" onSubmit={formSubmitHandler}>
-        <button type="submit">
+        <button className="btn-submit-edit" type="submit">
+          Update
           <Icon icon="bi:check-lg" />
         </button>
+
         <div className="profile-header">
           {user.profilePic ? (
             <img
@@ -124,7 +150,10 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
                     placeholder="Choose stack options"
                     name="programmingLanguage"
                     defaultValue={user.technologies.map((item: any) => {
-                      return { label: item.technology.name };
+                      return {
+                        value: item.technology.name,
+                        label: item.technology.name,
+                      };
                     })}
                     isMulti
                   ></Select>
