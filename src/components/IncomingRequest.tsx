@@ -2,6 +2,9 @@ import React from "react";
 import "./IncomingRequest.css";
 import { Icon } from "@iconify/react";
 import { requestAskedType } from "../Types/RequestAskedType";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { userById } from "../Redux/reducers/userById";
 
 type Props = {
   help: requestAskedType;
@@ -9,6 +12,13 @@ type Props = {
 
 export const IncomingRequest = (props: Props) => {
   const { help } = props;
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const OfferHelp = () => {
+    navigate(`/call/${help.roomId}`);
+  };
 
   return (
     <div className="IncomingRequest-wrapper">
@@ -16,6 +26,10 @@ export const IncomingRequest = (props: Props) => {
         <div className="profile-info-container">
           <div className="picture-container">
             <img
+              onClick={() => {
+                dispatch(userById(help.user));
+                navigate(`/profile/${help.user?.uid}`);
+              }}
               className="profile-pic"
               src={help.user?.profilePic}
               alt="profile pic"
@@ -39,7 +53,9 @@ export const IncomingRequest = (props: Props) => {
           </div>
         </div>
         <div className="buttons-container">
-          <button className="accept-button">Accept</button>
+          <button className="accept-button" onClick={OfferHelp}>
+            Accept
+          </button>
           <button className="decline-button">Decline</button>
         </div>
       </div>
