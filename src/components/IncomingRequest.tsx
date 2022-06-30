@@ -17,14 +17,14 @@ export const IncomingRequest = (props: Props) => {
           <div className="picture-container">
             <img
               className="profile-pic"
-              // src={help.user.profilePic}
+              src={help.user?.profilePic}
               alt="profile pic"
             ></img>
           </div>
           <div className="info">
             <div className="subject">{help.subject}</div>
             <div className="user">
-              {/* by {help.user.firstName} {help.user.lastName}{" "} */}
+              by {help.user?.firstName} {help.user?.lastName}{" "}
             </div>
             <div className="stats-container">
               <span className="avg-tip">
