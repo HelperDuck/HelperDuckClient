@@ -21,10 +21,23 @@
 }
 
 .profile-header {
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
   font-family: "Baloo Bhai 2", cursive;
   font-weight: 800;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.request-btn {
+  background-color: black;
+  color: white;
+  height: 12vh;
+  width: 15vw;
 }
 
 #full-name {

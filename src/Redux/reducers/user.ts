@@ -32,12 +32,13 @@ export const userSlice = createSlice({
       state.value = { ...state.value, ...action.payload.user };
     },
     changeProfilePic: (state, action) => {
-      state.value.profilePic = action.payload;
+      state.value.profilePic = action.payload.url;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { loginProfile, updateUserInfo } = userSlice.actions;
+export const { loginProfile, updateUserInfo, changeProfilePic } =
+  userSlice.actions;
 
 export default userSlice.reducer;

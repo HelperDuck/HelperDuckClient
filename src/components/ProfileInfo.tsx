@@ -1,76 +1,98 @@
 import React from "react";
 import { Icon } from "@iconify/react";
-//TODO: Siebe to create connection
-// import { storage } from "../Services/firebase";
-// import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-// import { v4 } from "uuid";
+import { storage } from "../services/firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
 import "../Pages/ProfilePage.css";
 import { ProfilePerformanceInfo } from "../components/ProfilePerformanceInfo";
-import { useSelector } from "react-redux";
-// import { updateUserInfo } from "../Redux/reducers/user";
+import { useSelector, useDispatch } from "react-redux";
+import { changeProfilePic } from "../Redux/reducers/user";
+import { editUserProfile } from "../services/profile";
 
 //TODO: check the correct type
 //TODO: check how to update the profile pic
 
 export const ProfileInfo = () => {
   const user = useSelector((state: any) => state.user.value);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const uploadFile = (profilePic: File) => {
-  //   if (profilePic == null) return;
-  //   const imageRef = ref(storage, `profilePics/${profilePic.name + v4()}`);
-  //   uploadBytes(
-  //     imageRef,
-  //     profilePic as unknown as Blob | Uint8Array | ArrayBuffer
-  //   ).then((snapshot) => {
-  //     getDownloadURL(snapshot.ref).then((url) => {
-  //       dispatch(updateUserInfo({ url }));
-  //     });
-  //   });
-  // };
+  const uploadFile = (profilePic: File) => {
+    if (profilePic == null) return;
+
+    //store image in firebase
+    const imageRef = ref(storage, `profilePics/${profilePic.name + v4()}`);
+    uploadBytes(
+      imageRef,
+      profilePic as unknown as Blob | Uint8Array | ArrayBuffer
+    ).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        dispatch(changeProfilePic({ url }));
+
+        const editedImg = {
+          uid: user.uid,
+          profilePic: url,
+        };
+        postUpdateUser(editedImg);
+      });
+    });
+  };
+
+  const postUpdateUser = async (user: any) => {
+    try {
+      const updateUser = await editUserProfile(user);
+      console.log(updateUser, "updateUser");
+    } catch (err) {
+      console.error(err, "Error in updating user");
+    }
+  };
 
   return (
     <div className="profile-display">
       <div className="profile-header">
-        <div className="profile-image">
-          <label className="label-upload" htmlFor="img-input">
-            <Icon
-              className="icon-upload"
-              icon="clarity:edit-solid"
-              color="white"
-              height={30}
-              width={30}
-            />
-            <input
-              className="upload-image"
-              id="img-input"
-              type="file"
-              accept="image/*"
-              name="image"
-              // onChange={(e?) => {
-              //   let file = (e!.target as HTMLInputElement)!.files![0];
-              //   uploadFile(file);
-              // }}
-            ></input>
-            {user.profilePic ? (
-              <img
-                className="img-input"
-                src={user.profilePic}
-                alt="profilePic"
-                style={{ maxHeight: "188px", maxWidth: "171px" }}
-              />
-            ) : (
+        <div className="header-wrapper">
+          <div className="profile-image">
+            <label className="label-upload" htmlFor="img-input">
               <Icon
-                icon="ooui:user-avatar-outline"
-                height={100}
-                width={90}
-                id="icon-avatar"
+                className="icon-upload"
+                icon="clarity:edit-solid"
+                color="white"
+                height={30}
+                width={30}
               />
-            )}
-          </label>
+              <input
+                className="upload-image"
+                id="img-input"
+                type="file"
+                accept="image/*"
+                name="image"
+                onChange={(e?) => {
+                  let file = (e!.target as HTMLInputElement)!.files![0];
+                  uploadFile(file);
+                }}
+              ></input>
+              {user.profilePic ? (
+                <img
+                  className="img-input"
+                  src={user.profilePic}
+                  alt="profilePic"
+                  style={{ maxHeight: "188px", maxWidth: "171px" }}
+                />
+              ) : (
+                <Icon
+                  icon="ooui:user-avatar-outline"
+                  height={100}
+                  width={90}
+                  id="icon-avatar"
+                />
+              )}
+            </label>
+          </div>
+
+          <div id="full-name">{`${user.firstName} ${user.lastName}`}</div>
         </div>
-        <div id="full-name">{`${user.firstName} ${user.lastName}`}</div>
+        <button className="request-btn">Create a request</button>
       </div>
+
       <div id="aboutme">{user.userBio}</div>
       <div className="profile-expertise">
         <div className="profile-boxes-wrapper">
