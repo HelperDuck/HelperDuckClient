@@ -3,14 +3,14 @@ import { Icon } from "@iconify/react";
 import "./NavBar.css";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../services/authentication";
+import { useDispatch, useSelector } from "react-redux";
+import { userById } from "../Redux/reducers/userById";
 type Props = {};
 
 export const NavBar = (props: Props) => {
   const navigate = useNavigate();
-  const logoutAndRedirect = () => {
-    logout();
-    navigate("/");
-  };
+  const user = useSelector((state: any) => state.user.value);
+  const dispatch = useDispatch();
 
   return (
     <div className="navBar">
@@ -25,7 +25,7 @@ export const NavBar = (props: Props) => {
             width={70}
           />
         </li>
-        <li onClick={() => navigate("/dashboard2")}>
+        <li onClick={() => navigate("/dashboard")}>
           <Icon
             icon="codicon:home"
             color="white"
@@ -34,7 +34,14 @@ export const NavBar = (props: Props) => {
             className="icons"
           />
         </li>
-        <li>
+        <li
+          onClick={() => {
+            dispatch(userById(user));
+            setTimeout(() => {
+              navigate(`/profile/${user.uid}`);
+            }, 500);
+          }}
+        >
           <Icon
             icon="ooui:user-avatar-outline"
             color="white"
@@ -43,7 +50,7 @@ export const NavBar = (props: Props) => {
             className="icons"
           />
         </li>
-        <li>
+        <li onClick={() => navigate("/newrequest")}>
           <Icon
             icon="ic:outline-video-call"
             color="white"
@@ -55,7 +62,7 @@ export const NavBar = (props: Props) => {
         </li>
         <li>
           <Icon
-            onClick={logoutAndRedirect}
+            onClick={logout}
             icon="uil:signout"
             color="white"
             height={25}

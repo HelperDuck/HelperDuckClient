@@ -4,7 +4,7 @@ import AllUsersReducer from "./reducers/AllUsers"
 import languagesReducer from './reducers/languages'
 import technologiesReducer from './reducers/technologies'
 import helpRequestReducer from './reducers/helpRequest'
-
+import userByIdReducer from "./reducers/userById";
 export const store = configureStore({
   reducer: {
     user: usersReducer,   //user that is logged in
@@ -12,7 +12,8 @@ export const store = configureStore({
     languages: languagesReducer,
     technologies: technologiesReducer,
     helpRequests: helpRequestReducer,
-  
+    userById: userByIdReducer,
+   
   },
 })
 
