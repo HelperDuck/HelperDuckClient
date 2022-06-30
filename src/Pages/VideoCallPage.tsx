@@ -48,7 +48,7 @@ export const VideoCallPage = (props: Props) => {
   const peersRef = useRef<any[]>([]); //this will be used to track and handle the RTC Connections //TODO: check type works
   const userStream = useRef<MediaStream>();
   const [screening, setScreening] = useState<string>("");
-  console.log(screening) //TODO: erase this
+  console.log(screening); //TODO: erase this
   const currentPath = useLocation();
   const roomId: string | undefined = currentPath.pathname.split("/").pop();
   console.log("roomId:", roomId);
@@ -92,7 +92,6 @@ export const VideoCallPage = (props: Props) => {
 
         if (socketRef) socketRef.current.emit("joiningRoom", roomId);
 
-       
         //TODO: attention to the next line --> the if statement is being suggested by TypeScript. Consider ignoring it if needed.
         if (socketRef.current)
           socketRef.current.on(
@@ -120,14 +119,19 @@ export const VideoCallPage = (props: Props) => {
                   peer,
                 });
               });
-              console.log("peersArr before setting setPeers - used for rendering: ", peersArr);
+              console.log(
+                "peersArr before setting setPeers - used for rendering: ",
+                peersArr
+              );
               setPeers(peersArr);
             }
           );
 
         //TODO: this if statement is preventing unresolved promises -> get back to it if needed
         if (socketRef.current)
-          socketRef.current.on("userHasJoined", (data: { signal: any; callerId: string }) => {
+          socketRef.current.on(
+            "userHasJoined",
+            (data: { signal: any; callerId: string }) => {
               try {
                 const peer = addNewPeer(data.signal, data.callerId, stream);
 
@@ -151,7 +155,9 @@ export const VideoCallPage = (props: Props) => {
 
         if (socketRef.current)
           //TODO: this if statement is preventing unresolved promises -> get back to it if needed
-          socketRef.current.on("serverReceivedTheReturnedSignal", (data: { id: any; signal: any }) => {
+          socketRef.current.on(
+            "serverReceivedTheReturnedSignal",
+            (data: { id: any; signal: any }) => {
               const targetPeer = peersRef.current.find(
                 (target) => target.peerId === data.id
               );
@@ -219,7 +225,11 @@ export const VideoCallPage = (props: Props) => {
     return peer;
   };
 
-  const addNewPeer = (newSignalIncoming: string | Peer.SignalData, callerId: string, stream: MediaStream) => {
+  const addNewPeer = (
+    newSignalIncoming: string | Peer.SignalData,
+    callerId: string,
+    stream: MediaStream
+  ) => {
     const peer = new Peer({
       initiator: false,
       trickle: false,
@@ -273,7 +283,7 @@ export const VideoCallPage = (props: Props) => {
   const exitCall = () => {
     if (userStream.current)
       userStream.current.getVideoTracks()[0].enabled = false;
-    window.location.replace("/dashboard2");
+    window.location.replace("/dashboard");
   };
 
   const streamToggler = (stream: MediaStream) => {
@@ -295,10 +305,8 @@ export const VideoCallPage = (props: Props) => {
         //TODO: emit socket event, 'toggling', mediaStream
         //TODO: recieve the socket event on('toggling', invoke streamToggler function)
         streamToggler(mediaStream);
-       
 
         const screenSharingTrack = mediaStream.getTracks()[0]; //GET SCREEN TRACK
-      
 
         if (socketRef.current && screenSharingTrack) {
           console.log(

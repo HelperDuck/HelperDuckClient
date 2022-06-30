@@ -133,6 +133,14 @@ function App() {
               </Protected>
             }
           />
+          <Route
+            path="/profile/:uid"
+            element={
+              <Protected isAuthUser={isAuthUser}>
+                <ProfilePage />
+              </Protected>
+            }
+          />
         </Routes>
       </Router>
     </div>

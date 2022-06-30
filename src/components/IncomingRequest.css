@@ -10,7 +10,7 @@
   font-family: "Roboto", sans-serif;
   margin-right: 1%;
   min-height: 250px;
-  min-width: 60vh;
+  min-width: 90%;
 }
 
 .info-container {
@@ -36,6 +36,9 @@
 
 .picture-container {
   margin: 0 15px 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile-pic {

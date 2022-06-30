@@ -3,11 +3,12 @@ import { Icon } from "@iconify/react";
 import "./NavBar.css";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../services/authentication";
+import { useSelector } from "react-redux";
 type Props = {};
 
 export const NavBar = (props: Props) => {
   const navigate = useNavigate();
-
+  const user = useSelector((state: any) => state.user.value);
   return (
     <div className="navBar">
       <div className="navBar-icons">
@@ -30,7 +31,7 @@ export const NavBar = (props: Props) => {
             className="icons"
           />
         </li>
-        <li onClick={() => navigate("/profile")}>
+        <li onClick={() => navigate(`/profile/${user.uid}`)}>
           <Icon
             icon="ooui:user-avatar-outline"
             color="white"

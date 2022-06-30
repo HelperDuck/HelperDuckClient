@@ -47,6 +47,7 @@ export const CreateRequestPage = (props: Props) => {
         <div className="request-container">
           <div className="angle-brack1">
             <img
+              className="brack"
               src="https://res.cloudinary.com/brnl/image/upload/v1656589231/HelperDuck/bracket2-removebg-preview_llbvl7.png"
               alt="brack"
             />
@@ -123,6 +124,7 @@ export const CreateRequestPage = (props: Props) => {
           <div className="angle-brack">
             {" "}
             <img
+              className="brack"
               src="https://res.cloudinary.com/brnl/image/upload/v1656589231/HelperDuck/bracket1-removebg-preview_afsmdv.png"
               alt="brack"
             />

@@ -1,12 +1,13 @@
 .request-page-container {
   background-color: white;
-  /* background-color: -webkit-linear-gradient(to right, #232526, #414345);
+  background-color: -webkit-linear-gradient(to right, #232526, #414345);
   background-color: linear-gradient(to right, #232526, #414345);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: left 100% top 25%;
-  background-image: url("https://res.cloudinary.com/brnl/image/upload/v1656588390/brnl/wave-haikei_clmmil.svg"); */
+  background-image: url("https://res.cloudinary.com/brnl/image/upload/v1656587694/HelperDuck/stacked-waves-haikei_1_yoqghs.svg");
   padding: 1%;
+  height: 100vh;
 }
 
 .request-container {
@@ -16,6 +17,10 @@
   justify-content: center;
   padding: 1%;
 
+}
+
+.brack {
+  width: 60%;
 }
 
 .angle-brack {
