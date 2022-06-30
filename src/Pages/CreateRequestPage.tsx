@@ -3,63 +3,35 @@ import "./CreateRequestPage.css";
 import Select from "react-select";
 import { v4 as uuid } from "uuid";
 import { useSelector } from "react-redux";
-// import { requestAskedType } from "../Types/RequestAskedType";
+import { requestAskedType } from "../Types/RequestAskedType";
 import { postRequest } from "../services/request";
-// import { TechnologiesSlice } from "../Redux/reducers/technologies";
-// import { createRequest } from "../Redux/reducers/helpRequest"
-
-//Subject // Description // Code sandbox link // Tech stack
 
 type Props = {};
 
-
-
 export const CreateRequestPage = (props: Props) => {
-  // const [newRequest, setNewRequest] = useState<requestAskedType>();
   const technologies = useSelector((state: any) => state.technologies.value);
-  // const dispatch = useDispatch()
-  console.log(technologies, 'techSTack')
-
+  const user = useSelector((state: any) => state.user.value);
+  
   const newRequestHandler = async (e: any) => {
     e.preventDefault();
     try {
-      const id = uuid();
-      // const techs: any = [];
-
-      // const techno = e.target.technologies;
-      // console.log(techno, "techno");
-
-      // techno.forEach((item: any) => {
-      //   techs.push({ technology: { name: item.value } });
-      // });
-      
+      const roomId = uuid();     
       const techs: { technology: { name: string } }[] = [];
       e.target.programmingLanguages.forEach((item: any) =>
-      techs.push({ technology: { name: item.value } })
-      );
+      techs.push({ technology: { name: item.value } }));
 
-      // console.log(techs, "techs");
-
-      const newRequest = {
-        userId: 3,
+      const newRequest: requestAskedType = {
+        userId: user.id,
         subject: e.target.subject.value,
         description: e.target.description.value,
         linkToSandbox: e.target.linkToSandbox.value,
         technologies: techs,
-        roomId: id,
+        roomId: roomId,
       };
-      //   [{technology : { 
-      //     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-      //     id: 46,
-      //     name: "Express"
-      //  }}],
-
-      console.log(newRequest.technologies, "newRequest at newRequestHandler");
-
-      await postRequest(newRequest) && console.log('success');
+    
+      await postRequest(newRequest);
       e.target.reset();
-     
-      // dispatch(createRequest( newRequest ))
+      
     } catch (err) {
       console.log('Error posting newRequest at CreateRequestPage', err);
     }
