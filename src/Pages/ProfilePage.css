@@ -187,3 +187,14 @@ input[type="file"] {
   justify-content: space-between;
   padding-bottom: 5px;
 }
+
+.btn-submit-edit {
+  border: none;
+  background-color: transparent;
+  font-family: "Baloo Bhai 2", cursive;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 5px;
+}

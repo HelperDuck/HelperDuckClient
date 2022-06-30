@@ -11,9 +11,19 @@ import { editUserProfile } from "../services/profile";
 
 //TODO: check the correct type
 
-export const ProfileInfo = () => {
+type Props = {
+  isInEditMode: boolean;
+  setIsInEditMode: any;
+};
+
+export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const dispatch = useDispatch();
+
+  const toggleEditMode = (e: any) => {
+    e.preventDefault();
+    setIsInEditMode(!isInEditMode);
+  };
 
   const uploadFile = (profilePic: File) => {
     if (profilePic == null) return;
@@ -47,6 +57,12 @@ export const ProfileInfo = () => {
 
   return (
     <div className="profile-display">
+      <div className="form-header">
+        <button className="btn-edit" onClick={toggleEditMode}>
+          Edit
+          <Icon icon="ant-design:edit-filled" />
+        </button>
+      </div>
       <div className="header-wrapper">
         <div className="profile-header">
           <div className="profile-image">

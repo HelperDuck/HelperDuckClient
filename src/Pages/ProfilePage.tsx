@@ -13,24 +13,16 @@ import "./ProfilePage.css";
 export const ProfilePage = () => {
   const [isInEditMode, setIsInEditMode] = useState<any>(true);
 
-  const toggleEditMode = (e: any) => {
-    e.preventDefault();
-    setIsInEditMode(!isInEditMode);
-  };
-
   return (
     <div className="profile-wrapper">
       <NavBar></NavBar>
       <div className="profile-container">
         <div className="form-container">
-          <div className="form-header">
-            <button className="btn-edit" onClick={toggleEditMode}>
-              Edit
-              <Icon icon="ant-design:edit-filled" />
-            </button>
-          </div>
           {isInEditMode ? (
-            <ProfileInfo></ProfileInfo>
+            <ProfileInfo
+              isInEditMode={isInEditMode}
+              setIsInEditMode={setIsInEditMode}
+            ></ProfileInfo>
           ) : (
             <ProfileForm setIsInEditMode={setIsInEditMode}></ProfileForm>
           )}
