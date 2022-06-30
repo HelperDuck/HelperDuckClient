@@ -80,6 +80,7 @@
 .box-info {
   margin-left: 5%;
   position: relative;
+  font-family: "Roboto", sans-serif;
 }
 
 .icons-box-profile-page {
@@ -128,4 +129,23 @@
 #speakinglanguage {
   font-family: "Roboto", sans-serif;
   word-wrap: break-word;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.profile-image {
+  display: flex;
+  position: relative;
+}
+
+.icon-upload {
+  position: absolute;
+  left: 78%;
+  top: 75%;
+}
+
+.img-input {
+  border-radius: 20px;
 }

@@ -1,39 +1,57 @@
 import React from "react";
 import { Icon } from "@iconify/react";
+//TODO: Siebe to create connection
+// import { storage } from "../Services/firebase";
+// import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+// import { v4 } from "uuid";
 import "../Pages/ProfilePage.css";
 import { ProfilePerformanceInfo } from "../components/ProfilePerformanceInfo";
 import { useSelector } from "react-redux";
+// import { updateUserInfo } from "../Redux/reducers/user";
 
 //TODO: check the correct type
 //TODO: check how to update the profile pic
 
 export const ProfileInfo = () => {
   const user = useSelector((state: any) => state.user.value);
-  console.log(user);
-  // const [fileInput, setFileInput] = useState("");
+  // const dispatch = useDispatch();
 
-  //TODO: use this once redux-toolkit is set up
-  //const dispatch = useDispatch();
-
-  // const handleFileInputChange = (e: any) => {
-  //   setFileInput(URL.createObjectURL(e.target.files[0]));
+  // const uploadFile = (profilePic: File) => {
+  //   if (profilePic == null) return;
+  //   const imageRef = ref(storage, `profilePics/${profilePic.name + v4()}`);
+  //   uploadBytes(
+  //     imageRef,
+  //     profilePic as unknown as Blob | Uint8Array | ArrayBuffer
+  //   ).then((snapshot) => {
+  //     getDownloadURL(snapshot.ref).then((url) => {
+  //       dispatch(updateUserInfo({ url }));
+  //     });
+  //   });
   // };
 
   return (
     <div className="profile-display">
       <div className="profile-header">
-        <div id="profile-image">
-          <button
-            onClick={() => (
-              <input
-                className="upload-image"
-                id="img-input"
-                type="file"
-                accept="image/*"
-                // onChange={handleFileInputChange}
-              ></input>
-            )}
-          >
+        <div className="profile-image">
+          <label className="label-upload" htmlFor="img-input">
+            <Icon
+              className="icon-upload"
+              icon="clarity:edit-solid"
+              color="white"
+              height={30}
+              width={30}
+            />
+            <input
+              className="upload-image"
+              id="img-input"
+              type="file"
+              accept="image/*"
+              name="image"
+              // onChange={(e?) => {
+              //   let file = (e!.target as HTMLInputElement)!.files![0];
+              //   uploadFile(file);
+              // }}
+            ></input>
             {user.profilePic ? (
               <img
                 className="img-input"
@@ -49,7 +67,7 @@ export const ProfileInfo = () => {
                 id="icon-avatar"
               />
             )}
-          </button>
+          </label>
         </div>
         <div id="full-name">{`${user.firstName} ${user.lastName}`}</div>
       </div>
