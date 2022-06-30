@@ -56,9 +56,11 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
   return (
     <>
       <form className="profile-form" onSubmit={formSubmitHandler}>
-        <button type="submit">
+        <button className="btn-submit-edit" type="submit">
+          Update
           <Icon icon="bi:check-lg" />
         </button>
+
         <div className="profile-header">
           {user.profilePic ? (
             <img
