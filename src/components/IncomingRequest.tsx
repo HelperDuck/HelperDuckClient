@@ -15,7 +15,6 @@ export const IncomingRequest = (props: Props) => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  // const userById = useSelector((state: any) => state.userById.value);
 
   const OfferHelp = () => {
     navigate(`/call/${help.roomId}`);
@@ -28,7 +27,7 @@ export const IncomingRequest = (props: Props) => {
           <div className="picture-container">
             <img
               onClick={() => {
-                dispatch(userById(help.user?.uid));
+                dispatch(userById(help.user));
                 navigate(`/profile/${help.user?.uid}`);
               }}
               className="profile-pic"

@@ -3,12 +3,15 @@ import { Icon } from "@iconify/react";
 import "./NavBar.css";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../services/authentication";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { userById } from "../Redux/reducers/userById";
 type Props = {};
 
 export const NavBar = (props: Props) => {
   const navigate = useNavigate();
   const user = useSelector((state: any) => state.user.value);
+  const dispatch = useDispatch();
+
   return (
     <div className="navBar">
       <div className="navBar-icons">
@@ -31,7 +34,14 @@ export const NavBar = (props: Props) => {
             className="icons"
           />
         </li>
-        <li onClick={() => navigate(`/profile/${user.uid}`)}>
+        <li
+          onClick={() => {
+            dispatch(userById(user));
+            setTimeout(() => {
+              navigate(`/profile/${user.uid}`);
+            }, 500);
+          }}
+        >
           <Icon
             icon="ooui:user-avatar-outline"
             color="white"

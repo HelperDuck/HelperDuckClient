@@ -22,9 +22,12 @@ export const userbyIdSlice = createSlice({
   name: "userById",
   initialState: { value: initialState },
   reducers: {
-      userById: (state: { value: any }, action: { payload: any }) => {
-      state.value = { ...state.value, ...action.payload };
-    },
+      userById:(
+        state: { value: any },
+        action: { payload: any }
+      ) => {
+        state.value = { ...state.value, ...action.payload };
+      },
   },
 });
 
