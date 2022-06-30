@@ -6,7 +6,7 @@ import { Icon } from "@iconify/react";
 // import { v4 } from "uuid";
 import "../Pages/ProfilePage.css";
 import { ProfilePerformanceInfo } from "../components/ProfilePerformanceInfo";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 // import { updateUserInfo } from "../Redux/reducers/user";
 
 //TODO: check the correct type
