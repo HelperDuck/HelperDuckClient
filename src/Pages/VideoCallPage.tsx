@@ -5,10 +5,10 @@ import io from "socket.io-client";
 import { WebRTCUser } from "../Types/WebRTCUser";
 import "./VideoCallPage.css";
 
-// const LOCAL_SERVER = "http://localhost:3002/";
+const LOCAL_SERVER = "http://localhost:3002/";
 // const DEV_SERVER = 'https://helperduck-dev.herokuapp.com/';
-const PROD_SERVER = 'https://helperduck.herokuapp.com/';
-const SOCKET_SERVER_URL = PROD_SERVER;
+// const PROD_SERVER = 'https://helperduck.herokuapp.com/';
+const SOCKET_SERVER_URL = LOCAL_SERVER;
 
 //TODO: Mark to Delete
 // type VideoProps = {
