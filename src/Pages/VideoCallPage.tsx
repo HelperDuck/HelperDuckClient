@@ -316,8 +316,8 @@ export const VideoCallPage = (props: Props) => {
           // console.log(userStream.current, "userStream current BEFORE");
 
           // //Replace Cam Stream by Screen Stream
-          // userStream.current.removeTrack(videoTrack);
-          // userStream.current.addTrack(screenSharingTrack);
+          userStream.current.removeTrack(videoTrack);
+          userStream.current.addTrack(screenSharingTrack);
 
           // console.log(userStream.current, "userStream current AFTER");
 
