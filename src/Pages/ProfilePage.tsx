@@ -7,12 +7,8 @@ import { NavBar } from "../components/NavBar";
 import "./ProfilePage.css";
 
 //TODO: make update image profile work
-//TODO: check boolean type in attribute value
-//TODO: define type for event
-//TODO: define type for stackInput, languageInput and socialMedia
-//TODO: replace mock user to real database
+//TODO: review types any
 //TODO: change permission in button edit to only if is your profile
-//TODO: make button to change picture to work
 
 export const ProfilePage = () => {
   const [isInEditMode, setIsInEditMode] = useState<any>(true);
@@ -28,7 +24,7 @@ export const ProfilePage = () => {
       <div className="profile-container">
         <div className="form-container">
           <div className="form-header">
-            <button onClick={toggleEditMode}>
+            <button className="btn-edit" onClick={toggleEditMode}>
               Edit
               <Icon icon="ant-design:edit-filled" />
             </button>

@@ -10,7 +10,6 @@ import { changeProfilePic } from "../Redux/reducers/user";
 import { editUserProfile } from "../services/profile";
 
 //TODO: check the correct type
-//TODO: check how to update the profile pic
 
 export const ProfileInfo = () => {
   const user = useSelector((state: any) => state.user.value);
@@ -19,7 +18,7 @@ export const ProfileInfo = () => {
   const uploadFile = (profilePic: File) => {
     if (profilePic == null) return;
 
-    //store image in firebase
+    //store image in firebase and display on FE
     const imageRef = ref(storage, `profilePics/${profilePic.name + v4()}`);
     uploadBytes(
       imageRef,
@@ -27,7 +26,7 @@ export const ProfileInfo = () => {
     ).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
         dispatch(changeProfilePic({ url }));
-
+        //----------------------
         const editedImg = {
           uid: user.uid,
           profilePic: url,
@@ -48,16 +47,14 @@ export const ProfileInfo = () => {
 
   return (
     <div className="profile-display">
-      <div className="profile-header">
-        <div className="header-wrapper">
+      <div className="header-wrapper">
+        <div className="profile-header">
           <div className="profile-image">
             <label className="label-upload" htmlFor="img-input">
               <Icon
                 className="icon-upload"
                 icon="clarity:edit-solid"
                 color="white"
-                height={30}
-                width={30}
               />
               <input
                 className="upload-image"
@@ -89,10 +86,9 @@ export const ProfileInfo = () => {
           </div>
 
           <div id="full-name">{`${user.firstName} ${user.lastName}`}</div>
+          <button className="request-btn">Create a request</button>
         </div>
-        <button className="request-btn">Create a request</button>
       </div>
-
       <div id="aboutme">{user.userBio}</div>
       <div className="profile-expertise">
         <div className="profile-boxes-wrapper">
