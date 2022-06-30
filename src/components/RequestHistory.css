@@ -10,7 +10,7 @@
 
 .past-request-carrousel {
   max-height: 23vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .subject-user-container {
@@ -41,7 +41,7 @@
   min-height: 105px;
   padding: 5px 10px;
   flex-wrap: wrap;
-  margin: 5px;
+  margin: 0 1.5% 1.5% 1.5%;
 }
 
 .past-request div {

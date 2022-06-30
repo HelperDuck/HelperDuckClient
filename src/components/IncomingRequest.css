@@ -9,7 +9,7 @@
   border-radius: 14px;
   font-family: "Roboto", sans-serif;
   margin-right: 1%;
-  min-height: 255px;
+  min-height: 250px;
   min-width: 60vh;
 }
 
@@ -76,7 +76,7 @@
 
   max-height: 100px;
   word-wrap: break-word;
-  overflow-y: scroll;
+  overflow-y: auto;
 
 }
 
