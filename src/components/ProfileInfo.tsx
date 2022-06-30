@@ -7,7 +7,7 @@ import { v4 } from "uuid";
 import "../Pages/ProfilePage.css";
 import { ProfilePerformanceInfo } from "../components/ProfilePerformanceInfo";
 import { useSelector, useDispatch } from "react-redux";
-import { changeProfilePic } from "../Redux/reducers/user";
+import { changeProfilePic } from "../Redux/reducers/userById";
 import { editUserProfile } from "../services/profile";
 
 //TODO: check the correct type
@@ -21,6 +21,8 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const otherUser = useSelector((state: any) => state.userById.value);
 
   const toggleEditMode = (e: any) => {
     e.preventDefault();
@@ -60,10 +62,14 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
   return (
     <div className="profile-display">
       <div className="form-header">
-        <button className="btn-edit" onClick={toggleEditMode}>
-          Edit
-          <Icon icon="ant-design:edit-filled" />
-        </button>
+        {user.uid === otherUser.uid ? (
+          <button className="btn-edit" onClick={toggleEditMode}>
+            Edit
+            <Icon icon="ant-design:edit-filled" />
+          </button>
+        ) : (
+          <></>
+        )}
       </div>
       <div className="header-wrapper">
         <div className="profile-header">
@@ -85,10 +91,10 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
                   uploadFile(file);
                 }}
               ></input>
-              {user.profilePic ? (
+              {otherUser.profilePic ? (
                 <img
                   className="img-input"
-                  src={user.profilePic}
+                  src={otherUser.profilePic}
                   alt="profilePic"
                   style={{ maxHeight: "188px", maxWidth: "171px" }}
                 />
@@ -102,7 +108,7 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
               )}
             </label>
           </div>
-          <div id="full-name">{`${user.firstName} ${user.lastName}`}</div>
+          <div id="full-name">{`${otherUser.firstName} ${otherUser.lastName}`}</div>
           <button
             className="request-btn"
             onClick={() => navigate("/newRequest")}
@@ -111,7 +117,7 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
           </button>
         </div>
       </div>
-      <div id="aboutme">{user.userBio}</div>
+      <div id="aboutme">{otherUser.userBio}</div>
       <div className="profile-expertise">
         <div className="profile-boxes-wrapper">
           <div className="profile-boxes" id="programming-box">
@@ -131,7 +137,7 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
                 >
                   Programming languages
                 </label>
-                {user.technologies.map((item: any) => {
+                {otherUser.technologies.map((item: any) => {
                   return (
                     <div id="programminglanguage">{item.technology.name}</div>
                   );
@@ -156,7 +162,7 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
                 >
                   Speaking languages
                 </label>
-                {user.languages.map((item: any) => {
+                {otherUser.languages.map((item: any) => {
                   return <div id="speakinglanguage">{item.language.name}</div>;
                 })}
               </div>
@@ -176,7 +182,7 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
                 <label className="label-profileForm" htmlFor="socialmedia">
                   Social media
                 </label>
-                <div id="socialmedia">{user.gitHubProfile}</div>
+                <div id="socialmedia">{otherUser.gitHubProfile}</div>
               </div>
             </div>
           </div>

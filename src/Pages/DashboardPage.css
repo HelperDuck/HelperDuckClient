@@ -10,12 +10,12 @@
 
 .second-half-container {
   width: 50%;
-  padding: 2%;
+  padding: 1% 2%;
 }
 
 .first-half-container {
   width: 50%;
-  padding: 2%;
+  padding: 1% 2%;
 }
 
 .bottom-container {
@@ -44,13 +44,13 @@
   background: #F5F5F7;
 
   border-radius: 14px;
-  min-height: 160px;
+  min-height: 15vh;
   flex-wrap: wrap;
 
 }
 
 .hello {
-  font-size: 36px;
+  font-size: 2.6rem;
   font-family: "Baloo Bhai";
   word-wrap: break-word;
 
@@ -58,7 +58,7 @@
 }
 
 .hello-msg {
-  font-size: 16px;
+  font-size: 1rem;
   font-family: "Roboto"
 }
 
@@ -67,7 +67,7 @@
   position: absolute;
   right: -50px;
   top: -100px;
-  width: 160px;
+  width: 8.2vw;
 
 }
 
