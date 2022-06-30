@@ -3,71 +3,38 @@ import "./CreateRequestPage.css";
 import Select from "react-select";
 import { v4 as uuid } from "uuid";
 import { useSelector } from "react-redux";
-// import { requestAskedType } from "../Types/RequestAskedType";
+import { requestAskedType } from "../Types/RequestAskedType";
 import { postRequest } from "../services/request";
-// import { TechnologiesSlice } from "../Redux/reducers/technologies";
-// import { createRequest } from "../Redux/reducers/helpRequest"
-
-//Subject // Description // Code sandbox link // Tech stack
 
 type Props = {};
 
-//TODO: replace with real data
-// const technologies = [
-//   { value: "React", label: "React" },
-//   { value: "Redux", label: "Redux" },
-//   { value: "Angular", label: "Angular" },
-// ];
-
 export const CreateRequestPage = (props: Props) => {
-  // const [newRequest, setNewRequest] = useState<requestAskedType>();
-  // const [subject, setSubject] = useState<string>('');
-  // const [description, setDescription] = useState<string>('');
-  // const [linkToSandBox, setLinkToSandBox] = useState<string>('');
-  // const [technologies, setTechnologies] = useState<string[]>([]);
   const technologies = useSelector((state: any) => state.technologies.value);
-  // const dispatch = useDispatch()
-
+  const user = useSelector((state: any) => state.user.value);
+  
   const newRequestHandler = async (e: any) => {
     e.preventDefault();
     try {
-      const id = uuid();
-      // const techs: any = [];
-
-      // const techno = e.target.technologies;
-      // console.log(techno, "techno");
-
-      // techno.forEach((item: any) => {
-      //   techs.push({ technology: { name: item.value } });
-      // });
+      const roomId = uuid();     
+      const techs: { technology: { name: string } }[] = [];
+      e.target.programmingLanguages.forEach((item: any) =>
+      techs.push({ technology: { name: item.value } }));
       
-      // const techs: technology: { name: any } string[] = [];
-      // e.target.technologies.forEach((item: any) =>
-      // techs.push({ technology: { name: item.value } })
-      // );
-
-      // console.log(techs, "techs");
-
-      const newRequest = {
-        userId: 1,
+      const newRequest: requestAskedType = {
+        userId: user.id,
         subject: e.target.subject.value,
         description: e.target.description.value,
         linkToSandbox: e.target.linkToSandbox.value,
-        technologies: [{technology : { 
-          icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-          id: 46,
-          name: "Express"
-       }}],
-        roomId: id,
+        technologies: techs,
+        roomId: roomId,
       };
-
-      console.log(newRequest, "newRequest at newRequestHandler");
-
+    
       await postRequest(newRequest);
       e.target.reset();
-      // dispatch(createRequest( newRequest ))
+      window.location.replace("/dashboard2");
+      
     } catch (err) {
-      console.log(err);
+      console.log('Error posting newRequest at CreateRequestPage', err);
     }
   };
 
@@ -124,7 +91,7 @@ export const CreateRequestPage = (props: Props) => {
                   })}
                   className="input-request"
                   id="techStack-input"
-                  name="technologies"
+                  name="programmingLanguages"
                   isMulti
                 ></Select>
               </div>
