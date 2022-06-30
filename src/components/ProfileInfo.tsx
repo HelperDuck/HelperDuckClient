@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { Icon } from "@iconify/react";
 //TODO: Siebe to create connection
 // import { storage } from "../Services/firebase";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { v4 } from "uuid";
+// import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+// import { v4 } from "uuid";
 import "../Pages/ProfilePage.css";
 import { ProfilePerformanceInfo } from "../components/ProfilePerformanceInfo";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUserInfo } from "../Redux/reducers/user";
+// import { updateUserInfo } from "../Redux/reducers/user";
 
 //TODO: check the correct type
 //TODO: check how to update the profile pic
 
 export const ProfileInfo = () => {
   const user = useSelector((state: any) => state.user.value);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // const uploadFile = (profilePic: File) => {
   //   if (profilePic == null) return;
