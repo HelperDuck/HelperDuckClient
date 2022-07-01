@@ -1,6 +1,7 @@
 import { Icon } from "@iconify/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { deleteRequest } from "../services/request";
 import { requestAskedType } from "../Types/RequestAskedType";
 import "./CreatedByMe.css";
 
@@ -14,6 +15,10 @@ export const CreatedByMe = (props: Props) => {
 
   const OfferHelp = () => {
     navigate(`/call/${help.roomId}`);
+  };
+
+  const handleDelete = (help: any) => {
+    deleteRequest(help.id);
   };
 
   return (
@@ -32,7 +37,12 @@ export const CreatedByMe = (props: Props) => {
         </span>
       </div>
       <div className="delete-request-container">
-        <span className="delete-request">
+        <span
+          onClick={() => {
+            handleDelete(help);
+          }}
+          className="delete-request"
+        >
           <Icon icon="clarity:trash-solid" width="20" height="20" />
           {/* //TODO add delete Help Request function */}
         </span>

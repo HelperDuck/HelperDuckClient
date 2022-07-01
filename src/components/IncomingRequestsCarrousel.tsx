@@ -35,11 +35,11 @@ export const IncomingRequestsCarrousel = (props: Props) => {
         </div>
       </div>
       <div className="request-carrousel">
-        {filteredHR.map((help: requestAskedType) => {
+        {filteredHR.map((help: requestAskedType, key: number) => {
           return (
             <IncomingRequest
               help={help}
-              key={help.id}
+              key={key}
               //    handleDelete={() => {
               //   const newHRs = filteredHRs.filter((item: any) => {
               //     console.log(item.id, "itemid");

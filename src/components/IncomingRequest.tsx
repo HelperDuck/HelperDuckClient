@@ -3,8 +3,9 @@ import "./IncomingRequest.css";
 import { Icon } from "@iconify/react";
 import { requestAskedType } from "../Types/RequestAskedType";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userById } from "../Redux/reducers/userById";
+import { postOfferHelp } from "../services/request";
 
 type Props = {
   help: requestAskedType;
@@ -13,11 +14,29 @@ type Props = {
 export const IncomingRequest = (props: Props) => {
   const { help } = props;
   const navigate = useNavigate();
-
+  const user = useSelector((state: any) => state.user.value);
+  console.log(user, "user no state");
   const dispatch = useDispatch();
 
-  const OfferHelp = () => {
-    navigate(`/call/${help.roomId}`);
+  const OfferHelp = (helpID: any) => {
+    const offer = {
+      userId: user.id,
+    };
+
+    console.log(offer, "offer");
+
+    createOffer(helpID, offer);
+
+    // navigate(`/call/${help.roomId}`);
+  };
+
+  const createOffer = async (helpID: any, offer: any) => {
+    try {
+      const updateUser = await postOfferHelp(helpID, offer);
+      console.log(updateUser, "updateUser");
+    } catch (err) {
+      console.error(err, "Error in updating user");
+    }
   };
 
   return (
@@ -59,7 +78,12 @@ export const IncomingRequest = (props: Props) => {
           </div>
         </div>
         <div className="buttons-container">
-          <button className="accept-button" onClick={OfferHelp}>
+          <button
+            className="accept-button"
+            onClick={() => {
+              OfferHelp(help.id);
+            }}
+          >
             Accept
           </button>
           <button className="decline-button">Decline</button>
