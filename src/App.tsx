@@ -117,14 +117,7 @@ function App() {
               </Protected>
             }
           />
-          <Route
-            path="/call/:roomId"
-            element={
-              <Protected isAuthUser={isAuthUser}>
-                <VideoCallPage />
-              </Protected>
-            }
-          />
+          <Route path="/call/:roomId" element={<VideoCallPage />} />
           <Route
             path="/newrequest"
             element={
