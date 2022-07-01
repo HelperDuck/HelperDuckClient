@@ -4,6 +4,7 @@ import {
   auth,
   logInWithEmailAndPassword,
   signInWithGoogle,
+  signInWithGithub,
 } from "../services/authentication";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./LoginPage.css";
@@ -55,6 +56,12 @@ function Login() {
                 onClick={signInWithGoogle}
               >
                 Login with Google
+              </button>
+              <button
+                className="login__btn login__google"
+                onClick={signInWithGithub}
+              >
+                Login with GitHub
               </button>
               <div>
                 <Link to="/reset">Forgot Password</Link>

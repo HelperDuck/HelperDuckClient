@@ -37,7 +37,13 @@ export const IncomingRequest = (props: Props) => {
           </div>
           <div className="info">
             <div className="subject">{help.subject}</div>
-            <div className="user">
+            <div
+              onClick={() => {
+                dispatch(userById(help.user));
+                navigate(`/profile/${help.user?.uid}`);
+              }}
+              className="user"
+            >
               by {help.user?.firstName} {help.user?.lastName}{" "}
             </div>
             <div className="stats-container">

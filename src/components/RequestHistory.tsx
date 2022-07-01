@@ -31,8 +31,8 @@ export const RequestHistory = (props: Props) => {
           <span>Created by me</span>
         </div>
         <div className="past-request-carrousel">
-          {filteredHR.map((help: requestAskedType) => {
-            return <CreatedByMe help={help}></CreatedByMe>;
+          {filteredHR.map((help: requestAskedType, key: number) => {
+            return <CreatedByMe key={key} help={help}></CreatedByMe>;
           })}
         </div>
       </div>

@@ -3,8 +3,9 @@ import { Icon } from "@iconify/react";
 import Select from "react-select";
 import "../Pages/ProfilePage.css";
 import { useSelector, useDispatch } from "react-redux";
-import { updateUserInfo } from "../Redux/reducers/user";
+import { updateByIdUserInfo } from "../Redux/reducers/userById";
 import { editUserProfile } from "../services/profile";
+import { updateUserInfo } from "../Redux/reducers/user";
 
 type Props = {
   setIsInEditMode: any;
@@ -15,8 +16,9 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const technologies = useSelector((state: any) => state.technologies.value);
   const languages = useSelector((state: any) => state.languages.value);
+  // const otherUser = useSelector((state: any) => state.userById.value);
 
-  const formSubmitHandler = async (data: any) => {
+  const formSubmitHandler = (data: any) => {
     data.preventDefault();
     try {
       const techs: { technology: { name: string } }[] = [];
@@ -39,8 +41,9 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
         gitHubProfile: data.target.socialMedia.value,
       };
 
-      await postUpdateUser(editedData);
+      postUpdateUser(editedData);
       dispatch(updateUserInfo({ user: editedData }));
+      dispatch(updateByIdUserInfo({ user: editedData }));
       setIsInEditMode(true);
     } catch (err) {
       console.log("Error at formSubmitHandler: ", err);

@@ -45,6 +45,11 @@
   border-radius: 12px;
 }
 
+.profile-pic:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
 .profile-info-container {
   display: flex;
 }
@@ -63,6 +68,12 @@
 
 .user {
   font-size: 13px;
+  text-decoration: underline;
+}
+
+.user:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .avg-tip,
