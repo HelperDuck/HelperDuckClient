@@ -4,6 +4,7 @@ import {
   auth,
   logInWithEmailAndPassword,
   signInWithGoogle,
+  signInWithGithub,
 } from "../services/authentication";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./LoginPage.css";
@@ -29,7 +30,7 @@ function Login() {
           <div className="login">
             <div>{error ? error.message : ""}</div>
             <div className="login__container">
-              <div className="signin">Sing In:</div>
+              <div className="signin">Sign In:</div>
               <input
                 type="text"
                 className="login__textBox"
@@ -55,6 +56,12 @@ function Login() {
                 onClick={signInWithGoogle}
               >
                 Login with Google
+              </button>
+              <button
+                className="login__btn login__google"
+                onClick={signInWithGithub}
+              >
+                Login with GitHub
               </button>
               <div>
                 <Link to="/reset">Forgot Password</Link>
