@@ -29,7 +29,7 @@ function Login() {
           <div className="login">
             <div>{error ? error.message : ""}</div>
             <div className="login__container">
-              <div className="signin">Sing In:</div>
+              <div className="signin">Sign In:</div>
               <input
                 type="text"
                 className="login__textBox"
