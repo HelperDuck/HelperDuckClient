@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { requestAskedType } from "../Types/RequestAskedType";
 import "./CreatedByMe.css";
 
@@ -9,6 +10,11 @@ type Props = {
 
 export const CreatedByMe = (props: Props) => {
   const { help } = props;
+  const navigate = useNavigate();
+
+  const OfferHelp = () => {
+    navigate(`/call/${help.roomId}`);
+  };
 
   return (
     <div className="past-request">
@@ -32,7 +38,9 @@ export const CreatedByMe = (props: Props) => {
         </span>
       </div>
       <div className="detail-button-container">
-        <button className="detail-btn">View detail</button>
+        <button onClick={OfferHelp} className="detail-btn">
+          View detail
+        </button>
         {/* //TODO add View Detail Function */}
       </div>
     </div>
