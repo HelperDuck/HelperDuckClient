@@ -429,7 +429,6 @@ export const VideoCallPage = (props: Props) => {
       </div>
 
       <div className="peers-video">
-        "Peers videos will be displayed below"
         {peers.map((peer, index) => {
           if (index === 0) {
           return (

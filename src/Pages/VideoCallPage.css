@@ -1,39 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 /*wraps all the video containers*/
 .videos-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
   height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-image: url(https://res.cloudinary.com/brnl/image/upload/v1656587693/HelperDuck/blob-scene-haikei_1_oxjync.svg);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 
 .user-2 {
   display: none;
 }
 
-.smallFrame {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  height: 170px;
-  width: 300px;
-  border-radius: 2px;
-  z-index: 100;
-}
 
 .peers-video {
-  min-height: 40vh;
-
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 /*wraps my video-container and video-controls*/
@@ -41,7 +33,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-
+  
 }
 
 
@@ -50,13 +42,19 @@
   background-color: black;
   width: 720px;
   height: 480px;
-  display: flex;
-  margin-left: 0em;
+  display: flex; 
   z-index: 1;
   display: block;
   border-radius: 1%;
 }
 
+/* .smallFrame {
+  
+  top: 20px;
+  left: 20px;
+  border-radius: 2px;
+  z-index: 100;
+} */
 /*wraps buttons*/
 .video-controls {
   position: relative;
@@ -68,10 +66,11 @@
 }
 
 .video-btn {
-  border-radius: 20%;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
   margin: 0.5em;
-  width: 30px;
-  height: 30px;
+  width: 2.2em;
+  height: 2.2em;
 
 }
 
@@ -85,5 +84,16 @@
   .video-controls {
     height: 20px;
     width: 20px;
+  }
+  
+  .videos-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(https://res.cloudinary.com/brnl/image/upload/v1656587693/HelperDuck/blob-scene-haikei_1_oxjync.svg);
   }
 }
