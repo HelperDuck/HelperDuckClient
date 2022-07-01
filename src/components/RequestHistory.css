@@ -58,6 +58,8 @@
 
 .subject {
   word-wrap: break-word;
+  font-weight: 400;
+  font-size: 16px
 }
 
 .tip {
