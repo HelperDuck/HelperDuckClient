@@ -1,11 +1,9 @@
 .dashboard-wrapper {
   padding: 1%;
-
 }
 
 .inner-wrapper {
   display: flex;
-
 }
 
 .second-half-container {
@@ -41,37 +39,30 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: #F5F5F7;
-
+  background: #f5f5f7;
   border-radius: 14px;
   min-height: 15vh;
   flex-wrap: wrap;
-
 }
 
 .hello {
   font-size: 2.6rem;
   font-family: "Baloo Bhai";
   word-wrap: break-word;
-
-
 }
 
 .hello-msg {
   font-size: 1rem;
-  font-family: "Roboto"
+  font-family: "Roboto";
 }
 
 .img-boy {
-
   position: absolute;
   right: -50px;
   top: -100px;
   width: 8.2vw;
-
 }
 
 .about-me-icon {
   position: relative;
-
 }
