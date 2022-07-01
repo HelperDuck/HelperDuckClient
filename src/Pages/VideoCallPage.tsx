@@ -5,7 +5,7 @@ import io from "socket.io-client";
 import { WebRTCUser } from "../Types/WebRTCUser";
 import "./VideoCallPage.css";
 
-const LOCAL = "http://localhost:3002/";
+// const LOCAL = "http://localhost:3002/";
 const DEV = 'https://helperduck-dev.herokuapp.com/';
 // const PROD = 'https://helperduck.herokuapp.com/';
 const SOCKET_SERVER_URL = DEV;
