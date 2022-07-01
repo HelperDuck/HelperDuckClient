@@ -31,10 +31,13 @@ export const userbyIdSlice = createSlice({
       changeProfilePic: (state:any, action:any) => {
         state.value.profilePic = action.payload.url;
       },
+      updateByIdUserInfo: (state: any, action: any) => {
+        state.value = { ...state.value, ...action.payload.user };
+      },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { userById, changeProfilePic } = userbyIdSlice.actions;
+export const { userById, changeProfilePic, updateByIdUserInfo } = userbyIdSlice.actions;
 
 export default userbyIdSlice.reducer;
