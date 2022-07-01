@@ -19,6 +19,7 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
   // const otherUser = useSelector((state: any) => state.userById.value);
 
   const formSubmitHandler = (data: any) => {
+    data.preventDefault();
     try {
       const techs: { technology: { name: string } }[] = [];
       data.target.programmingLanguage.forEach((item: any) =>

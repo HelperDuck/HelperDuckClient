@@ -9,16 +9,20 @@ type Props = {};
 export const IncomingRequestsCarrousel = (props: Props) => {
   const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
   const user = useSelector((state: any) => state.user.value);
-  const userTechs = user.technologies.map((item: any) => item.technologyId);
+
+  const userTechs = user.technologies.map((item: any) => item.technology.name);
 
   const filteredHR = allHelpRequests.filter((helpRequest: any) => {
+    console.log(userTechs, "usertechs");
     for (let i = 0; i < helpRequest.technologies.length; i++) {
-      if (userTechs.includes(helpRequest.technologies[i].technologyId)) {
+      if (userTechs.includes(helpRequest.technologies[i].technology.name)) {
         return true;
       }
     }
     return false;
   });
+
+  //a
 
   return (
     <div className="carrousel-outer-container">
