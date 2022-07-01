@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { requestAskedType } from "../Types/RequestAskedType";
 import { IncomingRequest } from "./IncomingRequest";
+import notification from "../media/Notification.svg";
 
 import "./IncomingRequestsCarrousel.css";
 
@@ -29,6 +30,9 @@ export const IncomingRequestsCarrousel = (props: Props) => {
     <div className="carrousel-outer-container">
       <div className="title">
         <span>Incomming Requests</span>
+        <div className="notification-icon">
+          <img src={notification} alt="notification" />
+        </div>
       </div>
       <div className="request-carrousel">
         {filteredHR.map((help: requestAskedType) => {
