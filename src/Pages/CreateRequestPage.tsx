@@ -33,7 +33,7 @@ export const CreateRequestPage = (props: Props) => {
 
       await postRequest(newRequest);
       e.target.reset();
-      window.location.replace("/dashboard2");
+      window.location.replace("/dashboard");
     } catch (err) {
       console.log("Error posting newRequest at CreateRequestPage", err);
     }

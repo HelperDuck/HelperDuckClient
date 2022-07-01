@@ -5,10 +5,10 @@ import io from "socket.io-client";
 import { WebRTCUser } from "../Types/WebRTCUser";
 import "./VideoCallPage.css";
 
-// const LOCAL_SERVER = "http://localhost:3002/";
-const DEV_SERVER = 'https://helperduck-dev.herokuapp.com/';
-// const PROD_SERVER = 'https://helperduck.herokuapp.com/';
-const SOCKET_SERVER_URL = DEV_SERVER;
+const LOCAL = "http://localhost:3002/";
+// const DEV = 'https://helperduck-dev.herokuapp.com/';
+// const PROD = 'https://helperduck.herokuapp.com/';
+const SOCKET_SERVER_URL = LOCAL;
 
 //TODO: Mark to Delete
 // type VideoProps = {
@@ -59,8 +59,10 @@ export const VideoCallPage = (props: Props) => {
   const videoConstraints = {
     video: {
       cursor: "always",
-      width: { ideal: 1280 },
-      height: { ideal: 720 },
+      width: { ideal: 1920 },
+      height: { ideal: 1080 },
+      aspectRatio: 1.777777778,
+      frameRate: 30
     },
     audio: {
       sampleSize: 16,
