@@ -3,16 +3,13 @@
 }
 
 .request-carrousel {
-
   display: flex;
   max-height: 24vh;
   min-height: 31vh;
   overflow-y: auto;
   width: 100%;
   flex-direction: column;
-
 }
-
 
 .request-carrousel::-webkit-scrollbar {
   width: 8px;
@@ -27,4 +24,13 @@
 .request-carrousel::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.notification-icon {
+  margin-left: 2%;
 }

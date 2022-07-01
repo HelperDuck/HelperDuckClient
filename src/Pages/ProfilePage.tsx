@@ -8,9 +8,7 @@ import { getOtherProfile } from "../services/profile";
 import { userById } from "../Redux/reducers/userById";
 import { useDispatch } from "react-redux";
 
-//TODO: make update image profile work
 //TODO: review types any
-//TODO: change permission in button edit to only if is your profile
 
 export const ProfilePage = () => {
   const [isInEditMode, setIsInEditMode] = useState<any>(true);

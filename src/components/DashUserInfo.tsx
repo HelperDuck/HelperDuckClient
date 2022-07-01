@@ -10,16 +10,6 @@ type Props = {};
 
 export const DashUserInfo = (props: Props) => {
   const user = useSelector((state: any) => state.user.value);
-  const languages = useSelector((state: any) => state.languages.value);
-  const technologies = useSelector((state: any) => state.technologies.value);
-  const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
-  const allUsers = useSelector((state: any) => state.allUsers.value);
-
-  console.log(user, "User inside the State");
-  console.log(languages, "languages inside the State");
-  console.log(technologies, "technologies inside the State");
-  console.log(allHelpRequests, "allHelpRequests inside the State");
-  console.log(allUsers, "allUsers inside the State");
 
   return (
     <div className="dash-user-wrapper">
@@ -51,8 +41,8 @@ export const DashUserInfo = (props: Props) => {
               <span>Languages</span>
             </div>
             <div className="languages-list">
-              {user.languages.map((lang: LanguagesUserType) => {
-                return <div key={lang.language.id}>{lang.language.name}</div>;
+              {user.languages.map((lang: LanguagesUserType, key: number) => {
+                return <div key={key}>{lang.language.name}</div>;
               })}
             </div>
           </div>
@@ -68,13 +58,15 @@ export const DashUserInfo = (props: Props) => {
             </div>
             <div className="languages-list">
               <div className="test">
-                {user.technologies.map((tech: TechnologiesType) => {
-                  return (
-                    <div key={tech.technology.id} className="singleLang">
-                      {tech.technology.name}
-                    </div>
-                  );
-                })}
+                {user.technologies.map(
+                  (tech: TechnologiesType, key: number) => {
+                    return (
+                      <div key={key} className="singleLang">
+                        {tech.technology.name}
+                      </div>
+                    );
+                  }
+                )}
               </div>
             </div>
           </div>
