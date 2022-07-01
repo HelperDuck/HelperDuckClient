@@ -46,6 +46,8 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
         console.log('Error at formSubmitHandler: ', err);
     }
   };
+  
+  
 
   const postUpdateUser = async (user: any) => {
     try {
