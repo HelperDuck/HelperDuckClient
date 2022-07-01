@@ -13,16 +13,16 @@ export const IncomingRequestsCarrousel = (props: Props) => {
   const userTechs = user.technologies.map((item: any) => item.technology.name);
 
   const filteredHR = allHelpRequests.filter((helpRequest: any) => {
-    console.log(userTechs, "usertechs");
-    for (let i = 0; i < helpRequest.technologies.length; i++) {
-      if (userTechs.includes(helpRequest.technologies[i].technology.name)) {
-        return true;
+    if (user.uid !== helpRequest.user.uid && helpRequest.status === "open") {
+      for (let i = 0; i < helpRequest.technologies.length; i++) {
+        if (userTechs.includes(helpRequest.technologies[i].technology.name)) {
+          return true;
+        }
       }
     }
+
     return false;
   });
-
-  //a
 
   return (
     <div className="carrousel-outer-container">
