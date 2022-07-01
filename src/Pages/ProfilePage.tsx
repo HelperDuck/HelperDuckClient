@@ -4,9 +4,7 @@ import ProfileForm from "../components/ProfileForm";
 import { NavBar } from "../components/NavBar";
 import "./ProfilePage.css";
 
-//TODO: make update image profile work
 //TODO: review types any
-//TODO: change permission in button edit to only if is your profile
 
 export const ProfilePage = () => {
   const [isInEditMode, setIsInEditMode] = useState<any>(true);

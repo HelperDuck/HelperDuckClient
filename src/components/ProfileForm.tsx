@@ -19,31 +19,31 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
   const formSubmitHandler = async (data: any) => {
     data.preventDefault();
     try {
-    const techs: { technology: { name: string } }[] = [];
-    data.target.programmingLanguage.forEach((item: any) =>
-      techs.push({ technology: { name: item.value } })
-    );
+      const techs: { technology: { name: string } }[] = [];
+      data.target.programmingLanguage.forEach((item: any) =>
+        techs.push({ technology: { name: item.value } })
+      );
 
-    const idioms: { language: { name: string } }[] = [];
-    data.target.speakingLanguage.forEach((item: any) =>
-      idioms.push({ language: { name: item.value } })
-    );
+      const idioms: { language: { name: string } }[] = [];
+      data.target.speakingLanguage.forEach((item: any) =>
+        idioms.push({ language: { name: item.value } })
+      );
 
-    const editedData = {
-      uid: user.uid,
-      firstName: data.target.firstName.value,
-      lastName: data.target.lastName.value,
-      userBio: data.target.aboutme.value,
-      technologies: techs,
-      languages: idioms,
-      gitHubProfile: data.target.socialMedia.value,
-    };
+      const editedData = {
+        uid: user.uid,
+        firstName: data.target.firstName.value,
+        lastName: data.target.lastName.value,
+        userBio: data.target.aboutme.value,
+        technologies: techs,
+        languages: idioms,
+        gitHubProfile: data.target.socialMedia.value,
+      };
 
-    await postUpdateUser(editedData);
-    dispatch(updateUserInfo({ user: editedData }));
-    setIsInEditMode(true);
+      await postUpdateUser(editedData);
+      dispatch(updateUserInfo({ user: editedData }));
+      setIsInEditMode(true);
     } catch (err) {
-        console.log('Error at formSubmitHandler: ', err);
+      console.log("Error at formSubmitHandler: ", err);
     }
   };
 
