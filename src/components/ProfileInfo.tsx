@@ -50,9 +50,9 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
     });
   };
 
-  const postUpdateUser = async (user: any) => {
+  const postUpdateUser = (user: any) => {
     try {
-      const updateUser = await editUserProfile(user);
+      const updateUser = editUserProfile(user);
       console.log(updateUser, "updateUser");
     } catch (err) {
       console.error(err, "Error in updating user");

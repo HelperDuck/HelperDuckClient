@@ -3,8 +3,9 @@ import { Icon } from "@iconify/react";
 import Select from "react-select";
 import "../Pages/ProfilePage.css";
 import { useSelector, useDispatch } from "react-redux";
-import { updateUserInfo } from "../Redux/reducers/user";
+import { updateByIdUserInfo } from "../Redux/reducers/userById";
 import { editUserProfile } from "../services/profile";
+import { updateUserInfo } from "../Redux/reducers/user";
 
 type Props = {
   setIsInEditMode: any;
@@ -15,35 +16,37 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const technologies = useSelector((state: any) => state.technologies.value);
   const languages = useSelector((state: any) => state.languages.value);
+  // const otherUser = useSelector((state: any) => state.userById.value);
 
-  const formSubmitHandler = async (data: any) => {
+  const formSubmitHandler = (data: any) => {
     data.preventDefault();
     try {
-    const techs: { technology: { name: string } }[] = [];
-    data.target.programmingLanguage.forEach((item: any) =>
-      techs.push({ technology: { name: item.value } })
-    );
+      const techs: { technology: { name: string } }[] = [];
+      data.target.programmingLanguage.forEach((item: any) =>
+        techs.push({ technology: { name: item.value } })
+      );
 
-    const idioms: { language: { name: string } }[] = [];
-    data.target.speakingLanguage.forEach((item: any) =>
-      idioms.push({ language: { name: item.value } })
-    );
+      const idioms: { language: { name: string } }[] = [];
+      data.target.speakingLanguage.forEach((item: any) =>
+        idioms.push({ language: { name: item.value } })
+      );
 
-    const editedData = {
-      uid: user.uid,
-      firstName: data.target.firstName.value,
-      lastName: data.target.lastName.value,
-      userBio: data.target.aboutme.value,
-      technologies: techs,
-      languages: idioms,
-      gitHubProfile: data.target.socialMedia.value,
-    };
+      const editedData = {
+        uid: user.uid,
+        firstName: data.target.firstName.value,
+        lastName: data.target.lastName.value,
+        userBio: data.target.aboutme.value,
+        technologies: techs,
+        languages: idioms,
+        gitHubProfile: data.target.socialMedia.value,
+      };
 
-    await postUpdateUser(editedData);
-    dispatch(updateUserInfo({ user: editedData }));
-    setIsInEditMode(true);
+      postUpdateUser(editedData);
+      dispatch(updateUserInfo({ user: editedData }));
+      dispatch(updateByIdUserInfo({ user: editedData }));
+      setIsInEditMode(true);
     } catch (err) {
-        console.log('Error at formSubmitHandler: ', err);
+      console.log("Error at formSubmitHandler: ", err);
     }
   };
 
