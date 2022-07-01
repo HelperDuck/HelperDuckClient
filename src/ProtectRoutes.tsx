@@ -9,10 +9,16 @@ const Protected = (props: Props) => {
   const { isAuthUser } = props;
 
   if (!isAuthUser) {
-    setTimeout(() => {
-      return <Navigate to="/" replace />;
-    }, 1000);
+    return <Navigate to="/" replace />;
+  } else {
+    return children;
   }
-  return children;
+
+  // if (!isAuthUser) {
+  //   // setTimeout(() => {
+  //   return <Navigate to="/" replace />;
+  //   // }, 1000);
+  // }
+  // return children;
 };
 export default Protected;

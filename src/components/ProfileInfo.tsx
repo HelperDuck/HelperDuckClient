@@ -23,7 +23,7 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
   const navigate = useNavigate();
 
   const otherUser = useSelector((state: any) => state.userById.value);
-
+  console.log(otherUser, "otherUser");
   const toggleEditMode = (e: any) => {
     e.preventDefault();
     setIsInEditMode(!isInEditMode);
@@ -50,9 +50,9 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
     });
   };
 
-  const postUpdateUser = async (user: any) => {
+  const postUpdateUser = (user: any) => {
     try {
-      const updateUser = await editUserProfile(user);
+      const updateUser = editUserProfile(user);
       console.log(updateUser, "updateUser");
     } catch (err) {
       console.error(err, "Error in updating user");
@@ -137,9 +137,11 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
                 >
                   Programming languages
                 </label>
-                {otherUser.technologies.map((item: any) => {
+                {otherUser.technologies.map((item: any, key: number) => {
                   return (
-                    <div id="programminglanguage">{item.technology.name}</div>
+                    <div key={key} id="programminglanguage">
+                      {item.technology.name}
+                    </div>
                   );
                 })}
               </div>
@@ -162,8 +164,12 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
                 >
                   Speaking languages
                 </label>
-                {otherUser.languages.map((item: any) => {
-                  return <div id="speakinglanguage">{item.language.name}</div>;
+                {otherUser.languages.map((item: any, key: number) => {
+                  return (
+                    <div key={key} id="speakinglanguage">
+                      {item.language.name}
+                    </div>
+                  );
                 })}
               </div>
             </div>

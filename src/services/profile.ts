@@ -1,10 +1,7 @@
 import { UserType } from "../Types/UserType";
 
-const BASE_URL: string = "https://helperduck.herokuapp.com";
-
-// export async function createNewProfile(user: any, profileName: string) {
-//   console.log('function not yet implemented');
-// }
+// const BASE_URL: string = "https://helperduck.herokuapp.com";
+const BASE_URL: string = "https://helperduck-dev.herokuapp.com";
 
 export async function postUserProfile(user: UserType) {
   try {
@@ -50,3 +47,13 @@ export async function editUserProfile(user: UserType) {
     console.log("Error at editUserProfile Service: ", err);
   }
 } //use the returned value to set or manage state;
+
+
+export async function getOtherProfile(userId:string): Promise<any> {
+  try {
+    const userProfileById = await fetch(`${BASE_URL}/user/${userId}`);
+    return await userProfileById.json();
+  } catch (err) {
+    console.log("Error at getUserProfile Service: ", err);
+  }
+}
