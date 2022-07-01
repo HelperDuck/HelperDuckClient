@@ -6,9 +6,9 @@ import { WebRTCUser } from "../Types/WebRTCUser";
 import "./VideoCallPage.css";
 
 // const LOCAL_SERVER = "http://localhost:3002/";
-// const DEV_SERVER = 'https://helperduck-dev.herokuapp.com/';
-const PROD_SERVER = 'https://helperduck.herokuapp.com/';
-const SOCKET_SERVER_URL = PROD_SERVER;
+const DEV_SERVER = 'https://helperduck-dev.herokuapp.com/';
+// const PROD_SERVER = 'https://helperduck.herokuapp.com/';
+const SOCKET_SERVER_URL = DEV_SERVER;
 
 //TODO: Mark to Delete
 // type VideoProps = {
@@ -29,7 +29,7 @@ const Video = (props: WebRTCUser) => {
 
   return (
     <>
-      <video playsInline muted autoPlay ref={ref} className="video-container" />
+      <video playsInline autoPlay ref={ref} className="video-container" />
     </>
   );
 };
@@ -59,10 +59,12 @@ export const VideoCallPage = (props: Props) => {
   const videoConstraints = {
     video: {
       cursor: "always",
-      width: { ideal: 420 },
-      height: { ideal: 280 },
+      width: { ideal: 1280 },
+      height: { ideal: 720 },
     },
     audio: {
+      sampleSize: 16,
+      channelCount: 2,
       echoCancellation: true,
       noiseSuppression: true,
       sampleRate: 44100,
@@ -304,12 +306,15 @@ export const VideoCallPage = (props: Props) => {
 
   const toggleCam = (): void => {
     if (userStream.current) {
+      let allTracks = userStream.current.getTracks();
+      console.log(allTracks);
+      
       let videoTrack = userStream.current
         .getVideoTracks()
         .find((track) => track.kind === "video");
 
       if (videoTrack && videoTrack.enabled) {
-        videoTrack.enabled = !videoTrack.enabled;
+        videoTrack.enabled = false;
       } else {
         if (videoTrack) videoTrack.enabled = true;
       }
@@ -324,7 +329,7 @@ export const VideoCallPage = (props: Props) => {
         .find((track) => track.kind === "audio");
       if (audioTrack)
         if (audioTrack.enabled) {
-          audioTrack.enabled = !audioTrack.enabled;
+          audioTrack.enabled = false;
         } else {
           audioTrack.enabled = true;
         }
@@ -408,7 +413,7 @@ export const VideoCallPage = (props: Props) => {
         
       }
     } catch (err) {
-      console.log("Errot at screenshare function: ", err);
+      console.log("Error at screenshare function: ", err);
     }
 
     // if(userStream.current) {
@@ -424,7 +429,6 @@ export const VideoCallPage = (props: Props) => {
           muted
           ref={userVideo}
           autoPlay
-          controls
           className="video-container"
         />
 
