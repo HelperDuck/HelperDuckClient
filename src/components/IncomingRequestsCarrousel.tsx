@@ -29,7 +29,7 @@ export const IncomingRequestsCarrousel = (props: Props) => {
   return (
     <div className="carrousel-outer-container">
       <div className="title">
-        <span>Incomming Requests</span>
+        <span>Incoming Requests</span>
         <div className="notification-icon">
           <img src={notification} alt="notification" />
         </div>
