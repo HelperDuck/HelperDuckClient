@@ -11,7 +11,6 @@ export const IncomingRequestsCarrousel = (props: Props) => {
   const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
   const user = useSelector((state: any) => state.user.value);
 
-  console.log(allHelpRequests, "allHelpRequests");
   const userTechs = user.technologies.map((item: any) => item.technology.name);
 
   const filteredHR = allHelpRequests.filter((helpRequest: any) => {
@@ -35,11 +34,11 @@ export const IncomingRequestsCarrousel = (props: Props) => {
         </div>
       </div>
       <div className="request-carrousel">
-        {filteredHR.map((help: requestAskedType) => {
+        {filteredHR.map((help: requestAskedType, key: number) => {
           return (
             <IncomingRequest
               help={help}
-              key={help.id}
+              key={key}
               //    handleDelete={() => {
               //   const newHRs = filteredHRs.filter((item: any) => {
               //     console.log(item.id, "itemid");

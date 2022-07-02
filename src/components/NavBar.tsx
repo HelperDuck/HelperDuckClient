@@ -16,8 +16,6 @@ export const NavBar = (props: Props) => {
   const navigate = useNavigate();
   const user = useSelector((state: any) => state.user.value);
   const dispatch = useDispatch();
-  const otherUser = useSelector((state: any) => state.userById.value);
-
 
   return (
     <div className="navBar">
@@ -44,8 +42,6 @@ export const NavBar = (props: Props) => {
         </li>
         <li
           onClick={() => {
-            console.log(user, "userrr");
-            console.log(otherUser, "otherrr");
             dispatch(userById(user));
             setTimeout(() => {
               navigate(`/profile/${user.uid}`);

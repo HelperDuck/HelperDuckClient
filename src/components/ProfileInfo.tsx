@@ -5,6 +5,7 @@ import { storage } from "../services/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
 import "../Pages/ProfilePage.css";
+import "./ProfileInfo.css";
 import { ProfilePerformanceInfo } from "../components/ProfilePerformanceInfo";
 import { useSelector, useDispatch } from "react-redux";
 import { changeProfilePic } from "../Redux/reducers/userById";
@@ -19,11 +20,10 @@ type Props = {
 
 export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
   const user = useSelector((state: any) => state.user.value);
+  const otherUser = useSelector((state: any) => state.userById.value);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const otherUser = useSelector((state: any) => state.userById.value);
-  console.log(otherUser, "otherUser");
   const toggleEditMode = (e: any) => {
     e.preventDefault();
     setIsInEditMode(!isInEditMode);
@@ -50,10 +50,9 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
     });
   };
 
-  const postUpdateUser = (user: any) => {
+  const postUpdateUser = async (user: any) => {
     try {
-      const updateUser = editUserProfile(user);
-      console.log(updateUser, "updateUser");
+      await editUserProfile(user);
     } catch (err) {
       console.error(err, "Error in updating user");
     }
@@ -130,20 +129,27 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
                   width={50}
                 />
               </div>
-              <div className="box-info">
+              <div className="profileInformation-containers">
                 <label
                   className="label-profileForm"
                   htmlFor="programminglanguages"
                 >
-                  Programming languages
+                  Technologies
                 </label>
-                {otherUser.technologies.map((item: any, key: number) => {
-                  return (
-                    <div key={key} id="programminglanguage">
-                      {item.technology.name}
-                    </div>
-                  );
-                })}
+                <div className="technologiesContainer">
+                  {otherUser.technologies.map((item: any, key: number) => {
+                    return (
+                      <div key={key} className="technologyContainer">
+                        <img
+                          className="technologyIcons"
+                          src={item.technology.icon}
+                          alt=""
+                        />
+                        <h5> {item.technology.name} </h5>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
@@ -186,7 +192,7 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
               </div>
               <div className="box-info">
                 <label className="label-profileForm" htmlFor="socialmedia">
-                  Social media
+                  GitHub Profile
                 </label>
                 <div id="socialmedia">{otherUser.gitHubProfile}</div>
               </div>
