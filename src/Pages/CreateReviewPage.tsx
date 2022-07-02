@@ -1,14 +1,22 @@
-import React from 'react';
+import React from "react";
+import { motion } from "framer-motion";
+import { useModal, Modal } from "../components/Modal";
+import "./CreateReviewPage.css";
 
-type Props = {
-  
-}
+//TODO: to delete motion-main button
 
-export const CreateReviewPage = (props: Props)  =>{
+export const CreateReviewPage = () => {
+  const { modalOpen, close, open } = useModal();
   return (
-    
-    <div>
-      
-    </div>
+    <>
+      <motion.main>
+        <motion.button className="save-button" onClick={open}>
+          End
+        </motion.button>
+      </motion.main>
+      <div className="review-container">
+        {modalOpen && <Modal modalOpen={modalOpen} handleClose={close} />}
+      </div>
+    </>
   );
-}
+};

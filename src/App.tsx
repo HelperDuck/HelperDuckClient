@@ -21,6 +21,7 @@ import { UserType } from "./Types/UserType";
 import { CreateRequestPage } from "./Pages/CreateRequestPage";
 import LoginPage from "./Pages/LoginPage";
 import Protected from "./ProtectRoutes";
+import { CreateReviewPage } from "./Pages/CreateReviewPage";
 
 function App() {
   const [isAuthUser, loading] = useAuthState(auth);
@@ -96,6 +97,7 @@ function App() {
     <div className="app">
       <Router>
         <Routes>
+          <Route path="/review" element={<CreateReviewPage />} />
           <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/reset" element={<Reset />} />
