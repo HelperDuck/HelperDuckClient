@@ -191,8 +191,6 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
                         //really hacky way to get the icon
                         value: item.technology.name,
                         label: item.technology.name,
-                        data: item.technology.icon,
-                        // icon: item.icon,
                       };
                     })}
                     isMulti
@@ -226,7 +224,10 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
                     placeholder="Choose languages options"
                     name="speakingLanguage"
                     defaultValue={user.languages.map((item: any) => {
-                      return { label: item.language.name };
+                      return {
+                        value: item.language.name,
+                        label: item.language.name,
+                      };
                     })}
                     isMulti
                   ></Select>
