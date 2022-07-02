@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { logout } from "../services/authentication";
 import { useDispatch, useSelector } from "react-redux";
 import { userById } from "../Redux/reducers/userById";
+import { playSound } from "../utils/playSound";
+import duckQuack from '../media/audio/duckQuack.mp3';
 type Props = {};
 
 export const NavBar = (props: Props) => {
@@ -21,6 +23,7 @@ export const NavBar = (props: Props) => {
           <Icon
             icon="icon-park-solid:duck"
             className="icons"
+            onClick={() => playSound(duckQuack)}
             color="white"
             hFlip={true}
             height={70}

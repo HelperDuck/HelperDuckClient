@@ -56,16 +56,19 @@
   font-family: "Roboto";
 }
 
+.about-me-icon {
+  position: relative;
+}
+
 .img-boy {
-  position: absolute;
+  display: flex;
+  position: flex-end;
   right: -50px;
   top: -100px;
   width: 8.2vw;
 }
 
-.about-me-icon {
-  position: relative;
-}
+
 
 
 .dash-profile-pic {
