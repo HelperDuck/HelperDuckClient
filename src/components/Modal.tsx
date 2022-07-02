@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-// import Rating from "../components/Rating";
+import Rating from "../components/Rating";
 import SliderRange from "./Slider";
 import { Backdrop } from "./Backdrop";
 
@@ -68,10 +68,9 @@ export const Modal = ({ handleClose }: any) => {
     </Backdrop>
   );
 };
-// rating={rating} onRating={(rate: any) => setRating(rate)}
 
 const ModalText = ({ handleClose }: any) => {
-  // const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(0);
 
   return (
     <div className="modal-text">
@@ -84,7 +83,10 @@ const ModalText = ({ handleClose }: any) => {
       <form className="form-container">
         <div className="box-wrapper">
           <label htmlFor="rating">How do you rate this service?</label>
-          {/* <Rating></Rating> */}
+          <Rating
+            rating={rating}
+            onRating={(rate: any) => setRating(rate)}
+          ></Rating>
         </div>
         <label className="price-range-label">
           Was it helful? Contribute with a tip!
