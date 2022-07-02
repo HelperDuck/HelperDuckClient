@@ -39,7 +39,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: #f5f5f7;
+  background: rgba(201, 200, 200, 0.8);
   border-radius: 14px;
   min-height: 15vh;
   flex-wrap: wrap;

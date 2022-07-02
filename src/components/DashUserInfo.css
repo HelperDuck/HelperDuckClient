@@ -307,7 +307,7 @@
 
 .dash-wrapper {
   /* the width and the margin should be changed after all components are made */
-  background-color: rgba(245, 245, 247, 1);
+  background-color: rgba(201, 200, 200, 0.8);
   box-shadow:  0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21), 
    1.8px -0.1px 2px -0.2px rgba(0, 0, 0, 0.12), 
    2.2px -2.1px 5px -0.5px rgba(219, 213, 213, 0.25), 

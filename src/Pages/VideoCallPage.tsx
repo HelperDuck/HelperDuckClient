@@ -53,8 +53,8 @@ export const VideoCallPage = (props: Props) => {
   const videoConstraints = {
     video: {
       cursor: "always",
-      width: window.innerWidth/2,
-      height: window.innerHeight/2,
+      width: { ideal: 1280 },
+      height: { ideal: 720 },
       aspectRatio: 1.777777778,
       frameRate: 30,
     },
@@ -436,7 +436,7 @@ export const VideoCallPage = (props: Props) => {
               key={peer.peerId}
               peer={peer.peer}
               className="video-container"
-            />
+              />
           );
         
 } else {
