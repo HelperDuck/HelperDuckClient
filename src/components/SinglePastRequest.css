@@ -89,3 +89,8 @@
   transform: scale(1.2);
   cursor: pointer;
 }
+
+.profile-pic-past-request:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
