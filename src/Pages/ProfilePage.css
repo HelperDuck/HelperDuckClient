@@ -51,6 +51,15 @@
   cursor: pointer;
 }
 
+.request-btn:hover {
+  box-shadow: 5px 3px 10px rgb(75, 75, 75);
+}
+
+.request-btn:active{
+  transform: translate(1.25%, 1.25%);
+  box-shadow: 5px 3px 10px rgb(75, 75, 75);
+}
+
 #full-name {
   width: 40vw;
   background-color: #f5f5f7;
