@@ -28,7 +28,7 @@ function App() {
   // const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  console.log("isAuthUser inside app", isAuthUser);
+  // console.log("isAuthUser inside app", isAuthUser);
 
   useEffect(() => {
     if (loading) return;
@@ -76,7 +76,6 @@ function App() {
   const fetchAllHelpRequests = async () => {
     try {
       const allHelpRequests = await getAllHelpRequests();
-      console.log(allHelpRequests, "allHelpRequests");
       dispatch(helpRequests(allHelpRequests));
     } catch (err) {
       console.error(err, "Error in All Languages Fetch reducer");
@@ -86,14 +85,11 @@ function App() {
   const fetchAllUsers = async () => {
     try {
       const allUser = await getAllUsers();
-      console.log(allUser, "allUser");
       dispatch(allUsers(allUser));
     } catch (err) {
       console.error(err, "Error in All Languages Fetch reducer");
     }
   };
-
-  console.log(auth);
 
   return (
     <div className="app">
