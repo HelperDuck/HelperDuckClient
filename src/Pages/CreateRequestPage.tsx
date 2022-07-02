@@ -18,9 +18,19 @@ export const CreateRequestPage = (props: Props) => {
     try {
       const roomId = uuid();
       const techs: { technology: { name: string } }[] = [];
-      e.target.programmingLanguages.forEach((item: any) =>
-        techs.push({ technology: { name: item.value } })
-      );
+
+      const inputTechData = e.target.programmingLanguages;
+      const requestTechs: any[] = [];
+
+      if (inputTechData instanceof HTMLInputElement) {
+        requestTechs.push(inputTechData);
+      } else {
+        requestTechs.push(...inputTechData);
+      }
+
+      for (const tech of requestTechs) {
+        techs.push({ technology: { name: tech.value } });
+      }
 
       const newRequest: requestAskedType = {
         userId: user.id,
