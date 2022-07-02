@@ -28,11 +28,11 @@ const Rating = ({ count, rating, color, onRating }: any) => {
           onMouseLeave={() => setHoverRating(0)}
         />
       ));
-  }, [count, getColor, onRating]);
+  }, [count, rating, hoverRating]); //eslint-disable-line
   return <div className="rating">{fireRating}</div>;
 };
 
-//count, rating, hoverRating
+//
 
 Rating.defaultProps = {
   count: 5,
