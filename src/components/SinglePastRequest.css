@@ -20,11 +20,6 @@
   background-color: rgba(230, 230, 230, 0.08);
 }
 
-.subject:hover {
-  transform: scale(1.1);
-  transform: translate(1%);
-  cursor: default;
-}
 
 .detail-btn {
   font-family: Verdana;
