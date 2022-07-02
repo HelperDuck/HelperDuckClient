@@ -7,6 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { userById } from "../Redux/reducers/userById";
 import { playSound } from "../utils/playSound";
 import duckQuack from '../media/audio/duckQuack.mp3';
+
+const audio = new Audio(duckQuack)
+
 type Props = {};
 
 export const NavBar = (props: Props) => {
@@ -23,7 +26,7 @@ export const NavBar = (props: Props) => {
           <Icon
             icon="icon-park-solid:duck"
             className="icons"
-            onClick={() => playSound(duckQuack)}
+            onClick={() => playSound(audio)}
             color="white"
             hFlip={true}
             height={70}
@@ -59,7 +62,7 @@ export const NavBar = (props: Props) => {
         </li>
         <li onClick={() => navigate("/newrequest")}>
           <Icon
-            icon="ic:outline-video-call"
+            icon="ant-design:plus-outlined"
             color="white"
             hFlip={true}
             height={25}
