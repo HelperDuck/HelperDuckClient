@@ -1,0 +1,40 @@
+.not-found-btn {
+  align-self: flex-start;
+  font-family: "Baloo Bhai 2", cursive;
+  font-weight: 800;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.not-found-btn span {
+  text-decoration: underline;
+}
+
+.not-found-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 70vw;
+  height: 80vh;
+  border: 1px solid gray;
+  box-shadow: 16px 18px 5px rgba(129, 126, 126, 0.57);
+  background-color: white;
+  background-position: left 100% top 45%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('https://res.cloudinary.com/brnl/image/upload/v1656587692/HelperDuck/blob-haikei_1_cefpbw.svg');
+
+
+}
+
+.not-found-img {
+  width: 17vw;
+
+}
+
+.not-found-msg {
+  font-family: "Baloo Bhai 2", cursive;
+  font-weight: 800;
+  font-size: 3rem;
+}

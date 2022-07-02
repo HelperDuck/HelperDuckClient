@@ -21,6 +21,7 @@ import { UserType } from "./Types/UserType";
 import { CreateRequestPage } from "./Pages/CreateRequestPage";
 import LoginPage from "./Pages/LoginPage";
 import Protected from "./ProtectRoutes";
+import NotFound from "./Pages/NotFound";
 
 function App() {
   const [isAuthUser, loading] = useAuthState(auth);
@@ -136,6 +137,7 @@ function App() {
               </Protected>
             }
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </div>

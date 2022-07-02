@@ -20,11 +20,10 @@ type Props = {
 
 export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
   const user = useSelector((state: any) => state.user.value);
+  const otherUser = useSelector((state: any) => state.userById.value);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const otherUser = useSelector((state: any) => state.userById.value);
-  console.log(otherUser, "otherUser");
   const toggleEditMode = (e: any) => {
     e.preventDefault();
     setIsInEditMode(!isInEditMode);
@@ -51,10 +50,9 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
     });
   };
 
-  const postUpdateUser = (user: any) => {
+  const postUpdateUser = async (user: any) => {
     try {
-      const updateUser = editUserProfile(user);
-      console.log(updateUser, "updateUser");
+      await editUserProfile(user);
     } catch (err) {
       console.error(err, "Error in updating user");
     }

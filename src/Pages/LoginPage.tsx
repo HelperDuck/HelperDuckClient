@@ -78,7 +78,7 @@ function Login() {
               {" "}
               <img
                 className="duck-image"
-                src="https://res.cloudinary.com/brnl/image/upload/v1656524921/brnl/patooo_hmcqfv.png"
+                src="https://res.cloudinary.com/brnl/image/upload/v1656750388/brnl/02-removebg-preview_dxpl5f.png"
                 alt="pato"
               ></img>
             </div>
