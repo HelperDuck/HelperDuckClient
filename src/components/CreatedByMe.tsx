@@ -37,6 +37,7 @@ export const CreatedByMe = (props: Props) => {
         </span>
       </div>
       <div className="delete-request-container">
+
           <Icon icon="clarity:trash-solid" className="trash-bin" width="20" height="20" />
         <span
           onClick={() => {
@@ -44,8 +45,6 @@ export const CreatedByMe = (props: Props) => {
           }}
           className="delete-request"
         >
-          <Icon icon="clarity:trash-solid" width="20" height="20" />
-          {/* //TODO add delete Help Request function */}
         </span>
       </div>
       <div className="detail-button-container">
