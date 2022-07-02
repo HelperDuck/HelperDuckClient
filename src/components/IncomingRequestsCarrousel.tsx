@@ -11,7 +11,6 @@ export const IncomingRequestsCarrousel = (props: Props) => {
   const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
   const user = useSelector((state: any) => state.user.value);
 
-  console.log(allHelpRequests, "allHelpRequests");
   const userTechs = user.technologies.map((item: any) => item.technology.name);
 
   const filteredHR = allHelpRequests.filter((helpRequest: any) => {

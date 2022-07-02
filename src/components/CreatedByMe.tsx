@@ -48,8 +48,13 @@ export const CreatedByMe = (props: Props) => {
         </span>
       </div>
       <div className="detail-button-container">
-        <button onClick={OfferHelp} className="detail-btn">
-          View detail
+        <button
+          onClick={OfferHelp}
+          className={
+            help.helpOffers.length ? "start-call-btn-accept" : "start-call-btn"
+          }
+        >
+          Start Call
         </button>
         {/* //TODO add View Detail Function */}
       </div>

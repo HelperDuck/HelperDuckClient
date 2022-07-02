@@ -21,10 +21,10 @@ export const ProfilePage = () => {
     try {
       //@ts-ignore
       const profileFound = await getOtherProfile(userPath);
-      console.log(profileFound, "profileFound");
+
       dispatch(userById(profileFound));
     } catch (err) {
-      console.error(err);
+      console.error(err, "Error on fetch profile");
     }
   };
 

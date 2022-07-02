@@ -15,15 +15,12 @@ export const IncomingRequest = (props: Props) => {
   const { help } = props;
   const navigate = useNavigate();
   const user = useSelector((state: any) => state.user.value);
-  console.log(user, "user no state");
   const dispatch = useDispatch();
 
   const OfferHelp = (helpID: any) => {
     const offer = {
       userId: user.id,
     };
-
-    console.log(offer, "offer");
 
     createOffer(helpID, offer);
 
@@ -32,8 +29,7 @@ export const IncomingRequest = (props: Props) => {
 
   const createOffer = async (helpID: any, offer: any) => {
     try {
-      const updateUser = await postOfferHelp(helpID, offer);
-      console.log(updateUser, "updateUser");
+      await postOfferHelp(helpID, offer);
     } catch (err) {
       console.error(err, "Error in updating user");
     }
