@@ -24,6 +24,7 @@ const dropIn = {
     opacity: 0,
   },
 };
+console.log(dropIn, "dropiN");
 
 export const useModal = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -34,27 +35,7 @@ export const useModal = () => {
   return { modalOpen, close, open };
 };
 
-export const Modal = ({ handleClose }: any) => {
-  return (
-    <ModalContainer>
-      <Backdrop onClick={handleClose}>
-        <motion.div
-          onClick={(e) => e.stopPropagation()} // Prevent click from closing modal
-          className="modal-gradient"
-          variants={dropIn}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-        >
-          <ModalText />
-          <ModalButton onClick={handleClose} label="Submit" />
-        </motion.div>
-      </Backdrop>
-    </ModalContainer>
-  );
-};
-
-const ModalContainer = ({ children }: any) => (
+export const ModalContainer = ({ children }: any) => (
   // Enables the animation of components that have been removed from the tree
   <AnimatePresence
     // Disable any initial animations on children that
@@ -69,6 +50,24 @@ const ModalContainer = ({ children }: any) => (
     {children}
   </AnimatePresence>
 );
+
+export const Modal = ({ handleClose }: any) => {
+  return (
+    <Backdrop onClick={handleClose}>
+      <motion.div
+        onClick={(e) => e.stopPropagation()} // Prevent click from closing modal
+        className="modal-gradient"
+        variants={dropIn}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+      >
+        <ModalText />
+        <ModalButton onClick={handleClose} label="Submit" />
+      </motion.div>
+    </Backdrop>
+  );
+};
 
 const ModalText = ({ handleClose }: any) => {
   const [rating, setRating] = useState(0);

@@ -9,9 +9,6 @@
   background: #232526;
   background: -webkit-linear-gradient(to right, #414345, #232526);
   background: linear-gradient(to right, #414345, #232526);
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
   overflow-y: hidden;
   height: 60%;
   max-width: 50%;
