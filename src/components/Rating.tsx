@@ -12,6 +12,7 @@ const Rating = ({ count, rating, color, onRating }: any) => {
     return color.unfilled;
   };
   const fireRating = useMemo(() => {
+    //eslint-disable-line
     return Array(count)
       .fill(0)
       .map((_, i) => i + 1)
@@ -27,10 +28,10 @@ const Rating = ({ count, rating, color, onRating }: any) => {
           onMouseEnter={() => setHoverRating(idx)}
           onMouseLeave={() => setHoverRating(0)}
         />
-      ));
+      )); //eslint-disable-line
   }, [count, rating, hoverRating]); //eslint-disable-line
-  return <div className="rating">{fireRating}</div>;
-};
+  return <div className="rating">{fireRating}</div>; //eslint-disable-line
+}; //eslint-disable-line
 
 //
 
