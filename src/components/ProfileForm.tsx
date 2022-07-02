@@ -7,6 +7,9 @@ import { updateByIdUserInfo } from "../Redux/reducers/userById";
 import { editUserProfile } from "../services/profile";
 import { updateUserInfo } from "../Redux/reducers/user";
 
+// const hardCodedIcon =
+//   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg";
+
 type Props = {
   setIsInEditMode: any;
 };
@@ -21,20 +24,41 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
   const formSubmitHandler = (data: any) => {
     data.preventDefault();
     try {
-      const hardCodedIcon =
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg";
-      // const techs: { technology: { name: string; icon: string } }[] = [];
-      // data.target.programmingLanguage.forEach((item: any) =>
-      //   techs.push({ technology: { name: item.name, icon: item.icon } })
+      // Update user Technologies
+      //to fix if only one is selected (not an array)
+      let inputTech = data.target.programmingLanguage;
+      const newTechs: any[] = [];
+
+      if (inputTech instanceof HTMLInputElement) {
+        newTechs.push(inputTech);
+      } else {
+        newTechs.push(...inputTech);
+      }
       const techs: { technology: { name: string; icon: string } }[] = [];
-      data.target.programmingLanguage.forEach((item: any) =>
-        techs.push({ technology: { name: item.value, icon: hardCodedIcon } })
-      );
+
+      for (const tech of newTechs) {
+        const foundTech = technologies.find(
+          (item: any) => item.name === tech.value
+        );
+        techs.push({
+          technology: { name: foundTech.name, icon: foundTech.icon },
+        });
+      }
+
+      //Same solution for languages (one selected vs many), but not extra data is needed (no icon)
+      let inputIdioms = data.target.speakingLanguage;
+      const newIdioms: any[] = [];
+
+      if (inputIdioms instanceof HTMLInputElement) {
+        newIdioms.push(inputIdioms);
+      } else {
+        newIdioms.push(...inputIdioms);
+      }
 
       const idioms: { language: { name: string } }[] = [];
-      data.target.speakingLanguage.forEach((item: any) =>
-        idioms.push({ language: { name: item.value } })
-      );
+      for (const idiom of newIdioms) {
+        idioms.push({ language: { name: idiom.value } });
+      }
 
       const editedData = {
         uid: user.uid,
@@ -151,16 +175,24 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
                   </label>
                   <Select
                     options={technologies.map((item: any) => {
-                      return { value: item.name, label: item.name };
+                      return {
+                        value: item.name,
+                        label: item.name,
+                        data: item.icon,
+                      };
                     })}
                     className="select-input"
                     id="profile-programminglanguages"
                     placeholder="Choose stack options"
                     name="programmingLanguage"
+                    data-Tech={user.technologies.map((item: any) => item)}
                     defaultValue={user.technologies.map((item: any) => {
                       return {
+                        //really hacky way to get the icon
                         value: item.technology.name,
                         label: item.technology.name,
+                        data: item.technology.icon,
+                        // icon: item.icon,
                       };
                     })}
                     isMulti
