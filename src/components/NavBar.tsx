@@ -18,7 +18,7 @@ export const NavBar = (props: Props) => {
   const dispatch = useDispatch();
   const otherUser = useSelector((state: any) => state.userById.value);
 
-  console.log(otherUser, "dentro do userbyId state");
+
   return (
     <div className="navBar">
       <div className="navBar-icons">
