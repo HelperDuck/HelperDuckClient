@@ -92,6 +92,8 @@ function App() {
     }
   };
 
+  console.log(auth);
+
   return (
     <div className="app">
       <Router>
