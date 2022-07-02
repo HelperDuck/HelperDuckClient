@@ -85,7 +85,8 @@
 }
 
 .user:hover {
-  transform: scale(1.1);
+  transform: scale(1.01);
+  transform: translate(0.1%);
   cursor: pointer;
 }
 
