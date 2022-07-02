@@ -148,6 +148,10 @@
   transform: translate(0.15%, 0.15%);
   transform: scale(1.05, 1.05);
 }
+.accept-button:active {
+  background: rgba(0, 0, 0, 0.9);
+  transform: translate(1.25%, 1.25%);
+}
 
 .decline-button {
   font-size: 15px;
@@ -164,7 +168,14 @@
 }
 
 .decline-button:hover {
-  background: rgba(207, 47, 47, 0.9)
+  background: rgba(207, 47, 47, 0.9);
+  transform: translate(0.15%, 0.15%);
+  transform: scale(1.05, 1.05);
+}
+
+.decline-button:active {
+  background: rgba(207, 47, 47, 0.9);
+  transform: translate(1.25%, 1.25%);
 }
 
 
