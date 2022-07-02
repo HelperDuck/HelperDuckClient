@@ -53,8 +53,8 @@ export const VideoCallPage = (props: Props) => {
   const videoConstraints = {
     video: {
       cursor: "always",
-      width: { ideal: 1920 },
-      height: { ideal: 1080 },
+      width: window.innerWidth/2,
+      height: window.innerHeight/2,
       aspectRatio: 1.777777778,
       frameRate: 30,
     },
@@ -403,7 +403,8 @@ export const VideoCallPage = (props: Props) => {
   
   return (
     <div className="videos-wrapper">
-      <div className="my-video-wrapper">
+      <div className="participants-videos-wrapper">
+        <div className="inner-video-wrapper">
         <video
           playsInline
           muted
@@ -426,9 +427,8 @@ export const VideoCallPage = (props: Props) => {
             🖥️
           </button>
         </div>
-      </div>
+        </div>
 
-      <div className="peers-video">
         {peers.map((peer, index) => {
           if (index === 0) {
           return (
@@ -444,7 +444,7 @@ export const VideoCallPage = (props: Props) => {
     <></>
   )
 }})}
-      </div>
+     </div>
     </div>
   );
 };

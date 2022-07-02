@@ -13,26 +13,15 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-image: url(https://res.cloudinary.com/brnl/image/upload/v1656587693/HelperDuck/blob-scene-haikei_1_oxjync.svg);
+  background-color: black;
 }
 
-
-
-.user-2 {
-  display: none;
-}
-
-
-.peers-video {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
 
 /*wraps my video-container and video-controls*/
-.my-video-wrapper {
+.participants-videos-wrapper {
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
   
 }
 
