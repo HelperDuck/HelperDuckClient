@@ -22,7 +22,7 @@ export const DashUserInfo = (props: Props) => {
             <span>Credits</span>{" "}
           </div>
         </div>
-        <div className="taken-container">
+        <div className="taken-container dash-wrapper">
           <div className="number">
             <span>{user.openedRequests}</span>
           </div>
@@ -32,7 +32,7 @@ export const DashUserInfo = (props: Props) => {
         </div>
       </div>
       <div className="languages-outer-container">
-        <div className="languages-inner-container">
+        <div className="languages-inner-container dash-wrapper">
           <div className="languages-icon">
             <Icon className="icon1" icon="lucide:languages" />
           </div>
@@ -48,7 +48,7 @@ export const DashUserInfo = (props: Props) => {
           </div>
         </div>
 
-        <div className="expertise-inner-container">
+        <div className="expertise-inner-container dash-wrapper">
           <div className="languages-icon">
             <Icon className="icon1" icon="healthicons:eyeglasses" />
           </div>
@@ -72,7 +72,7 @@ export const DashUserInfo = (props: Props) => {
           </div>
         </div>
       </div>
-      <div className="aboutme-outer-container">
+      <div className="aboutme-outer-container dash-wrapper">
         <div className="about-me-container">
           <div className="about-me-title">About me</div>
           <div className="about-me-description">{user.userBio}</div>
