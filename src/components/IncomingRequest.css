@@ -21,6 +21,10 @@
   min-width: 90%;
 }
 
+.IncomingRequest-wrapper:hover{
+  background-color: rgba(230, 230, 230, 0.08);
+}
+
 .info-container {
   display: flex;
   justify-content: space-between;
@@ -140,7 +144,9 @@
 }
 
 .accept-button:hover {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.9);
+  transform: translate(0.15%, 0.15%);
+  transform: scale(1.05, 1.05);
 }
 
 .decline-button {
@@ -158,7 +164,7 @@
 }
 
 .decline-button:hover {
-  background: rgba(207, 47, 47, 0.8)
+  background: rgba(207, 47, 47, 0.9)
 }
 
 
