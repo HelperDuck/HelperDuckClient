@@ -93,10 +93,8 @@
   display: flex;
   justify-content: left;
   align-items: center;
-
   margin-left: 1%;
   width: 100%;
-
   flex-wrap: wrap;
 }
 
@@ -105,10 +103,9 @@
   position: relative;
   font-family: "Roboto", sans-serif;
   height: 13vh;
-  overflow-y: auto;
+  overflow-y: visible;
   padding: 1%;
-  width: 60%;
-
+  width: 80%;
 }
 
 .select-input {

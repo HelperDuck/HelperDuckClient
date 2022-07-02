@@ -21,9 +21,14 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
   const formSubmitHandler = (data: any) => {
     data.preventDefault();
     try {
-      const techs: { technology: { name: string } }[] = [];
+      const hardCodedIcon =
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg";
+      // const techs: { technology: { name: string; icon: string } }[] = [];
+      // data.target.programmingLanguage.forEach((item: any) =>
+      //   techs.push({ technology: { name: item.name, icon: item.icon } })
+      const techs: { technology: { name: string; icon: string } }[] = [];
       data.target.programmingLanguage.forEach((item: any) =>
-        techs.push({ technology: { name: item.value } })
+        techs.push({ technology: { name: item.value, icon: hardCodedIcon } })
       );
 
       const idioms: { language: { name: string } }[] = [];
@@ -42,6 +47,7 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
       };
 
       postUpdateUser(editedData);
+      //Why do we have two dispatchs here?
       dispatch(updateUserInfo({ user: editedData }));
       dispatch(updateByIdUserInfo({ user: editedData }));
       setIsInEditMode(true);
@@ -49,8 +55,6 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
       console.log("Error at formSubmitHandler: ", err);
     }
   };
-  
-  
 
   const postUpdateUser = async (user: any) => {
     try {
