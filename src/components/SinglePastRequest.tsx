@@ -21,7 +21,7 @@ export const SinglePastRequest = (props: Props) => {
       <div className="tip-container">
         <span className="tip">
           <Icon icon="icon-park-solid:duck" className="duck-icon" />
-          <span>20</span>
+          <span className="credits-icon">20</span>
         </span>
       </div>
       <div className="score-container">
