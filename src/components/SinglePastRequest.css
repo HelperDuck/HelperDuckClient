@@ -79,3 +79,13 @@
   transform: scale(1.2);
   cursor: pointer;
 }
+
+.credits-detail:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.score-rating:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
