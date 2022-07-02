@@ -5,7 +5,7 @@ import { UserForHelpType } from "./UserType";
 
 export type requestAskedType = {
   id?: number;
-  userId?: number;
+  userId: number;
   createdAt?: Date;
   updatedAt?: Date;
   status?: string;
@@ -17,4 +17,5 @@ export type requestAskedType = {
   user?: UserForHelpType;
   technologies?: TechnologiesInHelpRequestType[];
   languages?: LanguagesInHelpRequestType[];
+  helpOffers?: any;  //TODO create the corret type
 }

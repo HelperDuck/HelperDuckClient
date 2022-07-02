@@ -38,19 +38,19 @@
 }
 
 .duck-image {
-  width: 150px;
+  width: 15vw;
   border-radius: 50%;
-  outline: 2px solid black;
+
 }
 
 .login-title {
-  font-size: 60px;
+  font-size: 4rem;
   font-family: "Baloo Bhai";
 }
 
 .login-about {
-  font-size: 24px;
-  padding: 30px;
+  font-size: 2rem;
+  padding: 4%;
   font-family: 'Roboto', sans-serif;
   font-family: "Baloo Bhai 2";
   font-weight: 200;
@@ -91,7 +91,7 @@
 }
 
 .signin {
-  font-size: 24px;
+  font-size: 2rem;
   font-family: "Baloo Bhai";
 }
 
@@ -107,7 +107,10 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  justify-content: space-around;
   padding: 30px;
+  width: 20vw;
+  height: 60vh;
 }
 
 .login__textBox {

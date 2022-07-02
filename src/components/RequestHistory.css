@@ -83,7 +83,8 @@
 
 }
 
-.detail-btn {
+.detail-btn,
+.start-call-btn {
   font-size: 13px;
   font-family: Verdana;
   width: 100px;
@@ -94,6 +95,10 @@
   background: rgba(0, 0, 0, 1);
   cursor: pointer;
   border: none;
+}
+
+.start-call-btn:hover {
+  background: rgba(0, 0, 0, 0.7)
 }
 
 .detail-btn:hover {
@@ -117,4 +122,23 @@
 .past-request-carrousel::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.2);
+}
+
+
+
+.start-call-btn-accept {
+  font-size: 13px;
+  font-family: Verdana;
+  width: 100px;
+  height: 30px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  background: rgb(136, 245, 85);
+  cursor: pointer;
+  border: none;
+}
+
+.start-call-btn-accept:hover {
+  background: rgb(136, 245, 85, 0.7)
 }

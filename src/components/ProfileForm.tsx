@@ -54,8 +54,7 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
 
   const postUpdateUser = async (user: any) => {
     try {
-      const updateUser = await editUserProfile(user);
-      console.log(updateUser, "updateUser");
+      await editUserProfile(user);
     } catch (err) {
       console.error(err, "Error in updating user");
     }

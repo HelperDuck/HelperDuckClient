@@ -111,10 +111,7 @@ export const CreateRequestPage = (props: Props) => {
                 </div>
                 <div className="newrequest-button-container">
                   {" "}
-                  <button
-                    className="btn-request"
-                    onClick={() => console.log("hi")}
-                  >
+                  <button className="btn-request" type="submit">
                     <p id="btn-request">Submit</p>
                   </button>
                 </div>
