@@ -31,17 +31,28 @@ export async function getAllHelpRequests(): Promise<any> {
 
 export async function postOfferHelp(helpRequest: any, offer: any) {
   try {
-    console.log(helpRequest, "helpRequest inside service")
-    console.log(offer, "offer inside service")
     const createNewHelpOffer: any = await fetch(`${BASE_URL}/helpRequest/${helpRequest}/helpOffer`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(offer),
     });
-    console.log(createNewHelpOffer, 'createNewHelpOffer')
     return await createNewHelpOffer;
   } catch (err) {
     console.log("Error at postOfferHelp Service: ", err);
+  }
+}
+
+export async function postDeclineOffer(helpRequestId: any, offerId: any) {
+  try {
+    console.log(helpRequestId, "helpRequest inside service")
+    console.log(offerId, "offer inside service")
+    const DeclineOffer: any = await fetch(`${BASE_URL}/helpRequest/${helpRequestId}/helpOffer/${offerId}/decline`, {
+      method: "POST",
+    });
+    console.log(DeclineOffer, 'DeclineOffer')
+    return await DeclineOffer;
+  } catch (err) {
+    console.log("Error at postDeclineOffer Service: ", err);
   }
 }
 

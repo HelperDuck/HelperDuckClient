@@ -5,7 +5,12 @@ import { requestAskedType } from "../Types/RequestAskedType";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userById } from "../Redux/reducers/userById";
-import { postOfferHelp } from "../services/request";
+import {
+  getAllHelpRequests,
+  postDeclineOffer,
+  postOfferHelp,
+} from "../services/request";
+import { helpRequests } from "../Redux/reducers/helpRequest";
 
 type Props = {
   help: requestAskedType;
@@ -16,6 +21,18 @@ export const IncomingRequest = (props: Props) => {
   const navigate = useNavigate();
   const user = useSelector((state: any) => state.user.value);
   const dispatch = useDispatch();
+
+  const fetchAllHelpRequests = async () => {
+    try {
+      const allHelpRequests = await getAllHelpRequests();
+      console.log(allHelpRequests, "allHelpRequests");
+      dispatch(helpRequests(allHelpRequests));
+    } catch (err) {
+      console.error(err, "Error in All Languages Fetch reducer");
+    }
+  };
+
+  console.log(help, "incoming help request");
 
   const OfferHelp = (helpID: any) => {
     const offer = {
@@ -30,6 +47,28 @@ export const IncomingRequest = (props: Props) => {
   const createOffer = async (helpID: any, offer: any) => {
     try {
       await postOfferHelp(helpID, offer);
+    } catch (err) {
+      console.error(err, "Error in updating user");
+    }
+  };
+
+  const handleDecline = async (help: any) => {
+    try {
+      OfferHelp(help.id);
+      console.log(help, "helpRequest inside handleDecline");
+      let offerId;
+
+      for (let j = 0; j < help.helpOffers.length; j++) {
+        if (help.helpOffers[j].userId === user.id) {
+          offerId = help.helpOffers[j].id;
+          console.log(offerId, "offerId inside for loop handleDecline");
+        }
+      }
+
+      console.log(offerId, "offerId outsite the foor loop handle decline");
+      await postDeclineOffer(help.id, offerId);
+
+      fetchAllHelpRequests();
     } catch (err) {
       console.error(err, "Error in updating user");
     }
@@ -82,7 +121,14 @@ export const IncomingRequest = (props: Props) => {
           >
             Accept
           </button>
-          <button className="decline-button">Decline</button>
+          <button
+            className="decline-button"
+            onClick={() => {
+              handleDecline(help);
+            }}
+          >
+            Decline
+          </button>
         </div>
       </div>
       <div className="IncomingRequest-description">{help.description}</div>

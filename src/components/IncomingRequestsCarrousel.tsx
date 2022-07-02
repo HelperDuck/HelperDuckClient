@@ -10,20 +10,38 @@ type Props = {};
 export const IncomingRequestsCarrousel = (props: Props) => {
   const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
   const user = useSelector((state: any) => state.user.value);
-
   const userTechs = user.technologies.map((item: any) => item.technology.name);
 
-  const filteredHR = allHelpRequests.filter((helpRequest: any) => {
-    if (user.uid !== helpRequest.user.uid && helpRequest.status === "open") {
-      for (let i = 0; i < helpRequest.technologies.length; i++) {
-        if (userTechs.includes(helpRequest.technologies[i].technology.name)) {
-          return true;
+  const filteredHR = allHelpRequests
+    .filter((helpRequest: any) => {
+      if (user.uid !== helpRequest.user.uid && helpRequest.status === "open") {
+        for (let i = 0; i < helpRequest.technologies.length; i++) {
+          if (userTechs.includes(helpRequest.technologies[i].technology.name)) {
+            return true;
+          }
         }
       }
-    }
 
-    return false;
-  });
+      return false;
+    })
+    .filter((helpRequest: any) => {
+      if (helpRequest.helpOffers.length) {
+        for (let j = 0; j < helpRequest.helpOffers.length; j++) {
+          if (
+            helpRequest.helpOffers[j].userId === user.id &&
+            helpRequest.helpOffers[j].status !== "declined"
+          ) {
+            console.log("aqui");
+            return true;
+          } else {
+            return false;
+          }
+        }
+      }
+      return true;
+    });
+
+  console.log(filteredHR, "filteredHR");
 
   return (
     <div className="carrousel-outer-container">

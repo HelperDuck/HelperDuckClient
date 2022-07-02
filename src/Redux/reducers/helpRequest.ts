@@ -12,7 +12,7 @@ export const helpRequestSlice = createSlice({
   initialState: {value: initialState},
   reducers: {
     helpRequests: (state: { value: requestAskedType[] }, action: { payload: requestAskedType[] }) => {
-      state.value = [ ...state.value, ...action.payload ];
+      state.value = action.payload;
     },
   },
 })
