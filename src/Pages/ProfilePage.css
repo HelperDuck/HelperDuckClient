@@ -218,6 +218,7 @@ input[type="file"] {
   align-items: center;
   justify-content: space-between;
   padding-bottom: 5px;
+  cursor: pointer;
 }
 
 .btn-submit-edit {
