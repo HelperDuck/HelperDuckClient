@@ -62,11 +62,23 @@
 
 #full-name {
   width: 40vw;
-  background-color: #f5f5f7;
+  background-color: rgba(201, 200, 200, 0.8);
+  border-radius: 0.5em;
+  margin-left: -0.35em;
   padding-left: 5%;
   padding-top: 1%;
   padding-bottom: 1%;
   font-size: 2rem;
+  box-shadow:  0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21), 
+   1.8px -0.1px 2px -0.2px rgba(0, 0, 0, 0.12), 
+   2.2px -2.1px 5px -0.5px rgba(219, 213, 213, 0.25), 
+   2.3px -0.25px 5px -0.2px rgba(43, 43, 43, 0), 
+   2.4px -1px 5px -0.3px rgba(255, 246, 246, 0.09),
+   2.4px 2px 5px -0.3px rgba(255, 246, 246, 0.908);
+}
+
+#full-name:hover{
+  background-color: rgba(230, 230, 230, 0.08);
 }
 
 #aboutme {
