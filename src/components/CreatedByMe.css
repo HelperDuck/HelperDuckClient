@@ -1,0 +1,9 @@
+.trash-bin:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.trash-bin:active {
+  transform: translate(1.25%, 1.25%);
+  cursor: pointer;
+}

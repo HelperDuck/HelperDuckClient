@@ -119,7 +119,7 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
       <div id="aboutme">{otherUser.userBio}</div>
       <div className="profile-expertise">
         <div className="profile-boxes-wrapper">
-          <div className="profile-boxes" id="programming-box">
+          <div className="profile-boxes dash-wrapper" id="programming-box">
             <div className="wrapper-box">
               <div className="icons-box-profile-page">
                 <Icon
@@ -153,7 +153,7 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
               </div>
             </div>
           </div>
-          <div className="profile-boxes" id="language-box">
+          <div className="profile-boxes dash-wrapper" id="language-box">
             <div className="wrapper-box">
               <div className="icons-box-profile-page">
                 <Icon
@@ -180,7 +180,7 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
               </div>
             </div>
           </div>
-          <div className="profile-boxes" id="socialmedia-box">
+          <div className="profile-boxes dash-wrapper" id="socialmedia-box">
             <div className="wrapper-box">
               <div className="icons-box-profile-page">
                 <Icon

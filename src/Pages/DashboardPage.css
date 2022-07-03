@@ -39,7 +39,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: #f5f5f7;
+  background: rgba(201, 200, 200, 0.8);
   border-radius: 14px;
   min-height: 15vh;
   flex-wrap: wrap;
@@ -56,13 +56,18 @@
   font-family: "Roboto";
 }
 
+.about-me-icon {
+  position: relative;
+}
+
 .img-boy {
-  position: absolute;
+  display: flex;
+  position: flex-end;
   right: -50px;
   top: -100px;
   width: 8.2vw;
 }
 
-.about-me-icon {
-  position: relative;
+.dash-profile-pic {
+  border: 1px solid #D54848;
 }

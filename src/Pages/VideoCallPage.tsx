@@ -6,9 +6,9 @@ import { WebRTCUser } from "../Types/WebRTCUser";
 import "./VideoCallPage.css";
 
 // const LOCAL = "http://localhost:3002/";
-// const DEV = 'https://helperduck-dev.herokuapp.com/';
-const PROD = 'https://helperduck.herokuapp.com/';
-const SOCKET_SERVER_URL = PROD;
+const DEV = 'https://helperduck-dev.herokuapp.com/';
+// const PROD = 'https://helperduck.herokuapp.com/';
+const SOCKET_SERVER_URL = DEV;
 
 const Video = (props: WebRTCUser) => {
   const ref = useRef<HTMLVideoElement | any>();
@@ -22,7 +22,7 @@ const Video = (props: WebRTCUser) => {
 
   return (
     <>
-      <video playsInline autoPlay ref={ref} className="video-container" />
+      <video playsInline controls autoPlay ref={ref} className="video-container" />
     </>
   );
 };
@@ -53,8 +53,8 @@ export const VideoCallPage = (props: Props) => {
   const videoConstraints = {
     video: {
       cursor: "always",
-      width: { ideal: 1920 },
-      height: { ideal: 1080 },
+      width: { ideal: 1280 },
+      height: { ideal: 720 },
       aspectRatio: 1.777777778,
       frameRate: 30,
     },
@@ -392,6 +392,7 @@ export const VideoCallPage = (props: Props) => {
             if (userStream.current)
               userStream.current.removeTrack(screenSharingTrack);
             if (userStream.current) userStream.current.addTrack(videoTrack);
+            window.location.reload();
           };
       }
     } catch (err) {
@@ -403,7 +404,8 @@ export const VideoCallPage = (props: Props) => {
   
   return (
     <div className="videos-wrapper">
-      <div className="my-video-wrapper">
+      <div className="participants-videos-wrapper">
+        <div className="inner-video-wrapper">
         <video
           playsInline
           muted
@@ -426,9 +428,8 @@ export const VideoCallPage = (props: Props) => {
             🖥️
           </button>
         </div>
-      </div>
+        </div>
 
-      <div className="peers-video">
         {peers.map((peer, index) => {
           if (index === 0) {
           return (
@@ -436,7 +437,7 @@ export const VideoCallPage = (props: Props) => {
               key={peer.peerId}
               peer={peer.peer}
               className="video-container"
-            />
+              />
           );
         
 } else {
@@ -444,7 +445,7 @@ export const VideoCallPage = (props: Props) => {
     <></>
   )
 }})}
-      </div>
+     </div>
     </div>
   );
 };

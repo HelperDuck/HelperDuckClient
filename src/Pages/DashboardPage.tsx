@@ -20,7 +20,7 @@ export const DashboardPage = (props: Props) => {
       <div className="outer-wrapper">
         <div className="inner-wrapper">
           <div className="first-half-container">
-            <div className="hello-wrapper">
+            <div className="hello-wrapper dash-wrapper">
               <div className="hello-container">
                 <div className="hello">Hello {user.firstName}!</div>
                 <div className="hello-msg">It`s good to see you again.</div>
@@ -35,7 +35,7 @@ export const DashboardPage = (props: Props) => {
           <div className="second-half-container">
             <div className="search-and-profile">
               <div className="search-container">
-                <form className="search-form">
+                <form className="search-form dash-wrapper">
                   <input
                     className="search-input"
                     type="search"
@@ -47,7 +47,7 @@ export const DashboardPage = (props: Props) => {
                 </form>
               </div>
               <div className="profile-setting-container">
-                <Avatar src={user.profilePic} size="50" round={true}></Avatar>
+                <Avatar className="dash-profile-pic" src={user.profilePic} size="50" round={true}></Avatar>
               </div>
             </div>
 
@@ -55,7 +55,7 @@ export const DashboardPage = (props: Props) => {
           </div>
         </div>
 
-        <div className="bottom-cointainer">
+        <div className="bottom-container">
           {" "}
           <div className="bottom-container">
             <RequestHistory></RequestHistory>

@@ -19,9 +19,10 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["node", "jest", "socket.io-client"]
+    "types": ["node", "jest", "socket.io-client", "custom_typings/"]
   },
   "include": [
-    "src"
+    "src",
+    "custom_typings"
   ]
 }
