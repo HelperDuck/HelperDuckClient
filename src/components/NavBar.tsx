@@ -25,7 +25,7 @@ export const NavBar = (props: Props) => {
             icon="icon-park-solid:duck"
             className="icons"
             onClick={() => playSound(audio)}
-            color="white"
+            color="rgb(255, 218, 35)"
             hFlip={true}
             height={70}
             width={70}
