@@ -6,9 +6,9 @@ import { WebRTCUser } from "../Types/WebRTCUser";
 import "./VideoCallPage.css";
 
 // const LOCAL = "http://localhost:3002/";
-// const DEV = 'https://helperduck-dev.herokuapp.com/';
-const PROD = 'https://helperduck.herokuapp.com/';
-const SOCKET_SERVER_URL = PROD;
+const DEV = 'https://helperduck-dev.herokuapp.com/';
+// const PROD = 'https://helperduck.herokuapp.com/';
+const SOCKET_SERVER_URL = DEV;
 
 const Video = (props: WebRTCUser) => {
   const ref = useRef<HTMLVideoElement | any>();
