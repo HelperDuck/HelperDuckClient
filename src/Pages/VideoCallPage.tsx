@@ -22,7 +22,7 @@ const Video = (props: WebRTCUser) => {
 
   return (
     <>
-      <video playsInline autoPlay ref={ref} className="video-container" />
+      <video playsInline controls autoPlay ref={ref} className="video-container" />
     </>
   );
 };
@@ -392,6 +392,7 @@ export const VideoCallPage = (props: Props) => {
             if (userStream.current)
               userStream.current.removeTrack(screenSharingTrack);
             if (userStream.current) userStream.current.addTrack(videoTrack);
+            window.location.reload();
           };
       }
     } catch (err) {
