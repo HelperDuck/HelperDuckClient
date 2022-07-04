@@ -104,7 +104,7 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              <Protected isAuthUser={isAuthUser}>
+              <Protected isAuthUser={isAuthUser} loading={loading}>
                 <DashboardPage />
               </Protected>
             }
@@ -113,7 +113,7 @@ function App() {
           <Route
             path="/profile"
             element={
-              <Protected isAuthUser={isAuthUser}>
+              <Protected isAuthUser={isAuthUser} loading={loading}>
                 <ProfilePage />
               </Protected>
             }
@@ -122,7 +122,7 @@ function App() {
           <Route
             path="/newrequest"
             element={
-              <Protected isAuthUser={isAuthUser}>
+              <Protected isAuthUser={isAuthUser} loading={loading}>
                 <CreateRequestPage />
               </Protected>
             }
@@ -130,7 +130,7 @@ function App() {
           <Route
             path="/profile/:uid"
             element={
-              <Protected isAuthUser={isAuthUser}>
+              <Protected isAuthUser={isAuthUser} loading={loading}>
                 <ProfilePage />
               </Protected>
             }

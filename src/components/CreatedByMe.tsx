@@ -1,5 +1,4 @@
 import { Icon } from "@iconify/react";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { deleteRequest } from "../services/request";
 import { requestAskedType } from "../Types/RequestAskedType";
@@ -11,14 +10,16 @@ type Props = {
 
 export const CreatedByMe = (props: Props) => {
   const { help } = props;
+
   const navigate = useNavigate();
 
   const OfferHelp = () => {
     navigate(`/call/${help.roomId}`);
   };
 
-  const handleDelete = (help: any) => {
-    deleteRequest(help.id);
+  const handleDelete = async (help: any) => {
+    await deleteRequest(help.id);
+    window.location.reload(); //TODO this is just a quick fix
   };
 
   return (

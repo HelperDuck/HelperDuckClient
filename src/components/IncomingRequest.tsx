@@ -5,12 +5,7 @@ import { requestAskedType } from "../Types/RequestAskedType";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userById } from "../Redux/reducers/userById";
-import {
-  getAllHelpRequests,
-  postDeclineOffer,
-  postOfferHelp,
-} from "../services/request";
-import { helpRequests } from "../Redux/reducers/helpRequest";
+import { postDeclineOffer, postOfferHelp } from "../services/request";
 
 type Props = {
   help: requestAskedType;
@@ -22,53 +17,30 @@ export const IncomingRequest = (props: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const dispatch = useDispatch();
 
-  const fetchAllHelpRequests = async () => {
-    try {
-      const allHelpRequests = await getAllHelpRequests();
-      console.log(allHelpRequests, "allHelpRequests");
-      dispatch(helpRequests(allHelpRequests));
-    } catch (err) {
-      console.error(err, "Error in All Languages Fetch reducer");
-    }
-  };
-
   console.log(help, "incoming help request");
 
-  const OfferHelp = (helpID: any) => {
+  const OfferHelp = async (helpID: any) => {
     const offer = {
       userId: user.id,
     };
 
-    createOffer(helpID, offer);
-
-    // navigate(`/call/${help.roomId}`);
-  };
-
-  const createOffer = async (helpID: any, offer: any) => {
     try {
       await postOfferHelp(helpID, offer);
     } catch (err) {
       console.error(err, "Error in updating user");
     }
+
+    // navigate(`/call/${help.roomId}`);
   };
 
   const handleDecline = async (help: any) => {
+    const offer = {
+      userId: user.id,
+    };
+
     try {
-      OfferHelp(help.id);
-      console.log(help, "helpRequest inside handleDecline");
-      let offerId;
-
-      for (let j = 0; j < help.helpOffers.length; j++) {
-        if (help.helpOffers[j].userId === user.id) {
-          offerId = help.helpOffers[j].id;
-          console.log(offerId, "offerId inside for loop handleDecline");
-        }
-      }
-
-      console.log(offerId, "offerId outsite the foor loop handle decline");
-      await postDeclineOffer(help.id, offerId);
-
-      fetchAllHelpRequests();
+      await postDeclineOffer(help.id, offer);
+      window.location.reload(); //TODO this is just a quick fix
     } catch (err) {
       console.error(err, "Error in updating user");
     }

@@ -3,22 +3,16 @@ import { Navigate } from "react-router-dom";
 type Props = {
   isAuthUser: any;
   children: any;
+  loading: any;
 };
+
 const Protected = (props: Props) => {
   const { children } = props;
   const { isAuthUser } = props;
+  const { loading } = props;
 
-  if (!isAuthUser) {
-    return <Navigate to="/" replace />;
-  } else {
-    return children;
-  }
-
-  // if (!isAuthUser) {
-  //   // setTimeout(() => {
-  //   return <Navigate to="/" replace />;
-  //   // }, 1000);
-  // }
-  // return children;
+  if (loading) return;
+  if (isAuthUser) return children;
+  if (!isAuthUser) return <Navigate to="/" replace />;
 };
 export default Protected;

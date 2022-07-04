@@ -42,12 +42,13 @@ export async function postOfferHelp(helpRequest: any, offer: any) {
   }
 }
 
-export async function postDeclineOffer(helpRequestId: any, offerId: any) {
+export async function postDeclineOffer(helpRequestId: any, offer: any) {
   try {
     console.log(helpRequestId, "helpRequest inside service")
-    console.log(offerId, "offer inside service")
-    const DeclineOffer: any = await fetch(`${BASE_URL}/helpRequest/${helpRequestId}/helpOffer/${offerId}/decline`, {
+    const DeclineOffer: any = await fetch(`${BASE_URL}/helpRequest/${helpRequestId}/helpOfferDecline`, {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(offer),
     });
     console.log(DeclineOffer, 'DeclineOffer')
     return await DeclineOffer;
