@@ -29,7 +29,7 @@ const PaymentPage = props => {
         onSuccessfulCheckout={() => { 
           
             setTimeout(() => {
-              navigate(`/payment/success`);
+              navigate(`/payment/ok`);
             }, 500);
           }
          } //TODO: review

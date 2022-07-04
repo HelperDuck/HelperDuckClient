@@ -8,6 +8,7 @@ import SubmitButton from "./prebuilt/SubmitButton";
 import CheckoutError from "./prebuilt/CheckoutError";
 
 import { CardElement,  useStripe, useElements } from "@stripe/react-stripe-js";
+import { BASE_URL } from "../../services/profile";
 
 const CardElementContainer = styled.div`
   height: 40px;
@@ -42,10 +43,11 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
     };
     
     try {
-    //lets control the submit button state
-    setProcessingTo(true);
-    
-    const { data: clientSecret } = await axios.post('http://localhost:3002/payment/create', {
+      //lets control the submit button state
+      setProcessingTo(true);
+      
+      //create a payment intent on the server //TODO: replace by BASE URL
+    const { data: clientSecret } = await axios.post(`http://localhost:3002/payment/create`, {
       amount: price * 100,
     });
     
@@ -73,7 +75,6 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
     //TIP Stripe amount is in the lowest denomination of the currency
     //Ex. 1 USD 100 cents
     
-    //create a payment intent on the server
     //client_secret of that payment intent
     
     //need a reference to the cardElement
