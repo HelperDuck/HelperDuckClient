@@ -5,7 +5,7 @@ import { requestAskedType } from "../Types/RequestAskedType";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userById } from "../Redux/reducers/userById";
-import { postOfferHelp } from "../services/request";
+import { postDeclineOffer, postOfferHelp } from "../services/request";
 
 type Props = {
   help: requestAskedType;
@@ -17,19 +17,30 @@ export const IncomingRequest = (props: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const dispatch = useDispatch();
 
-  const OfferHelp = (helpID: any) => {
+  console.log(help, "incoming help request");
+
+  const OfferHelp = async (helpID: any) => {
     const offer = {
       userId: user.id,
     };
 
-    createOffer(helpID, offer);
+    try {
+      await postOfferHelp(helpID, offer);
+    } catch (err) {
+      console.error(err, "Error in updating user");
+    }
 
     // navigate(`/call/${help.roomId}`);
   };
 
-  const createOffer = async (helpID: any, offer: any) => {
+  const handleDecline = async (help: any) => {
+    const offer = {
+      userId: user.id,
+    };
+
     try {
-      await postOfferHelp(helpID, offer);
+      await postDeclineOffer(help.id, offer);
+      window.location.reload(); //TODO this is just a quick fix
     } catch (err) {
       console.error(err, "Error in updating user");
     }
@@ -82,7 +93,14 @@ export const IncomingRequest = (props: Props) => {
           >
             Accept
           </button>
-          <button className="decline-button">Decline</button>
+          <button
+            className="decline-button"
+            onClick={() => {
+              handleDecline(help);
+            }}
+          >
+            Decline
+          </button>
         </div>
       </div>
       <div className="IncomingRequest-description">{help.description}</div>

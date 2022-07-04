@@ -31,17 +31,29 @@ export async function getAllHelpRequests(): Promise<any> {
 
 export async function postOfferHelp(helpRequest: any, offer: any) {
   try {
-    console.log(helpRequest, "helpRequest inside service")
-    console.log(offer, "offer inside service")
     const createNewHelpOffer: any = await fetch(`${BASE_URL}/helpRequest/${helpRequest}/helpOffer`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(offer),
     });
-    console.log(createNewHelpOffer, 'createNewHelpOffer')
     return await createNewHelpOffer;
   } catch (err) {
     console.log("Error at postOfferHelp Service: ", err);
+  }
+}
+
+export async function postDeclineOffer(helpRequestId: any, offer: any) {
+  try {
+    console.log(helpRequestId, "helpRequest inside service")
+    const DeclineOffer: any = await fetch(`${BASE_URL}/helpRequest/${helpRequestId}/helpOfferDecline`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(offer),
+    });
+    console.log(DeclineOffer, 'DeclineOffer')
+    return await DeclineOffer;
+  } catch (err) {
+    console.log("Error at postDeclineOffer Service: ", err);
   }
 }
 
@@ -51,7 +63,6 @@ export async function deleteRequest(request: requestAskedType) {
     console.log(request, 'request insite service')
     const deletedRequest: any = await fetch(`${BASE_URL}/helpRequest?helpRequestId=${request}`,{
       method: 'DELETE',
-      redirect: 'follow'
     })
     console.log(deletedRequest, 'deletedRequest')
     return deletedRequest
