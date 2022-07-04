@@ -24,13 +24,21 @@ export const IncomingRequest = (props: Props) => {
       userId: user.id,
     };
 
+    const addTAkenRequest = {
+      uid: user.uid,
+      acceptedRequests: user.acceptedRequests + 1,
+    };
+
+    console.log(addTAkenRequest, "addTAkenRequest");
+
     try {
       await postOfferHelp(helpID, offer);
+      //TODO add here +1 to acceptedRequests
     } catch (err) {
       console.error(err, "Error in updating user");
     }
 
-    // navigate(`/call/${help.roomId}`);
+    navigate(`/call/${help.roomId}`);
   };
 
   const handleDecline = async (help: any) => {

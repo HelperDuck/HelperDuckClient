@@ -18,8 +18,6 @@ export const CreatedByMe = (props: Props) => {
   };
 
   const handleDelete = async (help: any) => {
-    console.log("aqui");
-    console.log(await deleteRequest(help.id));
     await deleteRequest(help.id);
     window.location.reload(); //TODO this is just a quick fix
   };
