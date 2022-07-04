@@ -3,6 +3,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import Rating from "../components/Rating";
 import SliderRange from "./Slider";
 import { Backdrop } from "./Backdrop";
+import { reviewType } from "../Types/ReviewType";
+import { useSelector } from "react-redux";
 
 const dropIn = {
   hidden: {
@@ -24,7 +26,6 @@ const dropIn = {
     opacity: 0,
   },
 };
-console.log(dropIn, "dropiN");
 
 export const useModal = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -69,8 +70,17 @@ export const Modal = ({ handleClose }: any) => {
   );
 };
 
-const ModalText = ({ handleClose }: any) => {
+const ModalText = () => {
+  const user = useSelector((state: any) => state.user.value);
+  const roomId = useSelector((state: any) => state.roomid.value);
   const [rating, setRating] = useState(0);
+
+  const onSubmitReview = (e: any) => {
+    const newAskerReview: reviewType = {
+      userId: user.id,
+      rating: rating,
+    };
+  };
 
   return (
     <div className="modal-text">
@@ -80,7 +90,7 @@ const ModalText = ({ handleClose }: any) => {
           Please complete the following form and help us grow our community
         </h2>
       </div>
-      <form className="form-container">
+      <form className="form-container" onSubmit={onSubmitReview}>
         <div className="box-wrapper">
           <label htmlFor="rating">How do you rate this service?</label>
           <Rating
