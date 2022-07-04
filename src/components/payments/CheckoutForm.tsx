@@ -29,7 +29,7 @@ type Props = {
   price: number;
   onSuccessfulCheckout: () => void;
 }
- 
+
 const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
   const [isProcessing, setProcessingTo] = useState(false); 
   const [checkoutError, setCheckoutError] = useState();
