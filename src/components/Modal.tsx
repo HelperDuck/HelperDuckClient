@@ -103,7 +103,7 @@ const ModalText = () => {
 
   useEffect(() => {
     helpByRoomId();
-  }, []);
+  }, []); //eslint-disable-line
 
   const onSubmitReview = (e: any) => {
     e.preventDefault();

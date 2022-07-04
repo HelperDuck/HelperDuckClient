@@ -1,4 +1,4 @@
-import { Box, ChakraProvider, Slider, SliderTrack } from "@chakra-ui/react";
+import { ChakraProvider, Slider, SliderTrack } from "@chakra-ui/react";
 import { SliderFilledTrack, SliderThumb } from "@chakra-ui/slider";
 
 const SliderRange = ({ value, setValue }: any) => {
