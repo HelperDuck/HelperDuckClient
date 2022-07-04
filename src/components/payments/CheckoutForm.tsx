@@ -32,7 +32,7 @@ type Props = {
 
 const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
   const [isProcessing, setProcessingTo] = useState(false); 
-  const [checkoutError, setCheckoutError] = useState();
+  const [checkoutError, setCheckoutError] = useState(); //eslint-disable-line
   const stripe = useStripe()
   const elements = useElements();
 
