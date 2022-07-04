@@ -1,8 +1,4 @@
 import styled from "@emotion/styled";
-import { playSound } from "../../../utils/playSound";
-import duckQuack from "../../../media/audio/duckQuack.mp3";
-
-const audio = new Audio(duckQuack);
 
 const Input = styled.input`
   width: 80px;
@@ -48,11 +44,17 @@ const IncrementButton = styled(Button)`
   border-radius: 0 4px 4px 0;
 `;
 
-const DuckQuantity = ({ onAdd, onRemove, quantity }) => {
+type Props = {
+  onAdd?: any;
+  onRemove?: any;
+  quantity?: any;
+}
+
+const DuckQuantity = ({ onAdd, onRemove, quantity }: Props) => {
   return (
     <>
       <DecrementButton onClick={onRemove}>–</DecrementButton>
-      <Input type="text" onChange={playSound(audio)} value={quantity} readOnly />
+      <Input type="text" value={quantity} readOnly />
       <IncrementButton onClick={onAdd}>+</IncrementButton>
     </>
   );
