@@ -23,6 +23,7 @@ import LoginPage from "./Pages/LoginPage";
 import Protected from "./ProtectRoutes";
 import { CreateReviewPage } from "./Pages/CreateReviewPage";
 import NotFound from "./Pages/NotFound";
+import PaymentPage from "./Pages/PaymentPage";
 
 function App() {
   const [isAuthUser, loading] = useAuthState(auth);
@@ -132,6 +133,14 @@ function App() {
             element={
               <Protected isAuthUser={isAuthUser} loading={loading}>
                 <ProfilePage />
+              </Protected>
+            }
+          />
+          <Route
+            path="/payment"
+            element={
+              <Protected isAuthUser={isAuthUser} loading={loading}>
+                <PaymentPage />
               </Protected>
             }
           />
