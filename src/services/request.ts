@@ -63,7 +63,6 @@ export async function deleteRequest(request: requestAskedType) {
     console.log(request, 'request insite service')
     const deletedRequest: any = await fetch(`${BASE_URL}/helpRequest?helpRequestId=${request}`,{
       method: 'DELETE',
-      redirect: 'follow'
     })
     console.log(deletedRequest, 'deletedRequest')
     return deletedRequest
