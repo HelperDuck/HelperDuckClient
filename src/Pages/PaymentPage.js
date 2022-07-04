@@ -6,7 +6,7 @@ import Layout from "../components/payments/Layout"
 import Row from "../components/payments/prebuilt/Row";
 import DuckShop from "../components/payments/prebuilt/DuckShop";
 import CheckoutForm from "../components/payments/CheckoutForm";
-import getDucksPrice from "../utils/get-ducks-price"; //TOD
+import { getDucksPrice } from "../utils/get-ducks-price"; //TOD
 
 const PaymentPage = props => {
   const [numDucks, setNumDucks] = useState(1);
