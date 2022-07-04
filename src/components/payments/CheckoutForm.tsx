@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
 import axios from "axios";
+import { playSound } from "../../utils/playSound";
+import duckQuack from "../../media/audio/duckQuack.mp3";
 
 import Row from "./prebuilt/Row";
 import BillingDetailsFields from "./prebuilt/BillingDetailsFields";
@@ -9,6 +11,8 @@ import CheckoutError from "./prebuilt/CheckoutError";
 
 import { CardElement,  useStripe, useElements } from "@stripe/react-stripe-js";
 import { BASE_URL } from "../../services/profile";
+
+const audio = new Audio(duckQuack);
 
 const CardElementContainer = styled.div`
   height: 40px;
@@ -21,14 +25,19 @@ const CardElementContainer = styled.div`
   }
 `;
 
-const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
+type Props = {
+  price: number;
+  onSuccessfulCheckout: () => void;
+}
+ 
+const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
   const [isProcessing, setProcessingTo] = useState(false); 
   const [checkoutError, setCheckoutError] = useState();
   
   const stripe = useStripe()
   const elements = useElements();
 
-  const handleFormSubmit = async ev => {
+  const handleFormSubmit = async (ev: any) => {
     ev.preventDefault();
 
     const billingDetails = {
@@ -51,15 +60,21 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
       amount: price * 100,
     });
     
+    if (elements && stripe) {
     const cardElement = elements.getElement(CardElement);
     
     //create a payment method
+    if (cardElement) {
+    
     const paymentMethodReq = await stripe.createPaymentMethod({
       type: 'card',
       card: cardElement,
       billing_details: billingDetails,
     })
     
+  
+  
+    if (stripe && paymentMethodReq.paymentMethod) {
     const confirmedCardPayment = await stripe.confirmCardPayment(clientSecret, {
       payment_method: paymentMethodReq.paymentMethod.id,
     })
@@ -68,6 +83,9 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
     onSuccessfulCheckout();
     // console.log(paymentMethodReq);
     // console.log(clientSecret);
+   }
+  }
+}
     
    } catch (err) {
     console.log('Error processing payment: ', err)
