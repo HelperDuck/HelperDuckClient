@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { storage } from "../services/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -22,7 +21,6 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const otherUser = useSelector((state: any) => state.userById.value);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const toggleEditMode = (e: any) => {
     e.preventDefault();
