@@ -17,7 +17,6 @@ export const IncomingRequest = (props: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const dispatch = useDispatch();
 
-  console.log(help, "incoming help request");
 
   const OfferHelp = async (helpID: any) => {
     const offer = {

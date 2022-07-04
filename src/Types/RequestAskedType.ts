@@ -2,7 +2,6 @@ import { LanguagesInHelpRequestType } from "./LanguagesType";
 import { TechnologiesInHelpRequestType } from "./TechnologiesType";
 import { UserForHelpType } from "./UserType";
 
-
 export type requestAskedType = {
   helpOffers?: any;
   id?: number;
@@ -18,5 +17,5 @@ export type requestAskedType = {
   user?: UserForHelpType;
   technologies?: TechnologiesInHelpRequestType[];
   languages?: LanguagesInHelpRequestType[];
-//TODO create the corret type
-}
+  //TODO create the corret type
+};
