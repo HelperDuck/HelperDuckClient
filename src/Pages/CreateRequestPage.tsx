@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState } from "react";
 import "./CreateRequestPage.css";
 import Select from "react-select";
 import { v4 as uuid } from "uuid";
@@ -7,11 +7,41 @@ import { requestAskedType } from "../Types/RequestAskedType";
 import { postRequest } from "../services/request";
 import { NavBar } from "../components/NavBar";
 
+import Editor, { loader } from "@monaco-editor/react";
+import { availableProgramLangs } from "../utils/availableProgramLangs";
+import { Technology } from "../Types/TechnologiesType";
+
 type Props = {};
 
 export const CreateRequestPage = (props: Props) => {
   const technologies = useSelector((state: any) => state.technologies.value);
   const user = useSelector((state: any) => state.user.value);
+  const [codeSnippet, setCodeSnippet] = useState("");
+  const [codeSnippetLanguage, setCodeSnippetLanguage] = useState("JavaScript");
+
+  function handleEditorChange(value: any, event: any): void {
+    setCodeSnippet(value);
+  }
+
+  function changeCodeSnippetLanguage(value: any, event: any): void {
+    //transforms value into array of strings
+    const inputTech = value.map((tech: any) => tech.value);
+
+    //checks first language that is in availableProgramLangs
+    let firstPossibleTech = inputTech.find((tech: string) =>
+      availableProgramLangs.includes(tech)
+    );
+
+    firstPossibleTech = firstPossibleTech ? firstPossibleTech : "JavaScript";
+    setCodeSnippetLanguage(firstPossibleTech);
+  }
+
+  const optionsCodeSnippet = {
+    readOnly: false,
+    minimap: { enabled: false },
+    scrollBeyondLastColumn: 1,
+    loader: loader,
+  };
 
   const newRequestHandler = async (e: any) => {
     e.preventDefault();
@@ -39,6 +69,7 @@ export const CreateRequestPage = (props: Props) => {
         linkToSandbox: e.target.linkToSandbox.value,
         technologies: techs,
         roomId: roomId,
+        codeSnippet: codeSnippet,
       };
 
       await postRequest(newRequest);
@@ -88,7 +119,7 @@ export const CreateRequestPage = (props: Props) => {
                     className="input-request"
                     id="description-input"
                     name="description"
-                    rows={6}
+                    rows={5}
                   ></textarea>
                 </div>
                 <div className="input-request-box">
@@ -116,9 +147,29 @@ export const CreateRequestPage = (props: Props) => {
                     className="input-request"
                     id="techStack-input"
                     name="programmingLanguages"
+                    onChange={changeCodeSnippetLanguage}
                     isMulti
                   ></Select>
                 </div>
+                <div className="input-request-box">
+                  <label
+                    className="label-input-form"
+                    htmlFor="description-input"
+                  >
+                    Code - {codeSnippetLanguage} :
+                  </label>
+
+                  <Editor
+                    height="80vh"
+                    language={codeSnippetLanguage.toLowerCase()}
+                    defaultValue="// Please write your code here"
+                    value={codeSnippet}
+                    onChange={handleEditorChange}
+                    options={optionsCodeSnippet}
+                    className="input-request"
+                  />
+                </div>
+
                 <div className="newrequest-button-container">
                   {" "}
                   <button className="btn-request" type="submit">
