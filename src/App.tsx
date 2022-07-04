@@ -21,6 +21,7 @@ import { UserType } from "./Types/UserType";
 import { CreateRequestPage } from "./Pages/CreateRequestPage";
 import LoginPage from "./Pages/LoginPage";
 import Protected from "./ProtectRoutes";
+import { CreateReviewPage } from "./Pages/CreateReviewPage";
 import NotFound from "./Pages/NotFound";
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
   // const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  console.log("isAuthUser inside app", isAuthUser);
+  // console.log("isAuthUser inside app", isAuthUser);
 
   useEffect(() => {
     if (loading) return;
@@ -76,7 +77,6 @@ function App() {
   const fetchAllHelpRequests = async () => {
     try {
       const allHelpRequests = await getAllHelpRequests();
-      console.log(allHelpRequests, "allHelpRequests");
       dispatch(helpRequests(allHelpRequests));
     } catch (err) {
       console.error(err, "Error in All Languages Fetch reducer");
@@ -86,7 +86,6 @@ function App() {
   const fetchAllUsers = async () => {
     try {
       const allUser = await getAllUsers();
-      console.log(allUser, "allUser");
       dispatch(allUsers(allUser));
     } catch (err) {
       console.error(err, "Error in All Languages Fetch reducer");
@@ -97,6 +96,7 @@ function App() {
     <div className="app">
       <Router>
         <Routes>
+          <Route path="/review" element={<CreateReviewPage />} />
           <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/reset" element={<Reset />} />

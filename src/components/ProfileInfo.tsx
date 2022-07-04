@@ -5,6 +5,7 @@ import { storage } from "../services/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
 import "../Pages/ProfilePage.css";
+import "./ProfileInfo.css";
 import { ProfilePerformanceInfo } from "../components/ProfilePerformanceInfo";
 import { useSelector, useDispatch } from "react-redux";
 import { changeProfilePic } from "../Redux/reducers/userById";
@@ -118,7 +119,7 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
       <div id="aboutme">{otherUser.userBio}</div>
       <div className="profile-expertise">
         <div className="profile-boxes-wrapper">
-          <div className="profile-boxes" id="programming-box">
+          <div className="profile-boxes dash-wrapper" id="programming-box">
             <div className="wrapper-box">
               <div className="icons-box-profile-page">
                 <Icon
@@ -128,24 +129,31 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
                   width={50}
                 />
               </div>
-              <div className="box-info">
+              <div className="profileInformation-containers">
                 <label
                   className="label-profileForm"
                   htmlFor="programminglanguages"
                 >
-                  Programming languages
+                  Technologies
                 </label>
-                {otherUser.technologies.map((item: any, key: number) => {
-                  return (
-                    <div key={key} id="programminglanguage">
-                      {item.technology.name}
-                    </div>
-                  );
-                })}
+                <div className="technologiesContainer">
+                  {otherUser.technologies.map((item: any, key: number) => {
+                    return (
+                      <div key={key} className="technologyContainer">
+                        <img
+                          className="technologyIcons"
+                          src={item.technology.icon}
+                          alt=""
+                        />
+                        <h5> {item.technology.name} </h5>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
-          <div className="profile-boxes" id="language-box">
+          <div className="profile-boxes dash-wrapper" id="language-box">
             <div className="wrapper-box">
               <div className="icons-box-profile-page">
                 <Icon
@@ -172,7 +180,7 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
               </div>
             </div>
           </div>
-          <div className="profile-boxes" id="socialmedia-box">
+          <div className="profile-boxes dash-wrapper" id="socialmedia-box">
             <div className="wrapper-box">
               <div className="icons-box-profile-page">
                 <Icon
@@ -184,7 +192,7 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
               </div>
               <div className="box-info">
                 <label className="label-profileForm" htmlFor="socialmedia">
-                  Social media
+                  GitHub Profile
                 </label>
                 <div id="socialmedia">{otherUser.gitHubProfile}</div>
               </div>

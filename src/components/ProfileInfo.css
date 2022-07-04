@@ -1,0 +1,44 @@
+.profileInformation-containers {
+  margin-left: 5%;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  height: 100px;
+  overflow-y: hidden;
+  padding: 2%;
+  width: 80%;
+}
+
+.technologiesContainer {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+  margin-top: 2px;
+  height: fit-content;
+}
+
+.technologyContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 20px; */
+  height: fit-content;
+  margin-right: 20px;
+}
+
+.technologyIcons {
+  /* width: 30%; */
+  width: 30px;
+  /* height: 40px; */
+}
+
+.informationContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 20px; */
+  height: fit-content;
+}
+

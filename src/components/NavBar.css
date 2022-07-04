@@ -28,4 +28,15 @@
 .icons {
   position: relative;
   width: 100%;
+  cursor: pointer;
+}
+
+.icons:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.icons:active {
+  transform: translate(1.25%, 1.25%);
+  cursor: pointer;
 }

@@ -1,0 +1,97 @@
+.past-request {
+  background-color: red;
+}
+
+.past-request {
+  margin-top: 0.1em;
+  background-color: rgba(201, 200, 200, 0.8);
+  box-shadow: 0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21),
+    1.8px -0.1px 2px -0.2px rgba(0, 0, 0, 0.12),
+    2.2px -2.1px 5px -0.5px rgba(219, 213, 213, 0.25),
+    2.3px -0.25px 5px -0.2px rgba(43, 43, 43, 0),
+    2.4px -1px 5px -0.3px rgba(255, 246, 246, 0.09),
+    2.4px 2px 5px -0.3px rgba(255, 246, 246, 0.908);
+
+  border-radius: 14px;
+  font-family: "Roboto", sans-serif;
+}
+
+.past-request:hover {
+  background-color: rgba(230, 230, 230, 0.08);
+}
+
+
+.detail-btn {
+  font-family: Verdana;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.9);
+  cursor: pointer;
+  border: none;
+  margin: 0px 0px 15px 0px;
+  box-shadow: 0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21),
+    -1.2px 2.1px 2px -0.2px rgba(0, 0, 0, 0.12),
+    2.2px -2.1px 5px -0.5px rgba(219, 213, 213, 0.25),
+    2.3px -0.25px 10px -0.2px rgba(43, 43, 43, 0),
+    2.4px -1px 10px -0.3px rgba(255, 246, 246, 0.09),
+    2.4px 2px 10px -0.3px rgba(255, 246, 246, 0.908);
+}
+
+.detail-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: translate(0.15%, 0.15%);
+  transform: scale(1.05, 1.05);
+  box-shadow: 0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21),
+    -1.8px 2.1px 2px -0.2px rgba(0, 0, 0, 0.12),
+    2.2px -2.1px 5px -0.5px rgba(255, 246, 246, 0.908),
+    2.3px -0.25px 10px -0.2px rgba(43, 43, 43, 0),
+    2.4px -1px 10px -0.3px rgba(255, 246, 246, 0.09),
+    2.4px 2px 10px -0.3px rgba(219, 213, 213, 0.25);
+}
+.detail-btn:active {
+  background: rgba(0, 0, 0, 0.9);
+  transform: translate(1.25%, 1.25%);
+}
+
+.duck-icon:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-0.5px, 45, 0);
+    transform: rotate(-0.1turn)
+  }
+  
+  20%, 80% {
+    transform: translate3d(1px, 0, 45);
+    transform: rotate(0.1turn)
+  }
+
+}
+
+
+.fire-icon:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.credits-detail:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.score-rating:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.profile-pic-past-request:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
