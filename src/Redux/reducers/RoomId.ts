@@ -6,13 +6,13 @@ export const roomIdSlice = createSlice({
   name: "roomid",
   initialState: { value: initialState },
   reducers: {
-    roomId: (state: { value: string }, action: { payload: string }) => {
+    roomIdState: (state: { value: any }, action: { payload: any }) => {
       state.value = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { roomId } = roomIdSlice.actions;
+export const { roomIdState } = roomIdSlice.actions;
 
 export default roomIdSlice.reducer;

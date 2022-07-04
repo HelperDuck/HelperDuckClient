@@ -6,7 +6,7 @@ import technologiesReducer from "./reducers/technologies";
 import helpRequestReducer from "./reducers/helpRequest";
 import userByIdReducer from "./reducers/userById";
 import reviewReducer from "./reducers/reviews";
-import roomIdReducer from "./reducers/RoomId";
+import roomIdStateReducer from "./reducers/RoomId";
 
 export const store = configureStore({
   reducer: {
@@ -17,7 +17,7 @@ export const store = configureStore({
     helpRequests: helpRequestReducer,
     userById: userByIdReducer,
     askerReview: reviewReducer,
-    roomId: roomIdReducer,
+    roomIdState: roomIdStateReducer,
   },
 });
 

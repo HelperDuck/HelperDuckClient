@@ -5,6 +5,9 @@ import SliderRange from "./Slider";
 import { Backdrop } from "./Backdrop";
 import { reviewType } from "../Types/ReviewType";
 import { useSelector } from "react-redux";
+import { helpRequests } from "../Redux/reducers/helpRequest";
+import { useLocation } from "react-router-dom";
+import { postReviewHelpAsker } from "../services/reviews";
 
 const dropIn = {
   hidden: {
@@ -52,7 +55,7 @@ export const ModalContainer = ({ children }: any) => (
   </AnimatePresence>
 );
 
-export const Modal = ({ handleClose }: any) => {
+export const Modal = ({ handleClose, onSubmitReview }: any) => {
   return (
     <Backdrop onClick={handleClose}>
       <motion.div
@@ -64,22 +67,35 @@ export const Modal = ({ handleClose }: any) => {
         exit="exit"
       >
         <ModalText />
-        <ModalButton onClick={handleClose} label="Submit" />
+        {/* <ModalButton onClick={handleClose} label="Submit" /> */}
       </motion.div>
     </Backdrop>
   );
 };
 
 const ModalText = () => {
+  const location: any = useLocation();
   const user = useSelector((state: any) => state.user.value);
-  const roomId = useSelector((state: any) => state.roomid.value);
+  const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
   const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState("");
+
+  // const requestId = allHelpRequests.filter((requests: any) => {
+  //   return requests.roomId === location.state.roomId;
+  // });
 
   const onSubmitReview = (e: any) => {
+    e.preventDefault();
     const newAskerReview: reviewType = {
-      userId: user.id,
-      rating: rating,
+      tipGiven: 0,
+      review: {
+        rating: rating,
+        // helpRequestId: requestId[0].id,
+        comment: comment,
+      },
     };
+    console.log(newAskerReview);
+    //postReviewHelpAsker(newAskerReview);
   };
 
   return (
@@ -90,31 +106,40 @@ const ModalText = () => {
           Please complete the following form and help us grow our community
         </h2>
       </div>
-      <form className="form-container" onSubmit={onSubmitReview}>
+      <form className="form-container">
         <div className="box-wrapper">
           <label htmlFor="rating">How do you rate this service?</label>
           <Rating
             rating={rating}
             onRating={(rate: any) => setRating(rate)}
           ></Rating>
+          <textarea
+            className="write-review"
+            placeholder="Please write a review"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
         </div>
         <label className="price-range-label">
           Was it helful? Contribute with a tip!
         </label>
         <SliderRange></SliderRange>
+        <button id="form-submit" onClick={onSubmitReview}>
+          Submit
+        </button>
       </form>
     </div>
   );
 };
 
-const ModalButton = ({ onClick, label }: any) => (
-  <motion.button
-    className="modal-button"
-    type="button"
-    whileHover={{ scale: 1.1 }}
-    whileTap={{ scale: 0.95 }}
-    onClick={onClick}
-  >
-    {label}
-  </motion.button>
-);
+// const ModalButton = ({ onClick, label }: any) => (
+//   <motion.button
+//     className="modal-button"
+//     type="button"
+//     whileHover={{ scale: 1.1 }}
+//     whileTap={{ scale: 0.95 }}
+//     onClick={onClick}
+//   >
+//     {label}
+//   </motion.button>
+// );

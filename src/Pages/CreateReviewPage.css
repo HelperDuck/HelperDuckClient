@@ -12,8 +12,10 @@
   overflow-y: hidden;
   height: 60%;
   max-width: 50%;
-  padding: 3%;
-  border-radius: 10px;
+  padding-top: 2%;
+  padding-left: 3%;
+  padding-right: 3%;
+  border-radius: 30px;
 }
 
 .model-header-container {
@@ -22,6 +24,10 @@
   justify-content: center;
   flex-direction: column;
   color: white;
+  background-color: rgba(172, 167, 167, 0.2);
+  border-radius: 20px;
+  padding-top: 3%;
+  padding-bottom: 1%;
 }
 
 #h1 {
@@ -41,27 +47,29 @@
 }
 
 label[for="rating"] {
-  margin-top: 5%;
   color: white;
   font-family: "Baloo Bhai 2", cursive;
   font-weight: 700;
+  align-items: center;
+  display: flex;
+  font-size: 20px;
 }
 
 .rating {
   display: flex;
-  margin-top: 4%;
-  margin-bottom: 7%;
+  margin-top: 3%;
+  margin-bottom: 3%;
 }
 
 .price-range-label {
-  margin-top: 5%;
   color: white;
   font-family: "Baloo Bhai 2", cursive;
   font-weight: 700;
+  font-size: 20px;
 }
 
 .price-range {
-  margin-top: 3%;
+  margin-top: 1%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -74,13 +82,25 @@ label[for="rating"] {
   font-size: 25px;
 }
 
-.modal-button {
-  margin-top: 5%;
-  background-color: black;
+.write-review {
+  background-color: white;
+  border-radius: 10px;
+  width: 100%;
+  padding: 4%;
+  margin-bottom: 3%;
+}
+
+#form-submit {
+  margin-top: 2%;
+  background-color: white;
   font-family: "Baloo Bhai 2", cursive;
-  color: white;
-  padding: 2%;
+  color: black;
+  padding: 1%;
   font-weight: 700;
   border-radius: 10px;
   width: 20%;
+}
+
+#form-submit:hover {
+  transform: scale(1.2);
 }
