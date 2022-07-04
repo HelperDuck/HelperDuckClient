@@ -1,5 +1,5 @@
 import { reviewType } from "../Types/ReviewType";
-import { requestAskedType } from "../Types/RequestAskedType";
+// import { requestAskedType } from "../Types/RequestAskedType";
 
 const BASE_URL: string = "https://helperduck-dev.herokuapp.com";
 
