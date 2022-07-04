@@ -29,7 +29,13 @@ const Controls = styled.div`
   margin-top: 40px;
 `;
 
-const DuckShop = ({ onAddDuck, onRemoveDuck, numDucks }) => {
+type Props = {
+  onAddDuck?: any;
+  onRemoveDuck?: any;
+  numDucks?: number;
+}
+
+const DuckShop = ({ onAddDuck, onRemoveDuck, numDucks }:Props) => {
   return (
     <Shop>
       <ShopName>Top up your Ducks bag</ShopName>
