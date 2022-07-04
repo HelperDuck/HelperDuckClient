@@ -45,7 +45,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
     //lets control the submit button state
     setProcessingTo(true);
     
-    const { data: clientSecret } = await axios.post('/api/payment_intents', {
+    const { data: clientSecret } = await axios.post('http://localhost:3002/payment/create', {
       amount: price * 100,
     });
     
