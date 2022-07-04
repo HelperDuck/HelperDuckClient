@@ -1,5 +1,4 @@
 import { Icon } from "@iconify/react";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { deleteRequest } from "../services/request";
 import { requestAskedType } from "../Types/RequestAskedType";
@@ -11,14 +10,18 @@ type Props = {
 
 export const CreatedByMe = (props: Props) => {
   const { help } = props;
+
   const navigate = useNavigate();
 
   const OfferHelp = () => {
     navigate(`/call/${help.roomId}`);
   };
 
-  const handleDelete = (help: any) => {
-    deleteRequest(help.id);
+  const handleDelete = async (help: any) => {
+    console.log("aqui");
+    console.log(await deleteRequest(help.id));
+    await deleteRequest(help.id);
+    window.location.reload(); //TODO this is just a quick fix
   };
 
   return (
@@ -36,16 +39,18 @@ export const CreatedByMe = (props: Props) => {
           {/* //TODO this should display how much Tip i GAVE */}
         </span>
       </div>
-      <div className="delete-request-container">
-
-          <Icon icon="clarity:trash-solid" className="trash-bin" width="20" height="20" />
-        <span
-          onClick={() => {
-            handleDelete(help);
-          }}
-          className="delete-request"
-        >
-        </span>
+      <div
+        onClick={() => {
+          handleDelete(help);
+        }}
+        className="delete-request-container"
+      >
+        <Icon
+          icon="clarity:trash-solid"
+          className="trash-bin"
+          width="20"
+          height="20"
+        />
       </div>
       <div className="detail-button-container">
         <button
