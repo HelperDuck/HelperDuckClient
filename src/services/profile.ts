@@ -48,8 +48,7 @@ export async function editUserProfile(user: UserType) {
   }
 } //use the returned value to set or manage state;
 
-
-export async function getOtherProfile(userId:string): Promise<any> {
+export async function getOtherProfile(userId: string): Promise<any> {
   try {
     const userProfileById = await fetch(`${BASE_URL}/user/${userId}`);
     return await userProfileById.json();

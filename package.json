@@ -7,6 +7,7 @@
     "@emotion/core": "^11.0.0",
     "@emotion/styled": "^11.9.3",
     "@iconify/react": "^3.2.2",
+    "@monaco-editor/react": "^4.4.5",
     "@reduxjs/toolkit": "^1.8.2",
     "@stripe/react-stripe-js": "^1.9.0",
     "@stripe/stripe-js": "^1.32.0",

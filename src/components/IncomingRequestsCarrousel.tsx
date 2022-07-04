@@ -31,7 +31,6 @@ export const IncomingRequestsCarrousel = (props: Props) => {
             helpRequest.helpOffers[j].userId === user.id &&
             helpRequest.helpOffers[j].status !== "declined"
           ) {
-            console.log("aqui");
             return true;
           } else {
             return false;
@@ -40,8 +39,6 @@ export const IncomingRequestsCarrousel = (props: Props) => {
       }
       return true;
     });
-
-  console.log(filteredHR, "filteredHR");
 
   return (
     <div className="carrousel-outer-container">
