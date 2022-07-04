@@ -26,7 +26,7 @@ const CardElementContainer = styled.div`
 `;
 
 type Props = {
-  price: number;
+  price: any;
   onSuccessfulCheckout: () => void;
 }
 

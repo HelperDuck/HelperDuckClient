@@ -12,6 +12,7 @@ const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY as string
 
 type Props = {
   children?: ReactNode;
+  title?: string;
 }
 const Layout = ({ children }: Props) => {
   return (

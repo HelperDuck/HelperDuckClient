@@ -7,7 +7,10 @@ import DuckShop from "../components/payments/prebuilt/DuckShop";
 import CheckoutForm from "../components/payments/CheckoutForm";
 import { getDucksPrice } from "../utils/get-ducks-price"; //TOD
 
-const PaymentPage = (props) => {
+type Props = {
+  props?: any;
+}
+const PaymentPage = (props: Props) => {
   const [numDucks, setNumDucks] = useState(0);
 
   const addDuck = () => setNumDucks(num => Math.min(250, num + 5));
@@ -31,7 +34,7 @@ const PaymentPage = (props) => {
               navigate(`/payment/ok`);
             }, 500);
           }
-         } //TODO: review
+        }
       />
     </Layout>
   );
