@@ -14,7 +14,7 @@ const PaymentPage = (props: Props) => {
   const [numDucks, setNumDucks] = useState(0);
 
   const addDuck = () => setNumDucks(num => Math.min(250, num + 5));
-  const remDuck = () => setNumDucks(num => Math.max(0, num - 5));
+  const remDuck = () => setNumDucks(num => Math.max(5, num - 5));
   const navigate = useNavigate();
   
   return (

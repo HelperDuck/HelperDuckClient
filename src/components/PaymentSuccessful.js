@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import giphy_dancing_gif from '../media/giphy_dancing_gif.gif';
 
 import Layout from "../components/payments/Layout";
-import Row from "../components/payments/prebuilt/Row";
 
 const Container = styled.div`
   width: 475px;

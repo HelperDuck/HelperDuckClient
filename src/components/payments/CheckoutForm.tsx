@@ -33,7 +33,6 @@ type Props = {
 const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
   const [isProcessing, setProcessingTo] = useState(false); 
   const [checkoutError, setCheckoutError] = useState();
-  
   const stripe = useStripe()
   const elements = useElements();
 

@@ -1,11 +1,10 @@
 import styled from "@emotion/styled";
 import { Icon } from "@iconify/react";
-import Image from "./Image";
 import DuckQuantity from "./DuckQuantity";
-import { playSound } from "../../../utils/playSound";
-import duckQuack from '../../../media/audio/duckQuack.mp3';
+// import { playSound } from "../../../utils/playSound";
+// import duckQuack from '../../../media/audio/duckQuack.mp3';
 
-const audio = new Audio(duckQuack)
+// const audio = new Audio(duckQuack)
 
 const Shop = styled.div`
   padding: 10px 20px 40px 20px;
