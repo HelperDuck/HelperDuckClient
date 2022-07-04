@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-import { keyframes, jsx } from "@emotion/react";
+import { keyframes } from "@emotion/react";
+import { ReactNode } from "react";
 
 const fade = keyframes`
   from {
@@ -32,7 +33,11 @@ const ErrorContainer = styled.div`
   }
 `;
 
-const CheckoutError = ({ children }) => (
+type Props = {
+  children?: ReactNode;
+}
+
+const CheckoutError = ({ children }: Props) => (
   <ErrorContainer role="alert">
     <svg width="16" height="16" viewBox="0 0 17 17">
       <path
