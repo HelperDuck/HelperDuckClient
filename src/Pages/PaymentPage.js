@@ -4,28 +4,28 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Layout from "../components/payments/Layout"
 import Row from "../components/payments/prebuilt/Row";
-import DonutShop from "../components/payments/prebuilt/DonutShop";
+import DuckShop from "../components/payments/prebuilt/DuckShop";
 import CheckoutForm from "../components/payments/CheckoutForm";
-import getDonutPrice from "../utils/get-donut-price"; //TOD
+import getDucksPrice from "../utils/get-ducks-price"; //TOD
 
-const MainPage = props => {
-  const [numDonuts, setNumDonuts] = useState(1);
+const PaymentPage = props => {
+  const [numDucks, setNumDucks] = useState(1);
 
-  const addDonut = () => setNumDonuts(num => Math.min(12, num + 1));
-  const remDonut = () => setNumDonuts(num => Math.max(1, num - 1));
+  const addDuck = () => setNumDucks(num => Math.min(12, num + 1));
+  const remDuck = () => setNumDucks(num => Math.max(1, num - 1));
   const navigate = useNavigate();
   
   return (
     <Layout title="Ducks Shop">
       <Row>
-        <DonutShop
-          onAddDonut={addDonut}
-          onRemoveDonut={remDonut}
-          numDonuts={numDonuts}
+        <DuckShop
+          onAddDuck={addDuck}
+          onRemoveDuck={remDuck}
+          numDucks={numDucks}
         />
       </Row>
       <CheckoutForm
-        price={getDonutPrice(numDonuts)}
+        price={getDucksPrice(numDucks)}
         onSuccessfulCheckout={() => { 
           
             setTimeout(() => {
@@ -38,4 +38,4 @@ const MainPage = props => {
   );
 };
 
-export default MainPage;
+export default PaymentPage;

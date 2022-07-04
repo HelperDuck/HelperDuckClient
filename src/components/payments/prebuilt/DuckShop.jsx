@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Icon } from "@iconify/react";
 import Image from "./Image";
-import DonutQuantity from "./DonutQuantity";
+import DuckQuantity from "./DuckQuantity";
 import { playSound } from "../../../utils/playSound";
 import duckQuack from '../../../media/audio/duckQuack.mp3';
 
@@ -29,7 +29,7 @@ const Controls = styled.div`
   margin-top: 40px;
 `;
 
-const DonutShop = ({ onAddDonut, onRemoveDonut, numDonuts }) => {
+const DuckShop = ({ onAddDuck, onRemoveDuck, numDucks }) => {
   return (
     <Shop>
       <ShopName>Top up your Ducks bag</ShopName>
@@ -42,14 +42,14 @@ const DonutShop = ({ onAddDonut, onRemoveDonut, numDonuts }) => {
             width={70}
           />
       <Controls>
-        <DonutQuantity
-          onAdd={onAddDonut}
-          onRemove={onRemoveDonut}
-          quantity={numDonuts}
+        <DuckQuantity
+          onAdd={onAddDuck}
+          onRemove={onRemoveDuck}
+          quantity={numDucks}
         />
       </Controls>
     </Shop>
   );
 };
 
-export default DonutShop;
+export default DuckShop;

@@ -41,7 +41,7 @@ const IncrementButton = styled(Button)`
   border-radius: 0 4px 4px 0;
 `;
 
-const DonutQuantity = ({ onAdd, onRemove, quantity }) => {
+const DuckQuantity = ({ onAdd, onRemove, quantity }) => {
   return (
     <>
       <DecrementButton onClick={onRemove}>–</DecrementButton>
@@ -51,4 +51,4 @@ const DonutQuantity = ({ onAdd, onRemove, quantity }) => {
   );
 };
 
-export default DonutQuantity;
+export default DuckQuantity;
