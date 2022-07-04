@@ -68,11 +68,19 @@ label[for="rating"] {
   font-size: 20px;
 }
 
+.tip-range-label {
+  display: none;
+}
+
 .price-range {
   margin-top: 1%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.slider-range-hide {
+  display: hide;
 }
 
 .price-range p {

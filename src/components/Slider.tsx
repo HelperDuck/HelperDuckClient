@@ -1,10 +1,7 @@
-import { ChakraProvider, Slider, SliderTrack } from "@chakra-ui/react";
+import { Box, ChakraProvider, Slider, SliderTrack } from "@chakra-ui/react";
 import { SliderFilledTrack, SliderThumb } from "@chakra-ui/slider";
-import { useState } from "react";
 
-const SliderRange = () => {
-  const [value, setValue] = useState(0);
-
+const SliderRange = ({ value, setValue }: any) => {
   return (
     <div className="price-range">
       <ChakraProvider>
@@ -18,7 +15,9 @@ const SliderRange = () => {
           <SliderTrack>
             <SliderFilledTrack></SliderFilledTrack>
           </SliderTrack>
-          <SliderThumb boxSize={6}></SliderThumb>
+          <SliderThumb boxSize={6}>
+            {/* <Box color="300.blue" as={Duck} /> */}
+          </SliderThumb>
         </Slider>
         <p>{value}</p>
       </ChakraProvider>

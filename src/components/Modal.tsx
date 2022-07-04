@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Rating from "../components/Rating";
 import SliderRange from "./Slider";
 import { Backdrop } from "./Backdrop";
 import { reviewType } from "../Types/ReviewType";
 import { useSelector } from "react-redux";
-import { helpRequests } from "../Redux/reducers/helpRequest";
+// import { helpRequests } from "../Redux/reducers/helpRequest";
 import { useLocation } from "react-router-dom";
-import { postReviewHelpAsker } from "../services/reviews";
+import { getRequestByRoomId, postReviewHelpAsker } from "../services/reviews";
 
 const dropIn = {
   hidden: {
@@ -76,26 +76,52 @@ export const Modal = ({ handleClose, onSubmitReview }: any) => {
 const ModalText = () => {
   const location: any = useLocation();
   const user = useSelector((state: any) => state.user.value);
-  const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
+  // const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
+  const [value, setValue] = useState(0);
+  const [requestByRoomId, setRequestByRoomId] = useState({
+    helpOffer: { id: 0 },
+    helpRequest: { id: 0 },
+  });
+  console.log(requestByRoomId);
 
   // const requestId = allHelpRequests.filter((requests: any) => {
   //   return requests.roomId === location.state.roomId;
   // });
+  // console.log(requestId[0].id, "requestID");
+  // console.log(requestId[0].helpOffers[0].id, "helpOfferID");
+
+  const helpByRoomId = async () => {
+    try {
+      const result = await getRequestByRoomId(location.state.roomId);
+      setRequestByRoomId(result);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    helpByRoomId();
+  }, []);
 
   const onSubmitReview = (e: any) => {
     e.preventDefault();
     const newAskerReview: reviewType = {
-      tipGiven: 0,
+      tipGiven: value,
       review: {
         rating: rating,
-        // helpRequestId: requestId[0].id,
         comment: comment,
       },
     };
-    console.log(newAskerReview);
-    //postReviewHelpAsker(newAskerReview);
+    postReviewHelpAsker(
+      requestByRoomId.helpRequest.id,
+      requestByRoomId.helpOffer.id,
+      newAskerReview
+    );
+    setRating(0);
+    setComment("");
+    setValue(0);
   };
 
   return (
@@ -120,10 +146,25 @@ const ModalText = () => {
             onChange={(e) => setComment(e.target.value)}
           />
         </div>
-        <label className="price-range-label">
-          Was it helful? Contribute with a tip!
-        </label>
-        <SliderRange></SliderRange>
+        {user.id === requestByRoomId.helpRequest.id ? (
+          <>
+            <label className="price-range-label">
+              Was it helpful? Contribute with a tip!
+            </label>
+            <SliderRange value={value} setValue={setValue}></SliderRange>{" "}
+          </>
+        ) : (
+          <>
+            <label className="tip-range-label">
+              Was it helpful? Contribute with a tip!
+            </label>
+            <SliderRange
+              className="slider-range-hide"
+              value={value}
+              setValue={setValue}
+            ></SliderRange>
+          </>
+        )}
         <button id="form-submit" onClick={onSubmitReview}>
           Submit
         </button>
