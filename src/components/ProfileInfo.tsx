@@ -108,12 +108,6 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
             </label>
           </div>
           <div id="full-name">{`${otherUser.firstName} ${otherUser.lastName}`}</div>
-          <button
-            className="request-btn"
-            onClick={() => navigate("/newRequest")}
-          >
-            Create a request
-          </button>
         </div>
       </div>
       <div id="aboutme">{otherUser.userBio}</div>

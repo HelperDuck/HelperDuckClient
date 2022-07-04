@@ -1,5 +1,5 @@
 .profileInformation-containers {
-  margin-left: 5%;
+  margin-left: 2%;
   position: relative;
   font-family: "Roboto", sans-serif;
   height: 100px;
@@ -41,4 +41,3 @@
   /* margin-top: 20px; */
   height: fit-content;
 }
-

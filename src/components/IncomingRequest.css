@@ -7,12 +7,12 @@
   flex-direction: column;
   padding: 3%;
   background-color: rgba(201, 200, 200, 0.8);
-  box-shadow:  0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21), 
-   1.8px -0.1px 2px -0.2px rgba(0, 0, 0, 0.12), 
-   2.2px -2.1px 5px -0.5px rgba(219, 213, 213, 0.25), 
-   2.3px -0.25px 5px -0.2px rgba(43, 43, 43, 0), 
-   2.4px -1px 5px -0.3px rgba(255, 246, 246, 0.09),
-   2.4px 2px 5px -0.3px rgba(255, 246, 246, 0.908);
+  box-shadow: 0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21),
+    1.8px -0.1px 2px -0.2px rgba(0, 0, 0, 0.12),
+    2.2px -2.1px 5px -0.5px rgba(219, 213, 213, 0.25),
+    2.3px -0.25px 5px -0.2px rgba(43, 43, 43, 0),
+    2.4px -1px 5px -0.3px rgba(255, 246, 246, 0.09),
+    2.4px 2px 5px -0.3px rgba(255, 246, 246, 0.908);
 
   border-radius: 14px;
   font-family: "Roboto", sans-serif;
@@ -21,7 +21,7 @@
   min-width: 90%;
 }
 
-.IncomingRequest-wrapper:hover{
+.IncomingRequest-wrapper:hover {
   background-color: rgba(230, 230, 230, 0.08);
 }
 
@@ -34,14 +34,13 @@
 
 
 .duck-icon {
-  width: 1vw;
-  height: 2vh;
+  width: 25px;
+
   margin-right: 5px;
 }
 
 .fire-icon {
-  width: 1vw;
-  height: 2vh;
+  width: 25px;
 
   margin-right: 2px;
 }
@@ -65,12 +64,15 @@
 
 .profile-info-container {
   display: flex;
+  max-width: 62%;
 }
 
 .info {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  max-width: 80%;
+
 }
 
 .subject {
@@ -127,13 +129,14 @@
   display: flex;
   flex-direction: column;
   margin-left: 25px;
+  min-width: 30%;
 
 }
 
 .accept-button {
-  font-size: 13px;
+  font-size: 1rem;
   font-family: Verdana;
-  width: 4.5vw;
+  min-width: 100%;
   height: 4vh;
   color: #fff;
   font-weight: bold;
@@ -141,33 +144,37 @@
   background: rgba(0, 0, 0, 1);
   cursor: pointer;
   border: none;
+  word-wrap: break-word;
   margin: 0px 0px 15px 0px;
-  box-shadow:  0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21), 
-   -1.2px 2.1px 2px -0.2px rgba(0, 0, 0, 0.12), 
-   2.2px -2.1px 5px -0.5px rgba(219, 213, 213, 0.25), 
-   2.3px -0.25px 10px -0.2px rgba(43, 43, 43, 0), 
-   2.4px -1px 10px -0.3px rgba(255, 246, 246, 0.09),
-   2.4px 2px 10px -0.3px rgba(255, 246, 246, 0.908);
+  box-shadow: 0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21),
+    -1.2px 2.1px 2px -0.2px rgba(0, 0, 0, 0.12),
+    2.2px -2.1px 5px -0.5px rgba(219, 213, 213, 0.25),
+    2.3px -0.25px 10px -0.2px rgba(43, 43, 43, 0),
+    2.4px -1px 10px -0.3px rgba(255, 246, 246, 0.09),
+    2.4px 2px 10px -0.3px rgba(255, 246, 246, 0.908);
 }
 
 .accept-button:hover {
   background: rgba(0, 0, 0, 0.9);
   transform: translate(0.15%, 0.15%);
   transform: scale(1.05, 1.05);
-  box-shadow:  0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21), 
-   -1.8px 2.1px 2px -0.2px rgba(0, 0, 0, 0.12), 
-   2.2px -2.1px 5px -0.5px rgba(255, 246, 246, 0.908), 
-   2.3px -0.25px 10px -0.2px rgba(43, 43, 43, 0), 
-   2.4px -1px 10px -0.3px rgba(255, 246, 246, 0.09),
-   2.4px 2px 10px -0.3px rgba(219, 213, 213, 0.25);
+  box-shadow: 0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21),
+    -1.8px 2.1px 2px -0.2px rgba(0, 0, 0, 0.12),
+    2.2px -2.1px 5px -0.5px rgba(255, 246, 246, 0.908),
+    2.3px -0.25px 10px -0.2px rgba(43, 43, 43, 0),
+    2.4px -1px 10px -0.3px rgba(255, 246, 246, 0.09),
+    2.4px 2px 10px -0.3px rgba(219, 213, 213, 0.25);
 }
+
 .accept-button:active {
   background: rgba(0, 0, 0, 0.9);
   transform: translate(1.25%, 1.25%);
 }
 
 .decline-button {
-  font-size: 13px;
+  min-width: 100%;
+  word-wrap: break-word;
+  font-size: 1rem;
   font-family: Verdana;
   width: 4.5vw;
   height: 4vh;
@@ -178,24 +185,24 @@
   cursor: pointer;
   border: none;
   margin: 0px 0px 15px 0px;
-  box-shadow:  0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21), 
-  -1.2px 2.1px 2px -0.2px rgba(0, 0, 0, 0.12), 
-  2.2px -2.1px 5px -0.5px rgba(219, 213, 213, 0.25), 
-  2.3px -0.25px 10px -0.2px rgba(43, 43, 43, 0), 
-  2.4px -1px 10px -0.3px rgba(255, 246, 246, 0.09),
-  2.4px 2px 10px -0.3px rgba(255, 246, 246, 0.908);
+  box-shadow: 0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21),
+    -1.2px 2.1px 2px -0.2px rgba(0, 0, 0, 0.12),
+    2.2px -2.1px 5px -0.5px rgba(219, 213, 213, 0.25),
+    2.3px -0.25px 10px -0.2px rgba(43, 43, 43, 0),
+    2.4px -1px 10px -0.3px rgba(255, 246, 246, 0.09),
+    2.4px 2px 10px -0.3px rgba(255, 246, 246, 0.908);
 }
 
 .decline-button:hover {
   background: rgba(207, 47, 47, 0.9);
   transform: translate(0.15%, 0.15%);
   transform: scale(1.05, 1.05);
-  box-shadow:  0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21), 
-   -1.8px 2.1px 2px -0.2px rgba(0, 0, 0, 0.12), 
-   2.2px -2.1px 5px -0.5px rgba(255, 246, 246, 0.908), 
-   2.3px -0.25px 10px -0.2px rgba(43, 43, 43, 0), 
-   2.4px -1px 10px -0.3px rgba(255, 246, 246, 0.09),
-   2.4px 2px 10px -0.3px rgba(219, 213, 213, 0.25);
+  box-shadow: 0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21),
+    -1.8px 2.1px 2px -0.2px rgba(0, 0, 0, 0.12),
+    2.2px -2.1px 5px -0.5px rgba(255, 246, 246, 0.908),
+    2.3px -0.25px 10px -0.2px rgba(43, 43, 43, 0),
+    2.4px -1px 10px -0.3px rgba(255, 246, 246, 0.09),
+    2.4px 2px 10px -0.3px rgba(219, 213, 213, 0.25);
 }
 
 .decline-button:active {
@@ -220,8 +227,12 @@
 
   .buttons-container {
     margin: 10px 0;
-
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 
   }
+
+
 
 }

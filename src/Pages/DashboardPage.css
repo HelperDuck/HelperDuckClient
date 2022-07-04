@@ -65,9 +65,30 @@
   position: flex-end;
   right: -50px;
   top: -100px;
-  width: 8.2vw;
+  width: 150px;
 }
 
 .dash-profile-pic {
   border: 1px solid #D54848;
+}
+
+
+
+@media screen and (max-width: 961px) {
+
+  .inner-wrapper {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .first-half-container,
+  .second-half-container {
+    width: 95%;
+
+    margin: auto;
+    margin-bottom: 3%;
+    padding: 2%;
+    border: solid 0.5px gray;
+    border-radius: 14px;
+  }
 }

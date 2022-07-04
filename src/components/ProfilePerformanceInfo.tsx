@@ -13,7 +13,7 @@ export const ProfilePerformanceInfo = (props: Props) => {
         <div className="stats-outer-container">
           <div className="stats-inner-container dash-wrapper">
             <div className="number">
-              <span>{user.openedRequests}</span>
+              <span>{user.helpRequests.length}</span>
             </div>
             <div className="word">
               <span>Opened</span>{" "}
@@ -21,7 +21,7 @@ export const ProfilePerformanceInfo = (props: Props) => {
           </div>
           <div className="stats-inner-container dash-wrapper">
             <div className="number">
-              <span>{user.acceptedRequests}</span>
+              <span>{user.helpOffers.length}</span>
             </div>
             <div className="word">
               <span>Taken</span>
