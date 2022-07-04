@@ -9,7 +9,6 @@ import { NavBar } from "../components/NavBar";
 
 import Editor, { loader } from "@monaco-editor/react";
 import { availableProgramLangs } from "../utils/availableProgramLangs";
-import { Technology } from "../Types/TechnologiesType";
 
 type Props = {};
 
