@@ -1,7 +1,7 @@
 import { UserType } from "../Types/UserType";
 
 // const BASE_URL: string = "https://helperduck.herokuapp.com";
-const BASE_URL: string = "https://helperduck-dev.herokuapp.com";
+export const BASE_URL: string = "https://helperduck-dev.herokuapp.com";
 
 export async function postUserProfile(user: UserType) {
   try {
