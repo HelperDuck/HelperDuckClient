@@ -79,6 +79,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
     })
     
     console.log('Confirm Payment: ', confirmedCardPayment);
+    playSound(audio);
     onSuccessfulCheckout();
     // console.log(paymentMethodReq);
     // console.log(clientSecret);
