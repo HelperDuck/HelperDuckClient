@@ -40,7 +40,7 @@ const Input = styled.input`
   }
 `;
 
-const FormField = ({ label, type, name, placeholder, required }: HTMLFormElement) => {
+const FormField = ({ label, type, name, placeholder, required }: HTMLInputElement | any) => {
   return (
     <FormFieldContainer>
       <Label htmlFor={name}>{label}</Label>
