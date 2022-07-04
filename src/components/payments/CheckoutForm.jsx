@@ -120,7 +120,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }) => {
       {checkoutError && <CheckoutError>{checkoutError}</CheckoutError>}
       <Row>
         <SubmitButton disabled={isProcessing}>
-          {isProcessing ? "Processing..." : `Pay $${price}`}
+          {isProcessing ? "Processing..." : `Pay ${price} €`}
         </SubmitButton>
       </Row>
     </form>
