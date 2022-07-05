@@ -55,7 +55,7 @@
   box-shadow: 5px 3px 10px rgb(75, 75, 75);
 }
 
-.request-btn:active{
+.request-btn:active {
   transform: translate(1.25%, 1.25%);
   box-shadow: 5px 3px 10px rgb(75, 75, 75);
 }
@@ -69,15 +69,15 @@
   padding-top: 1%;
   padding-bottom: 1%;
   font-size: 2rem;
-  box-shadow:  0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21), 
-   1.8px -0.1px 2px -0.2px rgba(0, 0, 0, 0.12), 
-   2.2px -2.1px 5px -0.5px rgba(219, 213, 213, 0.25), 
-   2.3px -0.25px 5px -0.2px rgba(43, 43, 43, 0), 
-   2.4px -1px 5px -0.3px rgba(255, 246, 246, 0.09),
-   2.4px 2px 5px -0.3px rgba(255, 246, 246, 0.908);
+  box-shadow: 0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21),
+    1.8px -0.1px 2px -0.2px rgba(0, 0, 0, 0.12),
+    2.2px -2.1px 5px -0.5px rgba(219, 213, 213, 0.25),
+    2.3px -0.25px 5px -0.2px rgba(43, 43, 43, 0),
+    2.4px -1px 5px -0.3px rgba(255, 246, 246, 0.09),
+    2.4px 2px 5px -0.3px rgba(255, 246, 246, 0.908);
 }
 
-#full-name:hover{
+#full-name:hover {
   background-color: rgba(230, 230, 230, 0.08);
 }
 
@@ -97,18 +97,18 @@
 }
 
 .profile-boxes-wrapper {
-  position: relative;
+  width: 100%;
 }
 
 .profile-boxes {
-  width: 50vw;
+  width: 100%;
   background-color: rgba(201, 200, 200, 0.8);
   margin-top: 3vh;
-  height: 12vh;
   border-radius: 20px;
   display: flex;
   justify-content: left;
   align-items: center;
+  min-height: 12vh;
 }
 
 
@@ -123,10 +123,9 @@
 }
 
 .box-info {
-  margin-left: 5%;
-  position: relative;
+  margin-left: 2%;
   font-family: "Roboto", sans-serif;
-  height: 13vh;
+
   overflow-y: visible;
   padding: 1%;
   width: 80%;
@@ -246,3 +245,6 @@ input[type="file"] {
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.2);
 }
+
+
+@media only screen and (max-width: 800px) {}

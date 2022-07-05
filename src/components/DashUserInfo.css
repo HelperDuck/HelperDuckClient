@@ -226,7 +226,7 @@
   padding: 15px 0;
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap;
+
 }
 
 .profile-setting-container {
@@ -308,14 +308,38 @@
 .dash-wrapper {
   /* the width and the margin should be changed after all components are made */
   background-color: rgba(201, 200, 200, 0.8);
-  box-shadow:  0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21), 
-   1.8px -0.1px 2px -0.2px rgba(0, 0, 0, 0.12), 
-   2.2px -2.1px 5px -0.5px rgba(219, 213, 213, 0.25), 
-   2.3px -0.25px 5px -0.2px rgba(43, 43, 43, 0), 
-   2.4px -1px 5px -0.3px rgba(255, 246, 246, 0.09),
-   2.4px 2px 5px -0.3px rgba(255, 246, 246, 0.908);
+  box-shadow: 0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21),
+    1.8px -0.1px 2px -0.2px rgba(0, 0, 0, 0.12),
+    2.2px -2.1px 5px -0.5px rgba(219, 213, 213, 0.25),
+    2.3px -0.25px 5px -0.2px rgba(43, 43, 43, 0),
+    2.4px -1px 5px -0.3px rgba(255, 246, 246, 0.09),
+    2.4px 2px 5px -0.3px rgba(255, 246, 246, 0.908);
 }
 
-.dash-wrapper:hover{
+.dash-wrapper:hover {
   background-color: rgba(230, 230, 230, 0.08);
+}
+
+
+
+@media only screen and (max-width: 500px) {
+  .search-and-profile {
+    display: none;
+  }
+
+  .credits-taken-outer-container,
+  .languages-outer-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dash-wrapper {
+    width: 90%;
+    margin: 2% auto;
+
+
+  }
+
+
+
 }

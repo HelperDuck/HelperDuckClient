@@ -1,7 +1,7 @@
 import { UserType } from "../Types/UserType";
 
 // const BASE_URL: string = "https://helperduck.herokuapp.com";
-const BASE_URL: string = "https://helperduck-dev.herokuapp.com";
+export const BASE_URL: string = "https://helperduck-dev.herokuapp.com";
 
 //logic needs to be getUserProfileByID
 export async function getUserProfile(isAuthUser: {
@@ -53,11 +53,14 @@ export async function getAllUsers(): Promise<any> {
 
 export async function editUserProfile(user: UserType) {
   try {
+
+    console.log(user, 'user inside the sercie edit user profile')
     const editedUserProfile: any = await fetch(`${BASE_URL}/user/${user.uid}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     });
+    console.log(editedUserProfile, "editedUserProfile")
     return await editedUserProfile;
   } catch (err) {
     console.log("Error at editUserProfile Service: ", err);

@@ -11,9 +11,9 @@ const initialState: UserType = {
   profilePic: "",
   technologies: [],
   languages: [],
+  helpOffers: [],
+  helpRequests: [],
   gitHubProfile: "",
-  openedRequests: 0,
-  acceptedRequests: 0,
   avgTip: 0,
   rating: 0,
 };
