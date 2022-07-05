@@ -19,12 +19,12 @@ const Button = styled.span`
   display: inline-block;
   width: 30px;
   line-height: 38px;
-  color: rgba(0,0,0,0.9);;
+  color: rgba(0,0,0,0.9);
+  background-color: #FFDA24;
   height: 40px;
   text-align: center;
   font-weight: bold;
   cursor: pointer;
-  
   user-select: none;
   box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08),
     inset 0 1px 0 rgba(0,0,0,0.9);;
@@ -32,14 +32,14 @@ const Button = styled.span`
 
 const DecrementButton = styled(Button)`
   border-right: none;
-  background-color: #EBEF18;
+  background-color: #FFDA24;
   color: rgba(0,0,0,0.9);
   border-radius: 4px 0 0 4px;
 `;
 
 const IncrementButton = styled(Button)`
   border-left: none;
-  background-color: #EBEF18;
+  background-color: #FFDA24;
   color: rgba(0,0,0,0.9);
   border-radius: 0 4px 4px 0;
 `;
