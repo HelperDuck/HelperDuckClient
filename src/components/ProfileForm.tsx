@@ -148,7 +148,7 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
           <textarea
             className="profile-input"
             id="profile-aboutme"
-            placeholder="Brif description of your experience"
+            placeholder="Please tell us a bit about yourself"
             name="aboutme"
             defaultValue={user.userBio}
             rows={6}

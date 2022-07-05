@@ -1,7 +1,7 @@
 import { requestAskedType } from "../Types/RequestAskedType";
+import { BACKEND_CONNECTION } from "./backEndConnection";
 
-// const BASE_URL: string = "https://helperduck.herokuapp.com";
-const BASE_URL: string = "https://helperduck-dev.herokuapp.com";
+const BASE_URL: string = BACKEND_CONNECTION;
 
 export async function postRequest(request: requestAskedType) {
   try {

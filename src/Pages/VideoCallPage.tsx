@@ -1,16 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Peer, { Instance } from "simple-peer";
 import io from "socket.io-client";
 import { WebRTCUser } from "../Types/WebRTCUser";
 import "./VideoCallPage.css";
 import { roomIdState } from "../Redux/reducers/RoomId";
+import { Modal, ModalContainer } from "../components/Modal";
+import "./CreateReviewPage.css";
+import { BACKEND_CONNECTION } from "../services/backEndConnection";
 
-// const LOCAL = "http://localhost:3002/";
-const DEV = "https://helperduck-dev.herokuapp.com/";
-// const PROD = 'https://helperduck.herokuapp.com/';
-const SOCKET_SERVER_URL = DEV;
+const SOCKET_SERVER_URL = BACKEND_CONNECTION + "/";
 
 const Video = (props: WebRTCUser) => {
   const ref = useRef<HTMLVideoElement | any>();
@@ -41,7 +41,7 @@ type Props = {
 
 export const VideoCallPage = (props: Props) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const [modalOpen, setModalOpen] = useState(false);
   //HOOKS for classroom state management
   const [peers, setPeers] = useState<WebRTCUser[]>([]); //this will track the peers for rendering purposes
   const [stream, setStream] = useState<MediaStreamTrack>(); //eslint-disable-line
@@ -52,8 +52,10 @@ export const VideoCallPage = (props: Props) => {
   const peersRef = useRef<any[]>([]); //this will be used to track and handle the RTC Connections //TODO: check type works
   const userStream = useRef<MediaStream>();
   const [screening, setScreening] = useState<string>("");
+
   // console.log(screenSharingId, 'screenSharingId')
-  console.log(screening); //TODO: erase this
+  //TODO: erase this
+  console.log(screening);
   console.log(stream);
   console.log(screenSharingId);
   const currentPath = useLocation();
@@ -76,19 +78,6 @@ export const VideoCallPage = (props: Props) => {
       sampleRate: 44100,
     },
   };
-
-  //TODO: new useEffect WIP
-  // useEffect(() => {
-  //   console.log(screening, "ling screening state");
-  //   if (peersRef.current.length > 0) {
-  //     let peersEffect = peersRef.current.find((track) => track.kind === 'video');
-  //     console.log(peersEffect, " peersEffect at useEffect");
-  //     let track = peersEffect.stream[1];
-  //     // let trackTwo = peersEffect.getTracks()[0];
-  //     // peersEffect.removeTrack(track);
-  //     // peersEffect.addTrack(trackTwo);
-  //   }
-  // }, [screening]);
 
   useEffect(() => {
     //@ts-ignore
@@ -158,12 +147,6 @@ export const VideoCallPage = (props: Props) => {
                 };
 
                 setPeers((participants) => {
-                  console.log(participants, "Participants line 157");
-                  console.log(peerObj, "peerObj line 158");
-                  // if (participants.find((p) => p.peerId === peerObj.peerId) ) {
-                  //   console.log(participants, "participan insside find");
-                  //   return participants;
-                  // }
                   let base = [...participants, peerObj];
                   console.log(base, "BASSSSSEEEEE");
                   return base;
@@ -232,43 +215,6 @@ export const VideoCallPage = (props: Props) => {
       });
     }
   }, []);
-
-  // const mediaStream = navigator.mediaDevices.getDisplayMedia({});
-  // //TODO: emit socket event, 'toggling', mediaStream
-  // //TODO: recieve the socket event on('toggling', invoke streamToggler function)
-
-  // const screenSharingTrack = mediaStream.getTracks()[0]; //GET SCREEN TRACK
-
-  // if (socketRef.current)
-  // socketRef.current.on(
-  //   "renegotiate",
-  //   (participantsInRoom: string[]) => {
-  //     console.log(participantsInRoom, "participantsInRoom");
-  //     const peersArr: any[] = []; //array for rendering
-
-  //     participantsInRoom.forEach((participantId: string) => {
-  //       const peer = generateNewPeer(
-  //         participantId,
-  //         //@ts-ignore
-  //         socketRef.current.id,
-  //         stream
-  //       );
-
-  //       peersRef.current.push({
-  //         peerId: participantId,
-  //         peer,
-  //       });
-
-  //       //the peer itself plus the peerId will be used when rendering
-  //       peersArr.push({
-  //         peerId: participantId,
-  //         peer,
-  //       });
-  //     });
-  //     console.log("peersArr before setting setPeers - used for rendering: ", peersArr);
-  //     setPeers(peersArr);
-  //   }
-  // );
 
   const generateNewPeer = (
     userToSignal: string | Peer.SignalData,
@@ -357,7 +303,8 @@ export const VideoCallPage = (props: Props) => {
     if (userStream.current)
       userStream.current.getVideoTracks()[0].enabled = false;
     dispatch(roomIdState(roomId));
-    navigate("/review", { state: { roomId } });
+    setModalOpen(true);
+    //navigate("/review", { state: { roomId } });
   };
 
   const streamToggler = (stream: MediaStreamTrack) => {
@@ -439,6 +386,9 @@ export const VideoCallPage = (props: Props) => {
               🖥️
             </button>
           </div>
+          <ModalContainer>
+            {modalOpen && <Modal modalOpen={modalOpen} />}
+          </ModalContainer>
         </div>
 
         {peers.map((peer, index) => {

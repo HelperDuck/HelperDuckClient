@@ -66,6 +66,16 @@ export const NavBar = (props: Props) => {
             className="icons"
           />
         </li>
+        <li onClick={() => navigate("/payment")}>
+          <Icon
+            icon="fluent:wallet-credit-card-16-regular"
+            color="white"
+            hFlip={true}
+            height={25}
+            width={25}
+            className="icons"
+          />
+        </li>
         <li>
           <Icon
             onClick={logout}

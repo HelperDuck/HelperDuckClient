@@ -41,7 +41,7 @@ const DuckShop = ({ onAddDuck, onRemoveDuck, numDucks }:Props) => {
       <Icon
             icon="icon-park-solid:duck"
             className="icons"
-            color="rgb(0, 0, 0)"
+            color="rgb(0, 0, 0, 0.8)"
             hFlip={true}
             height={70}
             width={70}

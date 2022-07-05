@@ -1,4 +1,3 @@
-// import React from "react";
 import { DashUserInfo } from "../components/DashUserInfo";
 import { IncomingRequestsCarrousel } from "../components/IncomingRequestsCarrousel";
 import { NavBar } from "../components/NavBar";
@@ -9,12 +8,30 @@ import "./DashboardPage.css";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import DetailsModal from "../components/DetailsModal";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../services/authentication";
 
 type Props = {};
 
 export const DashboardPage = (props: Props) => {
+  const [, loading] = useAuthState(auth);
   const user = useSelector((state: any) => state.user.value);
   const [modalOpen, setModalOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const redirectProfile = () => {
+    if (user.uid !== "" && user.technologies.length === 0) {
+      console.log("profile pic not found");
+      navigate(`/profile/${user.uid}`);
+    }
+  };
+
+  useEffect(() => {
+    if (loading) return;
+    redirectProfile();
+  }, [user.uid]); //eslint-disable-line
 
   return (
     <div className="dashboard-wrapper">
@@ -32,7 +49,11 @@ export const DashboardPage = (props: Props) => {
                 <img className="img-boy" src={boySvg} alt="boy img" />{" "}
               </div>
             </div>
-            <IncomingRequestsCarrousel></IncomingRequestsCarrousel>
+            {user.uid && user.uid !== "" ? (
+              <IncomingRequestsCarrousel></IncomingRequestsCarrousel>
+            ) : (
+              <></>
+            )}
           </div>
 
           <div className="second-half-container">

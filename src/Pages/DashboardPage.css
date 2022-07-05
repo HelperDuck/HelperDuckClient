@@ -71,13 +71,10 @@
 }
 
 .dash-profile-pic {
-  border: 1px solid #D54848;
+  border: 1px solid #d54848;
 }
 
-
-
 @media screen and (max-width: 961px) {
-
   .inner-wrapper {
     flex-direction: column;
     width: 100%;
