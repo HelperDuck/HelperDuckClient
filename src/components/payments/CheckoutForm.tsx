@@ -9,8 +9,9 @@ import BillingDetailsFields from "./prebuilt/BillingDetailsFields";
 import SubmitButton from "./prebuilt/SubmitButton";
 import CheckoutError from "./prebuilt/CheckoutError";
 
-import { CardElement,  useStripe, useElements } from "@stripe/react-stripe-js";
-import { BASE_URL } from "../../services/profile";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+// const BASE_URL: string = "https://helperduck.herokuapp.com";
+const BASE_URL: string = "https://helperduck-dev.herokuapp.com";
 
 const audio = new Audio(duckQuack);
 
@@ -28,12 +29,12 @@ const CardElementContainer = styled.div`
 type Props = {
   price: any;
   onSuccessfulCheckout: () => void;
-}
+};
 
 const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
-  const [isProcessing, setProcessingTo] = useState(false); 
+  const [isProcessing, setProcessingTo] = useState(false);
   const [checkoutError, setCheckoutError] = useState(); //eslint-disable-line
-  const stripe = useStripe()
+  const stripe = useStripe();
   const elements = useElements();
 
   const handleFormSubmit = async (ev: any) => {
@@ -46,64 +47,66 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
         city: ev.target.city.value,
         line1: ev.target.address.value,
         state: ev.target.state.value,
-        postal_code: ev.target.zip.value
-      }
+        postal_code: ev.target.zip.value,
+      },
     };
-    
+
     try {
       //lets control the submit button state
       setProcessingTo(true);
-      
+
       //create a payment intent on the server //TODO: replace by BASE URL
-    const { data: clientSecret } = await axios.post(`${BASE_URL}/payment/create`, {
-      amount: price * 100,
-    });
-    
-    if (elements && stripe) {
-    const cardElement = elements.getElement(CardElement);
-    
-    //create a payment method
-    if (cardElement) {
-    
-    const paymentMethodReq = await stripe.createPaymentMethod({
-      type: 'card',
-      card: cardElement,
-      billing_details: billingDetails,
-    })
-    
-  
-  
-    if (stripe && paymentMethodReq.paymentMethod) {
-    const confirmedCardPayment = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: paymentMethodReq.paymentMethod.id,
-    })
-    
-    console.log('Confirm Payment: ', confirmedCardPayment);
-    playSound(audio);
-    onSuccessfulCheckout();
-    // console.log(paymentMethodReq);
-    // console.log(clientSecret);
-   }
-  }
-}
-    
-   } catch (err) {
-    console.log('Error processing payment: ', err)
-   }
+      const { data: clientSecret } = await axios.post(
+        `${BASE_URL}/payment/create`,
+        {
+          amount: price * 100,
+        }
+      );
+
+      if (elements && stripe) {
+        const cardElement = elements.getElement(CardElement);
+
+        //create a payment method
+        if (cardElement) {
+          const paymentMethodReq = await stripe.createPaymentMethod({
+            type: "card",
+            card: cardElement,
+            billing_details: billingDetails,
+          });
+
+          if (stripe && paymentMethodReq.paymentMethod) {
+            const confirmedCardPayment = await stripe.confirmCardPayment(
+              clientSecret,
+              {
+                payment_method: paymentMethodReq.paymentMethod.id,
+              }
+            );
+
+            console.log("Confirm Payment: ", confirmedCardPayment);
+            playSound(audio);
+            onSuccessfulCheckout();
+            // console.log(paymentMethodReq);
+            // console.log(clientSecret);
+          }
+        }
+      }
+    } catch (err) {
+      console.log("Error processing payment: ", err);
+    }
     //TIP Stripe amount is in the lowest denomination of the currency
     //Ex. 1 USD 100 cents
-    
+
     //client_secret of that payment intent
-    
+
     //need a reference to the cardElement
     //need stripe.js
     //create a payment method
-    
+
     //confirm the card payment
     //payment method id
     //client_secret
   };
-  
+
   //stripe.com/docs/js
   const cardElementOptions = {
     //a way to inject styles into iframe
@@ -112,18 +115,16 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
         fontSize: "16px",
         color: "#111",
         "::placeholder": {
-          color: '#87bbfd'
-        }
+          color: "#87bbfd",
+        },
       },
       invalid: {
         color: "#FFC7EE",
         iconColor: "#FFC7EE",
       },
-      complete: {
-        
-      }
+      complete: {},
     },
-    hidePostalCode: true
+    hidePostalCode: true,
   };
 
   return (

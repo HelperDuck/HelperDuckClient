@@ -7,7 +7,11 @@ import { reviewType } from "../Types/ReviewType";
 import { useSelector } from "react-redux";
 // import { helpRequests } from "../Redux/reducers/helpRequest";
 import { useLocation } from "react-router-dom";
-import { getRequestByRoomId, postReviewHelpAsker } from "../services/reviews";
+import {
+  getRequestByRoomId,
+  postReviewHelpAsker,
+  postReviewHelpOffer,
+} from "../services/reviews";
 
 const dropIn = {
   hidden: {
@@ -81,11 +85,9 @@ const ModalText = () => {
   const [comment, setComment] = useState("");
   const [value, setValue] = useState(0);
   const [requestByRoomId, setRequestByRoomId] = useState({
-    helpOffer: { id: 0 },
+    helpOffer: { user: { id: 0 }, id: 0 },
     helpRequest: { id: 0, userId: 0 },
   });
-  console.log(requestByRoomId);
-  console.log(user);
 
   // const requestId = allHelpRequests.filter((requests: any) => {
   //   return requests.roomId === location.state.roomId;
@@ -115,11 +117,23 @@ const ModalText = () => {
         comment: comment,
       },
     };
-    postReviewHelpAsker(
-      requestByRoomId.helpRequest.id,
-      requestByRoomId.helpOffer.id,
-      newAskerReview
-    );
+
+    const newOfferReview: reviewType = {
+      rating: rating,
+      comment: comment,
+      userId: requestByRoomId.helpOffer.user.id,
+      helpOfferId: requestByRoomId.helpOffer.id,
+    };
+
+    if (user.id === requestByRoomId.helpRequest.userId) {
+      postReviewHelpAsker(
+        requestByRoomId.helpRequest.id,
+        requestByRoomId.helpOffer.id,
+        newAskerReview
+      );
+    } else {
+      postReviewHelpOffer(newOfferReview);
+    }
     setRating(0);
     setComment("");
     setValue(0);
