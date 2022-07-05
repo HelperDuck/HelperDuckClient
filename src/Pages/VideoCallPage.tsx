@@ -19,23 +19,17 @@ type Props = {
 export const VideoCallPage = (props: Props) => {
   //HOOKS for classroom state management
   const [peers, setPeers] = useState<WebRTCUser[]>([]); //this will track the peers for rendering purposes
-  const [stream, setStream] = useState<MediaStreamTrack>(); //eslint-disable-line
-  const [screenSharingId, setScreenSharingId] = useState<string>("");
   const socketRef = useRef<any>(); //will handle the sockets communications for signaling //TODO: check type works
   const userVideo = useRef<HTMLVideoElement | any>(null); //TODO: may need to remove the null value
   let partnerVideo = useRef<any>();
   const peersRef = useRef<any[]>([]); //this will be used to track and handle the RTC Connections //TODO: check type works
   const userStream = useRef<MediaStream>();
   const [screening, setScreening] = useState<string>("");
-  // console.log(screenSharingId, 'screenSharingId')
-  console.log(screening); //TODO: erase this
-  console.log(stream);
-  console.log(screenSharingId);
+ 
+
   const currentPath = useLocation();
   const roomId: string | undefined = currentPath.pathname.split("/").pop();
   console.log("roomId:", roomId);
-
-
 
 
   useEffect(() => {
@@ -78,10 +72,6 @@ export const VideoCallPage = (props: Props) => {
                   peer,
                 });
               });
-              console.log(
-                "peersArr before setting setPeers - used for rendering: ",
-                peersArr
-              );
               setPeers(peersArr);
             }
           );
@@ -104,18 +94,7 @@ export const VideoCallPage = (props: Props) => {
                   peer,
                   peerId: data.callerId,
                 };
-
-                setPeers((participants) => {
-                  console.log(participants, "Participants line 157");
-                  console.log(peerObj, "peerObj line 158");
-                  // if (participants.find((p) => p.peerId === peerObj.peerId) ) {
-                  //   console.log(participants, "participan insside find");
-                  //   return participants;
-                  // }
-                  let base = [...participants, peerObj];
-                  console.log(base, "BASSSSSEEEEE");
-                  return base;
-                });
+                setPeers((participants) => [...participants, peerObj]);
               } catch (err) {
                 console.log("Error handling userHasJoined Socket Event: ", err);
               }
@@ -123,7 +102,6 @@ export const VideoCallPage = (props: Props) => {
           );
 
         if (socketRef.current)
-          //TODO: this if statement is preventing unresolved promises -> get back to it if needed
           socketRef.current.on(
             "serverReceivedTheReturnedSignal",
             (data: { id: any; signal: any }) => {
@@ -135,24 +113,9 @@ export const VideoCallPage = (props: Props) => {
             }
           );
 
-        if (socketRef.current) {
-          socketRef.current.on("screenToggling", (screenSharingTrack: any) => {
-            console.log(
-              "WE are actually inside the screen toggling  inside the socket event",
-              screenSharingTrack
-            );
-            // setStream(data);
-            setScreening(screenSharingTrack);
-            // streamToggler(data)
-          });
-        }
-
         if (socketRef.current)
-          //TODO: this if statement is preventing unresolved promises -> get back to it if needed
           socketRef.current.on("leftCall", (id: Instance) => {
-            const peerObj = peersRef.current.find(
-              (target) => target.peerId === id
-            );
+            const peerObj = peersRef.current.find((target) => target.peerId === id);
             if (peerObj) {
               peerObj.peer.destroy();
             }
@@ -160,9 +123,7 @@ export const VideoCallPage = (props: Props) => {
 
             /*filter out the participant that is leaving
             and re-render video containers to all participants based on the updated state*/
-            const peers = peersRef.current.filter(
-              (target) => target.peerId !== id
-            );
+            const peers = peersRef.current.filter((target) => target.peerId !== id);
             peersRef.current = peers;
             setPeers(peers);
           });
@@ -197,15 +158,10 @@ export const VideoCallPage = (props: Props) => {
           signal,
         });
     });
-
     return peer;
   };
 
-  const addNewPeer = (
-    newSignalIncoming: string | Peer.SignalData,
-    callerId: string,
-    stream: MediaStream
-  ) => {
+  const addNewPeer = (newSignalIncoming: string | Peer.SignalData, callerId: string, stream: MediaStream) => {
     const peer = new Peer({
       initiator: false,
       trickle: false,
@@ -267,13 +223,6 @@ export const VideoCallPage = (props: Props) => {
     window.location.replace("/dashboard");
   };
 
-  const streamToggler = (stream: MediaStreamTrack) => {
-    console.log(stream, "stream inside the streamToggler");
-    setStream(stream);
-    if (userStream.current) setScreenSharingId(userStream.current.id);
-  };
-
-  
   const screenShare = async () => {
     try {
       //check if user is already sharing the screen
@@ -282,41 +231,29 @@ export const VideoCallPage = (props: Props) => {
 
       const screenSharingTrack = mediaStream.getTracks()[0]; //GET SCREEN TRACK
 
-      streamToggler(screenSharingTrack);
-
       if (socketRef.current && screenSharingTrack) {
-        console.log(
-          "socketRef exists at screenShare function, ofc",
-          screenSharingTrack
-        );
         socketRef.current.emit("screenToggling", roomId);
       }
-
+      
       if (userStream.current) {
         let videoTrack = userStream.current.getTracks()[1]; //GET VIDEO TRACK
-
         // //Replace Cam Stream by Screen Stream
         userStream.current.removeTrack(videoTrack);
         userStream.current.addTrack(screenSharingTrack);
 
-        /*Problem Description
-          User is able to share screen stream but is not updating the other peers 
-          Only when peers refresh
-          this is happening because Media changes require WebRTC peer connection renegotiation
-          https://stackoverflow.com/questions/31165316/webrtc-renegotiate-the-peer-connection-to-switch-streams
-          
-          Possible Solution: emit socket events to trigger renegotiation
-          */
         if (socketRef.current)
           //event listener for reversing streams when user stops sharing screen
           screenSharingTrack.onended = () => {
             if (userStream.current)
               userStream.current.removeTrack(screenSharingTrack);
             if (userStream.current) userStream.current.addTrack(videoTrack);
+            if (socketRef.current && screenSharingTrack) {
+              socketRef.current.emit("screenToggling", roomId);
+            }
           };
       }
     } catch (err) {
-      console.log("Error at screenshare function: ", err);
+      console.log("Error at screen sharing function: ", err);
     }
   };
   
@@ -357,12 +294,10 @@ export const VideoCallPage = (props: Props) => {
               className="video-container"
             />
           );
-        
-} else {
-  return (
-    <></>
-  )
-}})}
+        } else {
+          return (<></>)
+          }
+        })}
       </div>
     </div>
   );
