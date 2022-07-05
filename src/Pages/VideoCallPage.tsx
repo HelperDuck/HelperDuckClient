@@ -1,21 +1,30 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 import { WebRTCUser } from "../Types/WebRTCUser";
 import { Video }  from "./Video"
 import Peer, { Instance } from "simple-peer";
 import io from "socket.io-client";
 import "./VideoCallPage.css";
 import { videoConstraints } from "../utils/videoConstraints";
+import { roomIdState } from "../Redux/reducers/RoomId";
+import { Modal, ModalContainer } from "../components/Modal";
+import "./CreateReviewPage.css";
+import { BACKEND_CONNECTION } from "../services/backEndConnection";
+
+const SOCKET_SERVER_URL = BACKEND_CONNECTION + "/";
 
 const LOCAL = "http://localhost:3002/";
 // const DEV = 'https://helperduck-dev.herokuapp.com/';
 // const PROD = 'https://helperduck.herokuapp.com/';
-const SOCKET_SERVER_URL = LOCAL;
+
 
 type Props = {};
 
 export const VideoCallPage = (props: Props) => {
   //HOOKS for classroom state management
+  const dispatch = useDispatch();
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [peers, setPeers] = useState<WebRTCUser[]>([]); //this will track the peers for rendering purposes
   const socketRef = useRef<any>(); //will handle the sockets communications for signaling //TODO: check type works
   const userVideo = useRef<HTMLVideoElement | any>(null); //TODO: may need to remove the null value
@@ -209,6 +218,9 @@ export const VideoCallPage = (props: Props) => {
     if (userStream.current && socketRef.current)
       userStream.current.getVideoTracks()[0].enabled = false;
       socketRef.current.disconnect();
+      dispatch(roomIdState(roomId));
+      //dispatch State of modal open to dashboard and render Modal in the dashboard
+      // setModalOpen(true);
       window.location.replace("/dashboard");
   };
 
@@ -271,7 +283,6 @@ export const VideoCallPage = (props: Props) => {
             </button>
           </div>
         </div>
-
         {peers.map((peer, index) => {
           if (index === 0) {
             return (
