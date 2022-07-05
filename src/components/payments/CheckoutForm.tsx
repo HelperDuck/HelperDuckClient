@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { playSound } from "../../utils/playSound";
 import duckQuack from "../../media/audio/duckQuack.mp3";
 
@@ -35,6 +36,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
   const [checkoutError, setCheckoutError] = useState(); //eslint-disable-line
   const stripe = useStripe()
   const elements = useElements();
+  const navigate = useNavigate();
 
   const handleFormSubmit = async (ev: any) => {
     ev.preventDefault();
@@ -128,6 +130,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
 
   return (
     <form onSubmit={handleFormSubmit}>
+      
       <Row>
         <BillingDetailsFields />
       </Row>
@@ -141,6 +144,14 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
         <SubmitButton disabled={isProcessing}>
           {isProcessing ? "Processing..." : `Pay ${price} €`}
         </SubmitButton>
+      </Row>
+      <Row>
+      <button
+            className="cancel-btn"
+            onClick={() => {
+              navigate('/dashboard');
+            }}
+          > Cancel</button>
       </Row>
     </form>
   );
