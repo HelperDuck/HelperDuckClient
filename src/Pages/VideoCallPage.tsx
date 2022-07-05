@@ -6,11 +6,9 @@ import io from "socket.io-client";
 import { WebRTCUser } from "../Types/WebRTCUser";
 import "./VideoCallPage.css";
 import { roomIdState } from "../Redux/reducers/RoomId";
+import { BACKEND_CONNECTION } from "../services/backEndConnection";
 
-// const LOCAL = "http://localhost:3002/";
-const DEV = "https://helperduck-dev.herokuapp.com/";
-// const PROD = 'https://helperduck.herokuapp.com/';
-const SOCKET_SERVER_URL = DEV;
+const SOCKET_SERVER_URL = BACKEND_CONNECTION + "/";
 
 const Video = (props: WebRTCUser) => {
   const ref = useRef<HTMLVideoElement | any>();
