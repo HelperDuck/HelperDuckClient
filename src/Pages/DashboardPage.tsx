@@ -47,7 +47,11 @@ export const DashboardPage = (props: Props) => {
                 <img className="img-boy" src={boySvg} alt="boy img" />{" "}
               </div>
             </div>
-            <IncomingRequestsCarrousel></IncomingRequestsCarrousel>
+            {user.uid && user.uid !== "" ? (
+              <IncomingRequestsCarrousel></IncomingRequestsCarrousel>
+            ) : (
+              <></>
+            )}
           </div>
 
           <div className="second-half-container">
