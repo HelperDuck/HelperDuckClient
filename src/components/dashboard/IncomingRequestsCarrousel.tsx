@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { requestAskedType } from "../Types/RequestAskedType";
+import { requestAskedType } from "../../Types/RequestAskedType";
 import { IncomingRequest } from "./IncomingRequest";
-import notification from "../media/Notification.svg";
+import notification from "../../media/Notification.svg";
 
 import "./IncomingRequestsCarrousel.css";
 
