@@ -14,7 +14,7 @@ export const CreatedByMe = (props: Props) => {
   const dispatch = useDispatch();
   const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
   const { help } = props;
-
+  console.log(help, "help created by ME");
   const navigate = useNavigate();
 
   const OfferHelp = () => {
@@ -58,14 +58,23 @@ export const CreatedByMe = (props: Props) => {
         />
       </div>
       <div className="detail-button-container">
-        <button
-          onClick={OfferHelp}
-          className={
-            help.helpOffers.length ? "start-call-btn-accept" : "start-call-btn"
-          }
-        >
-          Start Call
-        </button>
+        {help.status !== "solved" ? (
+          <button
+            onClick={OfferHelp}
+            className={
+              help.helpOffers.length
+                ? "start-call-btn-accept"
+                : "start-call-btn"
+            }
+          >
+            Start Call
+          </button>
+        ) : (
+          <button onClick={OfferHelp} className="start-call-btn">
+            Details
+          </button>
+        )}
+
         {/* //TODO add View Detail Function */}
       </div>
     </div>

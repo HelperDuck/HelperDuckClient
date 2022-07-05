@@ -2,13 +2,14 @@ import { useState } from "react";
 import "./CreateRequestPage.css";
 import Select from "react-select";
 import { v4 as uuid } from "uuid";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { requestAskedType } from "../Types/RequestAskedType";
-import { postRequest } from "../services/request";
+import { getAllHelpRequests, postRequest } from "../services/request";
 import { NavBar } from "../components/NavBar";
-
 import Editor, { loader } from "@monaco-editor/react";
 import { availableProgramLangs } from "../utils/availableProgramLangs";
+import { useNavigate } from "react-router-dom";
+import { helpRequests } from "../Redux/reducers/helpRequest";
 
 type Props = {};
 
@@ -17,6 +18,18 @@ export const CreateRequestPage = (props: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const [codeSnippet, setCodeSnippet] = useState("");
   const [codeSnippetLanguage, setCodeSnippetLanguage] = useState("JavaScript");
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const fetchAllHelpRequests = async () => {
+    try {
+      const allHelpRequests = await getAllHelpRequests();
+      dispatch(helpRequests(allHelpRequests));
+    } catch (err) {
+      console.error(err, "Error in All Languages Fetch reducer");
+    }
+  };
 
   function handleEditorChange(value: any, event: any): void {
     setCodeSnippet(value);
@@ -73,7 +86,9 @@ export const CreateRequestPage = (props: Props) => {
 
       await postRequest(newRequest);
       e.target.reset();
-      window.location.replace("/dashboard");
+      // window.location.replace("/dashboard");
+      fetchAllHelpRequests();
+      navigate("/dashboard");
     } catch (err) {
       console.log("Error posting newRequest at CreateRequestPage", err);
     }

@@ -193,8 +193,16 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
           </div>
         </div>
         <div className="performance-reviews-wrapper">
-          <ProfilePerformanceInfo></ProfilePerformanceInfo>
-          <SingleReview></SingleReview>
+          <div>
+            <ProfilePerformanceInfo></ProfilePerformanceInfo>
+          </div>
+          <div>
+            <div className="review-word">Reviews</div>
+            <div className="single-review-outer-container">
+              <SingleReview></SingleReview>
+              <SingleReview></SingleReview>
+            </div>
+          </div>
         </div>
       </div>
     </div>
