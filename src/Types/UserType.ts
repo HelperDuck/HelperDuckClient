@@ -9,10 +9,10 @@ export type UserType = {
   technologies?: string[];
   languages?: string[];
   gitHubProfile?: string;
-  openedRequests?: Number;
-  acceptedRequests?: Number;
   avgTip?: Number;
   rating?: Number;
+  helpOffers?: any;
+  helpRequests?: any;
 };
 
 export type UserForHelpType = {

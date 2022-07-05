@@ -23,7 +23,7 @@
 }
 
 .stats-inner-container {
-  background:rgba(201, 200, 200, 0.8);
+  background: rgba(201, 200, 200, 0.8);
   border-radius: 14px;
   display: flex;
   height: 10vh;
@@ -69,5 +69,45 @@
 
   .word {
     font-size: 1rem;
+  }
+}
+
+
+@media only screen and (max-width: 1000px) {
+  .stats-outer-container {
+    flex-direction: column;
+
+  }
+
+  .stats-inner-container {
+    width: 100%;
+    margin: 2% 0;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .profile-expertise {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .profilePerformanceInfo-wrapper {
+    width: 60%;
+    margin: 20px 0;
+  }
+
+  .profile-boxes {
+    width: 100%;
+    margin: 3% 0;
+  }
+
+  .img-input {
+    width: 100px;
+  }
+
+  #full-name {
+    width: 60vw;
   }
 }

@@ -10,7 +10,9 @@ type Props = {};
 export const RequestHistory = (props: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
-
+  const solvedHelpRequests = user.helpOffers.filter(
+    (item: any) => item.status === "solved"
+  );
   const filteredHR = allHelpRequests.filter((item: any) => {
     return item.userId === user.id;
   });
@@ -22,7 +24,11 @@ export const RequestHistory = (props: Props) => {
           <span>Past Requests</span>
         </div>
         <div className="past-request-carrousel">
-          <SinglePastRequest></SinglePastRequest>
+          {solvedHelpRequests.map((help: any, key: number) => {
+            return (
+              <SinglePastRequest key={key} help={help}></SinglePastRequest>
+            );
+          })}
         </div>
       </div>
 

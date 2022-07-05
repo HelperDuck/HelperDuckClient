@@ -1,5 +1,7 @@
 import { Icon } from "@iconify/react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { helpRequests } from "../Redux/reducers/helpRequest";
 import { deleteRequest } from "../services/request";
 import { requestAskedType } from "../Types/RequestAskedType";
 import "./CreatedByMe.css";
@@ -9,6 +11,8 @@ type Props = {
 };
 
 export const CreatedByMe = (props: Props) => {
+  const dispatch = useDispatch();
+  const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
   const { help } = props;
 
   const navigate = useNavigate();
@@ -18,16 +22,17 @@ export const CreatedByMe = (props: Props) => {
   };
 
   const handleDelete = async (help: any) => {
-    console.log("aqui");
-    console.log(await deleteRequest(help.id));
     await deleteRequest(help.id);
-    window.location.reload(); //TODO this is just a quick fix
+    dispatch(
+      helpRequests(allHelpRequests.filter((item: any) => item.id !== help.id))
+    );
+    // window.location.reload(); //TODO this is just a quick fix
   };
 
   return (
     <div className="past-request">
       <div className="subject-user-container">
-        <div className="subject">{help.subject}</div>
+        <div className="subject">{help.subject!.substring(0, 60) + "..."}</div>
         {/* <div className="user">
           // by {help.user.firstName} {help.user.lastName}
         </div> */}
