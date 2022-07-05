@@ -1,23 +1,25 @@
 import { Icon } from "@iconify/react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import brainBook from "../media/brainBook.svg";
 import "./DashUserInfo.css";
 import { useSelector } from "react-redux";
 import { LanguagesUserType } from "../Types/LanguagesType";
 import { TechnologiesType } from "../Types/TechnologiesType";
 
+
 type Props = {};
 
 export const DashUserInfo = (props: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const otherUser = useSelector((state: any) => state.userById.value);
+  const navigate = useNavigate();
   console.log(user, "user");
   console.log(otherUser, " otherUser");
   // const requestsTaken = user.helpOffers.filter(
-  //   (help: any) => help.status === "open"
+    //   (help: any) => help.status === "open"
   // );
 
-  console.log(user.helpOffers, "user helpoffers");
   return (
     <div className="dash-user-wrapper">
       <div className="credits-taken-outer-container">
@@ -28,6 +30,7 @@ export const DashUserInfo = (props: Props) => {
           <div className="word">
             <span>Credits</span>{" "}
           </div>
+            <button className="buy-btn" onClick={()=> {navigate('/payment')}}>Buy More</button>
         </div>
         <div className="taken-container dash-wrapper">
           <div className="number">

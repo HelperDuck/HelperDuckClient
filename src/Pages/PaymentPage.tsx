@@ -11,7 +11,7 @@ type Props = {
   props?: any;
 }
 const PaymentPage = (props: Props) => {
-  const [numDucks, setNumDucks] = useState(0);
+  const [numDucks, setNumDucks] = useState(5);
 
   const addDuck = () => setNumDucks(num => Math.min(250, num + 5));
   const remDuck = () => setNumDucks(num => Math.max(5, num - 5));

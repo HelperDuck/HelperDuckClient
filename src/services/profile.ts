@@ -1,7 +1,7 @@
 import { UserType } from "../Types/UserType";
+import { BACKEND_CONNECTION } from "./backEndConnection";
 
-// const BASE_URL: string = "https://helperduck.herokuapp.com";
-const BASE_URL: string = "https://helperduck-dev.herokuapp.com";
+const BASE_URL: string = BACKEND_CONNECTION;
 
 export async function postUserProfile(user: UserType) {
   try {
@@ -17,12 +17,41 @@ export async function postUserProfile(user: UserType) {
 }
 
 //logic needs to be getUserProfileByID
-export async function getUserProfile(user: UserType): Promise<any> {
+export async function getUserProfile(isAuthUser: {
+  uid: string;
+  email: string;
+  displayName?: string;
+}): Promise<any> {
   try {
-    const userProfileById = await fetch(`${BASE_URL}/user/${user.uid}`);
+    const userProfileById = await fetch(`${BASE_URL}/user/${isAuthUser.uid}`);
     return await userProfileById.json();
   } catch (err) {
     console.log("Error at getUserProfile Service: ", err);
+    return null;
+  }
+}
+
+export async function createUser(isAuthUser: {
+  uid: string;
+  email: string;
+  displayName?: string;
+  userName?: string;
+}): Promise<any> {
+  try {
+    const newUserData = {
+      userName: isAuthUser.displayName ? isAuthUser.displayName : "new User",
+      email: isAuthUser.email,
+      uid: isAuthUser.uid,
+    };
+    console.log("newUserData: ", newUserData);
+    const newUserProfile: any = await fetch(`${BASE_URL}/user`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newUserData),
+    });
+    return newUserProfile.json();
+  } catch (err) {
+    console.log("Error at createUserProfile Service: ", err);
   }
 }
 
@@ -37,7 +66,6 @@ export async function getAllUsers(): Promise<any> {
 
 export async function editUserProfile(user: UserType) {
   try {
-    console.log(user, "user inside the sercie edit user profile");
     const editedUserProfile: any = await fetch(`${BASE_URL}/user/${user.uid}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },

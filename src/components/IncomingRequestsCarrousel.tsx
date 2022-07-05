@@ -12,11 +12,15 @@ export const IncomingRequestsCarrousel = (props: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const userTechs = user.technologies.map((item: any) => item.technology.name);
 
-  console.log(allHelpRequests, "all help");
+  console.log("userUid", user.uid);
 
   const filteredHR = allHelpRequests
     .filter((helpRequest: any) => {
-      if (user.uid !== helpRequest.user.uid && helpRequest.status === "open") {
+      if (
+        helpRequest.user &&
+        user.uid !== helpRequest.user.uid &&
+        helpRequest.status === "open"
+      ) {
         for (let i = 0; i < helpRequest.technologies.length; i++) {
           if (userTechs.includes(helpRequest.technologies[i].technology.name)) {
             return true;
@@ -52,21 +56,7 @@ export const IncomingRequestsCarrousel = (props: Props) => {
       </div>
       <div className="request-carrousel">
         {filteredHR.map((help: requestAskedType, key: number) => {
-          return (
-            <IncomingRequest
-              help={help}
-              key={key}
-              //    handleDelete={() => {
-              //   const newHRs = filteredHRs.filter((item: any) => {
-              //     console.log(item.id, "itemid");
-              //     console.log(help.id, "help.id");
-              //     return item.id !== help.id;
-              //   });
-
-              //   setFilteredHRs([...newHRs]);
-              // }}
-            ></IncomingRequest>
-          );
+          return <IncomingRequest help={help} key={key}></IncomingRequest>;
         })}
       </div>
     </div>
