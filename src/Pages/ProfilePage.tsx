@@ -6,23 +6,29 @@ import "./ProfilePage.css";
 import { useLocation } from "react-router-dom";
 import { getOtherProfile } from "../services/profile";
 import { userById } from "../Redux/reducers/userById";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 //TODO: review types any
 
 export const ProfilePage = () => {
   const [isInEditMode, setIsInEditMode] = useState<any>(true);
+
+  const user = useSelector((state: any) => state.user.value);
   const location = useLocation();
   const dispatch = useDispatch();
-
-  const userPath = location.pathname.slice(9);
 
   const fetchProfile = async () => {
     try {
       //@ts-ignore
-      const profileFound = await getOtherProfile(userPath);
+      const userPath = await location.pathname.slice(9);
 
-      dispatch(userById(profileFound));
+      if (userPath === "") {
+        const profileFound = await getOtherProfile(user.uid);
+        dispatch(userById(profileFound));
+      } else {
+        const profileFound = await getOtherProfile(userPath);
+        dispatch(userById(profileFound));
+      }
     } catch (err) {
       console.error(err, "Error on fetch profile");
     }
@@ -30,7 +36,7 @@ export const ProfilePage = () => {
 
   useEffect(() => {
     fetchProfile();
-  }, [userPath]); //eslint-disable-line
+  }, []); //eslint-disable-line
 
   return (
     <div className="profile-wrapper">

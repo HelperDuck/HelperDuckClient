@@ -7,11 +7,24 @@ import boySvg from "../media/boy.svg";
 import Avatar from "react-avatar";
 import "./DashboardPage.css";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
 export const DashboardPage = (props: Props) => {
   const user = useSelector((state: any) => state.user.value);
+  const navigate = useNavigate();
+
+  const redirectProfile = async () => {
+    if (user.profilePic === "") {
+      navigate(`/profile/${user.uid}`);
+    }
+  };
+
+  useEffect(() => {
+    redirectProfile();
+  });
 
   return (
     <div className="dashboard-wrapper">
@@ -47,7 +60,12 @@ export const DashboardPage = (props: Props) => {
                 </form>
               </div>
               <div className="profile-setting-container">
-                <Avatar className="dash-profile-pic" src={user.profilePic} size="50" round={true}></Avatar>
+                <Avatar
+                  className="dash-profile-pic"
+                  src={user.profilePic}
+                  size="50"
+                  round={true}
+                ></Avatar>
               </div>
             </div>
 

@@ -84,9 +84,9 @@ function Login() {
             </div>
             <div className="login-title">Helper Duck</div>
             <div className="login-about">
-              <span>Helper Duck</span> is a plataform where programmers can help
+              <span>Helper Duck</span> is a platform where programmers can help
               each other by sharing knowledge and making the Tech World even
-              better!{" "}
+              better!!!{" "}
             </div>
           </div>
         </div>
