@@ -8,16 +8,12 @@ import io from "socket.io-client";
 import "./VideoCallPage.css";
 import { videoConstraints } from "../utils/videoConstraints";
 import { roomIdState } from "../Redux/reducers/RoomId";
-import { Modal, ModalContainer } from "../components/Modal";
+import { modalState } from "../Redux/reducers/ModalReducer";
+// import { Modal, ModalContainer } from "../components/Modal";
 import "./CreateReviewPage.css";
 import { BACKEND_CONNECTION } from "../services/backEndConnection";
 
 const SOCKET_SERVER_URL = BACKEND_CONNECTION + "/";
-
-const LOCAL = "http://localhost:3002/";
-// const DEV = 'https://helperduck-dev.herokuapp.com/';
-// const PROD = 'https://helperduck.herokuapp.com/';
-
 
 type Props = {};
 
@@ -219,6 +215,7 @@ export const VideoCallPage = (props: Props) => {
       userStream.current.getVideoTracks()[0].enabled = false;
       socketRef.current.disconnect();
       dispatch(roomIdState(roomId));
+      dispatch(modalState(true));
       //dispatch State of modal open to dashboard and render Modal in the dashboard
       // setModalOpen(true);
       window.location.replace("/dashboard");
