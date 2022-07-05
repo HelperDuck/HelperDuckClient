@@ -1,14 +1,16 @@
 import React from "react";
 import { Icon } from "@iconify/react";
-import { storage } from "../services/firebase";
+import { storage } from "../../services/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
-import "../Pages/ProfilePage.css";
+import "../../Pages/ProfilePage.css";
 import "./ProfileInfo.css";
-import { ProfilePerformanceInfo } from "../components/ProfilePerformanceInfo";
+import { ProfilePerformanceInfo } from "./ProfilePerformanceInfo";
 import { useSelector, useDispatch } from "react-redux";
-import { changeProfilePic } from "../Redux/reducers/userById";
-import { editUserProfile } from "../services/profile";
+import { changeProfilePic } from "../../Redux/reducers/userById";
+import { editUserProfile } from "../../services/profile";
+
+import { ProfilePic } from "./profilePic";
 
 //TODO: check the correct type
 
@@ -70,7 +72,9 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
       </div>
       <div className="header-wrapper">
         <div className="profile-header">
-          <div className="profile-image">
+          <ProfilePic isInEditMode={isInEditMode} />
+
+          {/* <div className="profile-image">
             <label className="label-upload" htmlFor="img-input">
               <Icon
                 className="icon-upload"
@@ -104,7 +108,7 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
                 />
               )}
             </label>
-          </div>
+          </div> */}
           <div id="full-name">{`${otherUser.firstName} ${otherUser.lastName}`}</div>
         </div>
       </div>
