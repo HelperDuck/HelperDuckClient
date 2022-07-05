@@ -6,7 +6,6 @@ import io from "socket.io-client";
 import { WebRTCUser } from "../Types/WebRTCUser";
 import "./VideoCallPage.css";
 import { roomIdState } from "../Redux/reducers/RoomId";
-import { Modal, ModalContainer } from "../components/Modal";
 
 // const LOCAL = "http://localhost:3002/";
 const DEV = "https://helperduck-dev.herokuapp.com/";
