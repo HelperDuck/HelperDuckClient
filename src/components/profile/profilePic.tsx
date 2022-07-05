@@ -48,35 +48,51 @@ export const ProfilePic = ({ isInEditMode }: Props) => {
     });
   };
 
+  const UploadImageBox = () => {
+    return (
+      <input
+        className="upload-image"
+        id="img-input"
+        type="file"
+        accept="image/*"
+        name="image"
+        onChange={(e?) => {
+          let file = (e!.target as HTMLInputElement)!.files![0];
+          uploadFile(file);
+        }}
+      ></input>
+    );
+  };
+
+  const ProfilePic = () => {
+    return (
+      <img
+        className="img-input"
+        src={otherUser.profilePic}
+        alt="profilePic"
+        style={{ maxHeight: "188px", maxWidth: "171px" }}
+      />
+    );
+  };
+
+  const EditButton = () => {
+    return (
+      <Icon className="icon-upload" icon="clarity:edit-solid" color="white" />
+    );
+  };
+
   return (
     <div className="profile-image">
       <label className="label-upload" htmlFor="img-input">
-        <Icon className="icon-upload" icon="clarity:edit-solid" color="white" />
-        <input
-          className="upload-image"
-          id="img-input"
-          type="file"
-          accept="image/*"
-          name="image"
-          onChange={(e?) => {
-            let file = (e!.target as HTMLInputElement)!.files![0];
-            uploadFile(file);
-          }}
-        ></input>
+        <ProfilePic />
         {isInEditMode ? (
-          <img
-            className="img-input"
-            src={otherUser.profilePic}
-            alt="profilePic"
-            style={{ maxHeight: "188px", maxWidth: "171px" }}
-          />
+          //false = in edit mode
+          <></>
         ) : (
-          <Icon
-            icon="ooui:user-avatar-outline"
-            height={100}
-            width={90}
-            id="icon-avatar"
-          />
+          <>
+            <UploadImageBox />
+            <EditButton />
+          </>
         )}
       </label>
     </div>

@@ -96,22 +96,7 @@ const ProfileForm = ({ isInEditMode, setIsInEditMode }: Props) => {
         </button>
 
         <div className="profile-header">
-          {/* <ProfilePic /> */}
-          {user.profilePic ? (
-            <img
-              className="img-input"
-              src={user.profilePic}
-              alt="profilePic"
-              style={{ maxHeight: "188px", maxWidth: "171px" }}
-            />
-          ) : (
-            <Icon
-              icon="ooui:user-avatar-outline"
-              height={100}
-              width={90}
-              id="icon-avatar"
-            />
-          )}
+          <ProfilePic isInEditMode={isInEditMode} />
           <div className="input-name">
             <div id="input-firstName">
               <label className="label-profileForm" htmlFor="profile-firstname">
