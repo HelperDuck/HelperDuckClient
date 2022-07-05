@@ -1,5 +1,7 @@
 import { UserType } from "../Types/UserType";
-import { BASE_URL } from "./profile";
+import { BACKEND_CONNECTION } from "./backEndConnection";
+
+const BASE_URL: string = BACKEND_CONNECTION;
 
 type AddCreditsToUserArgs = {
   uid: UserType,
