@@ -1,14 +1,11 @@
 import React from "react";
 import { Icon } from "@iconify/react";
-import { storage } from "../services/firebase";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { v4 } from "uuid";
-import "../Pages/ProfilePage.css";
+import "../../Pages/ProfilePage.css";
 import "./ProfileInfo.css";
-import { ProfilePerformanceInfo } from "../components/ProfilePerformanceInfo";
-import { useSelector, useDispatch } from "react-redux";
-import { changeProfilePic } from "../Redux/reducers/userById";
-import { editUserProfile } from "../services/profile";
+import { ProfilePerformanceInfo } from "./ProfilePerformanceInfo";
+import { useSelector } from "react-redux";
+
+import { ProfilePic } from "./profilePic";
 
 //TODO: check the correct type
 
@@ -20,40 +17,10 @@ type Props = {
 export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const otherUser = useSelector((state: any) => state.userById.value);
-  const dispatch = useDispatch();
 
   const toggleEditMode = (e: any) => {
     e.preventDefault();
     setIsInEditMode(!isInEditMode);
-  };
-
-  const uploadFile = (profilePic: File) => {
-    if (profilePic == null) return;
-
-    //store image in firebase and display on FE
-    const imageRef = ref(storage, `profilePics/${profilePic.name + v4()}`);
-    uploadBytes(
-      imageRef,
-      profilePic as unknown as Blob | Uint8Array | ArrayBuffer
-    ).then((snapshot) => {
-      getDownloadURL(snapshot.ref).then((url) => {
-        dispatch(changeProfilePic({ url }));
-        //----------------------
-        const editedImg = {
-          uid: user.uid,
-          profilePic: url,
-        };
-        postUpdateUser(editedImg);
-      });
-    });
-  };
-
-  const postUpdateUser = async (user: any) => {
-    try {
-      await editUserProfile(user);
-    } catch (err) {
-      console.error(err, "Error in updating user");
-    }
   };
 
   return (
@@ -70,41 +37,7 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
       </div>
       <div className="header-wrapper">
         <div className="profile-header">
-          <div className="profile-image">
-            <label className="label-upload" htmlFor="img-input">
-              <Icon
-                className="icon-upload"
-                icon="clarity:edit-solid"
-                color="white"
-              />
-              <input
-                className="upload-image"
-                id="img-input"
-                type="file"
-                accept="image/*"
-                name="image"
-                onChange={(e?) => {
-                  let file = (e!.target as HTMLInputElement)!.files![0];
-                  uploadFile(file);
-                }}
-              ></input>
-              {otherUser.profilePic ? (
-                <img
-                  className="img-input"
-                  src={otherUser.profilePic}
-                  alt="profilePic"
-                  style={{ maxHeight: "188px", maxWidth: "171px" }}
-                />
-              ) : (
-                <Icon
-                  icon="ooui:user-avatar-outline"
-                  height={100}
-                  width={90}
-                  id="icon-avatar"
-                />
-              )}
-            </label>
-          </div>
+          <ProfilePic isInEditMode={isInEditMode} />
           <div id="full-name">{`${otherUser.firstName} ${otherUser.lastName}`}</div>
         </div>
       </div>
