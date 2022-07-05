@@ -20,7 +20,6 @@ import { getAllHelpRequests } from "./services/request";
 import { CreateRequestPage } from "./Pages/CreateRequestPage";
 import LoginPage from "./Pages/LoginPage";
 import Protected from "./ProtectRoutes";
-import { CreateReviewPage } from "./Pages/CreateReviewPage";
 import NotFound from "./Pages/NotFound";
 import PaymentPage from "./Pages/PaymentPage";
 import PaymentSuccessful from "./components/PaymentSuccessful";
@@ -100,7 +99,6 @@ function App() {
     <div className="app">
       <Router>
         <Routes>
-          <Route path="/review" element={<CreateReviewPage />} />
           <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/reset" element={<Reset />} />

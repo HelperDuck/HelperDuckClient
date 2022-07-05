@@ -5,13 +5,13 @@ import SliderRange from "./Slider";
 import { Backdrop } from "./Backdrop";
 import { reviewType } from "../Types/ReviewType";
 import { useSelector } from "react-redux";
-// import { helpRequests } from "../Redux/reducers/helpRequest";
-import { useLocation } from "react-router-dom";
+
 import {
   getRequestByRoomId,
   postReviewHelpAsker,
   postReviewHelpOffer,
 } from "../services/reviews";
+import { useNavigate } from "react-router-dom";
 
 const dropIn = {
   hidden: {
@@ -32,13 +32,6 @@ const dropIn = {
     y: "100vh",
     opacity: 0,
   },
-};
-
-export const useModal = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const close = () => setModalOpen(false);
-  const open = () => setModalOpen(true);
-  return { modalOpen, close, open };
 };
 
 export const ModalContainer = ({ children }: any) => (
@@ -69,16 +62,15 @@ export const Modal = ({ handleClose }: any) => {
         exit="exit"
       >
         <ModalText />
-        {/* <ModalButton onClick={handleClose} label="Submit" /> */}
       </motion.div>
     </Backdrop>
   );
 };
 
 const ModalText = () => {
-  const location: any = useLocation();
+  const navigate = useNavigate();
   const user = useSelector((state: any) => state.user.value);
-  // const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
+  const roomIdState = useSelector((state: any) => state.roomIdState.value);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const [value, setValue] = useState(0);
@@ -86,16 +78,10 @@ const ModalText = () => {
     helpOffer: { user: { id: 0 }, id: 0 },
     helpRequest: { id: 0, userId: 0 },
   });
-  console.log(user);
-  // const requestId = allHelpRequests.filter((requests: any) => {
-  //   return requests.roomId === location.state.roomId;
-  // });
-  // console.log(requestId[0].id, "requestID");
-  // console.log(requestId[0].helpOffers[0].id, "helpOfferID");
 
   const helpByRoomId = async () => {
     try {
-      const result = await getRequestByRoomId(location.state.roomId);
+      const result = await getRequestByRoomId(roomIdState);
       setRequestByRoomId(result);
     } catch (err) {
       console.error(err);
@@ -132,9 +118,15 @@ const ModalText = () => {
     } else {
       postReviewHelpOffer(newOfferReview);
     }
+
     setRating(0);
     setComment("");
     setValue(0);
+
+    if (!rating) {
+      alert("Please give us your feedback");
+    }
+    navigate("/dashboard");
   };
 
   return (
@@ -167,12 +159,7 @@ const ModalText = () => {
             <SliderRange value={value} setValue={setValue}></SliderRange>{" "}
           </>
         ) : (
-          <>
-            {/* <label className="tip-range-label">
-              Was it helpful? Contribute with a tip!
-            </label>
-            <SliderRange value={value} setValue={setValue}></SliderRange> */}
-          </>
+          <></>
         )}
         <button id="form-submit" onClick={onSubmitReview}>
           Submit
@@ -181,15 +168,3 @@ const ModalText = () => {
     </div>
   );
 };
-
-// const ModalButton = ({ onClick, label }: any) => (
-//   <motion.button
-//     className="modal-button"
-//     type="button"
-//     whileHover={{ scale: 1.1 }}
-//     whileTap={{ scale: 0.95 }}
-//     onClick={onClick}
-//   >
-//     {label}
-//   </motion.button>
-// );
