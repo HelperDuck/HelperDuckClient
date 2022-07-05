@@ -5,7 +5,7 @@ import SliderRange from "./Slider";
 import { Backdrop } from "./Backdrop";
 import { reviewType } from "../Types/ReviewType";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+
 import {
   getRequestByRoomId,
   postReviewHelpAsker,

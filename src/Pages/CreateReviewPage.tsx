@@ -1,6 +1,6 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { Modal, ModalContainer } from "../components/Modal";
+// import { motion } from "framer-motion";
+// import { Modal, ModalContainer } from "../components/Modal";
 
 //TODO: to delete motion-main button
 
