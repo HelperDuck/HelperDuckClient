@@ -42,8 +42,6 @@ export const IncomingRequestsCarrousel = (props: Props) => {
       return true;
     });
 
-  console.log(filteredHR, "filteredHR");
-
   return (
     <div className="carrousel-outer-container">
       <div className="title">

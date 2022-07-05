@@ -1,7 +1,7 @@
 import { UserType } from "../Types/UserType";
 
 // const BASE_URL: string = "https://helperduck.herokuapp.com";
-const BASE_URL: string = "https://helperduck-dev.herokuapp.com";
+export const BASE_URL: string = "https://helperduck-dev.herokuapp.com";
 
 export async function postUserProfile(user: UserType) {
   try {
@@ -51,8 +51,7 @@ export async function editUserProfile(user: UserType) {
   }
 } //use the returned value to set or manage state;
 
-
-export async function getOtherProfile(userId:string): Promise<any> {
+export async function getOtherProfile(userId: string): Promise<any> {
   try {
     const userProfileById = await fetch(`${BASE_URL}/user/${userId}`);
     return await userProfileById.json();

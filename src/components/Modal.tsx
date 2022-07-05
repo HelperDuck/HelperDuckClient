@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Rating from "../components/Rating";
 import SliderRange from "./Slider";
 import { Backdrop } from "./Backdrop";
+import { reviewType } from "../Types/ReviewType";
+import { useSelector } from "react-redux";
+// import { helpRequests } from "../Redux/reducers/helpRequest";
+import { useLocation } from "react-router-dom";
+import { getRequestByRoomId, postReviewHelpAsker } from "../services/reviews";
 
 const dropIn = {
   hidden: {
@@ -24,7 +29,6 @@ const dropIn = {
     opacity: 0,
   },
 };
-console.log(dropIn, "dropiN");
 
 export const useModal = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -51,7 +55,7 @@ export const ModalContainer = ({ children }: any) => (
   </AnimatePresence>
 );
 
-export const Modal = ({ handleClose }: any) => {
+export const Modal = ({ handleClose, onSubmitReview }: any) => {
   return (
     <Backdrop onClick={handleClose}>
       <motion.div
@@ -63,14 +67,62 @@ export const Modal = ({ handleClose }: any) => {
         exit="exit"
       >
         <ModalText />
-        <ModalButton onClick={handleClose} label="Submit" />
+        {/* <ModalButton onClick={handleClose} label="Submit" /> */}
       </motion.div>
     </Backdrop>
   );
 };
 
-const ModalText = ({ handleClose }: any) => {
+const ModalText = () => {
+  const location: any = useLocation();
+  const user = useSelector((state: any) => state.user.value);
+  // const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
   const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState("");
+  const [value, setValue] = useState(0);
+  const [requestByRoomId, setRequestByRoomId] = useState({
+    helpOffer: { id: 0 },
+    helpRequest: { id: 0 },
+  });
+  console.log(requestByRoomId);
+
+  // const requestId = allHelpRequests.filter((requests: any) => {
+  //   return requests.roomId === location.state.roomId;
+  // });
+  // console.log(requestId[0].id, "requestID");
+  // console.log(requestId[0].helpOffers[0].id, "helpOfferID");
+
+  const helpByRoomId = async () => {
+    try {
+      const result = await getRequestByRoomId(location.state.roomId);
+      setRequestByRoomId(result);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    helpByRoomId();
+  }, []); //eslint-disable-line
+
+  const onSubmitReview = (e: any) => {
+    e.preventDefault();
+    const newAskerReview: reviewType = {
+      tipGiven: value,
+      review: {
+        rating: rating,
+        comment: comment,
+      },
+    };
+    postReviewHelpAsker(
+      requestByRoomId.helpRequest.id,
+      requestByRoomId.helpOffer.id,
+      newAskerReview
+    );
+    setRating(0);
+    setComment("");
+    setValue(0);
+  };
 
   return (
     <div className="modal-text">
@@ -87,24 +139,48 @@ const ModalText = ({ handleClose }: any) => {
             rating={rating}
             onRating={(rate: any) => setRating(rate)}
           ></Rating>
+          <textarea
+            className="write-review"
+            placeholder="Please write a review"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
         </div>
-        <label className="price-range-label">
-          Was it helful? Contribute with a tip!
-        </label>
-        <SliderRange></SliderRange>
+        {user.id === requestByRoomId.helpRequest.id ? (
+          <>
+            <label className="price-range-label">
+              Was it helpful? Contribute with a tip!
+            </label>
+            <SliderRange value={value} setValue={setValue}></SliderRange>{" "}
+          </>
+        ) : (
+          <>
+            <label className="tip-range-label">
+              Was it helpful? Contribute with a tip!
+            </label>
+            <SliderRange
+              className="slider-range-hide"
+              value={value}
+              setValue={setValue}
+            ></SliderRange>
+          </>
+        )}
+        <button id="form-submit" onClick={onSubmitReview}>
+          Submit
+        </button>
       </form>
     </div>
   );
 };
 
-const ModalButton = ({ onClick, label }: any) => (
-  <motion.button
-    className="modal-button"
-    type="button"
-    whileHover={{ scale: 1.1 }}
-    whileTap={{ scale: 0.95 }}
-    onClick={onClick}
-  >
-    {label}
-  </motion.button>
-);
+// const ModalButton = ({ onClick, label }: any) => (
+//   <motion.button
+//     className="modal-button"
+//     type="button"
+//     whileHover={{ scale: 1.1 }}
+//     whileTap={{ scale: 0.95 }}
+//     onClick={onClick}
+//   >
+//     {label}
+//   </motion.button>
+// );

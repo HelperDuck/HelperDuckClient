@@ -19,7 +19,12 @@ export const IncomingRequest = (props: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const dispatch = useDispatch();
 
+<<<<<<< HEAD
   const OfferHelp = async (help: any) => {
+=======
+
+  const OfferHelp = async (helpID: any) => {
+>>>>>>> dev
     const offer = {
       userId: user.id,
     };

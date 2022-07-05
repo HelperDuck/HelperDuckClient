@@ -7,6 +7,7 @@ import "./CreateReviewPage.css";
 
 export const CreateReviewPage = () => {
   const { modalOpen, close, open } = useModal();
+
   return (
     <>
       <motion.main>
