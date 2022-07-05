@@ -1,16 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import Peer, { Instance } from "simple-peer";
 import io from "socket.io-client";
 import { WebRTCUser } from "../Types/WebRTCUser";
 import "./VideoCallPage.css";
-import { roomIdState } from "../Redux/reducers/RoomId";
-import { Modal, ModalContainer } from "../components/Modal";
-import "./CreateReviewPage.css";
-import { BACKEND_CONNECTION } from "../services/backEndConnection";
 
-const SOCKET_SERVER_URL = BACKEND_CONNECTION + "/";
+// const LOCAL = "http://localhost:3002/";
+// const DEV = 'https://helperduck-dev.herokuapp.com/';
+const PROD = 'https://helperduck.herokuapp.com/';
+const SOCKET_SERVER_URL = PROD;
 
 const Video = (props: WebRTCUser) => {
   const ref = useRef<HTMLVideoElement | any>();
@@ -24,13 +22,7 @@ const Video = (props: WebRTCUser) => {
 
   return (
     <>
-      <video
-        playsInline
-        controls
-        autoPlay
-        ref={ref}
-        className="video-container"
-      />
+      <video playsInline autoPlay ref={ref} className="video-container" />
     </>
   );
 };
@@ -40,8 +32,6 @@ type Props = {
 };
 
 export const VideoCallPage = (props: Props) => {
-  const dispatch = useDispatch();
-  const [modalOpen, setModalOpen] = useState(false);
   //HOOKS for classroom state management
   const [peers, setPeers] = useState<WebRTCUser[]>([]); //this will track the peers for rendering purposes
   const [stream, setStream] = useState<MediaStreamTrack>(); //eslint-disable-line
@@ -52,10 +42,8 @@ export const VideoCallPage = (props: Props) => {
   const peersRef = useRef<any[]>([]); //this will be used to track and handle the RTC Connections //TODO: check type works
   const userStream = useRef<MediaStream>();
   const [screening, setScreening] = useState<string>("");
-
   // console.log(screenSharingId, 'screenSharingId')
-  //TODO: erase this
-  console.log(screening);
+  console.log(screening); //TODO: erase this
   console.log(stream);
   console.log(screenSharingId);
   const currentPath = useLocation();
@@ -65,8 +53,8 @@ export const VideoCallPage = (props: Props) => {
   const videoConstraints = {
     video: {
       cursor: "always",
-      width: { ideal: 1280 },
-      height: { ideal: 720 },
+      width: { ideal: 1920 },
+      height: { ideal: 1080 },
       aspectRatio: 1.777777778,
       frameRate: 30,
     },
@@ -78,6 +66,8 @@ export const VideoCallPage = (props: Props) => {
       sampleRate: 44100,
     },
   };
+
+
 
   useEffect(() => {
     //@ts-ignore
@@ -147,6 +137,12 @@ export const VideoCallPage = (props: Props) => {
                 };
 
                 setPeers((participants) => {
+                  console.log(participants, "Participants line 157");
+                  console.log(peerObj, "peerObj line 158");
+                  // if (participants.find((p) => p.peerId === peerObj.peerId) ) {
+                  //   console.log(participants, "participan insside find");
+                  //   return participants;
+                  // }
                   let base = [...participants, peerObj];
                   console.log(base, "BASSSSSEEEEE");
                   return base;
@@ -216,11 +212,8 @@ export const VideoCallPage = (props: Props) => {
     }
   }, []);
 
-  const generateNewPeer = (
-    userToSignal: string | Peer.SignalData,
-    callerId: string,
-    stream: MediaStream
-  ) => {
+
+  const generateNewPeer = (userToSignal: string | Peer.SignalData, callerId: string, stream: MediaStream) => {
     const peer = new Peer({
       initiator: true, //to inform the others participants that "I" joined
       trickle: false,
@@ -302,9 +295,7 @@ export const VideoCallPage = (props: Props) => {
   const exitCall = () => {
     if (userStream.current)
       userStream.current.getVideoTracks()[0].enabled = false;
-    dispatch(roomIdState(roomId));
-    setModalOpen(true);
-    //navigate("/review", { state: { roomId } });
+    window.location.replace("/dashboard");
   };
 
   const streamToggler = (stream: MediaStreamTrack) => {
@@ -313,6 +304,7 @@ export const VideoCallPage = (props: Props) => {
     if (userStream.current) setScreenSharingId(userStream.current.id);
   };
 
+  
   const screenShare = async () => {
     try {
       //check if user is already sharing the screen
@@ -352,58 +344,56 @@ export const VideoCallPage = (props: Props) => {
             if (userStream.current)
               userStream.current.removeTrack(screenSharingTrack);
             if (userStream.current) userStream.current.addTrack(videoTrack);
-            window.location.reload();
           };
       }
     } catch (err) {
       console.log("Error at screenshare function: ", err);
     }
   };
-
+  
   return (
     <div className="videos-wrapper">
-      <div className="participants-videos-wrapper">
-        <div className="inner-video-wrapper">
-          <video
-            playsInline
-            muted
-            ref={userVideo}
-            autoPlay
-            className="video-container"
-          />
+      <div className="my-video-wrapper">
+        <video
+          playsInline
+          muted
+          ref={userVideo}
+          autoPlay
+          className="video-container"
+        />
 
-          <div className="video-controls">
-            <button className="cam-btn video-btn" onClick={toggleCam}>
-              📸
-            </button>
-            <button className="mic-btn video-btn" onClick={toggleMic}>
-              🎙️
-            </button>
-            <button className="phone-btn video-btn" onClick={exitCall}>
-              ☎️
-            </button>
-            <button className="screen-btn video-btn" onClick={screenShare}>
-              🖥️
-            </button>
-          </div>
-          <ModalContainer>
-            {modalOpen && <Modal modalOpen={modalOpen} />}
-          </ModalContainer>
+        <div className="video-controls">
+          <button className="cam-btn video-btn" onClick={toggleCam}>
+            📸
+          </button>
+          <button className="mic-btn video-btn" onClick={toggleMic}>
+            🎙️
+          </button>
+          <button className="phone-btn video-btn" onClick={exitCall}>
+            ☎️
+          </button>
+          <button className="screen-btn video-btn" onClick={screenShare}>
+            🖥️
+          </button>
         </div>
+      </div>
 
+      <div className="peers-video">
         {peers.map((peer, index) => {
           if (index === 0) {
-            return (
-              <Video
-                key={peer.peerId}
-                peer={peer.peer}
-                className="video-container"
-              />
-            );
-          } else {
-            return <></>;
-          }
-        })}
+          return (
+            <Video
+              key={peer.peerId}
+              peer={peer.peer}
+              className="video-container"
+            />
+          );
+        
+} else {
+  return (
+    <></>
+  )
+}})}
       </div>
     </div>
   );
