@@ -12,8 +12,6 @@ export const IncomingRequestsCarrousel = (props: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const userTechs = user.technologies.map((item: any) => item.technology.name);
 
-  console.log(allHelpRequests, "all help");
-
   const filteredHR = allHelpRequests
     .filter((helpRequest: any) => {
       if (user.uid !== helpRequest.user.uid && helpRequest.status === "open") {

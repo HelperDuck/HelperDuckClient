@@ -29,8 +29,6 @@ function App() {
   const [isAuthUser, loading] = useAuthState(auth);
   const dispatch = useDispatch();
 
-  console.log("isAuthUser inside app", isAuthUser);
-
   useEffect(() => {
     if (loading) return;
     if (isAuthUser) {
@@ -50,7 +48,6 @@ function App() {
       let profileFound = await getUserProfile(isAuthUser as unknown as any);
 
       if (profileFound) dispatch(loginProfile(profileFound));
-      console.log("");
 
       //Create a new profile if one does not exist
       if (!profileFound) {
@@ -150,7 +147,7 @@ function App() {
               </Protected>
             }
           />
-           <Route
+          <Route
             path="/payment/ok"
             element={
               <Protected isAuthUser={isAuthUser} loading={loading}>

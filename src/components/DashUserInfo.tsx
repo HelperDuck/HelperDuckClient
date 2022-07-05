@@ -10,14 +10,7 @@ type Props = {};
 
 export const DashUserInfo = (props: Props) => {
   const user = useSelector((state: any) => state.user.value);
-  const otherUser = useSelector((state: any) => state.userById.value);
-  console.log(user, "user");
-  console.log(otherUser, " otherUser");
-  // const requestsTaken = user.helpOffers.filter(
-  //   (help: any) => help.status === "open"
-  // );
 
-  console.log(user.helpOffers, "user helpoffers");
   return (
     <div className="dash-user-wrapper">
       <div className="credits-taken-outer-container">

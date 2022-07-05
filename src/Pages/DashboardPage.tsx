@@ -9,20 +9,27 @@ import "./DashboardPage.css";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../services/authentication";
 
 type Props = {};
 
 export const DashboardPage = (props: Props) => {
+  const [isAuthUser, loading] = useAuthState(auth);
   const user = useSelector((state: any) => state.user.value);
   const navigate = useNavigate();
 
   const redirectProfile = async () => {
+    console.log("profile found", user);
     if (user.profilePic === "") {
+      console.log("profile pic not found");
       navigate(`/profile/${user.uid}`);
     }
   };
 
   useEffect(() => {
+    if (loading) return;
+    //Redirects if user has not uploaded a profile pic
     redirectProfile();
   });
 

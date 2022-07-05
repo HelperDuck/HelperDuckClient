@@ -7,10 +7,9 @@ import { WebRTCUser } from "../Types/WebRTCUser";
 import "./VideoCallPage.css";
 import { roomIdState } from "../Redux/reducers/RoomId";
 
-// const LOCAL = "http://localhost:3002/";
-const DEV = "https://helperduck-dev.herokuapp.com/";
-// const PROD = 'https://helperduck.herokuapp.com/';
-const SOCKET_SERVER_URL = DEV;
+// const SOCKET_SERVER_URL = "http://localhost:3002/";
+const SOCKET_SERVER_URL = "https://helperduck-dev.herokuapp.com/";
+// const SOCKET_SERVER_URL = "https://helperduck.herokuapp.com/";
 
 const Video = (props: WebRTCUser) => {
   const ref = useRef<HTMLVideoElement | any>();
