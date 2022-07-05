@@ -24,7 +24,7 @@ export const ProfilePage = () => {
   const fetchProfile = async () => {
     try {
       //@ts-ignore
-      const userPath = await location.pathname.slice(9);
+      const userPath = location.pathname.slice(9);
       console.log("userPath", userPath === "");
 
       if (userPath !== "") {
