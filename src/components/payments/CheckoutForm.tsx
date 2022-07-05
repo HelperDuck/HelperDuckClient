@@ -114,7 +114,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
         fontSize: "16px",
         color: "#111",
         "::placeholder": {
-          color: '#87bbfd'
+          color: '#505050e5'
         }
       },
       invalid: {
