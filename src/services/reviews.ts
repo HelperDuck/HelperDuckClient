@@ -1,6 +1,7 @@
 import { reviewType } from "../Types/ReviewType";
 // import { requestAskedType } from "../Types/RequestAskedType";
 
+// const BASE_URL: string = "https://helperduck.herokuapp.com";
 const BASE_URL: string = "https://helperduck-dev.herokuapp.com";
 
 export async function getRequestByRoomId(roomId: string): Promise<any> {
@@ -31,5 +32,19 @@ export async function postReviewHelpAsker(
     return await newReview;
   } catch (err) {
     console.log("Error at postReviewHelpAsker Service: ", err);
+  }
+}
+
+export async function postReviewHelpOffer(review: reviewType) {
+  try {
+    const newReviewOffer: any = await fetch(`${BASE_URL}/helpReview`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(review),
+    });
+    console.log(newReviewOffer, "newReviewOffer");
+    return await newReviewOffer;
+  } catch (err) {
+    console.log("Error at postReviewHelpOffer Service: ", err);
   }
 }
