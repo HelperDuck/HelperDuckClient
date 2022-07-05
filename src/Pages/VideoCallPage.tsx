@@ -22,9 +22,7 @@ export const VideoCallPage = (props: Props) => {
   let partnerVideo = useRef<any>();
   const peersRef = useRef<any[]>([]); //this will be used to track and handle the RTC Connections //TODO: check type works
   const userStream = useRef<MediaStream>();
-  const [screening, setScreening] = useState<string>("");
  
-
   const currentPath = useLocation();
   const roomId: string | undefined = currentPath.pathname.split("/").pop();
   console.log("roomId:", roomId);
@@ -33,7 +31,6 @@ export const VideoCallPage = (props: Props) => {
   useEffect(() => {
     //@ts-ignore
     socketRef.current = io.connect(SOCKET_SERVER_URL);
-    console.log(socketRef, "success on client side");
 
     navigator.mediaDevices
       .getUserMedia(videoConstraints)
@@ -43,12 +40,10 @@ export const VideoCallPage = (props: Props) => {
 
         if (socketRef) socketRef.current.emit("joiningRoom", roomId);
 
-        //TODO: attention to the next line --> the if statement is being suggested by TypeScript. Consider ignoring it if needed.
         if (socketRef.current)
           socketRef.current.on(
             "allParticipants",
             (participantsInRoom: string[]) => {
-              console.log(participantsInRoom, "participantsInRoom");
               const peersArr: any[] = []; //array for rendering
 
               participantsInRoom.forEach((participantId: string) => {
@@ -74,7 +69,6 @@ export const VideoCallPage = (props: Props) => {
             }
           );
 
-        //TODO: this if statement is preventing unresolved promises -> get back to it if needed
         if (socketRef.current)
           socketRef.current.on(
             "userHasJoined",
@@ -174,7 +168,7 @@ export const VideoCallPage = (props: Props) => {
     //we are accepting the signal and triggering the 'signal' socket event above
     peer.signal(newSignalIncoming);
     partnerVideo.current = peer;
-
+    
     return peer;
   };
 
@@ -186,7 +180,7 @@ export const VideoCallPage = (props: Props) => {
       let videoTrack = userStream.current
         .getVideoTracks()
         .find((track) => track.kind === "video");
-        
+  
       if (videoTrack && videoTrack.enabled) {
         videoTrack.enabled = false;
       } else {
@@ -252,43 +246,43 @@ export const VideoCallPage = (props: Props) => {
   
   return (
     <div className="videos-wrapper">
-      <div className="my-video-wrapper">
-        <video
-          playsInline
-          muted
-          ref={userVideo}
-          autoPlay
-          className="video-container"
-        />
+      <div className="participants-videos-wrapper">
+        <div className="inner-video-wrapper">
+          <video
+            playsInline
+            muted
+            ref={userVideo}
+            autoPlay
+            className="video-container"
+          />
 
-        <div className="video-controls">
-          <button className="cam-btn video-btn" onClick={toggleCam}>
-            📸
-          </button>
-          <button className="mic-btn video-btn" onClick={toggleMic}>
-            🎙️
-          </button>
-          <button className="phone-btn video-btn" onClick={exitCall}>
-            ☎️
-          </button>
-          <button className="screen-btn video-btn" onClick={screenShare}>
-            🖥️
-          </button>
+          <div className="video-controls">
+            <button className="cam-btn video-btn" onClick={toggleCam}>
+              📸
+            </button>
+            <button className="mic-btn video-btn" onClick={toggleMic}>
+              🎙️
+            </button>
+            <button className="phone-btn video-btn" onClick={exitCall}>
+              ☎️
+            </button>
+            <button className="screen-btn video-btn" onClick={screenShare}>
+              🖥️
+            </button>
+          </div>
         </div>
-      </div>
 
-      <div className="peers-video">
         {peers.map((peer, index) => {
           if (index === 0) {
-          return (
-            <Video
-              key={peer.peerId}
-              peer={peer.peer}
-              className="video-container"
-            />
-          );
-        } else {
-          return (<></>)
+            return (
+              <Video
+                key={peer.peerId}
+                peer={peer.peer}
+                className="video-container"
+              />
+            );
+          } else {
+            return <></>;
           }
         })}
       </div>
