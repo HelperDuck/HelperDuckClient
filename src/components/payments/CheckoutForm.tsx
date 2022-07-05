@@ -1,17 +1,19 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { playSound } from "../../utils/playSound";
 import duckQuack from "../../media/audio/duckQuack.mp3";
-
 import Row from "./prebuilt/Row";
 import BillingDetailsFields from "./prebuilt/BillingDetailsFields";
 import SubmitButton from "./prebuilt/SubmitButton";
 import CheckoutError from "./prebuilt/CheckoutError";
-
+import { BACKEND_CONNECTION } from "../../services/backEndConnection";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-// const BASE_URL: string = "https://helperduck.herokuapp.com";
-const BASE_URL: string = "https://helperduck-dev.herokuapp.com";
+import { addCreditsToUser } from "../../services/payment";
+
+const BASE_URL = BACKEND_CONNECTION;
 
 const audio = new Audio(duckQuack);
 
@@ -34,20 +36,23 @@ type Props = {
 const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
   const [isProcessing, setProcessingTo] = useState(false);
   const [checkoutError, setCheckoutError] = useState(); //eslint-disable-line
+  const [creditsBought, setCreditsBought] = useState<number>(0);
   const stripe = useStripe();
   const elements = useElements();
+  const navigate = useNavigate();
+  const user = useSelector((state: any) => state.user.value);
 
-  const handleFormSubmit = async (ev: any) => {
-    ev.preventDefault();
+  const handleFormSubmit = async (e: any) => {
+    e.preventDefault();
 
     const billingDetails = {
-      name: ev.target.name.value,
-      email: ev.target.email.value,
+      name: e.target.name.value,
+      email: e.target.email.value,
       address: {
-        city: ev.target.city.value,
-        line1: ev.target.address.value,
-        state: ev.target.state.value,
-        postal_code: ev.target.zip.value,
+        city: e.target.city.value,
+        line1: e.target.address.value,
+        state: e.target.state.value,
+        postal_code: e.target.zip.value,
       },
     };
 
@@ -56,12 +61,8 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
       setProcessingTo(true);
 
       //create a payment intent on the server //TODO: replace by BASE URL
-      const { data: clientSecret } = await axios.post(
-        `${BASE_URL}/payment/create`,
-        {
-          amount: price * 100,
-        }
-      );
+      const { data: clientSecret } = await axios.post(`${BASE_URL}/payment/create`, {
+        amount: price * 100});
 
       if (elements && stripe) {
         const cardElement = elements.getElement(CardElement);
@@ -75,37 +76,32 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
           });
 
           if (stripe && paymentMethodReq.paymentMethod) {
-            const confirmedCardPayment = await stripe.confirmCardPayment(
-              clientSecret,
-              {
-                payment_method: paymentMethodReq.paymentMethod.id,
-              }
-            );
+            const confirmedCardPayment = await stripe.confirmCardPayment(clientSecret,{
+                payment_method: paymentMethodReq.paymentMethod.id,});
 
+            if (confirmedCardPayment.paymentIntent) {
+              let amount: number = confirmedCardPayment.paymentIntent.amount / 100;
+              setCreditsBought(amount);
+            }
             console.log("Confirm Payment: ", confirmedCardPayment);
             playSound(audio);
             onSuccessfulCheckout();
-            // console.log(paymentMethodReq);
-            // console.log(clientSecret);
           }
         }
       }
     } catch (err) {
       console.log("Error processing payment: ", err);
     }
-    //TIP Stripe amount is in the lowest denomination of the currency
-    //Ex. 1 USD 100 cents
-
-    //client_secret of that payment intent
-
-    //need a reference to the cardElement
-    //need stripe.js
-    //create a payment method
-
-    //confirm the card payment
-    //payment method id
-    //client_secret
   };
+
+  if (creditsBought !== 0) {
+    const userData = {
+      uid: user.uid,
+      creditsBought: creditsBought,
+    };
+    console.log(userData, "userData onCheckoutForm");
+    addCreditsToUser(userData);
+  }
 
   //stripe.com/docs/js
   const cardElementOptions = {
@@ -115,7 +111,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
         fontSize: "16px",
         color: "#111",
         "::placeholder": {
-          color: "#87bbfd",
+          color: "#505050e5",
         },
       },
       invalid: {
@@ -142,6 +138,17 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
         <SubmitButton disabled={isProcessing}>
           {isProcessing ? "Processing..." : `Pay ${price} €`}
         </SubmitButton>
+      </Row>
+      <Row>
+        <button
+          className="cancel-btn"
+          onClick={() => {
+            navigate("/dashboard");
+          }}
+        >
+          {" "}
+          Cancel
+        </button>
       </Row>
     </form>
   );
