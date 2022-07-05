@@ -2,20 +2,11 @@ import React from "react";
 import "./DetailsModal.css";
 
 function DetailsModal(props: any) {
-  const setOpenModal = props;
+  const { setModalOpen } = props;
 
   return (
     <div className="modalBackground">
       <div className="modalContainer">
-        <div className="titleCloseBtn">
-          <button
-            onClick={() => {
-              setOpenModal(false);
-            }}
-          >
-            X
-          </button>
-        </div>
         <div className="body">
           <div className="modal-user-info">
             <div className="modal-profile-pic-container">
@@ -54,10 +45,18 @@ function DetailsModal(props: any) {
             <div className="modal-solver">
               <label className="modal-solver-by">Solved by: </label>
               <div className="modal-solver-name">Fernanda Gananciosa</div>
+              <div className="titleCloseBtn">
+                <button
+                  onClick={() => {
+                    setModalOpen(false);
+                  }}
+                >
+                  OK
+                </button>
+              </div>
             </div>
           </div>
         </div>
-        <div className="footer"></div>
       </div>
     </div>
   );

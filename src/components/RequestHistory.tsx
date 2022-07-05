@@ -5,9 +5,12 @@ import { CreatedByMe } from "./CreatedByMe";
 import "./RequestHistory.css";
 import { SinglePastRequest } from "./SinglePastRequest";
 
-type Props = {};
+type Props = {
+  setModalOpen: any;
+};
 
 export const RequestHistory = (props: Props) => {
+  const { setModalOpen } = props;
   const user = useSelector((state: any) => state.user.value);
   const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
   const solvedHelpRequests = user.helpOffers.filter(
@@ -38,7 +41,13 @@ export const RequestHistory = (props: Props) => {
         </div>
         <div className="past-request-carrousel">
           {filteredHR.map((help: requestAskedType, key: number) => {
-            return <CreatedByMe key={key} help={help}></CreatedByMe>;
+            return (
+              <CreatedByMe
+                key={key}
+                help={help}
+                setModalOpen={setModalOpen}
+              ></CreatedByMe>
+            );
           })}
         </div>
       </div>

@@ -86,7 +86,6 @@ export const CreateRequestPage = (props: Props) => {
 
       await postRequest(newRequest);
       e.target.reset();
-      // window.location.replace("/dashboard");
       fetchAllHelpRequests();
       navigate("/dashboard");
     } catch (err) {

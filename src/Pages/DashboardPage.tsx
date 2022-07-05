@@ -7,11 +7,14 @@ import boySvg from "../media/boy.svg";
 import Avatar from "react-avatar";
 import "./DashboardPage.css";
 import { useSelector } from "react-redux";
+import { useState } from "react";
+import DetailsModal from "../components/DetailsModal";
 
 type Props = {};
 
 export const DashboardPage = (props: Props) => {
   const user = useSelector((state: any) => state.user.value);
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <div className="dashboard-wrapper">
@@ -47,7 +50,12 @@ export const DashboardPage = (props: Props) => {
                 </form>
               </div>
               <div className="profile-setting-container">
-                <Avatar className="dash-profile-pic" src={user.profilePic} size="50" round={true}></Avatar>
+                <Avatar
+                  className="dash-profile-pic"
+                  src={user.profilePic}
+                  size="50"
+                  round={true}
+                ></Avatar>
               </div>
             </div>
 
@@ -58,10 +66,11 @@ export const DashboardPage = (props: Props) => {
         <div className="bottom-container">
           {" "}
           <div className="bottom-container">
-            <RequestHistory></RequestHistory>
+            <RequestHistory setModalOpen={setModalOpen}></RequestHistory>
           </div>
         </div>
       </div>
+      {modalOpen && <DetailsModal setModalOpen={setModalOpen} />}
     </div>
   );
 };

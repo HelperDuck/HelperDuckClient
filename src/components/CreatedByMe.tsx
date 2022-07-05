@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { helpRequests } from "../Redux/reducers/helpRequest";
@@ -8,14 +9,17 @@ import "./CreatedByMe.css";
 
 type Props = {
   help: requestAskedType;
+  setModalOpen: any;
 };
 
 export const CreatedByMe = (props: Props) => {
-  const dispatch = useDispatch();
-  const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
+  const { setModalOpen } = props;
   const { help } = props;
-  console.log(help, "help created by ME");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
+
+  console.log(help, "help created by ME");
 
   const OfferHelp = () => {
     navigate(`/call/${help.roomId}`);
@@ -26,7 +30,6 @@ export const CreatedByMe = (props: Props) => {
     dispatch(
       helpRequests(allHelpRequests.filter((item: any) => item.id !== help.id))
     );
-    // window.location.reload(); //TODO this is just a quick fix
   };
 
   return (
@@ -41,13 +44,7 @@ export const CreatedByMe = (props: Props) => {
           // by {help.user.firstName} {help.user.lastName}
         </div> */}
       </div>
-      <div className="tip-container">
-        <span className="tip">
-          <Icon icon="icon-park-solid:duck" className="duck-icon" />
-          {/* <span>{help.user.avgTip as any}</span> */}
-          {/* //TODO this should display how much Tip i GAVE */}
-        </span>
-      </div>
+
       <div
         onClick={() => {
           handleDelete(help);
@@ -74,7 +71,12 @@ export const CreatedByMe = (props: Props) => {
             Start Call
           </button>
         ) : (
-          <button onClick={OfferHelp} className="start-call-btn">
+          <button
+            onClick={() => {
+              setModalOpen(true);
+            }}
+            className="start-call-btn"
+          >
             Details
           </button>
         )}

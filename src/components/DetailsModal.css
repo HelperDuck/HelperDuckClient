@@ -1,35 +1,51 @@
 .modalBackground {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(200, 200, 200, 0.199);
+  background-color: rgba(77, 75, 75, 0.829);
+  z-index: 1;
   position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
+  top: 0;
+  left: 0;
 }
 
 .modalContainer {
-  /* width: 500px;
-  height: 500px; */
+  z-index: 5;
+  position: absolute;
+  top: 12vh;
+  left: 60vw;
   min-width: 30vw;
   border-radius: 12px;
-  background-color: white;
+  background-color: rgb(176, 171, 171);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   flex-direction: column;
-  padding: 1%;
+  padding: 15px;
+
 }
 
 .titleCloseBtn {
   display: flex;
   justify-content: flex-end;
+
 }
 
 .titleCloseBtn button {
-  background-color: transparent;
-  border: none;
-  font-size: 25px;
+  box-shadow: inset 0px 1px 3px 0px #91b8b3;
+  background-color: #0c0d0d;
+  border-radius: 5px;
+  border: 1px solid #566963;
+  display: inline-block;
   cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 2%;
+  text-decoration: none;
+  text-shadow: 0px -1px 0px #2b665e;
 }
 
 .modalContainer .body {
@@ -37,21 +53,32 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  border: solid 0.5px gray;
+  border-radius: 4px;
+  padding: 2% 1% 0 2%;
 
 
 }
 
-.modal-user-info,
-.modal-solver-info {
+.modal-user-info {
   display: flex;
   justify-content: space-between;
   width: 100%;
   margin-bottom: 3%;
 }
 
+
+.modal-solver-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+}
+
 .modal-info-container {
   display: flex;
   flex-direction: column;
+
 
 }
 
@@ -65,6 +92,7 @@
   border-radius: 4px;
   padding: 2%;
   margin-bottom: 3%;
+  margin-right: 1%;
 
 }
 
@@ -75,7 +103,7 @@
 
 .modal-help-info div {
   margin-bottom: 10px;
-  background-color: rgba(128, 128, 128, 0.466);
+  background-color: rgb(225, 221, 221);
   width: 100%;
   border: 0.5px solid gray;
   padding: 1.5% 1%;
@@ -123,7 +151,7 @@
 
 .modal-solver {
   width: 100%;
-  padding: 1% 2%;
+  padding: 1% 0 1% 2%;
   display: flex;
   flex-direction: column;
 
