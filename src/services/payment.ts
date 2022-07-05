@@ -1,14 +1,26 @@
 import { UserType } from "../Types/UserType";
 import { BASE_URL } from "./profile";
 
-export async function addCreditsToUser( user: { uid: UserType, creditsBought: number } ){
+type AddCreditsToUserArgs = {
+  uid: UserType,
+  creditsBought: number,
+}
+
+export async function addCreditsToUser(user: AddCreditsToUserArgs){
+  // user = {uid: user.uid, creditsBought: amount}
+  const addCreditsObj = {
+    creditsBought: user.creditsBought,
+    superSecret: "superSecret"
+  }
+  console.log(user, 'user inside the service')
   try {
-    const creditsToUser: any = await fetch(`${BASE_URL}/user/:uid/addCredits`, {
+    const creditsToUser: any = await fetch(`http://localhost:3002/user/${user.uid}/addCredits`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user),
+      body: JSON.stringify(addCreditsObj),
     });
-    return await creditsToUser;
+    console.log(creditsToUser, 'stringified payload')
+    return creditsToUser;
   } catch (err) {
     console.log("Error at addCreditsToUser Service: ", err);
   }
