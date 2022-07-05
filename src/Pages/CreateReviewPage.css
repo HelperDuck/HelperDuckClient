@@ -6,16 +6,28 @@
 }
 
 .backdrop {
-  background: #232526;
   background: -webkit-linear-gradient(to right, #414345, #232526);
-  background: linear-gradient(to right, #414345, #232526);
+  background: linear-gradient(to right, #414345, #232526ec);
   overflow-y: hidden;
-  height: 60%;
-  max-width: 50%;
+  height: 100vh;
+  width: 100vw;
   padding-top: 2%;
   padding-left: 3%;
   padding-right: 3%;
-  border-radius: 30px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-gradient {
+  padding: 1.5%;
+  background: -webkit-linear-gradient(to right, #414345, #232526);
+  background: linear-gradient(to right, #414345, #232526);
+  border-radius: 20px;
 }
 
 .model-header-container {
@@ -44,6 +56,7 @@
   margin-bottom: 3%;
   font-weight: 800;
   opacity: 0.7;
+  padding: 1%;
 }
 
 label[for="rating"] {

@@ -25,6 +25,7 @@ import { CreateReviewPage } from "./Pages/CreateReviewPage";
 import NotFound from "./Pages/NotFound";
 import PaymentPage from "./Pages/PaymentPage";
 import PaymentSuccessful from "./components/PaymentSuccessful";
+import { Modal } from "./components/Modal";
 
 function App() {
   const [isAuthUser, loading] = useAuthState(auth);

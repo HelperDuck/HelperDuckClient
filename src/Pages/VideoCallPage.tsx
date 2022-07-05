@@ -6,6 +6,8 @@ import io from "socket.io-client";
 import { WebRTCUser } from "../Types/WebRTCUser";
 import "./VideoCallPage.css";
 import { roomIdState } from "../Redux/reducers/RoomId";
+import { Modal, ModalContainer } from "../components/Modal";
+import "./CreateReviewPage.css";
 
 // const LOCAL = "http://localhost:3002/";
 const DEV = "https://helperduck-dev.herokuapp.com/";
@@ -41,7 +43,7 @@ type Props = {
 
 export const VideoCallPage = (props: Props) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const [modalOpen, setModalOpen] = useState(false);
   //HOOKS for classroom state management
   const [peers, setPeers] = useState<WebRTCUser[]>([]); //this will track the peers for rendering purposes
   const [stream, setStream] = useState<MediaStreamTrack>(); //eslint-disable-line
@@ -52,8 +54,10 @@ export const VideoCallPage = (props: Props) => {
   const peersRef = useRef<any[]>([]); //this will be used to track and handle the RTC Connections //TODO: check type works
   const userStream = useRef<MediaStream>();
   const [screening, setScreening] = useState<string>("");
+
   // console.log(screenSharingId, 'screenSharingId')
-  console.log(screening); //TODO: erase this
+  //TODO: erase this
+  console.log(screening);
   console.log(stream);
   console.log(screenSharingId);
   const currentPath = useLocation();
@@ -357,7 +361,8 @@ export const VideoCallPage = (props: Props) => {
     if (userStream.current)
       userStream.current.getVideoTracks()[0].enabled = false;
     dispatch(roomIdState(roomId));
-    navigate("/review", { state: { roomId } });
+    setModalOpen(true);
+    //navigate("/review", { state: { roomId } });
   };
 
   const streamToggler = (stream: MediaStreamTrack) => {
@@ -439,6 +444,9 @@ export const VideoCallPage = (props: Props) => {
               🖥️
             </button>
           </div>
+          <ModalContainer>
+            {modalOpen && <Modal modalOpen={modalOpen} />}
+          </ModalContainer>
         </div>
 
         {peers.map((peer, index) => {

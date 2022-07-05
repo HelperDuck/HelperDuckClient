@@ -1,24 +1,23 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useModal, Modal, ModalContainer } from "../components/Modal";
-import "./CreateReviewPage.css";
+import { Modal, ModalContainer } from "../components/Modal";
 
 //TODO: to delete motion-main button
 
 export const CreateReviewPage = () => {
-  const { modalOpen, close, open } = useModal();
+  // const { modalOpen, close, open } = useModal();
 
   return (
     <>
-      <motion.main>
+      {/* <motion.main>
         <motion.button className="save-button" onClick={open}>
           End
         </motion.button>
-      </motion.main>
+      </motion.main> */}
       <div className="review-container">
-        <ModalContainer>
+        {/* <ModalContainer>
           {modalOpen && <Modal modalOpen={modalOpen} handleClose={close} />}
-        </ModalContainer>
+        </ModalContainer> */}
       </div>
     </>
   );
