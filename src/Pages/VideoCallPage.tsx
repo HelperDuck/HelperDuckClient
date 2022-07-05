@@ -7,14 +7,12 @@ import io from "socket.io-client";
 import "./VideoCallPage.css";
 import { videoConstraints } from "../utils/videoConstraints";
 
-// const LOCAL = "http://localhost:3002/";
+const LOCAL = "http://localhost:3002/";
 // const DEV = 'https://helperduck-dev.herokuapp.com/';
-const PROD = 'https://helperduck.herokuapp.com/';
-const SOCKET_SERVER_URL = PROD;
+// const PROD = 'https://helperduck.herokuapp.com/';
+const SOCKET_SERVER_URL = LOCAL;
 
-type Props = {
-  // setScreenSharingId: React.Dispatch<React.SetStateAction<any>>
-};
+type Props = {};
 
 export const VideoCallPage = (props: Props) => {
   //HOOKS for classroom state management
@@ -102,12 +100,10 @@ export const VideoCallPage = (props: Props) => {
           );
 
         if (socketRef.current)
-          socketRef.current.on(
-            "serverReceivedTheReturnedSignal",
+          socketRef.current.on("serverReceivedTheReturnedSignal",
             (data: { id: any; signal: any }) => {
               const targetPeer = peersRef.current.find(
-                (target) => target.peerId === data.id
-              );
+                (target) => target.peerId === data.id);
               targetPeer.peer.signal(data.signal);
               partnerVideo.current = targetPeer;
             }
@@ -116,9 +112,7 @@ export const VideoCallPage = (props: Props) => {
         if (socketRef.current)
           socketRef.current.on("leftCall", (id: Instance) => {
             const peerObj = peersRef.current.find((target) => target.peerId === id);
-            if (peerObj) {
-              peerObj.peer.destroy();
-            }
+            if (peerObj) {peerObj.peer.destroy();}
             console.log("the peer being deleted", peerObj);
 
             /*filter out the participant that is leaving
@@ -192,7 +186,7 @@ export const VideoCallPage = (props: Props) => {
       let videoTrack = userStream.current
         .getVideoTracks()
         .find((track) => track.kind === "video");
-
+        
       if (videoTrack && videoTrack.enabled) {
         videoTrack.enabled = false;
       } else {
@@ -218,17 +212,15 @@ export const VideoCallPage = (props: Props) => {
   };
 
   const exitCall = () => {
-    if (userStream.current)
+    if (userStream.current && socketRef.current)
       userStream.current.getVideoTracks()[0].enabled = false;
-    window.location.replace("/dashboard");
+      socketRef.current.disconnect();
+      window.location.replace("/dashboard");
   };
 
   const screenShare = async () => {
     try {
-      //check if user is already sharing the screen
-
       const mediaStream = await navigator.mediaDevices.getDisplayMedia({});
-
       const screenSharingTrack = mediaStream.getTracks()[0]; //GET SCREEN TRACK
 
       if (socketRef.current && screenSharingTrack) {
@@ -241,8 +233,8 @@ export const VideoCallPage = (props: Props) => {
         userStream.current.removeTrack(videoTrack);
         userStream.current.addTrack(screenSharingTrack);
 
-        if (socketRef.current)
-          //event listener for reversing streams when user stops sharing screen
+        //event listener for reversing streams when user stops sharing screen
+        if (socketRef.current) {
           screenSharingTrack.onended = () => {
             if (userStream.current)
               userStream.current.removeTrack(screenSharingTrack);
@@ -251,6 +243,7 @@ export const VideoCallPage = (props: Props) => {
               socketRef.current.emit("screenToggling", roomId);
             }
           };
+        }
       }
     } catch (err) {
       console.log("Error at screen sharing function: ", err);
