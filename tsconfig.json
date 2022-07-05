@@ -22,10 +22,6 @@
     "types": ["node", "jest", "socket.io-client"]
   },
   "include": [
-<<<<<<< HEAD
-    "src",
-=======
     "src"
->>>>>>> dev
   ]
 }
