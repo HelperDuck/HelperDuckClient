@@ -11,6 +11,7 @@
 .past-request-carrousel {
   max-height: 23vh;
   overflow-y: auto;
+
 }
 
 .subject-user-container {
@@ -20,10 +21,11 @@
   word-wrap: break-word;
   max-width: 50%;
   overflow: hidden;
+  min-width: 20%;
 }
 
 .outer-container {
-  width: 47.5%;
+  width: 50%;
 }
 
 .title {
@@ -42,12 +44,11 @@
   border-radius: 14px;
   min-height: 10.5vh;
   padding: 5px 10px;
-  flex-wrap: wrap;
   margin: 0 1.5% 1.5% 1.5%;
 }
 
 .past-request div {
-  margin-right: 15px;
+  margin-right: 3px;
 
 }
 
@@ -184,7 +185,7 @@
 
 
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 840px) {
   .RequestHistory-wrapper {
     flex-direction: column;
     border: solid 0.5px gray;

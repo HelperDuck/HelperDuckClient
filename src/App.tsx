@@ -25,6 +25,7 @@ import { CreateReviewPage } from "./Pages/CreateReviewPage";
 import NotFound from "./Pages/NotFound";
 import PaymentPage from "./Pages/PaymentPage";
 import PaymentSuccessful from "./components/PaymentSuccessful";
+import DetailsModal from "./components/DetailsModal";
 
 function App() {
   const [isAuthUser, loading] = useAuthState(auth);
@@ -99,6 +100,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/review" element={<CreateReviewPage />} />
+          <Route path="/modal" element={<DetailsModal />} />
           <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/reset" element={<Reset />} />

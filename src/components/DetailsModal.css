@@ -1,0 +1,138 @@
+.modalBackground {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(200, 200, 200, 0.199);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContainer {
+  /* width: 500px;
+  height: 500px; */
+  min-width: 30vw;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 1%;
+}
+
+.titleCloseBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.titleCloseBtn button {
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.modalContainer .body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+
+}
+
+.modal-user-info,
+.modal-solver-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 3%;
+}
+
+.modal-info-container {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.modal-help-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  border: solid 0.5px gray;
+  border-radius: 4px;
+  padding: 2%;
+  margin-bottom: 3%;
+
+}
+
+.modal-help-info label {
+  font-size: 0.9rem;
+  font-family: "Baloo Bhai 2" !important;
+}
+
+.modal-help-info div {
+  margin-bottom: 10px;
+  background-color: rgba(128, 128, 128, 0.466);
+  width: 100%;
+  border: 0.5px solid gray;
+  padding: 1.5% 1%;
+  border-radius: 4px;
+}
+
+
+
+.modalContainer .footer {
+  flex: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContainer .footer button {
+  width: 150px;
+  height: 45px;
+  margin: 10px;
+  border: none;
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal-profile-pic {
+  width: 60px;
+  border-radius: 14px;
+}
+
+.modal-info-container {
+  width: 100%;
+  padding: 0 2%;
+}
+
+
+.modal-help-title {
+  word-wrap: break-word;
+  font-size: 1.5rem;
+  font-family: "Baloo Bhai";
+
+}
+
+.modal-solver {
+  width: 100%;
+  padding: 1% 2%;
+  display: flex;
+  flex-direction: column;
+
+
+}
+
+
+
+.modal-solver-pic {
+  width: 60px;
+  border-radius: 14px;
+}
