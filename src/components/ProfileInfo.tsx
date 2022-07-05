@@ -22,7 +22,7 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const otherUser = useSelector((state: any) => state.userById.value);
   const dispatch = useDispatch();
-
+  console.log(otherUser, "otherUser");
   const toggleEditMode = (e: any) => {
     e.preventDefault();
     setIsInEditMode(!isInEditMode);
@@ -199,8 +199,9 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
           <div>
             <div className="review-word">Reviews</div>
             <div className="single-review-outer-container">
-              <SingleReview></SingleReview>
-              <SingleReview></SingleReview>
+              {otherUser.reviews.map((review: any) => {
+                return <SingleReview review={review}></SingleReview>;
+              })}
             </div>
           </div>
         </div>

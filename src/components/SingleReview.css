@@ -1,6 +1,6 @@
 .single-review-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 80%;
   margin: 0 auto 3% auto;
@@ -8,7 +8,8 @@
   border-radius: 14px;
   padding: 2%;
   background-color: rgba(201, 200, 200, 0.8);
-  box-shadow: 0.5px 2px 5px -0.2px rgb(0 0 0 / 21%), 1.8px -0.1px 2px -0.2px rgb(0 0 0 / 12%), 2.2px -2.1px 5px -0.5px rgb(219 213 213 / 25%), 2.3px -0.25px 5px -0.2px rgb(43 43 43 / 0%), 2.4px -1px 5px -0.3px rgb(255 246 246 / 9%), 2.4px 2px 5px -0.3px rgb(255 246 246 / 91%);
+
+
 }
 
 
@@ -16,6 +17,7 @@
   padding: 2% 3%;
   word-wrap: break-word;
   overflow: auto;
+  width: 70%;
 }
 
 .single-review-text {
@@ -35,7 +37,7 @@
 }
 
 .single-review-user {
-  font-size: 1rem;
+  font-size: 0.7rem;
   text-decoration: underline;
   margin: 3% 0 0 0;
 }

@@ -32,7 +32,11 @@ export const CreatedByMe = (props: Props) => {
   return (
     <div className="past-request">
       <div className="subject-user-container">
-        <div className="subject">{help.subject!.substring(0, 60) + "..."}</div>
+        <div className="subject">
+          {help.subject!.length > 60
+            ? help.subject!.substring(0, 60) + "..."
+            : help.subject}
+        </div>
         {/* <div className="user">
           // by {help.user.firstName} {help.user.lastName}
         </div> */}
