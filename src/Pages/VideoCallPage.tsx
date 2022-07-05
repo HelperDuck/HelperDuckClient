@@ -1,31 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { WebRTCUser } from "../Types/WebRTCUser";
+import { Video }  from "./Video"
 import Peer, { Instance } from "simple-peer";
 import io from "socket.io-client";
-import { WebRTCUser } from "../Types/WebRTCUser";
 import "./VideoCallPage.css";
+import { videoConstraints } from "../utils/videoConstraints";
 
 // const LOCAL = "http://localhost:3002/";
 // const DEV = 'https://helperduck-dev.herokuapp.com/';
 const PROD = 'https://helperduck.herokuapp.com/';
 const SOCKET_SERVER_URL = PROD;
-
-const Video = (props: WebRTCUser) => {
-  const ref = useRef<HTMLVideoElement | any>();
-
-  useEffect(() => {
-    //@ts-ignore
-    props.peer.on("stream", (stream) => {
-      if (ref.current) ref.current.srcObject = stream;
-    });
-  }, []); //eslint-disable-line
-
-  return (
-    <>
-      <video playsInline autoPlay ref={ref} className="video-container" />
-    </>
-  );
-};
 
 type Props = {
   // setScreenSharingId: React.Dispatch<React.SetStateAction<any>>
@@ -50,22 +35,6 @@ export const VideoCallPage = (props: Props) => {
   const roomId: string | undefined = currentPath.pathname.split("/").pop();
   console.log("roomId:", roomId);
 
-  const videoConstraints = {
-    video: {
-      cursor: "always",
-      width: { ideal: 1920 },
-      height: { ideal: 1080 },
-      aspectRatio: 1.777777778,
-      frameRate: 30,
-    },
-    audio: {
-      sampleSize: 16,
-      channelCount: 2,
-      echoCancellation: true,
-      noiseSuppression: true,
-      sampleRate: 44100,
-    },
-  };
 
 
 
