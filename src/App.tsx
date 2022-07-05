@@ -15,9 +15,8 @@ import { Technologies } from "./Redux/reducers/technologies";
 import { loginProfile } from "./Redux/reducers/user";
 import { auth } from "./services/authentication";
 import { getAllLanguages, getAllTechnologies } from "./services/languages";
-import { getUserProfile, getAllUsers } from "./services/profile";
+import { getUserProfile, getAllUsers, createUser } from "./services/profile";
 import { getAllHelpRequests } from "./services/request";
-import { UserType } from "./Types/UserType";
 import { CreateRequestPage } from "./Pages/CreateRequestPage";
 import LoginPage from "./Pages/LoginPage";
 import Protected from "./ProtectRoutes";
@@ -28,10 +27,7 @@ import PaymentSuccessful from "./components/PaymentSuccessful";
 
 function App() {
   const [isAuthUser, loading] = useAuthState(auth);
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  // console.log("isAuthUser inside app", isAuthUser);
 
   useEffect(() => {
     if (loading) return;
@@ -49,10 +45,16 @@ function App() {
 
   const fetchProfile = async () => {
     try {
-      const profileFound = await getUserProfile(
-        isAuthUser as unknown as UserType
-      );
-      dispatch(loginProfile(profileFound));
+      let profileFound = await getUserProfile(isAuthUser as unknown as any);
+
+      if (profileFound) dispatch(loginProfile(profileFound));
+
+      //Create a new profile if one does not exist
+      if (!profileFound) {
+        let newUser = await createUser(isAuthUser as unknown as any);
+        console.log("newUser", newUser);
+        dispatch(loginProfile(newUser as unknown as any));
+      }
     } catch (err) {
       console.error(err);
     }
@@ -145,7 +147,7 @@ function App() {
               </Protected>
             }
           />
-           <Route
+          <Route
             path="/payment/ok"
             element={
               <Protected isAuthUser={isAuthUser} loading={loading}>

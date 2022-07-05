@@ -20,7 +20,6 @@ export const DashUserInfo = (props: Props) => {
     //   (help: any) => help.status === "open"
   // );
 
-  console.log(user.helpOffers, "user helpoffers");
   return (
     <div className="dash-user-wrapper">
       <div className="credits-taken-outer-container">

@@ -9,10 +9,11 @@ import Row from "./prebuilt/Row";
 import BillingDetailsFields from "./prebuilt/BillingDetailsFields";
 import SubmitButton from "./prebuilt/SubmitButton";
 import CheckoutError from "./prebuilt/CheckoutError";
-
+import { BACKEND_CONNECTION } from "../../services/backEndConnection";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import { BASE_URL } from "../../services/profile";
 import { addCreditsToUser } from "../../services/payment";
+
+const BASE_URL = BACKEND_CONNECTION;
 
 const audio = new Audio(duckQuack);
 
