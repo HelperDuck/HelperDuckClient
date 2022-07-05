@@ -36,10 +36,8 @@ const dropIn = {
 
 export const useModal = () => {
   const [modalOpen, setModalOpen] = useState(false);
-
   const close = () => setModalOpen(false);
   const open = () => setModalOpen(true);
-
   return { modalOpen, close, open };
 };
 
@@ -59,7 +57,7 @@ export const ModalContainer = ({ children }: any) => (
   </AnimatePresence>
 );
 
-export const Modal = ({ handleClose, onSubmitReview }: any) => {
+export const Modal = ({ handleClose }: any) => {
   return (
     <Backdrop onClick={handleClose}>
       <motion.div
@@ -88,7 +86,7 @@ const ModalText = () => {
     helpOffer: { user: { id: 0 }, id: 0 },
     helpRequest: { id: 0, userId: 0 },
   });
-
+  console.log(user);
   // const requestId = allHelpRequests.filter((requests: any) => {
   //   return requests.roomId === location.state.roomId;
   // });
@@ -121,7 +119,7 @@ const ModalText = () => {
     const newOfferReview: reviewType = {
       rating: rating,
       comment: comment,
-      userId: requestByRoomId.helpOffer.user.id,
+      userId: requestByRoomId.helpRequest.userId,
       helpOfferId: requestByRoomId.helpOffer.id,
     };
 

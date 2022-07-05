@@ -145,7 +145,7 @@ function App() {
               </Protected>
             }
           />
-           <Route
+          <Route
             path="/payment/ok"
             element={
               <Protected isAuthUser={isAuthUser} loading={loading}>
