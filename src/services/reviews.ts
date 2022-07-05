@@ -1,6 +1,7 @@
 import { reviewType } from "../Types/ReviewType";
 // import { requestAskedType } from "../Types/RequestAskedType";
 
+// const BASE_URL: string = "https://helperduck-dev.herokuapp.com";
 const BASE_URL: string = "https://helperduck-dev.herokuapp.com";
 
 export async function getRequestByRoomId(roomId: string): Promise<any> {

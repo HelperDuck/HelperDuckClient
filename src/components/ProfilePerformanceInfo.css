@@ -26,7 +26,7 @@
   background: rgba(201, 200, 200, 0.8);
   border-radius: 14px;
   display: flex;
-  height: 10vh;
+  height: 7vh;
   width: 45%;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -46,6 +46,16 @@
   align-items: center;
   font-family: "Roboto", sans-serif !important;
 }
+
+
+
+
+
+
+
+
+
+
 
 @media only screen and (max-width: 400px) {
   .stats-outer-container {

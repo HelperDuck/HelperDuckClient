@@ -9,6 +9,7 @@ import { ProfilePerformanceInfo } from "../components/ProfilePerformanceInfo";
 import { useSelector, useDispatch } from "react-redux";
 import { changeProfilePic } from "../Redux/reducers/userById";
 import { editUserProfile } from "../services/profile";
+import { SingleReview } from "./SingleReview";
 
 //TODO: check the correct type
 
@@ -191,7 +192,10 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
             </div>
           </div>
         </div>
-        <ProfilePerformanceInfo></ProfilePerformanceInfo>
+        <div className="performance-reviews-wrapper">
+          <ProfilePerformanceInfo></ProfilePerformanceInfo>
+          <SingleReview></SingleReview>
+        </div>
       </div>
     </div>
   );

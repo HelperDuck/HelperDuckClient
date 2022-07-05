@@ -82,9 +82,10 @@ const ModalText = () => {
   const [value, setValue] = useState(0);
   const [requestByRoomId, setRequestByRoomId] = useState({
     helpOffer: { id: 0 },
-    helpRequest: { id: 0 },
+    helpRequest: { id: 0, userId: 0 },
   });
   console.log(requestByRoomId);
+  console.log(user);
 
   // const requestId = allHelpRequests.filter((requests: any) => {
   //   return requests.roomId === location.state.roomId;
@@ -123,6 +124,8 @@ const ModalText = () => {
     setComment("");
     setValue(0);
   };
+  console.log(user.id, "USERID");
+  console.log(requestByRoomId.helpRequest.userId, "HELREQUEST-USERID");
 
   return (
     <div className="modal-text">
@@ -146,7 +149,7 @@ const ModalText = () => {
             onChange={(e) => setComment(e.target.value)}
           />
         </div>
-        {user.id === requestByRoomId.helpRequest.id ? (
+        {user.id === requestByRoomId.helpRequest.userId ? (
           <>
             <label className="price-range-label">
               Was it helpful? Contribute with a tip!
@@ -155,14 +158,10 @@ const ModalText = () => {
           </>
         ) : (
           <>
-            <label className="tip-range-label">
+            {/* <label className="tip-range-label">
               Was it helpful? Contribute with a tip!
             </label>
-            <SliderRange
-              className="slider-range-hide"
-              value={value}
-              setValue={setValue}
-            ></SliderRange>
+            <SliderRange value={value} setValue={setValue}></SliderRange> */}
           </>
         )}
         <button id="form-submit" onClick={onSubmitReview}>

@@ -96,8 +96,12 @@
   font-size: 15px;
 }
 
+.performance-reviews-wrapper {
+  width: 50%;
+}
+
 .profile-boxes-wrapper {
-  width: 100%;
+  width: 50%;
 }
 
 .profile-boxes {

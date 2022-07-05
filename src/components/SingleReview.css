@@ -1,0 +1,32 @@
+/* <div className="single-review-wrapper">
+      <div className="single-review-info">
+        <div className="single-review-pic"> FOTO </div>
+        <div className="single-review-user"> by Pessoa</div>
+      </div>
+      <div className="single-review-text"> */
+
+
+.single-review-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 3% auto;
+  height: 10vh;
+  border-radius: 14px;
+  padding: 2%;
+  background-color: rgba(201, 200, 200, 0.8);
+  box-shadow: 0.5px 2px 5px -0.2px rgb(0 0 0 / 21%), 1.8px -0.1px 2px -0.2px rgb(0 0 0 / 12%), 2.2px -2.1px 5px -0.5px rgb(219 213 213 / 25%), 2.3px -0.25px 5px -0.2px rgb(43 43 43 / 0%), 2.4px -1px 5px -0.3px rgb(255 246 246 / 9%), 2.4px 2px 5px -0.3px rgb(255 246 246 / 91%);
+}
+
+
+
+.single-review-text {
+  padding: 2%;
+  word-wrap: break-word;
+  overflow: auto;
+}
+
+.review-pic {
+  width: 80px;
+}
