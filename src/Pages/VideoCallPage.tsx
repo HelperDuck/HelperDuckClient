@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Peer, { Instance } from "simple-peer";
 import io from "socket.io-client";
 import { WebRTCUser } from "../Types/WebRTCUser";
@@ -78,7 +78,6 @@ export const VideoCallPage = (props: Props) => {
       sampleRate: 44100,
     },
   };
-
 
   useEffect(() => {
     //@ts-ignore

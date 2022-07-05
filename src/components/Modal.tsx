@@ -11,6 +11,7 @@ import {
   postReviewHelpAsker,
   postReviewHelpOffer,
 } from "../services/reviews";
+import { useNavigate } from "react-router-dom";
 
 const dropIn = {
   hidden: {
@@ -67,8 +68,8 @@ export const Modal = ({ handleClose }: any) => {
 };
 
 const ModalText = () => {
+  const navigate = useNavigate();
   const user = useSelector((state: any) => state.user.value);
-
   const roomIdState = useSelector((state: any) => state.roomIdState.value);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
@@ -117,9 +118,15 @@ const ModalText = () => {
     } else {
       postReviewHelpOffer(newOfferReview);
     }
+
     setRating(0);
     setComment("");
     setValue(0);
+
+    if (!rating) {
+      alert("Please give us your feedback");
+    }
+    navigate("/dashboard");
   };
 
   return (
