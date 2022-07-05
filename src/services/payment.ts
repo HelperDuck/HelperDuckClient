@@ -14,7 +14,7 @@ export async function addCreditsToUser(user: AddCreditsToUserArgs){
   }
   console.log(user, 'user inside the service')
   try {
-    const creditsToUser: any = await fetch(`http://localhost:3002/user/${user.uid}/addCredits`, {
+    const creditsToUser: any = await fetch(`${BASE_URL}/user/${user.uid}/addCredits`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(addCreditsObj),

@@ -60,7 +60,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
       setProcessingTo(true);
 
       //create a payment intent on the server //TODO: replace by BASE URL
-      const { data: clientSecret } = await axios.post(`http://localhost:3002/payment/create`, {
+      const { data: clientSecret } = await axios.post(`${BASE_URL}/payment/create`, {
         amount: price * 100});
 
       if (elements && stripe) {
