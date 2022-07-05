@@ -15,13 +15,13 @@ import { auth } from "../services/authentication";
 type Props = {};
 
 export const DashboardPage = (props: Props) => {
-  const [isAuthUser, loading] = useAuthState(auth);
+  const [, loading] = useAuthState(auth);
   const user = useSelector((state: any) => state.user.value);
   const navigate = useNavigate();
 
   const redirectProfile = async () => {
     console.log("profile found", user);
-    if (user.profilePic === "") {
+    if (user.uid !== "" && user.technologies.length === 0) {
       console.log("profile pic not found");
       navigate(`/profile/${user.uid}`);
     }

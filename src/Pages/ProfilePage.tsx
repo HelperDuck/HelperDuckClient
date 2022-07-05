@@ -7,10 +7,13 @@ import { useLocation } from "react-router-dom";
 import { getOtherProfile } from "../services/profile";
 import { userById } from "../Redux/reducers/userById";
 import { useDispatch, useSelector } from "react-redux";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../services/authentication";
 
 //TODO: review types any
 
 export const ProfilePage = () => {
+  const [, loading] = useAuthState(auth);
   const [isInEditMode, setIsInEditMode] = useState<any>(true);
 
   const user = useSelector((state: any) => state.user.value);
@@ -21,12 +24,13 @@ export const ProfilePage = () => {
     try {
       //@ts-ignore
       const userPath = await location.pathname.slice(9);
+      console.log("userPath", userPath === "");
 
-      if (userPath === "") {
-        const profileFound = await getOtherProfile(user.uid);
-        dispatch(userById(profileFound));
-      } else {
+      if (userPath !== "") {
         const profileFound = await getOtherProfile(userPath);
+        dispatch(userById(profileFound));
+      } else if (user) {
+        const profileFound = await getOtherProfile(user.uid);
         dispatch(userById(profileFound));
       }
     } catch (err) {
@@ -35,8 +39,9 @@ export const ProfilePage = () => {
   };
 
   useEffect(() => {
+    if (loading) return;
     fetchProfile();
-  }, []); //eslint-disable-line
+  }, [fetchProfile]); //eslint-disable-line
 
   return (
     <div className="profile-wrapper">
