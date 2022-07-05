@@ -3,7 +3,7 @@ import Confetti from "react-confetti";
 import { useState, useEffect } from "react";
 import giphy_dancing_gif from '../media/giphy_dancing_gif.gif';
 
-import Layout from "../components/payments/Layout";
+import Layout from "./payments/Layout";
 
 const Container = styled.div`
   width: 475px;
