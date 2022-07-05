@@ -36,7 +36,7 @@ export async function createUser(isAuthUser: {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newUserData),
     });
-    return newUserProfile;
+    return newUserProfile.json();
   } catch (err) {
     console.log("Error at createUserProfile Service: ", err);
   }
@@ -53,7 +53,6 @@ export async function getAllUsers(): Promise<any> {
 
 export async function editUserProfile(user: UserType) {
   try {
-    console.log(user, "user inside the sercie edit user profile");
     const editedUserProfile: any = await fetch(`${BASE_URL}/user/${user.uid}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },

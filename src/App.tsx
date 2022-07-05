@@ -52,9 +52,9 @@ function App() {
       //Create a new profile if one does not exist
       if (!profileFound) {
         let newUser = await createUser(isAuthUser as unknown as any);
+        console.log("newUser", newUser);
         dispatch(loginProfile(newUser as unknown as any));
       }
-      console.log("ProfileFound", profileFound);
     } catch (err) {
       console.error(err);
     }

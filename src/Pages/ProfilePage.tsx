@@ -30,8 +30,12 @@ export const ProfilePage = () => {
         const profileFound = await getOtherProfile(userPath);
         dispatch(userById(profileFound));
       } else if (user) {
+        //means a redirect with a new user
         const profileFound = await getOtherProfile(user.uid);
         dispatch(userById(profileFound));
+      }
+      if (user.technologies.length === 0 && user.uid === userPath) {
+        setIsInEditMode(false);
       }
     } catch (err) {
       console.error(err, "Error on fetch profile");

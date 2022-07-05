@@ -19,8 +19,7 @@ export const DashboardPage = (props: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const navigate = useNavigate();
 
-  const redirectProfile = async () => {
-    console.log("profile found", user);
+  const redirectProfile = () => {
     if (user.uid !== "" && user.technologies.length === 0) {
       console.log("profile pic not found");
       navigate(`/profile/${user.uid}`);
@@ -29,9 +28,8 @@ export const DashboardPage = (props: Props) => {
 
   useEffect(() => {
     if (loading) return;
-    //Redirects if user has not uploaded a profile pic
     redirectProfile();
-  });
+  }, [user.uid]); //eslint-disable-line
 
   return (
     <div className="dashboard-wrapper">
