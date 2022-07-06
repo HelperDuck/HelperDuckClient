@@ -1,4 +1,3 @@
-import Editor, { loader } from "@monaco-editor/react";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { myRequestModalState } from "../Redux/reducers/myRequestModalState";
@@ -17,13 +16,6 @@ function DetailsModal(props: any) {
   const solverUser = allUsers.filter(
     (solver: any) => solver.id === solvedHelpOffer[0].userId
   );
-
-  const optionsCodeSnippet = {
-    readOnly: true,
-    minimap: { enabled: false },
-    scrollBeyondLastColumn: 1,
-    loader: loader,
-  };
 
   return (
     <div className="modalBackground">
@@ -64,13 +56,7 @@ function DetailsModal(props: any) {
               {helpDetails.linkToSandbox}
             </div>
             <label className="modal-help-label-snippet">Code snippet:</label>
-            <div className="modal-help-snippet">
-              {" "}
-              <Editor
-                defaultValue={helpDetails.codeSnippet}
-                options={optionsCodeSnippet}
-              />
-            </div>
+            <div className="modal-help-snippet">{helpDetails.codeSnippet}</div>
           </div>
 
           <div className="modal-solver-info">
