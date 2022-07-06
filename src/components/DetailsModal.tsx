@@ -56,7 +56,7 @@ function DetailsModal(props: any) {
               {helpDetails.linkToSandbox}
             </div>
             <label className="modal-help-label-snippet">Code snippet:</label>
-            <div className="modal-help-snippet"> {helpDetails.codeSnippet}</div>
+            <div className="modal-help-snippet">{helpDetails.codeSnippet}</div>
           </div>
 
           <div className="modal-solver-info">
