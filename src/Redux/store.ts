@@ -7,7 +7,7 @@ import helpRequestReducer from "./reducers/helpRequest";
 import userByIdReducer from "./reducers/userById";
 import reviewReducer from "./reducers/reviews";
 import roomIdStateReducer from "./reducers/RoomId";
-import modalStateReducer from "./reducers/ModalReducer"
+import modalStateReducer from "./reducers/ModalReducer";
 
 export const store = configureStore({
   reducer: {
