@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Icon } from "@iconify/react";
 import { useDispatch } from 'react-redux';
 import { WebRTCUser } from "../Types/WebRTCUser";
 import { Video }  from "./Video"
@@ -265,16 +266,44 @@ export const VideoCallPage = (props: Props) => {
 
           <div className="video-controls">
             <button className="cam-btn video-btn" onClick={toggleCam}>
-              📸
+            <Icon
+            icon="bi:camera-video"
+            className="icons"
+            color="rgba(255, 162, 0, 0.9)"
+            hFlip={false}
+            height={18}
+            width={18}
+          />
             </button>
             <button className="mic-btn video-btn" onClick={toggleMic}>
-              🎙️
+            <Icon
+            icon="bi:mic"
+            className="icons icon-on"
+            color="rgba(255, 162, 0, 0.9)"
+            hFlip={true}
+            height={18}
+            width={18}
+          />
             </button>
             <button className="phone-btn video-btn" onClick={exitCall}>
-              ☎️
+            <Icon
+            icon="bx-phone"
+            className="icons icon-on"
+            color="rgba(255, 162, 0, 0.9)"
+            hFlip={false}
+            height={18}
+            width={18}
+          />
             </button>
             <button className="screen-btn video-btn" onClick={screenShare}>
-              🖥️
+            <Icon
+            icon="carbon:screen"
+            className="icons icon-on"
+            color="rgba(255, 162, 0, 0.9)"
+            hFlip={true}
+            height={18}
+            width={18}
+          />
             </button>
           </div>
           
@@ -284,11 +313,13 @@ export const VideoCallPage = (props: Props) => {
         {peers.map((peer, index) => {
           if (index === 0) {
             return (
+              <div className="inner-video-wrapper">
               <Video
                 key={peer.peerId}
                 peer={peer.peer}
-                className="video-container"
+                className="video-container partnervideo"
               />
+              </div>
             );
           } else {
             return <></>;
