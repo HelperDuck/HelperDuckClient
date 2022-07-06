@@ -18,12 +18,13 @@ export const SinglePastRequest = (props: Props) => {
     (item: any) => item.id === help.id
   );
 
+  console.log(completeHelpRequest, "completeHelpRequest");
   return (
     <div className="past-request">
       <div className="profile-pic-container">
         <img
           className="profile-pic-past-request"
-          src="https://i.ibb.co/35ZbKjP/fernanda.png"
+          src={completeHelpRequest[0].user.profilePic}
           alt="profile pic"
         ></img>
       </div>

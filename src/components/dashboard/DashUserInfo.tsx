@@ -1,6 +1,7 @@
 import { Icon } from "@iconify/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+//@ts-ignore
 import brainBook from "../../media/brainBook.svg";
 import "./DashUserInfo.css";
 import { useSelector } from "react-redux";
