@@ -202,6 +202,7 @@ input[type="file"] {
   background-color: black;
   padding: 2%;
   border-radius: 30%;
+  cursor: pointer,
 }
 
 .img-input {
