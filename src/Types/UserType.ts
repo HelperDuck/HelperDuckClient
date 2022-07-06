@@ -13,6 +13,7 @@ export type UserType = {
   rating?: Number;
   helpOffers?: any;
   helpRequests?: any;
+  credits?: Number;
 };
 
 export type UserForHelpType = {

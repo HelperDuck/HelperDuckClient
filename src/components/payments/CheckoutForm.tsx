@@ -12,6 +12,8 @@ import CheckoutError from "./prebuilt/CheckoutError";
 import { BACKEND_CONNECTION } from "../../services/backEndConnection";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { addCreditsToUser } from "../../services/payment";
+import { updateCredits } from "../../Redux/reducers/user";
+import { useDispatch } from "react-redux";
 
 const BASE_URL = BACKEND_CONNECTION;
 
@@ -37,6 +39,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
   const [isProcessing, setProcessingTo] = useState(false);
   const [checkoutError, setCheckoutError] = useState(); //eslint-disable-line
   const [creditsBought, setCreditsBought] = useState<number>(0);
+  const dispatch = useDispatch();
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
@@ -82,6 +85,7 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
             if (confirmedCardPayment.paymentIntent) {
               let amount: number = confirmedCardPayment.paymentIntent.amount / 100;
               setCreditsBought(amount);
+              dispatch(updateCredits(amount))
             }
             console.log("Confirm Payment: ", confirmedCardPayment);
             playSound(audio);
