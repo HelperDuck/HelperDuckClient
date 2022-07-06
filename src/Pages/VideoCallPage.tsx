@@ -20,7 +20,6 @@ type Props = {};
 export const VideoCallPage = (props: Props) => {
   //HOOKS for classroom state management
   const dispatch = useDispatch();
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [peers, setPeers] = useState<WebRTCUser[]>([]); //this will track the peers for rendering purposes
   const socketRef = useRef<any>(); //will handle the sockets communications for signaling //TODO: check type works
   const userVideo = useRef<HTMLVideoElement | any>(null); //TODO: may need to remove the null value
@@ -220,7 +219,6 @@ export const VideoCallPage = (props: Props) => {
       navigate('/dashboard');
       dispatch(modalState(true));
       //dispatch State of modal open to dashboard and render Modal in the dashboard
-      // setModalOpen(true);
       // window.location.replace("/dashboard");
       
   };
@@ -283,10 +281,6 @@ export const VideoCallPage = (props: Props) => {
               🖥️
             </button>
           </div>
-          
-          <ModalContainer>
-            {modalOpen && <Modal modalOpen={modalOpen} />}
-          </ModalContainer>
           
         </div>
         
