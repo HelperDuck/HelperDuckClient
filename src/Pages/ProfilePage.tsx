@@ -46,7 +46,7 @@ export const ProfilePage = () => {
   useEffect(() => {
     if (loading) return;
     fetchProfile();
-  }, [fetchProfile]); //eslint-disable-line
+  }, []); //eslint-disable-line
 
   return (
     <div className="profile-wrapper">

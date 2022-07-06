@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../services/authentication";
 import DetailsModal from "../components/DetailsModal";
+import { Modal, ModalContainer } from "../components/review/ReviewModal";
 
 type Props = {};
 
@@ -22,6 +23,8 @@ export const DashboardPage = (props: Props) => {
   const modalOpen = useSelector(
     (state: any) => state.myRequestModalState.value
   );
+  const modalState = useSelector((state: any) => state.modalState.value);
+  console.log(modalState, "modalState");
   const navigate = useNavigate();
 
   const redirectProfile = () => {
@@ -82,7 +85,7 @@ export const DashboardPage = (props: Props) => {
                 ></Avatar>
               </div>
             </div>
-
+            <ModalContainer>{modalState && <Modal />}</ModalContainer>
             <DashUserInfo></DashUserInfo>
           </div>
         </div>

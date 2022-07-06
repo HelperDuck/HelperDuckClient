@@ -9,6 +9,7 @@ import reviewReducer from "./reducers/reviews";
 import roomIdStateReducer from "./reducers/RoomId";
 import myRequestModalStateReducer from './reducers/myRequestModalState'
 import helpDetailsReducer from './reducers/helpDetails'
+import modalStateReducer from "./reducers/ModalReducer";
 
 export const store = configureStore({
   reducer: {
@@ -21,7 +22,8 @@ export const store = configureStore({
     askerReview: reviewReducer,
     roomIdState: roomIdStateReducer,
     myRequestModalState: myRequestModalStateReducer,
-    helpDetails: helpDetailsReducer
+    helpDetails: helpDetailsReducer,
+    modalState: modalStateReducer
   },
 });
 
