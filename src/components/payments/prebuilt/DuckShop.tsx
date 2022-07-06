@@ -11,9 +11,10 @@ const Shop = styled.div`
 `;
 
 const ShopName = styled.h1`
-  font-size: 18px;
+  font-size: 22px;
   color: #111;
   font-style: normal;
+  font-family:"Baloo Bhai";
   text-align: center;
   font-variant: normal;
   font-weight: 800;
