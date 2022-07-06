@@ -31,9 +31,9 @@ export const CreatedByMe = (props: Props) => {
   };
 
   return (
-    <div className="past-request">
-      <div className="subject-user-container">
-        <div className="subject">
+    <div className="byMe-request">
+      <div className="byMe-subject-user-container">
+        <div className="byMe-subject">
           {help.subject!.length > 60
             ? help.subject!.substring(0, 60) + "..."
             : help.subject}
@@ -56,7 +56,7 @@ export const CreatedByMe = (props: Props) => {
           height="20"
         />
       </div>
-      <div className="detail-button-container">
+      <div className="byMe-detail-button-container">
         {help.status !== "solved" ? (
           <button
             onClick={OfferHelp}

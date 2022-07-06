@@ -42,7 +42,7 @@ function DetailsModal(props: any) {
             <label className="modal-help-label-tech">Technologies:</label>
             <div className="modal-help-tech">
               {helpDetails.technologies.map(
-                (item: any) => item.technology.name
+                (item: any) => item.technology.name + "  "
               )}
             </div>
             <label className="modal-help-label-description">Description:</label>
