@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Register from "./views/userLogIn/Register";
-import Reset from "./views/userLogIn/Reset";
+import Register from "./Pages/userAuth/Register";
+import Reset from "./Pages/userAuth/Reset";
 import { ProfilePage } from "./Pages/ProfilePage";
 import { DashboardPage } from "./Pages/DashboardPage";
 import { useDispatch } from "react-redux";
@@ -15,19 +15,19 @@ import { Technologies } from "./Redux/reducers/technologies";
 import { loginProfile } from "./Redux/reducers/user";
 import { auth } from "./services/authentication";
 import { getAllLanguages, getAllTechnologies } from "./services/languages";
-import { getUserProfile, getAllUsers } from "./services/profile";
+import { getUserProfile, getAllUsers, createUser } from "./services/profile";
 import { getAllHelpRequests } from "./services/request";
-import { UserType } from "./Types/UserType";
 import { CreateRequestPage } from "./Pages/CreateRequestPage";
-import LoginPage from "./Pages/LoginPage";
+import LoginPage from "./Pages/userAuth/LoginPage";
 import Protected from "./ProtectRoutes";
+import NotFound from "./Pages/NotFound";
+import PaymentPage from "./Pages/PaymentPage";
+import PaymentSuccessful from "./components/payments/PaymentSuccessful";
+import Home from "./Pages/Home";
 
 function App() {
   const [isAuthUser, loading] = useAuthState(auth);
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  console.log("isAuthUser inside app", isAuthUser);
 
   useEffect(() => {
     if (loading) return;
@@ -45,10 +45,16 @@ function App() {
 
   const fetchProfile = async () => {
     try {
-      const profileFound = await getUserProfile(
-        isAuthUser as unknown as UserType
-      );
-      dispatch(loginProfile(profileFound));
+      let profileFound = await getUserProfile(isAuthUser as unknown as any);
+
+      if (profileFound) dispatch(loginProfile(profileFound));
+
+      //Create a new profile if one does not exist
+      if (!profileFound) {
+        let newUser = await createUser(isAuthUser as unknown as any);
+        console.log("newUser", newUser);
+        dispatch(loginProfile(newUser as unknown as any));
+      }
     } catch (err) {
       console.error(err);
     }
@@ -75,7 +81,6 @@ function App() {
   const fetchAllHelpRequests = async () => {
     try {
       const allHelpRequests = await getAllHelpRequests();
-      console.log(allHelpRequests, "allHelpRequests");
       dispatch(helpRequests(allHelpRequests));
     } catch (err) {
       console.error(err, "Error in All Languages Fetch reducer");
@@ -85,7 +90,6 @@ function App() {
   const fetchAllUsers = async () => {
     try {
       const allUser = await getAllUsers();
-      console.log(allUser, "allUser");
       dispatch(allUsers(allUser));
     } catch (err) {
       console.error(err, "Error in All Languages Fetch reducer");
@@ -96,6 +100,7 @@ function App() {
     <div className="app">
       <Router>
         <Routes>
+          <Route path="/home" element={<Home />} />
           <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/reset" element={<Reset />} />
@@ -103,7 +108,7 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              <Protected isAuthUser={isAuthUser}>
+              <Protected isAuthUser={isAuthUser} loading={loading}>
                 <DashboardPage />
               </Protected>
             }
@@ -112,7 +117,7 @@ function App() {
           <Route
             path="/profile"
             element={
-              <Protected isAuthUser={isAuthUser}>
+              <Protected isAuthUser={isAuthUser} loading={loading}>
                 <ProfilePage />
               </Protected>
             }
@@ -121,7 +126,7 @@ function App() {
           <Route
             path="/newrequest"
             element={
-              <Protected isAuthUser={isAuthUser}>
+              <Protected isAuthUser={isAuthUser} loading={loading}>
                 <CreateRequestPage />
               </Protected>
             }
@@ -129,11 +134,28 @@ function App() {
           <Route
             path="/profile/:uid"
             element={
-              <Protected isAuthUser={isAuthUser}>
+              <Protected isAuthUser={isAuthUser} loading={loading}>
                 <ProfilePage />
               </Protected>
             }
           />
+          <Route
+            path="/payment"
+            element={
+              <Protected isAuthUser={isAuthUser} loading={loading}>
+                <PaymentPage />
+              </Protected>
+            }
+          />
+          <Route
+            path="/payment/ok"
+            element={
+              <Protected isAuthUser={isAuthUser} loading={loading}>
+                <PaymentSuccessful />
+              </Protected>
+            }
+          />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </div>

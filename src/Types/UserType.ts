@@ -1,4 +1,7 @@
+import { reviewType } from "./ReviewType";
+
 export type UserType = {
+  id?: number;
   uid?: string;
   firstName?: string;
   lastName?: string;
@@ -9,10 +12,12 @@ export type UserType = {
   technologies?: string[];
   languages?: string[];
   gitHubProfile?: string;
-  openedRequests?: Number;
-  acceptedRequests?: Number;
   avgTip?: Number;
   rating?: Number;
+  reviews?: reviewType[],
+  helpOffers?: any;
+  helpRequests?: any;
+  credits?: Number;
 };
 
 export type UserForHelpType = {

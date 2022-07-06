@@ -1,17 +1,43 @@
 // import React from "react";
-import { DashUserInfo } from "../components/DashUserInfo";
-import { IncomingRequestsCarrousel } from "../components/IncomingRequestsCarrousel";
+import { DashUserInfo } from "../components/dashboard/DashUserInfo";
+import { IncomingRequestsCarrousel } from "../components/dashboard/IncomingRequestsCarrousel";
 import { NavBar } from "../components/NavBar";
-import { RequestHistory } from "../components/RequestHistory";
+import { RequestHistory } from "../components/dashboard/RequestHistory";
+// @ts-ignore    TODO
 import boySvg from "../media/boy.svg";
 import Avatar from "react-avatar";
 import "./DashboardPage.css";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../services/authentication";
+import DetailsModal from "../components/DetailsModal";
+import { Modal, ModalContainer } from "../components/review/ReviewModal";
 
 type Props = {};
 
 export const DashboardPage = (props: Props) => {
+  const [, loading] = useAuthState(auth);
   const user = useSelector((state: any) => state.user.value);
+  const modalOpen = useSelector(
+    (state: any) => state.myRequestModalState.value
+  );
+  const modalState = useSelector((state: any) => state.modalState.value);
+  console.log(modalState, "modalState");
+  const navigate = useNavigate();
+
+  const redirectProfile = () => {
+    if (user.uid !== "" && user.technologies.length === 0) {
+      console.log("profile pic not found");
+      navigate(`/profile/${user.uid}`);
+    }
+  };
+
+  useEffect(() => {
+    if (loading) return;
+    redirectProfile();
+  }, [user.uid]); //eslint-disable-line
 
   return (
     <div className="dashboard-wrapper">
@@ -20,7 +46,7 @@ export const DashboardPage = (props: Props) => {
       <div className="outer-wrapper">
         <div className="inner-wrapper">
           <div className="first-half-container">
-            <div className="hello-wrapper">
+            <div className="hello-wrapper dash-wrapper">
               <div className="hello-container">
                 <div className="hello">Hello {user.firstName}!</div>
                 <div className="hello-msg">It`s good to see you again.</div>
@@ -29,13 +55,17 @@ export const DashboardPage = (props: Props) => {
                 <img className="img-boy" src={boySvg} alt="boy img" />{" "}
               </div>
             </div>
-            <IncomingRequestsCarrousel></IncomingRequestsCarrousel>
+            {user.uid && user.uid !== "" ? (
+              <IncomingRequestsCarrousel></IncomingRequestsCarrousel>
+            ) : (
+              <></>
+            )}
           </div>
 
           <div className="second-half-container">
             <div className="search-and-profile">
               <div className="search-container">
-                <form className="search-form">
+                <form className="search-form dash-wrapper">
                   <input
                     className="search-input"
                     type="search"
@@ -47,21 +77,27 @@ export const DashboardPage = (props: Props) => {
                 </form>
               </div>
               <div className="profile-setting-container">
-                <Avatar src={user.profilePic} size="50" round={true}></Avatar>
+                <Avatar
+                  className="dash-profile-pic"
+                  src={user.profilePic}
+                  size="50"
+                  round={true}
+                ></Avatar>
               </div>
             </div>
-
+            <ModalContainer>{modalState && <Modal />}</ModalContainer>
             <DashUserInfo></DashUserInfo>
           </div>
         </div>
 
-        <div className="bottom-cointainer">
+        <div className="bottom-container">
           {" "}
           <div className="bottom-container">
             <RequestHistory></RequestHistory>
           </div>
         </div>
       </div>
+      {modalOpen && <DetailsModal />}
     </div>
   );
 };

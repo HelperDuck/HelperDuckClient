@@ -5,15 +5,18 @@ import { useNavigate } from "react-router-dom";
 import { logout } from "../services/authentication";
 import { useDispatch, useSelector } from "react-redux";
 import { userById } from "../Redux/reducers/userById";
+import { playSound } from "../utils/playSound";
+import duckQuack from '../media/audio/duckQuack.mp3';
+
+const audio = new Audio(duckQuack)
+
 type Props = {};
 
 export const NavBar = (props: Props) => {
   const navigate = useNavigate();
   const user = useSelector((state: any) => state.user.value);
   const dispatch = useDispatch();
-  const otherUser = useSelector((state: any) => state.userById.value);
 
-  console.log(otherUser, "dentro do userbyId state");
   return (
     <div className="navBar">
       <div className="navBar-icons">
@@ -21,7 +24,8 @@ export const NavBar = (props: Props) => {
           <Icon
             icon="icon-park-solid:duck"
             className="icons"
-            color="white"
+            onClick={() => playSound(audio)}
+            color="rgb(255, 218, 35)"
             hFlip={true}
             height={70}
             width={70}
@@ -38,8 +42,6 @@ export const NavBar = (props: Props) => {
         </li>
         <li
           onClick={() => {
-            console.log(user, "userrr");
-            console.log(otherUser, "otherrr");
             dispatch(userById(user));
             setTimeout(() => {
               navigate(`/profile/${user.uid}`);
@@ -56,7 +58,17 @@ export const NavBar = (props: Props) => {
         </li>
         <li onClick={() => navigate("/newrequest")}>
           <Icon
-            icon="ic:outline-video-call"
+            icon="ant-design:plus-outlined"
+            color="white"
+            hFlip={true}
+            height={25}
+            width={25}
+            className="icons"
+          />
+        </li>
+        <li onClick={() => navigate("/payment")}>
+          <Icon
+            icon="fluent:wallet-credit-card-16-regular"
             color="white"
             hFlip={true}
             height={25}

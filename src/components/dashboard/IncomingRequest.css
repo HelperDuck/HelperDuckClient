@@ -1,0 +1,238 @@
+/*background: #f5f5f7;*/
+
+.IncomingRequest-wrapper {
+  /* the width and the margin should be changed after all components are made */
+  margin: 1% 0;
+  display: flex;
+  flex-direction: column;
+  padding: 3%;
+  background-color: rgba(201, 200, 200, 0.8);
+  box-shadow: 0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21),
+    1.8px -0.1px 2px -0.2px rgba(0, 0, 0, 0.12),
+    2.2px -2.1px 5px -0.5px rgba(219, 213, 213, 0.25),
+    2.3px -0.25px 5px -0.2px rgba(43, 43, 43, 0),
+    2.4px -1px 5px -0.3px rgba(255, 246, 246, 0.09),
+    2.4px 2px 5px -0.3px rgba(255, 246, 246, 0.908);
+
+  border-radius: 14px;
+  font-family: "Roboto", sans-serif;
+  margin-right: 1%;
+  min-height: 25vh;
+  min-width: 90%;
+}
+
+.IncomingRequest-wrapper:hover {
+  background-color: rgba(230, 230, 230, 0.08);
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1%;
+}
+
+
+
+.duck-icon {
+  width: 25px;
+
+  margin-right: 5px;
+}
+
+.fire-icon {
+  width: 25px;
+
+  margin-right: 2px;
+}
+
+.picture-container {
+  margin: 0 15px 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-pic {
+  width: 5vw;
+  border-radius: 12px;
+}
+
+.profile-pic:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.profile-info-container {
+  display: flex;
+  max-width: 62%;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  max-width: 80%;
+
+}
+
+.subject {
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: "Baloo Bhai";
+}
+
+.user {
+  font-size: 13px;
+  text-decoration: underline;
+}
+
+.user:hover {
+  transform: scale(1.21);
+  transform: translate(0.2%);
+  cursor: pointer;
+}
+
+.avg-tip,
+.avg-score {
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.IncomingRequest-description {
+
+  max-height: 10vh;
+  word-wrap: break-word;
+  overflow-y: auto;
+
+}
+
+.IncomingRequest-description::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+.IncomingRequest-description::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.IncomingRequest-description::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* ########  BUTTONS  ########### */
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 25px;
+  min-width: 30%;
+
+}
+
+.accept-button {
+  font-size: 1rem;
+  font-family: Verdana;
+  min-width: 100%;
+  height: 4vh;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 1);
+  cursor: pointer;
+  border: none;
+  word-wrap: break-word;
+  margin: 0px 0px 15px 0px;
+  box-shadow: 0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21),
+    -1.2px 2.1px 2px -0.2px rgba(0, 0, 0, 0.12),
+    2.2px -2.1px 5px -0.5px rgba(219, 213, 213, 0.25),
+    2.3px -0.25px 10px -0.2px rgba(43, 43, 43, 0),
+    2.4px -1px 10px -0.3px rgba(255, 246, 246, 0.09),
+    2.4px 2px 10px -0.3px rgba(255, 246, 246, 0.908);
+}
+
+.accept-button:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: translate(0.15%, 0.15%);
+  transform: scale(1.05, 1.05);
+  box-shadow: 0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21),
+    -1.8px 2.1px 2px -0.2px rgba(0, 0, 0, 0.12),
+    2.2px -2.1px 5px -0.5px rgba(255, 246, 246, 0.908),
+    2.3px -0.25px 10px -0.2px rgba(43, 43, 43, 0),
+    2.4px -1px 10px -0.3px rgba(255, 246, 246, 0.09),
+    2.4px 2px 10px -0.3px rgba(219, 213, 213, 0.25);
+}
+
+.accept-button:active {
+  background: rgba(0, 0, 0, 0.9);
+  transform: translate(1.25%, 1.25%);
+}
+
+.decline-button {
+  min-width: 100%;
+  word-wrap: break-word;
+  font-size: 1rem;
+  font-family: Verdana;
+  width: 4.5vw;
+  height: 4vh;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  background: rgb(207, 47, 47);
+  cursor: pointer;
+  border: none;
+  margin: 0px 0px 15px 0px;
+  box-shadow: 0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21),
+    -1.2px 2.1px 2px -0.2px rgba(0, 0, 0, 0.12),
+    2.2px -2.1px 5px -0.5px rgba(219, 213, 213, 0.25),
+    2.3px -0.25px 10px -0.2px rgba(43, 43, 43, 0),
+    2.4px -1px 10px -0.3px rgba(255, 246, 246, 0.09),
+    2.4px 2px 10px -0.3px rgba(255, 246, 246, 0.908);
+}
+
+.decline-button:hover {
+  background: rgba(207, 47, 47, 0.9);
+  transform: translate(0.15%, 0.15%);
+  transform: scale(1.05, 1.05);
+  box-shadow: 0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21),
+    -1.8px 2.1px 2px -0.2px rgba(0, 0, 0, 0.12),
+    2.2px -2.1px 5px -0.5px rgba(255, 246, 246, 0.908),
+    2.3px -0.25px 10px -0.2px rgba(43, 43, 43, 0),
+    2.4px -1px 10px -0.3px rgba(255, 246, 246, 0.09),
+    2.4px 2px 10px -0.3px rgba(219, 213, 213, 0.25);
+}
+
+.decline-button:active {
+  background: rgba(207, 47, 47, 0.9);
+  transform: translate(1.25%, 1.25%);
+}
+
+
+@media only screen and (max-width: 400px) {
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .IncomingRequest-wrapper {
+    /* the width and the margin should be changed after all components are made */
+
+    max-height: 50vh;
+  }
+
+  .buttons-container {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+  }
+
+
+
+}

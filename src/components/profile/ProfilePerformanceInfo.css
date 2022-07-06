@@ -1,0 +1,123 @@
+.profilePerformanceInfo-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1%;
+  margin-left: 10%;
+  font-family: "Baloo Bhai";
+  width: 80%;
+}
+
+.profile-requests-stats {
+  display: flex;
+  flex-direction: column;
+}
+
+.request-title {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.stats-outer-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stats-inner-container {
+  background: rgba(201, 200, 200, 0.8);
+  border-radius: 14px;
+  display: flex;
+  height: 7vh;
+  width: 45%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  min-width: fit-content;
+  margin-right: 10px;
+}
+
+.number {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.word {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  font-family: "Roboto", sans-serif !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 400px) {
+  .stats-outer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .stats-inner-container {
+    margin-bottom: 5px;
+    padding: 5px;
+  }
+
+  .stats-outer-container {
+    margin-bottom: 20px;
+  }
+
+  .number {
+    font-size: 1.7rem;
+  }
+
+  .word {
+    font-size: 1rem;
+  }
+}
+
+
+@media only screen and (max-width: 1000px) {
+  .stats-outer-container {
+    flex-direction: column;
+
+  }
+
+  .stats-inner-container {
+    width: 100%;
+    margin: 2% 0;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .profile-expertise {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .profilePerformanceInfo-wrapper {
+    width: 60%;
+    margin: 20px 0;
+  }
+
+  .profile-boxes {
+    width: 100%;
+    margin: 3% 0;
+  }
+
+  .img-input {
+    width: 100px;
+  }
+
+  #full-name {
+    width: 60vw;
+  }
+}

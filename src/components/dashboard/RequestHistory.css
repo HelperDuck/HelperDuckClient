@@ -1,0 +1,255 @@
+/* HAVE TO MAKE IT RESPONSIVE WITH MEDIA QUERY */
+
+
+
+.RequestHistory-wrapper {
+  display: flex;
+  justify-content: space-between;
+  /* width and margin should be changed after all components are done */
+}
+
+.past-request-carrousel {
+  max-height: 23vh;
+  overflow-y: auto;
+}
+
+.subject-user-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+  max-width: 60%;
+  overflow: hidden;
+}
+
+
+.outer-container {
+  width: 47.5%;
+}
+
+.title {
+  font-size: 24px;
+  font-family: 'Baloo Bhai 2', cursive;
+  font-weight: 800;
+  margin-bottom: 10px;
+
+}
+
+.past-request {
+  background: rgba(201, 200, 200, 0.8);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 14px;
+  min-height: 10.5vh;
+  padding: 5px 10px;
+  flex-wrap: wrap;
+  margin: 0 1.5% 1.5% 1.5%;
+}
+
+
+.delete-request-container {
+  min-width: 5%;
+  margin: 0 2%;
+}
+
+.byMe-subject-user-container {
+  word-wrap: break-word;
+  width: 100%;
+  overflow: hidden;
+}
+
+.byMe-subject {
+  word-wrap: break-word;
+  font-weight: 400;
+  font-size: 1rem;
+  font-family: "Baloo Bhai";
+}
+
+
+.byMe-detail-button-container {
+  display: flex;
+  align-items: center;
+  margin: 0 1%;
+  min-width: 22%;
+
+}
+
+
+.byMe-request {
+  background: rgba(201, 200, 200, 0.8);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 14px;
+  min-height: 10.5vh;
+  padding: 5px 10px;
+
+  margin: 0 1.5% 1.5% 1.5%;
+}
+
+.past-request div {
+  margin-right: 15px;
+
+}
+
+.profile-pic-past-request {
+  width: 50px;
+  border-radius: 12px;
+}
+
+
+
+.subject {
+  word-wrap: break-word;
+  font-weight: 400;
+  font-size: 1rem;
+  width: 100%;
+
+}
+
+
+.tip {
+  display: flex;
+  align-content: flex-start;
+
+}
+
+.score {
+  display: flex;
+  align-content: flex-start;
+
+}
+
+
+.detail-button-container {
+  display: flex;
+  align-items: center;
+  margin: 0 !important;
+
+
+}
+
+
+
+
+.detail-btn,
+.start-call-btn {
+  font-size: 13px;
+  font-family: Verdana;
+  width: 100px;
+  height: 30px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 1);
+  cursor: pointer;
+  border: none;
+}
+
+.start-call-btn:hover {
+  background: rgba(0, 0, 0, 0.7)
+}
+
+.detail-btn:hover {
+  background: rgba(0, 0, 0, 0.7)
+}
+
+
+.noRequests {
+  height: 10vh;
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 960px) {}
+
+
+.past-request-carrousel::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+.past-request-carrousel::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.past-request-carrousel::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+
+
+.start-call-btn-accept {
+  font-size: 13px;
+  font-family: Verdana;
+  width: 100px;
+  height: 30px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  background: rgba(21, 120, 70, 1);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21),
+    -1.2px 2.1px 2px -0.2px rgba(0, 0, 0, 0.12),
+    2.2px -2.1px 5px -0.5px rgba(219, 213, 213, 0.25),
+    2.3px -0.25px 10px -0.2px rgba(43, 43, 43, 0),
+    2.4px -1px 10px -0.3px rgba(255, 246, 246, 0.09),
+    2.4px 2px 10px -0.3px rgba(255, 246, 246, 0.908);
+}
+
+.start-call-btn-accept:hover {
+  background: rgba(21, 120, 70, 1);
+  transform: translate(0.15%, 0.15%);
+  transform: scale(1.05, 1.05);
+  box-shadow: 0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21),
+    -1.8px 2.1px 2px -0.2px rgba(0, 0, 0, 0.12),
+    2.2px -2.1px 5px -0.5px rgba(255, 246, 246, 0.908),
+    2.3px -0.25px 10px -0.2px rgba(43, 43, 43, 0),
+    2.4px -1px 10px -0.3px rgba(255, 246, 246, 0.09),
+    2.4px 2px 10px -0.3px rgba(219, 213, 213, 0.25);
+}
+
+.start-call-btn-accept:active {
+  transform: translate(1.25%, 1.25%);
+  cursor: pointer;
+}
+
+
+.accept-button {
+  font-size: 15px;
+  font-family: Verdana;
+  width: 4.5vw;
+  height: 4vh;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 1);
+  cursor: pointer;
+  border: none;
+  margin: 0px 0px 15px 0px;
+
+}
+
+
+
+@media screen and (max-width: 780px) {
+  .RequestHistory-wrapper {
+    flex-direction: column;
+    border: solid 0.5px gray;
+    border-radius: 14px;
+    padding: 2% 0;
+  }
+
+  .outer-container {
+    width: 90%;
+    margin: auto;
+  }
+
+}

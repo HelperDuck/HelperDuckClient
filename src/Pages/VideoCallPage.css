@@ -5,60 +5,59 @@
 }
 /*wraps all the video containers*/
 .videos-wrapper {
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
+  justify-content: space-around;
   align-items: center;
   flex-direction: row;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url(https://res.cloudinary.com/brnl/image/upload/v1656587693/HelperDuck/blob-scene-haikei_1_oxjync.svg);
+  background-image: url('../media/svg/background_helperduck.svg');
+  background-color: rgb(30, 27, 27);
+  /* animation: mymove 5s infinite alternate; */
+}
+
+/* @keyframes mymove {
+  from {background-color: rgb(71, 71, 71);}
+  to {background-color: rgb(17, 17, 18);}
 }
 
 
-
-.user-2 {
-  display: none;
-}
-
-
-.peers-video {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
+@keyframes dance {
+  100% {
+    transform: rotate(3deg);
+  }
+} */
 
 /*wraps my video-container and video-controls*/
-.my-video-wrapper {
+.participants-videos-wrapper {
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  
+  flex-direction: row;
+  flex-wrap: wrap;
 }
+
 
 
 /*generic container for MyVideo and PeersVideo*/
 .video-container {
   background-color: black;
+  border: 2px solid rgb(255, 162, 0, 0.6);
+  position: relative;
   width: 720px;
   height: 480px;
   display: flex; 
+  margin: 0.5em;
   z-index: 1;
   display: block;
   border-radius: 1%;
 }
 
-/* .smallFrame {
-  
-  top: 20px;
-  left: 20px;
-  border-radius: 2px;
-  z-index: 100;
-} */
 /*wraps buttons*/
 .video-controls {
   position: relative;
-  bottom: 2.5em;
+  bottom: 3em;
   z-index: 2;
   align-items: center;
   display: flex;
@@ -67,19 +66,16 @@
 
 .video-btn {
   border-radius: 50%;
-  background-color: rgb(255, 255, 255);
-  margin: 0.5em;
+  border: 1.5px solid rgba(255, 162, 0, 0.9);
+  background-color: rgb(0,0,0,1);
+  margin: 0.3em;
   width: 2.2em;
   height: 2.2em;
-
+  cursor: pointer;
 }
 
 
 @media screen and (max-width: 600px) {
-  .smallFrame {
-    height: 80px;
-    width: 120px;
-  }
 
   .video-controls {
     height: 20px;
@@ -94,6 +90,14 @@
     height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url(https://res.cloudinary.com/brnl/image/upload/v1656587693/HelperDuck/blob-scene-haikei_1_oxjync.svg);
+    background-image: url('../media/svg/background_helperduck.svg');
+    background-color: rgb(30, 27, 27);
   }
+  
+  .participants-videos-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+  
 }
