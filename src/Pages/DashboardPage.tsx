@@ -11,12 +11,15 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../services/authentication";
+import { Modal, ModalContainer } from "../components/review/ReviewModal";
 
 type Props = {};
 
 export const DashboardPage = (props: Props) => {
   const [, loading] = useAuthState(auth);
   const user = useSelector((state: any) => state.user.value);
+  const modalState = useSelector((state: any) => state.modalState.value);
+  console.log(modalState, "modalState");
   const navigate = useNavigate();
 
   const redirectProfile = () => {
@@ -77,7 +80,9 @@ export const DashboardPage = (props: Props) => {
                 ></Avatar>
               </div>
             </div>
-
+            <ModalContainer>
+            {modalState && <Modal />}
+          </ModalContainer>
             <DashUserInfo></DashUserInfo>
           </div>
         </div>
