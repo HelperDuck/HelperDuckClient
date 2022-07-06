@@ -23,6 +23,7 @@ import Protected from "./ProtectRoutes";
 import NotFound from "./Pages/NotFound";
 import PaymentPage from "./Pages/PaymentPage";
 import PaymentSuccessful from "./components/payments/PaymentSuccessful";
+import Home from "./Pages/Home";
 
 function App() {
   const [isAuthUser, loading] = useAuthState(auth);
@@ -99,6 +100,7 @@ function App() {
     <div className="app">
       <Router>
         <Routes>
+          <Route path="/home" element={<Home />} />
           <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/reset" element={<Reset />} />
