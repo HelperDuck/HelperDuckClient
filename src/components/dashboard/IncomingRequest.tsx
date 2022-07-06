@@ -23,7 +23,6 @@ export const IncomingRequest = (props: Props) => {
     const offer = {
       userId: user.id,
     };
-    console.log(help, "help");
     try {
       await postOfferHelp(help.id, offer);
       navigate(`/call/${help.roomId}`);

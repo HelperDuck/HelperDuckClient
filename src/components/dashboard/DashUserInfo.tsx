@@ -12,13 +12,7 @@ type Props = {};
 
 export const DashUserInfo = (props: Props) => {
   const user = useSelector((state: any) => state.user.value);
-  const otherUser = useSelector((state: any) => state.userById.value);
   const navigate = useNavigate();
-  console.log(user, "user");
-  console.log(otherUser, " otherUser");
-  // const requestsTaken = user.helpOffers.filter(
-  //   (help: any) => help.status === "open"
-  // );
 
   return (
     <div className="dash-user-wrapper">

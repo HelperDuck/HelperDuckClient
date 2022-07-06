@@ -24,12 +24,10 @@ export const DashboardPage = (props: Props) => {
     (state: any) => state.myRequestModalState.value
   );
   const modalState = useSelector((state: any) => state.modalState.value);
-  console.log(modalState, "modalState");
   const navigate = useNavigate();
 
   const redirectProfile = () => {
     if (user.uid !== "" && user.technologies.length === 0) {
-      console.log("profile pic not found");
       navigate(`/profile/${user.uid}`);
     }
   };

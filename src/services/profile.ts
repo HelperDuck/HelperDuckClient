@@ -43,7 +43,6 @@ export async function createUser(isAuthUser: {
       email: isAuthUser.email,
       uid: isAuthUser.uid,
     };
-    console.log("newUserData: ", newUserData);
     const newUserProfile: any = await fetch(`${BASE_URL}/user`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -71,7 +70,6 @@ export async function editUserProfile(user: UserType) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     });
-    console.log(editedUserProfile, "editedUserProfile");
     return await editedUserProfile;
   } catch (err) {
     console.log("Error at editUserProfile Service: ", err);
