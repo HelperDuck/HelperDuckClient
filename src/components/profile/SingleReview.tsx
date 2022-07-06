@@ -22,14 +22,14 @@ export const SingleReview = (props: Props) => {
         <div className="single-review-pic">
           <img
             className="review-pic"
-            src={findHelpReq[0].user.profilePic}
+            src={findHelpReq[0] && findHelpReq[0].user.profilePic}
             alt="foto"
           ></img>{" "}
         </div>
         <div className="single-review-user">
           {" "}
           by{" "}
-          {user.id === findHelpReq[0].userId
+          {findHelpReq[0] && user.id === findHelpReq[0].userId
             ? "me"
             : findHelpReq[0].user.firstName +
               " " +
@@ -38,7 +38,7 @@ export const SingleReview = (props: Props) => {
       </div>
       <div className="review-text-container">
         <div className="single-review-title">
-          {findHelpReq[0].subject}{" "}
+          {findHelpReq[0] && findHelpReq[0].subject}{" "}
           {user.id === findHelpReq[0].userId ? (
             <Icon icon="bxs:help-circle" hFlip={false} />
           ) : (

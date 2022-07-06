@@ -14,7 +14,7 @@ const ShopName = styled.h1`
   font-size: 22px;
   color: #111;
   font-style: normal;
-  font-family:"Baloo Bhai";
+  font-family: "Baloo Bhai 2";
   text-align: center;
   font-variant: normal;
   font-weight: 800;
@@ -33,20 +33,20 @@ type Props = {
   onAddDuck?: any;
   onRemoveDuck?: any;
   numDucks?: number;
-}
+};
 
-const DuckShop = ({ onAddDuck, onRemoveDuck, numDucks }:Props) => {
+const DuckShop = ({ onAddDuck, onRemoveDuck, numDucks }: Props) => {
   return (
     <Shop>
       <ShopName>Top up your Ducks bag</ShopName>
       <Icon
-            icon="icon-park-solid:duck"
-            className="icons"
-            color="rgb(0, 0, 0, 0.8)"
-            hFlip={true}
-            height={70}
-            width={70}
-          />
+        icon="icon-park-solid:duck"
+        className="icons"
+        color="rgb(0, 0, 0, 0.8)"
+        hFlip={true}
+        height={70}
+        width={70}
+      />
       <Controls>
         <DuckQuantity
           onAdd={onAddDuck}
