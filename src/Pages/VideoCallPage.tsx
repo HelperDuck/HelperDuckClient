@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { WebRTCUser } from "../Types/WebRTCUser";
 import { Video }  from "./Video"
@@ -9,7 +9,7 @@ import "./VideoCallPage.css";
 import { videoConstraints } from "../utils/videoConstraints";
 import { roomIdState } from "../Redux/reducers/RoomId";
 import { modalState } from "../Redux/reducers/ModalReducer";
-// import { Modal, ModalContainer } from "../components/Modal";
+import { Modal, ModalContainer } from "../components/Modal";
 import "./CreateReviewPage.css";
 import { BACKEND_CONNECTION } from "../services/backEndConnection";
 
@@ -27,6 +27,7 @@ export const VideoCallPage = (props: Props) => {
   let partnerVideo = useRef<any>();
   const peersRef = useRef<any[]>([]); //this will be used to track and handle the RTC Connections //TODO: check type works
   const userStream = useRef<MediaStream>();
+  const navigate = useNavigate();
  
   const currentPath = useLocation();
   const roomId: string | undefined = currentPath.pathname.split("/").pop();
@@ -213,12 +214,15 @@ export const VideoCallPage = (props: Props) => {
   const exitCall = () => {
     if (userStream.current && socketRef.current)
       userStream.current.getVideoTracks()[0].enabled = false;
+      toggleMic();
       socketRef.current.disconnect();
       dispatch(roomIdState(roomId));
+      navigate('/dashboard');
       dispatch(modalState(true));
       //dispatch State of modal open to dashboard and render Modal in the dashboard
       // setModalOpen(true);
-      window.location.replace("/dashboard");
+      // window.location.replace("/dashboard");
+      
   };
 
   const screenShare = async () => {
@@ -279,7 +283,14 @@ export const VideoCallPage = (props: Props) => {
               🖥️
             </button>
           </div>
+          
+          <ModalContainer>
+            {modalOpen && <Modal modalOpen={modalOpen} />}
+          </ModalContainer>
+          
         </div>
+        
+        
         {peers.map((peer, index) => {
           if (index === 0) {
             return (

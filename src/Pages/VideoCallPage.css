@@ -13,7 +13,7 @@
   height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url(https://res.cloudinary.com/brnl/image/upload/v1656587693/HelperDuck/blob-scene-haikei_1_oxjync.svg);
+  /* background-image: url('../media/svg/download.svg'); */
   background-color: black;
 }
 

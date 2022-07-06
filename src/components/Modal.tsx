@@ -4,7 +4,7 @@ import Rating from "../components/Rating";
 import SliderRange from "./Slider";
 import { Backdrop } from "./Backdrop";
 import { reviewType } from "../Types/ReviewType";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   getRequestByRoomId,
@@ -12,6 +12,7 @@ import {
   postReviewHelpOffer,
 } from "../services/reviews";
 import { useNavigate } from "react-router-dom";
+import { modalState } from "../Redux/reducers/ModalReducer";
 
 const dropIn = {
   hidden: {
@@ -19,7 +20,7 @@ const dropIn = {
     opacity: 0,
   },
   visible: {
-    y: "0",
+    y: "0vh",
     opacity: 1,
     transition: {
       duration: 0.1,
@@ -39,7 +40,7 @@ export const ModalContainer = ({ children }: any) => (
   <AnimatePresence
     // Disable any initial animations on children that
     // are present when the component is first rendered
-    initial={false}
+    initial={true}
     // Only render one component at a time.
     // The exiting component will finish its exit
     // animation before entering component is rendered
@@ -50,9 +51,14 @@ export const ModalContainer = ({ children }: any) => (
   </AnimatePresence>
 );
 
-export const Modal = ({ handleClose }: any) => {
+
+
+
+export const Modal = ({handleClose}: any) => {
+  
+
   return (
-    <Backdrop onClick={handleClose}>
+    <Backdrop>
       <motion.div
         onClick={(e) => e.stopPropagation()} // Prevent click from closing modal
         className="modal-gradient"
@@ -68,7 +74,9 @@ export const Modal = ({ handleClose }: any) => {
 };
 
 const ModalText = () => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const modalStatus = useSelector((state: any) => state.modalState.value);
+  console.log(modalStatus, 'modalStatus inside ModalText')
   const user = useSelector((state: any) => state.user.value);
   const roomIdState = useSelector((state: any) => state.roomIdState.value);
   const [rating, setRating] = useState(0);
@@ -78,7 +86,7 @@ const ModalText = () => {
     helpOffer: { user: { id: 0 }, id: 0 },
     helpRequest: { id: 0, userId: 0 },
   });
-
+  console.log(requestByRoomId, ' request by room ID');
   const helpByRoomId = async () => {
     try {
       const result = await getRequestByRoomId(roomIdState);
@@ -89,7 +97,9 @@ const ModalText = () => {
   };
 
   useEffect(() => {
+    if (roomIdState) {
     helpByRoomId();
+    }
   }, []); //eslint-disable-line
 
   const onSubmitReview = (e: any) => {
@@ -126,7 +136,8 @@ const ModalText = () => {
     if (!rating) {
       alert("Please give us your feedback");
     }
-    navigate("/dashboard");
+    dispatch(modalState(false))
+    window.location.reload();
   };
 
   return (

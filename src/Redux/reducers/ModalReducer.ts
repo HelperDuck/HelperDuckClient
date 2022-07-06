@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: string = "";
+const initialState: boolean = false;
 
 export const modalSlice = createSlice({
   name: "modal",
