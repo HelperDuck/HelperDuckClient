@@ -6,7 +6,6 @@ import { Backdrop } from "./Backdrop";
 import { useDispatch, useSelector } from "react-redux";
 import { reviewType } from "../../Types/ReviewType";
 
-
 import {
   getRequestByRoomId,
   postReviewHelpAsker,
@@ -51,12 +50,7 @@ export const ModalContainer = ({ children }: any) => (
   </AnimatePresence>
 );
 
-
-
-
-export const Modal = ({handleClose}: any) => {
-  
-
+export const Modal = ({ handleClose }: any) => {
   return (
     <Backdrop>
       <motion.div
@@ -76,7 +70,7 @@ export const Modal = ({handleClose}: any) => {
 const ModalText = () => {
   const dispatch = useDispatch();
   const modalStatus = useSelector((state: any) => state.modalState.value);
-  console.log(modalStatus, 'modalStatus inside ModalText')
+  console.log(modalStatus, "modalStatus inside ModalText");
   const user = useSelector((state: any) => state.user.value);
   const roomIdState = useSelector((state: any) => state.roomIdState.value);
   const [rating, setRating] = useState(0);
@@ -86,7 +80,7 @@ const ModalText = () => {
     helpOffer: { user: { id: 0 }, id: 0 },
     helpRequest: { id: 0, userId: 0 },
   });
-  console.log(requestByRoomId, ' request by room ID');
+  console.log(requestByRoomId, " request by room ID");
   const helpByRoomId = async () => {
     try {
       const result = await getRequestByRoomId(roomIdState);
@@ -98,7 +92,7 @@ const ModalText = () => {
 
   useEffect(() => {
     if (roomIdState) {
-    helpByRoomId();
+      helpByRoomId();
     }
   }, []); //eslint-disable-line
 
@@ -136,8 +130,8 @@ const ModalText = () => {
     if (!rating) {
       alert("Please give us your feedback");
     }
-    dispatch(modalState(false))
-    window.location.reload();
+    dispatch(modalState(false));
+    // window.location.reload();
   };
 
   return (

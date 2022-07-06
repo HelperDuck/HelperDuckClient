@@ -24,17 +24,25 @@ export const SinglePastRequest = (props: Props) => {
       <div className="profile-pic-container">
         <img
           className="profile-pic-past-request"
-          src={completeHelpRequest[0].user.profilePic}
+          src={
+            completeHelpRequest.length
+              ? completeHelpRequest[0].user.profilePic
+              : ""
+          }
           alt="profile pic"
         ></img>
       </div>
       <div className="subject-user-container">
-        <div className="subject">{completeHelpRequest[0].subject}</div>
+        <div className="subject">
+          {completeHelpRequest.length ? completeHelpRequest[0].subject : ""}
+        </div>
         <div className="user">
           by{" "}
-          {completeHelpRequest[0].user.firstName +
-            " " +
-            completeHelpRequest[0].user.lastName}
+          {completeHelpRequest.length
+            ? completeHelpRequest[0].user.firstName +
+              " " +
+              completeHelpRequest[0].user.lastName
+            : ""}
         </div>
       </div>
       <div className="tip-container">
@@ -46,7 +54,9 @@ export const SinglePastRequest = (props: Props) => {
       <div className="score-container">
         <span className="score">
           <Icon icon="heroicons-solid:fire" className="fire-icon" />
-          <span className="score-rating">{help.reviews[0].rating}</span>
+          <span className="score-rating">
+            {help.reviews.length ? help.reviews[0].rating : ""}
+          </span>
         </span>
       </div>
       <div className="detail-button-container">
