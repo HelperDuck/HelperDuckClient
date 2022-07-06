@@ -4,19 +4,31 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  font-family: "Roboto", sans-serif;
-  background: -webkit-linear-gradient(to right, #414345, #232526);
-  background: linear-gradient(to right, #414345, #232526ec);
+  /* background: -webkit-linear-gradient(to right, #414345, #232526);
+  background: linear-gradient(to right, #414345, #232526ec); */
   position: relative;
-
-  /* background-size: 200px;
-  background-repeat: no-repeat; */
-  /* background-image: url("/Users/fernandarodrigues/Codeworks/HelperDuckClient/src/media/icon-park-solid_duck (2).svg"); */
+  background-color: #e4e4e1;
+  background-image: radial-gradient(
+      at top center,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(0, 0, 0, 0.03) 100%
+    ),
+    linear-gradient(
+      to top,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(143, 152, 157, 0.6) 100%
+    );
+  background-blend-mode: normal, multiply;
 }
+
 .icon {
   z-index: 2;
   margin-left: 35%;
   margin-bottom: 40%;
+}
+
+.icon:hover {
+  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
 .login-container {
@@ -27,7 +39,7 @@
   flex-direction: column;
   height: 80%;
   width: 40%;
-  background-color: rgba(0, 0, 0, 0.238);
+  background-color: rgba(0, 0, 0, 0.414);
   position: absolute;
   color: white;
   font-family: "Baloo Bhai 2";
@@ -44,6 +56,113 @@
   padding: 30px;
   width: 25vw;
   height: 60vh;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#welcome {
+  font-size: 35px;
+}
+
+#forgot-password {
+  color: white;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  text-align: right;
+}
+
+#forgot-password:hover {
+  color: rgba(27, 26, 26, 0.7);
+}
+
+#register-now {
+  color: rgba(238, 214, 55, 0.7);
+  font-family: "Roboto", sans-serif;
+}
+
+#register-now:hover {
+  color: rgba(238, 214, 55, 0.7);
+}
+
+.link:link {
+  text-decoration: none;
+}
+
+.login__textBox {
+  border-radius: 8px;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+.login__btn {
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 20px;
+  background: rgba(85, 83, 83, 0.883);
+  cursor: pointer;
+  border: none;
+}
+
+.login__google {
+  background: rgba(85, 83, 83, 0.883);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-google {
+  margin-right: 3%;
+}
+
+.icon-git {
+  margin-right: 3%;
+}
+
+.login__google:hover {
+  background-color: rgba(136, 133, 133, 0.7);
+}
+
+.login__container div {
+  margin-top: 7px;
+}
+
+.login__btn:hover {
+  background-color: rgba(27, 26, 26, 0.7);
+}
+
+@media only screen and (max-width: 1100px) {
+  .login-info-wrapper {
+    flex-direction: column-reverse;
+    height: 100vh;
+  }
+
+  .login-wrapper {
+    height: auto;
+  }
+
+  .login-info-wrapper {
+    height: auto;
+  }
+
+  .login-container,
+  .login-info-container {
+    width: 100%;
+  }
+
+  .login__container {
+    width: 100%;
+  }
 }
 
 /* .login-wrapper a {
@@ -110,72 +229,3 @@
   font-weight: 900;
   font-size: 20px;
 } */
-
-.login {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.login__textBox {
-  border-radius: 8px;
-  border: none;
-  padding: 10px;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.login__btn {
-  padding: 10px;
-  font-size: 18px;
-  margin-bottom: 10px;
-  border: none;
-  background-color: black;
-  color: #fff;
-  font-weight: bold;
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 1);
-  cursor: pointer;
-  border: none;
-}
-
-.login__google {
-  background-color: black;
-}
-
-.login__google:hover {
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-.login__container div {
-  margin-top: 7px;
-}
-
-.login__btn:hover {
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-@media only screen and (max-width: 1100px) {
-  .login-info-wrapper {
-    flex-direction: column-reverse;
-    height: 100vh;
-  }
-
-  .login-wrapper {
-    height: auto;
-  }
-
-  .login-info-wrapper {
-    height: auto;
-  }
-
-  .login-container,
-  .login-info-container {
-    width: 100%;
-  }
-
-  .login__container {
-    width: 100%;
-  }
-}
