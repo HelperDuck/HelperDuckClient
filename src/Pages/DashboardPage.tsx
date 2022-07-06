@@ -1,8 +1,8 @@
 // import React from "react";
-import { DashUserInfo } from "../components/DashUserInfo";
-import { IncomingRequestsCarrousel } from "../components/IncomingRequestsCarrousel";
+import { DashUserInfo } from "../components/dashboard/DashUserInfo";
+import { IncomingRequestsCarrousel } from "../components/dashboard/IncomingRequestsCarrousel";
 import { NavBar } from "../components/NavBar";
-import { RequestHistory } from "../components/RequestHistory";
+import { RequestHistory } from "../components/dashboard/RequestHistory";
 import boySvg from "../media/boy.svg";
 import Avatar from "react-avatar";
 import "./DashboardPage.css";

@@ -6,7 +6,7 @@ import io from "socket.io-client";
 import { WebRTCUser } from "../Types/WebRTCUser";
 import "./VideoCallPage.css";
 import { roomIdState } from "../Redux/reducers/RoomId";
-import { Modal, ModalContainer } from "../components/Modal";
+import { Modal, ModalContainer } from "../components/review/ReviewModal";
 import "./CreateReviewPage.css";
 import { BACKEND_CONNECTION } from "../services/backEndConnection";
 
