@@ -1,8 +1,10 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { myRequestModalState } from "../Redux/reducers/myRequestModalState";
 import "./DetailsModal.css";
 
 function DetailsModal(props: any) {
-  const { setModalOpen } = props;
+  const dispatch = useDispatch();
 
   return (
     <div className="modalBackground">
@@ -48,7 +50,7 @@ function DetailsModal(props: any) {
               <div className="titleCloseBtn">
                 <button
                   onClick={() => {
-                    setModalOpen(false);
+                    dispatch(myRequestModalState(false));
                   }}
                 >
                   OK

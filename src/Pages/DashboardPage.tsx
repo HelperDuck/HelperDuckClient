@@ -3,6 +3,7 @@ import { DashUserInfo } from "../components/dashboard/DashUserInfo";
 import { IncomingRequestsCarrousel } from "../components/dashboard/IncomingRequestsCarrousel";
 import { NavBar } from "../components/NavBar";
 import { RequestHistory } from "../components/dashboard/RequestHistory";
+// @ts-ignore    TODO
 import boySvg from "../media/boy.svg";
 import Avatar from "react-avatar";
 import "./DashboardPage.css";
@@ -11,12 +12,16 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../services/authentication";
+import DetailsModal from "../components/DetailsModal";
 
 type Props = {};
 
 export const DashboardPage = (props: Props) => {
   const [, loading] = useAuthState(auth);
   const user = useSelector((state: any) => state.user.value);
+  const modalOpen = useSelector(
+    (state: any) => state.myRequestModalState.value
+  );
   const navigate = useNavigate();
 
   const redirectProfile = () => {
@@ -89,6 +94,7 @@ export const DashboardPage = (props: Props) => {
           </div>
         </div>
       </div>
+      {modalOpen && <DetailsModal />}
     </div>
   );
 };

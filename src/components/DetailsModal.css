@@ -14,8 +14,8 @@
 .modalContainer {
   z-index: 5;
   position: absolute;
-  top: 12vh;
-  left: 60vw;
+  top: 14vh;
+  left: 56vw;
   min-width: 30vw;
   border-radius: 12px;
   background-color: rgb(176, 171, 171);

@@ -7,6 +7,7 @@ import helpRequestReducer from "./reducers/helpRequest";
 import userByIdReducer from "./reducers/userById";
 import reviewReducer from "./reducers/reviews";
 import roomIdStateReducer from "./reducers/RoomId";
+import myRequestModalStateReducer from './reducers/myRequestModalState'
 
 export const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ export const store = configureStore({
     userById: userByIdReducer,
     askerReview: reviewReducer,
     roomIdState: roomIdStateReducer,
+    myRequestModalState: myRequestModalStateReducer
   },
 });
 
