@@ -12,6 +12,8 @@ import {
   postReviewHelpOffer,
 } from "../../services/reviews";
 import { modalState } from "../../Redux/reducers/ModalReducer";
+import { loginProfile, updateCredits } from "../../Redux/reducers/user";
+import { getUserProfile } from "../../services/profile";
 
 const dropIn = {
   hidden: {
@@ -69,8 +71,6 @@ export const Modal = ({ handleClose }: any) => {
 
 const ModalText = () => {
   const dispatch = useDispatch();
-  const modalStatus = useSelector((state: any) => state.modalState.value);
-  console.log(modalStatus, "modalStatus inside ModalText");
   const user = useSelector((state: any) => state.user.value);
   const roomIdState = useSelector((state: any) => state.roomIdState.value);
   const [rating, setRating] = useState(0);
@@ -80,7 +80,6 @@ const ModalText = () => {
     helpOffer: { user: { id: 0 }, id: 0 },
     helpRequest: { id: 0, userId: 0 },
   });
-  console.log(requestByRoomId, " request by room ID");
   const helpByRoomId = async () => {
     try {
       const result = await getRequestByRoomId(roomIdState);
@@ -96,8 +95,17 @@ const ModalText = () => {
     }
   }, []); //eslint-disable-line
 
-  const onSubmitReview = (e: any) => {
+  const onSubmitReview = async (e: any) => {
     e.preventDefault();
+
+    if (!requestByRoomId) {
+      //Checks to update user for extra credits
+      const profileFound = await getUserProfile(user);
+      if (profileFound && profileFound.uid === user.uid) {
+        dispatch(loginProfile(profileFound));
+      }
+      dispatch(modalState(false));
+    }
 
     const newAskerReview: reviewType = {
       tipGiven: value,
@@ -114,12 +122,16 @@ const ModalText = () => {
       helpOfferId: requestByRoomId.helpOffer.id,
     };
 
-    if (user.id === requestByRoomId.helpRequest.userId) {
+    if (requestByRoomId && user.id === requestByRoomId.helpRequest.userId) {
       postReviewHelpAsker(
         requestByRoomId.helpRequest.id,
         requestByRoomId.helpOffer.id,
         newAskerReview
       );
+
+      if (newAskerReview.tipGiven) {
+        dispatch(updateCredits(newAskerReview.tipGiven * -1));
+      }
     } else {
       postReviewHelpOffer(newOfferReview);
     }
@@ -156,7 +168,7 @@ const ModalText = () => {
             onChange={(e) => setComment(e.target.value)}
           />
         </div>
-        {user.id === requestByRoomId.helpRequest.userId ? (
+        {requestByRoomId && user.id === requestByRoomId.helpRequest.userId ? (
           <>
             <label className="price-range-label">
               Was it helpful? Contribute with a tip!
