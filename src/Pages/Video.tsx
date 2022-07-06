@@ -14,7 +14,7 @@ export const Video = (props: WebRTCUser) => {
 
   return (
     <>
-      <video playsInline autoPlay ref={ref} className="video-container" />
+      <video controls playsInline autoPlay ref={ref} className="video-container" />
     </>
   );
 };

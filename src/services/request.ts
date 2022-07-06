@@ -1,3 +1,4 @@
+
 import { requestAskedType } from "../Types/RequestAskedType";
 import { BACKEND_CONNECTION } from "./backEndConnection";
 
@@ -72,5 +73,17 @@ export async function deleteRequest(request: requestAskedType) {
     return deletedRequest;
   } catch (err) {
     console.log("Error at deleteRequest Service: ", err);
+  }
+}
+
+
+
+export async function getHelpById(HelpID:any): Promise<any> {
+  try {
+    const helpById = await fetch(`${BASE_URL}/helpRequest/${HelpID}`);
+    return await helpById.json();
+  } catch (err) {
+    console.log("Error at helpById Service: ", err);
+    return null;
   }
 }

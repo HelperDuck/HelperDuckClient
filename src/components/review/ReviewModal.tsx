@@ -98,6 +98,7 @@ const ModalText = () => {
 
   const onSubmitReview = (e: any) => {
     e.preventDefault();
+
     const newAskerReview: reviewType = {
       tipGiven: value,
       review: {

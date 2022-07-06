@@ -16,6 +16,7 @@ const initialState: UserType = {
   gitHubProfile: "",
   avgTip: 0,
   rating: 0,
+  credits: 0
 };
 
 export const userSlice = createSlice({
@@ -31,6 +32,10 @@ export const userSlice = createSlice({
     updateUserInfo: (state: any, action: any) => {
       state.value = { ...state.value, ...action.payload.user };
     },
+    updateCredits: (state: any, action: any) => {
+      state.value.credits = parseInt(state.value.credits) + parseInt(action.payload);
+    }
+    
     // changeProfilePic: (state: any, action: any) => {
     //   state.value.profilePic = action.payload.url;
     // },
@@ -38,6 +43,6 @@ export const userSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { loginProfile, updateUserInfo } = userSlice.actions;
+export const { loginProfile, updateUserInfo, updateCredits } = userSlice.actions;
 
 export default userSlice.reducer;

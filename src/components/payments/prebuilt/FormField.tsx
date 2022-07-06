@@ -31,6 +31,7 @@ const Input = styled.input`
   width: 100%;
   padding: 11px 15px 11px 8px;
   color: #111;
+  border: #FFDA24;
   background-color: transparent;
   animation: 1ms void-animation-out;
 
