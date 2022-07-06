@@ -18,6 +18,11 @@ export async function postReviewHelpAsker(
   review: reviewType
 ) {
   try {
+console.log(helpRequestId, 'helpRequestId service')
+console.log(helpOfferId, 'helpOfferId service')
+console.log(review, 'review service')
+
+
     const newReview: any = await fetch(
       `${BASE_URL}/helpRequest/${helpRequestId}/${helpOfferId}/solved`,
       {

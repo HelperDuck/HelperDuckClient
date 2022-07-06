@@ -42,7 +42,7 @@ function Login() {
           width={150}
         />
         <div className="login-container">
-          <p id="welcome">Welcome to Help Ducker</p>
+          <p id="welcome">Welcome to Helper Duck</p>
           <div className="login">
             <div>{error ? error.message : ""}</div>
             <div className="login__container">
@@ -76,7 +76,7 @@ function Login() {
                 <Icon
                   className="icon-google"
                   icon="flat-color-icons:google"
-                  hFlip={true}
+                  hFlip={false}
                 />
                 Login with Google
               </button>

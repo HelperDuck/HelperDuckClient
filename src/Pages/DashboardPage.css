@@ -47,7 +47,8 @@
 
 .hello {
   font-size: 2.6rem;
-  font-family: "Baloo Bhai";
+  font-family: "Baloo Bhai 2";
+  font-weight: 900;
   word-wrap: break-word;
 }
 

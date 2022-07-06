@@ -3,7 +3,8 @@
 .dash-user-wrapper {
   display: flex;
   flex-direction: column;
-  font-family: "Baloo Bhai";
+  font-family: "Baloo Bhai 2";
+
   /* widtch and mar should be changed after all componets are done */
 }
 
@@ -54,12 +55,12 @@
   align-items: center;
   font-size: 0.8rem;
   font-family: Verdana;
-  min-width:100%;
+  min-width: 100%;
   padding: 0.5em;
   color: #fff;
   font-weight: bold;
   border-radius: 8px;
-  background:rgba(207, 47, 47, 1);
+  background: rgba(207, 47, 47, 1);
   cursor: pointer;
   border: none;
   word-wrap: break-word;
@@ -77,6 +78,7 @@
 
 .about-me-title {
   font-size: 1.6rem;
+  font-weight: 900;
 }
 
 .about-me-description {
@@ -183,11 +185,13 @@
 .taken-container>.number {
   font-size: 2.5rem;
   margin-right: 5px;
+  font-weight: 900;
 }
 
 .credits-container>.number {
   font-size: 2.5rem;
   margin-right: 5px;
+  font-weight: 900;
 }
 
 .languages-inner-container,
@@ -228,6 +232,7 @@
 
 .languages-title {
   font-size: 24px;
+  font-weight: 900;
 
 }
 
