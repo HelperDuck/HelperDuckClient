@@ -38,9 +38,6 @@ export const CreatedByMe = (props: Props) => {
             ? help.subject!.substring(0, 60) + "..."
             : help.subject}
         </div>
-        {/* <div className="user">
-          // by {help.user.firstName} {help.user.lastName}
-        </div> */}
       </div>
 
       <div

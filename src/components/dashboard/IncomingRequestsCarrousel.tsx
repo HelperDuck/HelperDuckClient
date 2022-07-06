@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { requestAskedType } from "../../Types/RequestAskedType";
 import { IncomingRequest } from "./IncomingRequest";
+//@ts-ignore
 import notification from "../../media/Notification.svg";
 
 import "./IncomingRequestsCarrousel.css";
@@ -55,7 +56,7 @@ export const IncomingRequestsCarrousel = (props: Props) => {
         </div>
       </div>
       <div className="request-carrousel">
-        {filteredHR.map((help: requestAskedType, key: number) => {
+        {filteredHR.reverse().map((help: requestAskedType, key: number) => {
           return <IncomingRequest help={help} key={key}></IncomingRequest>;
         })}
       </div>
