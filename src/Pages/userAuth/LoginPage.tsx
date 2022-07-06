@@ -9,7 +9,7 @@ import {
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./LoginPage.css";
 import { Icon } from "@iconify/react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 function Login() {
   const [email, setEmail] = useState("");
