@@ -58,7 +58,22 @@
   justify-content: center;
   /* align-items: stretch; */
   position: absolute;
-  overflow-y: scroll;
+  overflow: auto;
+}
+
+.request-form::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.request-form::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.request-form::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .input-box-wrapper {
@@ -141,6 +156,7 @@ label[for="subject-input"] {
 }
 
 @media screen and (max-width: 750px) {
+
   .angle-brack,
   .angle-brack1 {
     display: none;
