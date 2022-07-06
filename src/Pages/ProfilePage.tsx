@@ -47,7 +47,6 @@ export const ProfilePage = () => {
     if (loading) return;
     fetchProfile();
   }, []); //eslint-disable-line
-  // }, [fetchProfile]); //eslint-disable-line <--test if the above keeps working with a new account
 
   return (
     <div className="profile-wrapper">
