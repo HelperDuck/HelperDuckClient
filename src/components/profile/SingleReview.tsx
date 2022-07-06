@@ -9,25 +9,11 @@ type Props = {
 export const SingleReview = (props: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const { review } = props;
-  const allUsers = useSelector((state: any) => state.allUsers.value);
   const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
 
   const findHelpReq = allHelpRequests.filter((help: any) => {
     return review.helpRequestId === help.id;
   });
-
-  const findHelpOffer = findHelpReq[0].helpOffers.filter((offer: any) => {
-    return offer.status === "solved";
-  });
-
-  const userFound = allUsers.filter((user: any) => {
-    return findHelpOffer[0].userId === user.id;
-  });
-
-  console.log(findHelpOffer, "findHelpOffer full");
-  console.log(findHelpReq, "findHelpReq");
-  console.log(review, "review");
-  console.log(userFound, "userFound");
 
   return (
     <div className="single-review-wrapper dash-wrapper">

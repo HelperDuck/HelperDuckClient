@@ -1,10 +1,10 @@
 import { Icon } from "@iconify/react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { helpDetails } from "../../Redux/reducers/helpDetails";
-import { helpRequests } from "../../Redux/reducers/helpRequest";
+// import { helpRequests } from "../../Redux/reducers/helpRequest";
 import { myRequestModalState } from "../../Redux/reducers/myRequestModalState";
-import { deleteRequest } from "../../services/request";
+// import { deleteRequest } from "../../services/request";
 import { requestAskedType } from "../../Types/RequestAskedType";
 import "./CreatedByMe.css";
 
@@ -16,19 +16,21 @@ export const CreatedByMe = (props: Props) => {
   const { help } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
+  // const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
   console.log(help, "help created by ME");
+
+  //WHAT IS COMMENTED HERE IS THE DELETE BUTTON FUNCTIONALITY
 
   const OfferHelp = () => {
     navigate(`/call/${help.roomId}`);
   };
 
-  const handleDelete = async (help: any) => {
-    await deleteRequest(help.id);
-    dispatch(
-      helpRequests(allHelpRequests.filter((item: any) => item.id !== help.id))
-    );
-  };
+  // const handleDelete = async (help: any) => {
+  //   await deleteRequest(help.id);
+  //   dispatch(
+  //     helpRequests(allHelpRequests.filter((item: any) => item.id !== help.id))
+  //   );
+  // };
 
   return (
     <div className="byMe-request">
@@ -41,9 +43,9 @@ export const CreatedByMe = (props: Props) => {
       </div>
 
       <div
-        onClick={() => {
-          handleDelete(help);
-        }}
+        // onClick={() => {
+        //   handleDelete(help);
+        // }}
         className="delete-request-container"
       >
         <Icon
