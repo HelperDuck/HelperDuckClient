@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../services/authentication";
-import { Modal, ModalContainer } from "../components/Modal";
+import { Modal, ModalContainer } from "../components/review/ReviewModal";
 
 type Props = {};
 
