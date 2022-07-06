@@ -1,12 +1,12 @@
 import React from "react";
 import "./IncomingRequest.css";
 import { Icon } from "@iconify/react";
-import { requestAskedType } from "../Types/RequestAskedType";
+import { requestAskedType } from "../../Types/RequestAskedType";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { userById } from "../Redux/reducers/userById";
-import { postDeclineOffer, postOfferHelp } from "../services/request";
-import { helpRequests } from "../Redux/reducers/helpRequest";
+import { userById } from "../../Redux/reducers/userById";
+import { postDeclineOffer, postOfferHelp } from "../../services/request";
+import { helpRequests } from "../../Redux/reducers/helpRequest";
 
 type Props = {
   help: requestAskedType;

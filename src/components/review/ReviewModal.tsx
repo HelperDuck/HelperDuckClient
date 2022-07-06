@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import Rating from "../components/Rating";
+import Rating from "./Rating";
 import SliderRange from "./Slider";
 import { Backdrop } from "./Backdrop";
-import { reviewType } from "../Types/ReviewType";
 import { useDispatch, useSelector } from "react-redux";
+import { reviewType } from "../../Types/ReviewType";
+
 
 import {
   getRequestByRoomId,
   postReviewHelpAsker,
   postReviewHelpOffer,
-} from "../services/reviews";
+} from "../../services/reviews";
 import { useNavigate } from "react-router-dom";
-import { modalState } from "../Redux/reducers/ModalReducer";
+import { modalState } from "../../Redux/reducers/ModalReducer";
 
 const dropIn = {
   hidden: {

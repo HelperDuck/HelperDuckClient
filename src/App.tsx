@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Register from "./views/userLogIn/Register";
-import Reset from "./views/userLogIn/Reset";
+import Register from "./Pages/userAuth/Register";
+import Reset from "./Pages/userAuth/Reset";
 import { ProfilePage } from "./Pages/ProfilePage";
 import { DashboardPage } from "./Pages/DashboardPage";
 import { useDispatch } from "react-redux";
@@ -18,11 +18,11 @@ import { getAllLanguages, getAllTechnologies } from "./services/languages";
 import { getUserProfile, getAllUsers, createUser } from "./services/profile";
 import { getAllHelpRequests } from "./services/request";
 import { CreateRequestPage } from "./Pages/CreateRequestPage";
-import LoginPage from "./Pages/LoginPage";
+import LoginPage from "./Pages/userAuth/LoginPage";
 import Protected from "./ProtectRoutes";
 import NotFound from "./Pages/NotFound";
 import PaymentPage from "./Pages/PaymentPage";
-import PaymentSuccessful from "./components/PaymentSuccessful";
+import PaymentSuccessful from "./components/payments/PaymentSuccessful";
 
 function App() {
   const [isAuthUser, loading] = useAuthState(auth);

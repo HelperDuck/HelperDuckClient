@@ -9,7 +9,7 @@ import "./VideoCallPage.css";
 import { videoConstraints } from "../utils/videoConstraints";
 import { roomIdState } from "../Redux/reducers/RoomId";
 import { modalState } from "../Redux/reducers/ModalReducer";
-import { Modal, ModalContainer } from "../components/Modal";
+import { Modal, ModalContainer } from "../components/review/ReviewModal";
 import "./CreateReviewPage.css";
 import { BACKEND_CONNECTION } from "../services/backEndConnection";
 
