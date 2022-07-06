@@ -47,6 +47,6 @@
   cursor: pointer;
 }
 
-.single-review-outer-wrapper {
-  padding: 1%;
+.performance-reviews-wrapper {
+  min-width: 40%;
 }
