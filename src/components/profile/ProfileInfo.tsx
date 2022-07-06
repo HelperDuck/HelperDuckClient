@@ -6,6 +6,7 @@ import { ProfilePerformanceInfo } from "./ProfilePerformanceInfo";
 import { useSelector } from "react-redux";
 
 import { ProfilePic } from "./profilePic";
+import { SingleReview } from "./SingleReview";
 
 //TODO: check the correct type
 
@@ -124,7 +125,25 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
             </div>
           </div>
         </div>
-        <ProfilePerformanceInfo></ProfilePerformanceInfo>
+        <div className="performance-reviews-wrapper">
+          <div>
+            <ProfilePerformanceInfo></ProfilePerformanceInfo>
+          </div>
+          <div>
+            <div className="review-word">Reviews</div>
+            <div className="single-review-outer-container">
+              {otherUser.reviews.length ? (
+                otherUser.reviews.map((review: any, key: number) => {
+                  return (
+                    <SingleReview review={review} key={key}></SingleReview>
+                  );
+                })
+              ) : (
+                <div>No Reviews Yet</div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
