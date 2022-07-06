@@ -2,101 +2,39 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  /* background-color: #e7c6a935; */
-  font-family: 'Roboto', sans-serif;
-  background: #8e9eab46;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #eef2f3, #8e9eabba);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #eef2f3, #b8b8bc);
+  font-family: "Roboto", sans-serif;
+  background: -webkit-linear-gradient(to right, #414345, #232526);
+  background: linear-gradient(to right, #414345, #232526ec);
+  position: relative;
 
-
-
+  /* background-size: 200px;
+  background-repeat: no-repeat; */
+  /* background-image: url("/Users/fernandarodrigues/Codeworks/HelperDuckClient/src/media/icon-park-solid_duck (2).svg"); */
 }
 
-.login-wrapper a {
-  color: black;
-}
-
-.login-wrapper a:hover {
-  color: rgb(239, 17, 17);
-  /* TODO change color */
-}
-
-
-.login-info-wrapper {
-  display: flex;
-  width: 70%;
-  height: 80%;
-  border: 1px solid gray;
-  box-shadow: 16px 18px 5px rgba(129, 126, 126, 0.57);
-
-
-}
-
-.duck-image {
-  width: 15vw;
-  border-radius: 50%;
-
-}
-
-.login-title {
-  font-size: 4rem;
-  font-family: "Baloo Bhai";
-  padding: 2%;
-}
-
-.login-about {
-  font-size: 2rem;
-  padding: 4%;
-  font-family: 'Roboto', sans-serif;
-  font-family: "Baloo Bhai 2";
-  font-weight: 200;
-}
-
-.login-about span {
-  font-weight: 800;
-}
-
-
-.login-info-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 50%;
-  background-color: #F5F5F7;
+.icon {
+  z-index: 2;
+  margin-left: 35%;
+  margin-bottom: 40%;
 }
 
 .login-container {
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 50%;
-  background-color: white;
-}
-
-.login-info {
-  display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.signin {
-  font-size: 2rem;
-  font-family: "Baloo Bhai";
-}
-
-.login {
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  height: 80%;
+  width: 40%;
+  background-color: rgba(0, 0, 0, 0.238);
+  position: absolute;
+  color: white;
+  font-family: "Baloo Bhai 2";
+  font-weight: 900;
+  font-size: 20px;
+  border-radius: 40px;
 }
 
 .login__container {
@@ -105,13 +43,85 @@
   text-align: center;
   justify-content: space-around;
   padding: 30px;
-  width: 20vw;
+  width: 25vw;
   height: 60vh;
+}
+
+/* .login-wrapper a {
+  color: black;
+} */
+/* 
+.login-wrapper a:hover {
+  color: rgb(239, 17, 17);
+  /* TODO change color */
+
+/* .login-info-wrapper {
+  display: flex;
+  width: 70%;
+  height: 80%;
+  border: 1px solid gray;
+  box-shadow: 16px 18px 5px rgba(129, 126, 126, 0.57);
+} */
+
+/* .duck-image {
+  width: 15vw;
+  border-radius: 50%;
+} */
+
+/* .login-title {
+  font-size: 4rem;
+  font-family: "Baloo Bhai 2";
+  font-weight: 900;
+  padding: 2%;
+  color: white;
+} */
+
+/* .login-about {
+  font-size: 2rem;
+  padding: 4%;
+  font-family: "Roboto", sans-serif;
+  font-family: "Baloo Bhai 2";
+  font-weight: 200;
+} */
+
+/* .login-about span {
+  font-weight: 800;
+} */
+
+/* .login-info-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 50%;
+  background: -webkit-linear-gradient(to right, #414345, #232526);
+  background: linear-gradient(to right, #414345, #232526);
+} */
+
+/* .login-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+} */
+
+/* #signin {
+  color: white;
+  font-family: "Baloo Bhai 2";
+  font-weight: 900;
+  font-size: 20px;
+} */
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .login__textBox {
   border-radius: 8px;
-  border: 1px solid black;
+  border: none;
   padding: 10px;
   font-size: 18px;
   margin-bottom: 10px;
@@ -129,7 +139,6 @@
   background: rgba(0, 0, 0, 1);
   cursor: pointer;
   border: none;
-
 }
 
 .login__google {
@@ -146,14 +155,12 @@
 
 .login__btn:hover {
   background-color: rgba(0, 0, 0, 0.7);
-
 }
 
 @media only screen and (max-width: 1100px) {
   .login-info-wrapper {
     flex-direction: column-reverse;
     height: 100vh;
-
   }
 
   .login-wrapper {

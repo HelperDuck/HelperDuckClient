@@ -159,7 +159,7 @@ export const CreateRequestPage = (props: Props) => {
                   </label>
 
                   <Editor
-                    height="80vh"
+                    height="30vh"
                     language={codeSnippetLanguage.toLowerCase()}
                     defaultValue="// Please write your code here"
                     value={codeSnippet}

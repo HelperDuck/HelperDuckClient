@@ -1,0 +1,49 @@
+.background-image {
+  background-image: url("../media/ducky.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  position: relative;
+  opacity: 0.9;
+}
+
+.home-content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 50%;
+  margin-top: 10%;
+  margin-left: 5%;
+  width: 60%;
+  padding: 1.5%;
+  border-radius: 20px;
+}
+
+.brand-name {
+  color: white;
+  font-size: 7rem;
+  font-family: "Baloo Bhai 2";
+  font-weight: 900;
+}
+
+.text-brand {
+  color: white;
+  font-size: 2rem;
+  font-family: "Baloo Bhai 2";
+}
+.btn-start {
+  margin-top: 20%;
+  background-color: white;
+  border: none;
+  border-radius: 20px;
+  width: 20%;
+  padding: 2%;
+  font-family: "Baloo Bhai 2";
+  font-weight: 900;
+  font-size: 1.5rem;
+  cursor: pointer;
+}

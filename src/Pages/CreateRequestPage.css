@@ -52,26 +52,28 @@
 
 .request-form {
   width: 100%;
-  height: 90%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: stretch;
+  /* align-items: stretch; */
+  position: absolute;
+  overflow-y: scroll;
 }
 
 .input-box-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-
-  height: 80%;
+  justify-content: space-between;
+  height: 100%;
+  /* position: absolute; */
+  width: 100%;
+  margin-top: 3%;
 }
 
 .input-request-box {
   display: flex;
   flex-direction: column;
-
-  height: 40%;
   padding: 0 1.5%;
 }
 
@@ -84,7 +86,13 @@
 
 label {
   font-family: "Baloo Bhai 2", cursive;
-  margin-top: 1%;
+  font-weight: 800;
+  /* margin-top: 1%; */
+}
+
+label[for="subject-input"] {
+  /* margin-top: 4%; */
+  height: fit-content;
 }
 
 .input-request {
@@ -95,9 +103,8 @@ label {
 
 .btn-request {
   width: 150px;
-  padding: 10px;
+  padding: 5px;
   font-size: 18px;
-
   border: none;
   background-color: black;
   color: #fff;
@@ -120,7 +127,8 @@ label {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-top: 2%;
+  margin-bottom: 1%;
+  margin-top: 1%;
   padding: 0 1.5%;
 }
 
