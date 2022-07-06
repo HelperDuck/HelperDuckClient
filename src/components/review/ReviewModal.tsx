@@ -12,7 +12,6 @@ import {
   postReviewHelpAsker,
   postReviewHelpOffer,
 } from "../../services/reviews";
-import { useNavigate } from "react-router-dom";
 import { modalState } from "../../Redux/reducers/ModalReducer";
 
 const dropIn = {

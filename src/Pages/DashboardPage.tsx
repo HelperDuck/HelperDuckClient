@@ -6,7 +6,7 @@ import { RequestHistory } from "../components/dashboard/RequestHistory";
 import boySvg from "../media/boy.svg";
 import Avatar from "react-avatar";
 import "./DashboardPage.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
