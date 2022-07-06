@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import Confetti from "react-confetti";
 import { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
-import giphy_dancing_gif from '../media/giphy_dancing_gif.gif';
+import { useNavigate } from "react-router-dom";
+import giphy_dancing_gif from "../../media/giphy_dancing_gif.gif";
 
-import Layout from "./payments/Layout";
+import Layout from "./Layout";
 
 const Container = styled.div`
   width: 475px;
@@ -39,14 +39,19 @@ const PaymentSuccessful = () => {
         <Confetti width={width} height={height} numberOfPieces={450} />
         <Title>Congratulations!</Title>
         <img src={giphy_dancing_gif} alt="Dancing duck" />
-        <Message>Stripe has successfully processed your payment and Your Ducks Bag has been topped up!</Message>
-        
+        <Message>
+          Stripe has successfully processed your payment and Your Ducks Bag has
+          been topped up!
+        </Message>
+
         <button
-            className="accept-button"
-            onClick={() => {
-              navigate('/dashboard')
-            }}
-          >Proceed</button>
+          className="accept-button"
+          onClick={() => {
+            navigate("/dashboard");
+          }}
+        >
+          Proceed
+        </button>
       </Container>
     </Layout>
   );

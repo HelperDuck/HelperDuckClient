@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import ProfileInfo from "../components/ProfileInfo";
-import ProfileForm from "../components/ProfileForm";
+import ProfileInfo from "../components/profile/ProfileInfo";
+import ProfileForm from "../components/profile/ProfileForm";
 import { NavBar } from "../components/NavBar";
 import "./ProfilePage.css";
 import { useLocation } from "react-router-dom";
@@ -13,6 +13,7 @@ import { auth } from "../services/authentication";
 //TODO: review types any
 
 export const ProfilePage = () => {
+  //Needs loading status of user to render correct
   const [, loading] = useAuthState(auth);
   const [isInEditMode, setIsInEditMode] = useState<any>(true);
 
@@ -23,7 +24,7 @@ export const ProfilePage = () => {
   const fetchProfile = async () => {
     try {
       //@ts-ignore
-      const userPath = await location.pathname.slice(9);
+      const userPath = location.pathname.slice(9);
       console.log("userPath", userPath === "");
 
       if (userPath !== "") {
@@ -58,7 +59,10 @@ export const ProfilePage = () => {
               setIsInEditMode={setIsInEditMode}
             ></ProfileInfo>
           ) : (
-            <ProfileForm setIsInEditMode={setIsInEditMode}></ProfileForm>
+            <ProfileForm
+              setIsInEditMode={setIsInEditMode}
+              isInEditMode={isInEditMode}
+            ></ProfileForm>
           )}
         </div>
       </div>

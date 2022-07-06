@@ -1,9 +1,9 @@
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { helpRequests } from "../Redux/reducers/helpRequest";
-import { deleteRequest } from "../services/request";
-import { requestAskedType } from "../Types/RequestAskedType";
+import { helpRequests } from "../../Redux/reducers/helpRequest";
+import { deleteRequest } from "../../services/request";
+import { requestAskedType } from "../../Types/RequestAskedType";
 import "./CreatedByMe.css";
 
 type Props = {

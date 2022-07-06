@@ -23,7 +23,7 @@
 }
 
 .angle-brack {
-  height: 65vh;
+  height: 80vh;
 
   display: flex;
   margin-left: 1%;
@@ -31,7 +31,8 @@
 }
 
 .angle-brack1 {
-  height: 65vh;
+  height: 80vh;
+
   margin-right: 1%;
   display: flex;
   justify-content: flex-start;
@@ -39,8 +40,8 @@
 
 .table-request-form {
   box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.3);
-  height: 65vh;
-  width: 60vw;
+  height: 80vh;
+  width: 65vw;
   border-radius: 20px;
   position: relative;
   display: flex;
@@ -67,14 +68,13 @@
   height: 100%;
   /* position: absolute; */
   width: 100%;
+  margin-top: 3%;
 }
 
 .input-request-box {
   display: flex;
   flex-direction: column;
   padding: 0 1.5%;
-  margin-top: 3%;
-  /* height: fit-content; */
 }
 
 .create-title {
@@ -86,6 +86,7 @@
 
 label {
   font-family: "Baloo Bhai 2", cursive;
+  font-weight: 800;
   /* margin-top: 1%; */
 }
 

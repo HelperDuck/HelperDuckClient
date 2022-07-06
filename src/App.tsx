@@ -22,7 +22,7 @@ import LoginPage from "./Pages/LoginPage";
 import Protected from "./ProtectRoutes";
 import NotFound from "./Pages/NotFound";
 import PaymentPage from "./Pages/PaymentPage";
-import PaymentSuccessful from "./components/PaymentSuccessful";
+import PaymentSuccessful from "./components/payments/PaymentSuccessful";
 
 function App() {
   const [isAuthUser, loading] = useAuthState(auth);
