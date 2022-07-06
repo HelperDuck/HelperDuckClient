@@ -1,4 +1,3 @@
-import GlobalStyles from "./prebuilt/GlobalStyles";
 import {ReactNode} from 'react';
 
 import { loadStripe } from '@stripe/stripe-js';
