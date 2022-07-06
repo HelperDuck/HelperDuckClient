@@ -1,0 +1,4 @@
+.payments-wrapper {
+  background: url('./prebuilt/background_payment.svg');
+  background-color: rgb(255, 255, 250);
+}

@@ -6,7 +6,7 @@ import Row from "../components/payments/prebuilt/Row";
 import DuckShop from "../components/payments/prebuilt/DuckShop";
 import CheckoutForm from "../components/payments/CheckoutForm";
 import { getDucksPrice } from "../utils/get-ducks-price"; //TOD
-
+import './PaymentPage.css';
 type Props = {
   props?: any;
 }
@@ -18,6 +18,7 @@ const PaymentPage = (props: Props) => {
   const navigate = useNavigate();
   
   return (
+    <div className="payments-wrapper">
     <Layout title="Ducks Shop">
       <Row>
         <DuckShop
@@ -37,6 +38,7 @@ const PaymentPage = (props: Props) => {
         }
       />
     </Layout>
+    </div>
   );
 };
 

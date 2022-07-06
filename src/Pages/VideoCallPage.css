@@ -14,8 +14,22 @@
   background-size: cover;
   background-repeat: no-repeat;
   /* background-image: url('../media/svg/download.svg'); */
-  background-color: black;
+  background-image: url('../media/svg/background_helperduck.svg');
+  background-color: rgb(30, 27, 27);
+  /* animation: mymove 5s infinite alternate; */
 }
+
+/* @keyframes mymove {
+  from {background-color: rgb(71, 71, 71);}
+  to {background-color: rgb(17, 17, 18);}
+}
+
+
+@keyframes dance {
+  100% {
+    transform: rotate(3deg);
+  }
+} */
 
 /*wraps my video-container and video-controls*/
 .participants-videos-wrapper {
@@ -27,6 +41,7 @@
 /*generic container for MyVideo and PeersVideo*/
 .video-container {
   background-color: black;
+  border: 2px solid rgb(255, 162, 0, 0.6);
   position: relative;
   width: 720px;
   height: 480px;
