@@ -1,0 +1,52 @@
+.single-review-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto 3% auto;
+  min-height: 15vh;
+  border-radius: 14px;
+  padding: 2%;
+  background-color: rgba(201, 200, 200, 0.8);
+
+
+}
+
+
+.review-text-container {
+  padding: 2% 3%;
+  word-wrap: break-word;
+  overflow: auto;
+  width: 70%;
+}
+
+.single-review-text {
+  margin: 3% 0 0 0;
+  width: 90%;
+}
+
+.review-pic {
+  width: 80px;
+  border-radius: 14px;
+}
+
+.single-review-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: "Baloo Bhai";
+}
+
+.single-review-user {
+  font-size: 0.7rem;
+  text-decoration: underline;
+  margin: 3% 0 0 0;
+}
+
+.single-review-user:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.single-review-outer-wrapper {
+  padding: 1%;
+}

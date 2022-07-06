@@ -13,7 +13,9 @@ const initialState: UserType = {
   languages: [],
   helpOffers: [],
   helpRequests: [],
+  reviews: [],
   gitHubProfile: "",
+  id: 0,
   avgTip: 0,
   rating: 0,
 };

@@ -1,176 +1,257 @@
-.login-wrapper {
+.profile-wrapper {
+  padding: 1.5%;
+}
+
+.profile-container {
+  margin-left: 12%;
+  max-height: 100vh;
+  position: relative;
+}
+
+.profile-display {
+  position: relative;
+}
+
+.profile-expertise {
   display: flex;
-  justify-content: center;
+  position: relative;
+}
+
+.form-container {
+  padding: 1.5%;
+}
+
+.profile-header {
+  display: flex;
   align-items: center;
-  width: 100%;
-  height: 100vh;
-  /* background-color: #e7c6a935; */
-  font-family: 'Roboto', sans-serif;
-
-  background: #8e9eab46;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #eef2f3, #8e9eabba);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #eef2f3, #b8b8bc);
-
-
-
-}
-
-.login-wrapper a {
-  color: black;
-}
-
-.login-wrapper a:hover {
-  color: rgb(239, 17, 17);
-  /* TODO change color */
-}
-
-
-.login-info-wrapper {
-  display: flex;
-  width: 70%;
-  height: 80%;
-  border: 1px solid gray;
-  box-shadow: 16px 18px 5px rgba(129, 126, 126, 0.57);
-
-
-}
-
-.duck-image {
-  width: 15vw;
-  border-radius: 50%;
-
-}
-
-.login-title {
-  font-size: 4rem;
-  font-family: "Baloo Bhai";
-  padding: 2%;
-}
-
-.login-about {
-  font-size: 2rem;
-  padding: 4%;
-  font-family: 'Roboto', sans-serif;
-  font-family: "Baloo Bhai 2";
-  font-weight: 200;
-}
-
-.login-about span {
+  justify-content: left;
+  font-family: "Baloo Bhai 2", cursive;
   font-weight: 800;
+  width: 100vh;
 }
 
-
-.login-info-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 50%;
-  background-color: #F5F5F7;
+.header-wrapper {
+  position: relative;
 }
 
-.login-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 50%;
-  background-color: white;
-}
-
-.login-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.signin {
-  font-size: 2rem;
-  font-family: "Baloo Bhai";
-}
-
-.login {
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.login__container {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: space-around;
-  padding: 30px;
-  width: 20vw;
-  height: 60vh;
-}
-
-.login__textBox {
-  border-radius: 8px;
-  border: 1px solid black;
-  padding: 10px;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.login__btn {
-  padding: 10px;
-  font-size: 18px;
-  margin-bottom: 10px;
-  border: none;
+.request-btn {
+  position: absolute;
   background-color: black;
-  color: #fff;
-  font-weight: bold;
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 1);
+  color: white;
+  height: 10vh;
+  width: 15%;
+  margin-left: 10%;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 5px -3px 10px rgb(75, 75, 75);
+  left: 65%;
+  font-family: "Baloo Bhai 2", cursive;
+  font-weight: 800;
+  font-size: 18px;
   cursor: pointer;
-  border: none;
-
 }
 
-.login__google {
+.request-btn:hover {
+  box-shadow: 5px 3px 10px rgb(75, 75, 75);
+}
+
+.request-btn:active {
+  transform: translate(1.25%, 1.25%);
+  box-shadow: 5px 3px 10px rgb(75, 75, 75);
+}
+
+#full-name {
+  width: 40vw;
+  background-color: rgba(201, 200, 200, 0.8);
+  border-radius: 0.5em;
+  margin-left: -0.35em;
+  padding-left: 5%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  font-size: 2rem;
+  box-shadow: 0.5px 2px 5px -0.2px rgba(0, 0, 0, 0.21),
+    1.8px -0.1px 2px -0.2px rgba(0, 0, 0, 0.12),
+    2.2px -2.1px 5px -0.5px rgba(219, 213, 213, 0.25),
+    2.3px -0.25px 5px -0.2px rgba(43, 43, 43, 0),
+    2.4px -1px 5px -0.3px rgba(255, 246, 246, 0.09),
+    2.4px 2px 5px -0.3px rgba(255, 246, 246, 0.908);
+}
+
+#full-name:hover {
+  background-color: rgba(230, 230, 230, 0.08);
+}
+
+#aboutme {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  margin-bottom: 5%;
+  margin-top: 2%;
+  width: 90%;
+}
+
+.label-profileForm {
+  font-family: "Baloo Bhai 2", cursive;
+  color: black;
+  font-weight: 800;
+  font-size: 15px;
+}
+
+.performance-reviews-wrapper {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.profile-boxes-wrapper {
+  width: 50%;
+}
+
+.profile-boxes {
+  width: 100%;
+  background-color: rgba(201, 200, 200, 0.8);
+  margin-top: 3vh;
+  border-radius: 20px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  min-height: 12vh;
+}
+
+
+
+.wrapper-box {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-left: 1%;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.box-info {
+  margin-left: 2%;
+  font-family: "Roboto", sans-serif;
+
+  overflow-y: visible;
+  padding: 1%;
+  width: 80%;
+}
+
+.select-input {
+  width: 70% !important;
+}
+
+.icons-box-profile-page {
+  background-color: white;
+  display: flex;
+  border-radius: 10px;
+  padding: 1%;
+}
+
+.input-name {
+  display: flex;
+}
+
+#input-firstName,
+#input-lastName {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+#input-aboutme {
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  margin-top: 2%;
+  width: 90%;
+}
+
+.profile-input {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  border-radius: 5px;
+  border-color: lightgray;
+}
+
+#profile-socialmedia {
+  width: 95%;
+  border-color: lightgrey, solid;
+  font-family: "Roboto", sans-serif;
+}
+
+#programminglanguage,
+#socialmedia,
+#speakinglanguage {
+  font-family: "Roboto", sans-serif;
+  word-wrap: break-word;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.profile-image {
+  display: flex;
+  position: relative;
+}
+
+.icon-upload {
+  position: absolute;
+  left: 78%;
+  top: 75%;
+  height: 15%;
+  width: 15%;
   background-color: black;
+  padding: 2%;
+  border-radius: 30%;
 }
 
-.login__google:hover {
-  background-color: rgba(0, 0, 0, 0.7);
+.img-input {
+  border-radius: 20px;
 }
 
-.login__container div {
-  margin-top: 7px;
+.btn-edit {
+  border: none;
+  background-color: transparent;
+  font-family: "Baloo Bhai 2", cursive;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 5px;
+  cursor: pointer;
 }
 
-.login__btn:hover {
-  background-color: rgba(0, 0, 0, 0.7);
-
+.btn-submit-edit {
+  border: none;
+  background-color: transparent;
+  font-family: "Baloo Bhai 2", cursive;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 5px;
 }
 
-@media only screen and (max-width: 1100px) {
-  .login-info-wrapper {
-    flex-direction: column-reverse;
-    height: 100vh;
-
-  }
-
-  .login-wrapper {
-    height: auto;
-  }
-
-  .login-info-wrapper {
-    height: auto;
-  }
-
-  .login-container,
-  .login-info-container {
-    width: 100%;
-  }
-
-  .login__container {
-    width: 100%;
-  }
+.box-info::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
 }
+
+.box-info::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.box-info::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+
+@media only screen and (max-width: 800px) {}
