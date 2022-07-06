@@ -9,7 +9,6 @@ import "./VideoCallPage.css";
 import { videoConstraints } from "../utils/videoConstraints";
 import { roomIdState } from "../Redux/reducers/RoomId";
 import { modalState } from "../Redux/reducers/ModalReducer";
-import { Modal, ModalContainer } from "../components/review/ReviewModal";
 import "./CreateReviewPage.css";
 import { BACKEND_CONNECTION } from "../services/backEndConnection";
 
@@ -217,10 +216,7 @@ export const VideoCallPage = (props: Props) => {
       socketRef.current.disconnect();
       dispatch(roomIdState(roomId));
       navigate('/dashboard');
-      dispatch(modalState(true));
-      //dispatch State of modal open to dashboard and render Modal in the dashboard
-      // window.location.replace("/dashboard");
-      
+      dispatch(modalState(true));      
   };
 
   const screenShare = async () => {
