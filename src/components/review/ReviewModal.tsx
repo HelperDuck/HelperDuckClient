@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import Rating from "../components/Rating";
+import Rating from "./Rating";
 import SliderRange from "./Slider";
 import { Backdrop } from "./Backdrop";
-import { reviewType } from "../Types/ReviewType";
+import { reviewType } from "../../Types/ReviewType";
 import { useSelector } from "react-redux";
 
 import {
   getRequestByRoomId,
   postReviewHelpAsker,
   postReviewHelpOffer,
-} from "../services/reviews";
+} from "../../services/reviews";
 import { useNavigate } from "react-router-dom";
 
 const dropIn = {

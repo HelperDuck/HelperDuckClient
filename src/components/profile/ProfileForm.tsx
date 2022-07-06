@@ -1,20 +1,19 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import Select from "react-select";
-import "../Pages/ProfilePage.css";
+import "../../Pages/ProfilePage.css";
 import { useSelector, useDispatch } from "react-redux";
-import { updateByIdUserInfo } from "../Redux/reducers/userById";
-import { editUserProfile } from "../services/profile";
-import { updateUserInfo } from "../Redux/reducers/user";
-
-// const hardCodedIcon =
-//   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg";
+import { updateByIdUserInfo } from "../../Redux/reducers/userById";
+import { editUserProfile } from "../../services/profile";
+import { updateUserInfo } from "../../Redux/reducers/user";
+import { ProfilePic } from "./profilePic";
 
 type Props = {
+  isInEditMode: boolean;
   setIsInEditMode: any;
 };
 
-const ProfileForm = ({ setIsInEditMode }: Props) => {
+const ProfileForm = ({ isInEditMode, setIsInEditMode }: Props) => {
   const dispatch = useDispatch();
   const user = useSelector((state: any) => state.user.value);
   const technologies = useSelector((state: any) => state.technologies.value);
@@ -97,21 +96,7 @@ const ProfileForm = ({ setIsInEditMode }: Props) => {
         </button>
 
         <div className="profile-header">
-          {user.profilePic ? (
-            <img
-              className="img-input"
-              src={user.profilePic}
-              alt="profilePic"
-              style={{ maxHeight: "188px", maxWidth: "171px" }}
-            />
-          ) : (
-            <Icon
-              icon="ooui:user-avatar-outline"
-              height={100}
-              width={90}
-              id="icon-avatar"
-            />
-          )}
+          <ProfilePic isInEditMode={isInEditMode} />
           <div className="input-name">
             <div id="input-firstName">
               <label className="label-profileForm" htmlFor="profile-firstname">

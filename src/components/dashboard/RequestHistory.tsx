@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { requestAskedType } from "../Types/RequestAskedType";
+import { requestAskedType } from "../../Types/RequestAskedType";
 import { CreatedByMe } from "./CreatedByMe";
 import "./RequestHistory.css";
 import { SinglePastRequest } from "./SinglePastRequest";
