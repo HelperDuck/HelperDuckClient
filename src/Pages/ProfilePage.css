@@ -168,7 +168,7 @@
   border-radius: 5px;
   border-color: lightgray;
   resize: none;
-  width: 60%;
+  width: 100%;
 }
 
 #profile-socialmedia {
@@ -202,6 +202,7 @@ input[type="file"] {
   background-color: black;
   padding: 2%;
   border-radius: 30%;
+  cursor: pointer,
 }
 
 .img-input {
@@ -246,4 +247,5 @@ input[type="file"] {
   background: rgba(0, 0, 0, 0.2);
 }
 
-@media only screen and (max-width: 800px) {}
+@media only screen and (max-width: 800px) {
+}

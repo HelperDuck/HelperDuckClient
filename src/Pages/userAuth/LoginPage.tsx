@@ -42,6 +42,7 @@ function Login() {
           width={150}
         />
         <div className="login-container">
+          <p id="welcome">Welcome to Help Ducker</p>
           <div className="login">
             <div>{error ? error.message : ""}</div>
             <div className="login__container">
@@ -72,19 +73,34 @@ function Login() {
                 className="login__btn login__google"
                 onClick={signInWithGoogle}
               >
+                <Icon
+                  className="icon-google"
+                  icon="flat-color-icons:google"
+                  hFlip={true}
+                />
                 Login with Google
               </button>
               <button
                 className="login__btn login__google"
                 onClick={signInWithGithub}
               >
+                <Icon
+                  className="icon-git"
+                  icon="akar-icons:github-fill"
+                  hFlip={true}
+                />
                 Login with GitHub
               </button>
               <div>
-                <Link to="/reset">Forgot Password</Link>
+                <Link className="link" to="/reset">
+                  <p id="forgot-password">Forgot Password</p>
+                </Link>
               </div>
               <div>
-                Don't have an account? <Link to="/register">Register</Link> now.
+                Don't have an account?
+                <Link className="link" to="/register">
+                  <p id="register-now">Register now</p>
+                </Link>
               </div>
             </div>
           </div>
