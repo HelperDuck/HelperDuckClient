@@ -1,11 +1,11 @@
-import { getAllLanguages, getAllTechnologies } from "./services/languages";
-import { getAllUsers, getUserProfile } from "./services/profile";
-import { getAllHelpRequests } from "./services/request";
+import { getAllLanguages, getAllTechnologies } from "./languages";
+import { getAllUsers, getUserProfile } from "./profile";
+import { getAllHelpRequests } from "./request";
 
 const fetchLanguages = async () => {
   try {
-   return  await getAllLanguages();
-     } catch (err) {
+    return await getAllLanguages();
+  } catch (err) {
     console.error(err, "Error in All Languages apiService fetch");
   }
 };
@@ -28,13 +28,13 @@ const fetchAllHelpRequests = async () => {
 
 const fetchAllUsers = async () => {
   try {
-   return await getAllUsers();
+    return await getAllUsers();
   } catch (err) {
     console.error(err, "Error in All Languages apiService fetch");
   }
 };
 
-const fetchProfile = async (AuthUser:any) => {
+const fetchProfile = async (AuthUser: any) => {
   try {
     return await getUserProfile(AuthUser);
   } catch (err) {
@@ -42,4 +42,10 @@ const fetchProfile = async (AuthUser:any) => {
   }
 };
 
-export {fetchAllUsers, fetchAllHelpRequests, fetchProfile, fetchTechnologies, fetchLanguages}
+export {
+  fetchAllUsers,
+  fetchAllHelpRequests,
+  fetchProfile,
+  fetchTechnologies,
+  fetchLanguages,
+};
