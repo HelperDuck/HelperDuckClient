@@ -27,6 +27,7 @@ const PaymentSuccessful = () => {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const navigate = useNavigate();
+  
   useEffect(() => {
     setTimeout(() => {
       setWidth(window.innerWidth);
@@ -41,7 +42,7 @@ const PaymentSuccessful = () => {
         <Title>Congratulations!</Title>
         <img src={giphy_dancing_gif} alt="Dancing duck" />
         <Message>
-          Stripe has successfully processed your payment and Your Ducks Bag has
+          Your payment was successfully processed and your Ducks Bag has
           been topped up!
         </Message>
 

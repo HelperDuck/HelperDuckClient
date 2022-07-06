@@ -6,7 +6,7 @@ import Row from "../components/payments/prebuilt/Row";
 import DuckShop from "../components/payments/prebuilt/DuckShop";
 import CheckoutForm from "../components/payments/CheckoutForm";
 import { getDucksPrice } from "../utils/get-ducks-price"; //TOD
-
+import './PaymentPage.css';
 type Props = {
   props?: any;
 };
@@ -18,24 +18,26 @@ const PaymentPage = (props: Props) => {
   const navigate = useNavigate();
 
   return (
-    <div className="payment--outer-wrapper">
-      <Layout title="Ducks Shop">
-        <Row>
-          <DuckShop
-            onAddDuck={addDuck}
-            onRemoveDuck={remDuck}
-            numDucks={numDucks}
-          />
-        </Row>
-        <CheckoutForm
-          price={getDucksPrice(numDucks)}
-          onSuccessfulCheckout={() => {
+    <div className="payments-wrapper">
+    <Layout title="Ducks Shop">
+      <Row>
+        <DuckShop
+          onAddDuck={addDuck}
+          onRemoveDuck={remDuck}
+          numDucks={numDucks}
+        />
+      </Row>
+      <CheckoutForm
+        price={getDucksPrice(numDucks)}
+        onSuccessfulCheckout={() => { 
+          
             setTimeout(() => {
               navigate(`/payment/ok`);
             }, 500);
-          }}
-        />
-      </Layout>
+          }
+        }
+      />
+    </Layout>
     </div>
   );
 };

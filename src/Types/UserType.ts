@@ -17,6 +17,7 @@ export type UserType = {
   reviews?: reviewType[],
   helpOffers?: any;
   helpRequests?: any;
+  credits?: Number;
 };
 
 export type UserForHelpType = {
