@@ -1,10 +1,21 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { myRequestModalState } from "../Redux/reducers/myRequestModalState";
 import "./DetailsModal.css";
 
 function DetailsModal(props: any) {
+  const helpDetails = useSelector((state: any) => state.helpDetails.value);
+  const allUsers = useSelector((state: any) => state.allUsers.value);
   const dispatch = useDispatch();
+
+  const solvedHelpOffer = helpDetails.helpOffers.filter((item: any) => {
+    if (item.status === "solved") return true;
+    return false;
+  });
+
+  const solverUser = allUsers.filter(
+    (solver: any) => solver.id === solvedHelpOffer[0].userId
+  );
 
   return (
     <div className="modalBackground">
@@ -19,21 +30,31 @@ function DetailsModal(props: any) {
               ></img>
             </div>
             <div className="modal-info-container">
-              <div className="modal-help-title">help request title</div>
-              <div className="modal-help-creator"> by Mauricio Scain</div>
+              <div className="modal-help-title">{helpDetails.subject}</div>
+              <div className="modal-help-creator">
+                {" "}
+                by{" "}
+                {helpDetails.user.firstName + " " + helpDetails.user.lastName}
+              </div>
             </div>
           </div>
           <div className="modal-help-info">
-            <label className="modal-help-tech">Technologies:</label>
-            <div className="modal-help-tech">React Javascript</div>
-            <label className="modal-help-description">Description:</label>
-            <div className="modal-help-description">
-              I need help center a div
+            <label className="modal-help-label-tech">Technologies:</label>
+            <div className="modal-help-tech">
+              {helpDetails.technologies.map(
+                (item: any) => item.technology.name
+              )}
             </div>
-            <label className="modal-help-sandbox">Sandbox link:</label>
-            <div className="modal-help-sandbox">www.sandbox.com</div>
-            <label className="modal-help-snippet">Code snippet:</label>
-            <div className="modal-help-snippet"> aaaaaaaaaaaaaaaaa</div>
+            <label className="modal-help-label-description">Description:</label>
+            <div className="modal-help-description">
+              {helpDetails.description}
+            </div>
+            <label className="modal-help-label-sandbox">Sandbox link:</label>
+            <div className="modal-help-sandbox">
+              {helpDetails.linkToSandbox}
+            </div>
+            <label className="modal-help-label-snippet">Code snippet:</label>
+            <div className="modal-help-snippet"> {helpDetails.codeSnippet}</div>
           </div>
 
           <div className="modal-solver-info">
@@ -46,7 +67,9 @@ function DetailsModal(props: any) {
             </div>
             <div className="modal-solver">
               <label className="modal-solver-by">Solved by: </label>
-              <div className="modal-solver-name">Fernanda Gananciosa</div>
+              <div className="modal-solver-name">
+                {solverUser[0].firstName + " " + solverUser[0].lastName}
+              </div>
               <div className="titleCloseBtn">
                 <button
                   onClick={() => {

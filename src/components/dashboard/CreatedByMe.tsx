@@ -1,6 +1,7 @@
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { helpDetails } from "../../Redux/reducers/helpDetails";
 import { helpRequests } from "../../Redux/reducers/helpRequest";
 import { myRequestModalState } from "../../Redux/reducers/myRequestModalState";
 import { deleteRequest } from "../../services/request";
@@ -71,6 +72,7 @@ export const CreatedByMe = (props: Props) => {
           <button
             onClick={() => {
               dispatch(myRequestModalState(true));
+              dispatch(helpDetails(help));
             }}
             className="start-call-btn"
           >

@@ -164,3 +164,10 @@
   width: 60px;
   border-radius: 14px;
 }
+
+.modal-help-snippet,
+.modal-help-sandbox,
+.modal-help-description,
+.modal-help-tech {
+  min-height: 30px;
+}
