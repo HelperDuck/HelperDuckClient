@@ -1,3 +1,11 @@
+.payment--outer-wrapper {
+
+  width: 98vw;
+  height: 90vh;
+  position: absolute;
+  top: -1%;
+}
+
 .css-1lbwe8h {
   margin: 1% auto !important;
 }

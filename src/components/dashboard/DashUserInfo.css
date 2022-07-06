@@ -106,10 +106,10 @@
 
 
 .aboutme-outer-container {
-  max-height: 22vh;
+  min-height: 22vh;
   border-radius: 14px;
-
-
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .about-me-container {

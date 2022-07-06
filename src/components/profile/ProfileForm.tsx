@@ -86,7 +86,7 @@ const ProfileForm = ({ isInEditMode, setIsInEditMode }: Props) => {
       console.error(err, "Error in updating user");
     }
   };
-
+  //test
   return (
     <>
       <form className="profile-form" onSubmit={formSubmitHandler}>
@@ -223,7 +223,8 @@ const ProfileForm = ({ isInEditMode, setIsInEditMode }: Props) => {
               <div className="wrapper-box">
                 <div className="icons-box-profile-page">
                   <Icon
-                    icon="ic:baseline-connect-without-contact"
+                    icon="akar-icons:github-fill"
+                    hFlip={true}
                     id="icon-profileSocialMedia"
                     height={50}
                     width={50}
@@ -234,7 +235,7 @@ const ProfileForm = ({ isInEditMode, setIsInEditMode }: Props) => {
                     className="label-profileForm"
                     htmlFor="profile-socialmedia"
                   >
-                    Social media
+                    GitHub Profile
                   </label>
                   <input
                     className="profile-input"

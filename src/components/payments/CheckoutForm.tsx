@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { playSound } from "../../utils/playSound";
+//@ts-ignore
 import duckQuack from "../../media/audio/duckQuack.mp3";
 import Row from "./prebuilt/Row";
 import BillingDetailsFields from "./prebuilt/BillingDetailsFields";
@@ -64,8 +65,12 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
       setProcessingTo(true);
 
       //create a payment intent on the server //TODO: replace by BASE URL
-      const { data: clientSecret } = await axios.post(`${BASE_URL}/payment/create`, {
-        amount: price * 100});
+      const { data: clientSecret } = await axios.post(
+        `${BASE_URL}/payment/create`,
+        {
+          amount: price * 100,
+        }
+      );
 
       if (elements && stripe) {
         const cardElement = elements.getElement(CardElement);
@@ -79,11 +84,16 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
           });
 
           if (stripe && paymentMethodReq.paymentMethod) {
-            const confirmedCardPayment = await stripe.confirmCardPayment(clientSecret,{
-                payment_method: paymentMethodReq.paymentMethod.id,});
+            const confirmedCardPayment = await stripe.confirmCardPayment(
+              clientSecret,
+              {
+                payment_method: paymentMethodReq.paymentMethod.id,
+              }
+            );
 
             if (confirmedCardPayment.paymentIntent) {
-              let amount: number = confirmedCardPayment.paymentIntent.amount / 100;
+              let amount: number =
+                confirmedCardPayment.paymentIntent.amount / 100;
               setCreditsBought(amount);
               dispatch(updateCredits(amount))
             }

@@ -1,5 +1,5 @@
 .profile-wrapper {
-  padding: 1.5%;
+  padding: 1%;
 }
 
 .profile-container {
@@ -168,7 +168,7 @@
   border-radius: 5px;
   border-color: lightgray;
   resize: none;
-  width: 60%;
+  width: 100%;
 }
 
 #profile-socialmedia {

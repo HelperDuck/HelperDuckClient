@@ -6,6 +6,7 @@ import { ProfilePerformanceInfo } from "./ProfilePerformanceInfo";
 import { useSelector } from "react-redux";
 
 import { ProfilePic } from "./profilePic";
+import { SingleReview } from "./SingleReview";
 
 //TODO: check the correct type
 
@@ -109,7 +110,8 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
             <div className="wrapper-box">
               <div className="icons-box-profile-page">
                 <Icon
-                  icon="ic:baseline-connect-without-contact"
+                  icon="akar-icons:github-fill"
+                  hFlip={true}
                   id="icon-profileSocialMedia"
                   height={50}
                   width={50}
@@ -124,7 +126,27 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
             </div>
           </div>
         </div>
-        <ProfilePerformanceInfo></ProfilePerformanceInfo>
+        <div className="performance-reviews-wrapper">
+          <div>
+            <ProfilePerformanceInfo></ProfilePerformanceInfo>
+          </div>
+          <div>
+            <div className="review-word">Reviews</div>
+            <div className="single-review-outer-container">
+              {otherUser.reviews.length ? (
+                otherUser.reviews.map((review: any, key: number) => {
+                  return (
+                    <SingleReview review={review} key={key}></SingleReview>
+                  );
+                })
+              ) : (
+                <div className="noRequests">
+                  <div>No Reviews Yet</div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

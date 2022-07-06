@@ -3,6 +3,7 @@ import { DashUserInfo } from "../components/dashboard/DashUserInfo";
 import { IncomingRequestsCarrousel } from "../components/dashboard/IncomingRequestsCarrousel";
 import { NavBar } from "../components/NavBar";
 import { RequestHistory } from "../components/dashboard/RequestHistory";
+// @ts-ignore    TODO
 import boySvg from "../media/boy.svg";
 import Avatar from "react-avatar";
 import "./DashboardPage.css";
@@ -11,6 +12,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../services/authentication";
+import DetailsModal from "../components/DetailsModal";
 import { Modal, ModalContainer } from "../components/review/ReviewModal";
 
 type Props = {};
@@ -18,6 +20,9 @@ type Props = {};
 export const DashboardPage = (props: Props) => {
   const [, loading] = useAuthState(auth);
   const user = useSelector((state: any) => state.user.value);
+  const modalOpen = useSelector(
+    (state: any) => state.myRequestModalState.value
+  );
   const modalState = useSelector((state: any) => state.modalState.value);
   console.log(modalState, "modalState");
   const navigate = useNavigate();
@@ -80,9 +85,7 @@ export const DashboardPage = (props: Props) => {
                 ></Avatar>
               </div>
             </div>
-            <ModalContainer>
-            {modalState && <Modal />}
-          </ModalContainer>
+            <ModalContainer>{modalState && <Modal />}</ModalContainer>
             <DashUserInfo></DashUserInfo>
           </div>
         </div>
@@ -94,6 +97,7 @@ export const DashboardPage = (props: Props) => {
           </div>
         </div>
       </div>
+      {modalOpen && <DetailsModal />}
     </div>
   );
 };

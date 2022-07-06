@@ -22,6 +22,7 @@
   overflow: hidden;
 }
 
+
 .outer-container {
   width: 47.5%;
 }
@@ -35,7 +36,7 @@
 }
 
 .past-request {
-  background: #F5F5F7;
+  background: rgba(201, 200, 200, 0.8);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -43,6 +44,47 @@
   min-height: 10.5vh;
   padding: 5px 10px;
   flex-wrap: wrap;
+  margin: 0 1.5% 1.5% 1.5%;
+}
+
+
+.delete-request-container {
+  min-width: 5%;
+  margin: 0 2%;
+}
+
+.byMe-subject-user-container {
+  word-wrap: break-word;
+  width: 100%;
+  overflow: hidden;
+}
+
+.byMe-subject {
+  word-wrap: break-word;
+  font-weight: 400;
+  font-size: 1rem;
+  font-family: "Baloo Bhai";
+}
+
+
+.byMe-detail-button-container {
+  display: flex;
+  align-items: center;
+  margin: 0 1%;
+  min-width: 22%;
+
+}
+
+
+.byMe-request {
+  background: rgba(201, 200, 200, 0.8);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 14px;
+  min-height: 10.5vh;
+  padding: 5px 10px;
+
   margin: 0 1.5% 1.5% 1.5%;
 }
 
@@ -66,6 +108,7 @@
 
 }
 
+
 .tip {
   display: flex;
   align-content: flex-start;
@@ -86,6 +129,9 @@
 
 
 }
+
+
+
 
 .detail-btn,
 .start-call-btn {
@@ -109,6 +155,15 @@
   background: rgba(0, 0, 0, 0.7)
 }
 
+
+.noRequests {
+  height: 10vh;
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @media only screen and (max-width: 960px) {}
 

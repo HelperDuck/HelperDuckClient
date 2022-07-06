@@ -21,25 +21,41 @@ export const RequestHistory = (props: Props) => {
     <div className="RequestHistory-wrapper">
       <div className="outer-container">
         <div className="title">
-          <span>Past Requests</span>
+          <span>Requests Solved</span>
         </div>
         <div className="past-request-carrousel">
-          {solvedHelpRequests.map((help: any, key: number) => {
-            return (
-              <SinglePastRequest key={key} help={help}></SinglePastRequest>
-            );
-          })}
+          {solvedHelpRequests.length ? (
+            solvedHelpRequests.reverse().map((help: any, key: number) => {
+              return (
+                <SinglePastRequest key={key} help={help}></SinglePastRequest>
+              );
+            })
+          ) : (
+            <div className="noRequests">
+              <div>No Requests Solved</div>
+            </div>
+          )}
         </div>
       </div>
 
       <div className="outer-container">
         <div className="title">
-          <span>Created by me</span>
+          <span>My Requests</span>
         </div>
         <div className="past-request-carrousel">
-          {filteredHR.map((help: requestAskedType, key: number) => {
-            return <CreatedByMe key={key} help={help}></CreatedByMe>;
-          })}
+          <div className="single-review-outer-wrapper">
+            {filteredHR.length ? (
+              filteredHR
+                .reverse()
+                .map((help: requestAskedType, key: number) => {
+                  return <CreatedByMe key={key} help={help}></CreatedByMe>;
+                })
+            ) : (
+              <div className="noRequests">
+                <div>No Requests Created</div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

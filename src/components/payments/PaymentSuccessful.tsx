@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import Confetti from "react-confetti";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+//@ts-ignore
 import giphy_dancing_gif from "../../media/giphy_dancing_gif.gif";
 
 import Layout from "./Layout";

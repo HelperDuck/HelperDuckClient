@@ -41,3 +41,37 @@
   /* margin-top: 20px; */
   height: fit-content;
 }
+
+
+.single-review-outer-container {
+  max-height: 16vh;
+  overflow: auto;
+
+}
+
+.single-review-outer-container::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.single-review-outer-container::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.single-review-outer-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+.review-word {
+  font-size: 20px;
+  margin: auto;
+  font-family: "Baloo Bhai";
+  width: 80%;
+  margin-top: 1%;
+
+}
