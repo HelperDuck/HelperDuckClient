@@ -56,9 +56,15 @@ export const IncomingRequestsCarrousel = (props: Props) => {
         </div>
       </div>
       <div className="request-carrousel">
-        {filteredHR.reverse().map((help: requestAskedType, key: number) => {
-          return <IncomingRequest help={help} key={key}></IncomingRequest>;
-        })}
+        {filteredHR.length ? (
+          filteredHR.reverse().map((help: requestAskedType, key: number) => {
+            return <IncomingRequest help={help} key={key}></IncomingRequest>;
+          })
+        ) : (
+          <div className="noRequests">
+            <div>No Incoming Requests</div>
+          </div>
+        )}
       </div>
     </div>
   );

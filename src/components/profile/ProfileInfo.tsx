@@ -139,7 +139,9 @@ export const ProfileInfo = ({ isInEditMode, setIsInEditMode }: Props) => {
                   );
                 })
               ) : (
-                <div>No Reviews Yet</div>
+                <div className="noRequests">
+                  <div>No Reviews Yet</div>
+                </div>
               )}
             </div>
           </div>
