@@ -30,7 +30,9 @@ function DetailsModal(props: any) {
               ></img>
             </div>
             <div className="modal-info-container">
-              <div className="modal-help-title">{helpDetails.subject}</div>
+              <div className="modal-help-title">
+                {helpDetails.subject.substring(0, 40) + "..."}
+              </div>
               <div className="modal-help-creator">
                 {" "}
                 by{" "}
