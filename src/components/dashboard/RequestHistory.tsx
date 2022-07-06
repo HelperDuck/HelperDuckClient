@@ -24,7 +24,7 @@ export const RequestHistory = (props: Props) => {
           <span>Past Requests</span>
         </div>
         <div className="past-request-carrousel">
-          {solvedHelpRequests.map((help: any, key: number) => {
+          {solvedHelpRequests.reverse().map((help: any, key: number) => {
             return (
               <SinglePastRequest key={key} help={help}></SinglePastRequest>
             );
@@ -37,7 +37,7 @@ export const RequestHistory = (props: Props) => {
           <span>Created by me</span>
         </div>
         <div className="past-request-carrousel">
-          {filteredHR.map((help: requestAskedType, key: number) => {
+          {filteredHR.reverse().map((help: requestAskedType, key: number) => {
             return <CreatedByMe key={key} help={help}></CreatedByMe>;
           })}
         </div>

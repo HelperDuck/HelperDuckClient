@@ -5,7 +5,7 @@ import {
   logInWithEmailAndPassword,
   signInWithGoogle,
   signInWithGithub,
-} from "../services/authentication";
+} from "../../services/authentication";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./LoginPage.css";
 import { Icon } from "@iconify/react";

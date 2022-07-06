@@ -1,14 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { UserType } from "../../Types/UserType";
 
-const initialState: UserType[] = [];
+const initialState: UserType[] = [
+  {uid: "0",
+id: 0}
+];
 
 export const userSlice = createSlice({
   name: "user",
   initialState: { value: initialState },
   reducers: {
-    allUsers: (state: { value: UserType[] }, action: { payload: UserType }) => {
-      state.value = { ...state.value, ...action.payload };
+    allUsers: (state: { value: UserType[] }, action: { payload: UserType[] }) => {
+      state.value = action.payload;
     },
     // updateUserInfo: (state, action) => {
     //   state.value.map((user: any) => {
