@@ -1,4 +1,3 @@
-
 import { requestAskedType } from "../Types/RequestAskedType";
 import { BACKEND_CONNECTION } from "./backEndConnection";
 
@@ -44,7 +43,6 @@ export async function postOfferHelp(helpRequest: any, offer: any) {
 
 export async function postDeclineOffer(helpRequestId: any, offer: any) {
   try {
-    console.log(helpRequestId, "helpRequest inside service");
     const DeclineOffer: any = await fetch(
       `${BASE_URL}/helpRequest/${helpRequestId}/helpOfferDecline`,
       {
@@ -53,7 +51,6 @@ export async function postDeclineOffer(helpRequestId: any, offer: any) {
         body: JSON.stringify(offer),
       }
     );
-    console.log(DeclineOffer, "DeclineOffer");
     return await DeclineOffer;
   } catch (err) {
     console.log("Error at postDeclineOffer Service: ", err);
@@ -62,23 +59,19 @@ export async function postDeclineOffer(helpRequestId: any, offer: any) {
 
 export async function deleteRequest(request: requestAskedType) {
   try {
-    console.log(request, "request insite service");
     const deletedRequest: any = await fetch(
       `${BASE_URL}/helpRequest?helpRequestId=${request}`,
       {
         method: "DELETE",
       }
     );
-    console.log(deletedRequest, "deletedRequest");
     return deletedRequest;
   } catch (err) {
     console.log("Error at deleteRequest Service: ", err);
   }
 }
 
-
-
-export async function getHelpById(HelpID:any): Promise<any> {
+export async function getHelpById(HelpID: any): Promise<any> {
   try {
     const helpById = await fetch(`${BASE_URL}/helpRequest/${HelpID}`);
     return await helpById.json();
