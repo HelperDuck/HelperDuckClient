@@ -95,9 +95,8 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
               let amount: number =
                 confirmedCardPayment.paymentIntent.amount / 100;
               setCreditsBought(amount);
-              dispatch(updateCredits(amount))
+              dispatch(updateCredits(amount));
             }
-            console.log("Confirm Payment: ", confirmedCardPayment);
             playSound(audio);
             onSuccessfulCheckout();
           }
@@ -113,7 +112,6 @@ const CheckoutForm = ({ price, onSuccessfulCheckout }: Props) => {
       uid: user.uid,
       creditsBought: creditsBought,
     };
-    console.log(userData, "userData onCheckoutForm");
     addCreditsToUser(userData);
   }
 

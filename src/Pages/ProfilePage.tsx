@@ -25,7 +25,6 @@ export const ProfilePage = () => {
     try {
       //@ts-ignore
       const userPath = location.pathname.slice(9);
-      console.log("userPath", userPath === "");
 
       if (userPath !== "") {
         const profileFound = await getOtherProfile(userPath);

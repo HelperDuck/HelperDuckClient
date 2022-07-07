@@ -17,8 +17,6 @@ export const CreatedByMe = (props: Props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const allHelpRequests = useSelector((state: any) => state.helpRequests.value);
-  console.log(help, "help created by ME");
-
   //WHAT IS COMMENTED HERE IS THE DELETE BUTTON FUNCTIONALITY
 
   const OfferHelp = () => {

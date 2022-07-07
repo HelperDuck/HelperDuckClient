@@ -18,11 +18,6 @@ export async function postReviewHelpAsker(
   review: reviewType
 ) {
   try {
-console.log(helpRequestId, 'helpRequestId service')
-console.log(helpOfferId, 'helpOfferId service')
-console.log(review, 'review service')
-
-
     const newReview: any = await fetch(
       `${BASE_URL}/helpRequest/${helpRequestId}/${helpOfferId}/solved`,
       {
@@ -31,7 +26,6 @@ console.log(review, 'review service')
         body: JSON.stringify(review),
       }
     );
-    console.log(newReview, "newReview");
     return await newReview;
   } catch (err) {
     console.log("Error at postReviewHelpAsker Service: ", err);
@@ -45,7 +39,6 @@ export async function postReviewHelpOffer(review: reviewType) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(review),
     });
-    console.log(newReviewOffer, "newReviewOffer");
     return await newReviewOffer;
   } catch (err) {
     console.log("Error at postReviewHelpOffer Service: ", err);

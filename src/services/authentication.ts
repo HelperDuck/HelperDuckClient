@@ -80,7 +80,6 @@ const sendPasswordReset = async (email: string) => {
 };
 
 const logout = () => {
-  console.log("ooouuuutt")
   signOut(auth);
 };
 
