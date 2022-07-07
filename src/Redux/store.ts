@@ -7,14 +7,14 @@ import helpRequestReducer from "./reducers/helpRequest";
 import userByIdReducer from "./reducers/userById";
 import reviewReducer from "./reducers/reviews";
 import roomIdStateReducer from "./reducers/RoomId";
-import myRequestModalStateReducer from './reducers/myRequestModalState'
-import helpDetailsReducer from './reducers/helpDetails'
+import myRequestModalStateReducer from "./reducers/myRequestModalState";
+import helpDetailsReducer from "./reducers/helpDetails";
 import modalStateReducer from "./reducers/ModalReducer";
 
 export const store = configureStore({
   reducer: {
     user: usersReducer, //user that is logged in
-    allUsers: AllUsersReducer, //TODO NOT SURE ABOUT THIS
+    allUsers: AllUsersReducer,
     languages: languagesReducer,
     technologies: technologiesReducer,
     helpRequests: helpRequestReducer,
@@ -23,7 +23,7 @@ export const store = configureStore({
     roomIdState: roomIdStateReducer,
     myRequestModalState: myRequestModalStateReducer,
     helpDetails: helpDetailsReducer,
-    modalState: modalStateReducer
+    modalState: modalStateReducer,
   },
 });
 

@@ -1,7 +1,5 @@
 /* HAVE TO MAKE IT RESPONSIVE WITH MEDIA QUERY */
 
-
-
 .RequestHistory-wrapper {
   display: flex;
   justify-content: space-between;
@@ -22,17 +20,15 @@
   overflow: hidden;
 }
 
-
 .outer-container {
   width: 47.5%;
 }
 
 .title {
   font-size: 24px;
-  font-family: 'Baloo Bhai 2', cursive;
+  font-family: "Baloo Bhai 2", cursive;
   font-weight: 800;
   margin-bottom: 10px;
-
 }
 
 .past-request {
@@ -46,7 +42,6 @@
   flex-wrap: wrap;
   margin: 0 1.5% 1.5% 1.5%;
 }
-
 
 .delete-request-container {
   min-width: 5%;
@@ -67,15 +62,12 @@
   font-weight: 900;
 }
 
-
 .byMe-detail-button-container {
   display: flex;
   align-items: center;
   margin: 0 1%;
   min-width: 22%;
-
 }
-
 
 .byMe-request {
   background: rgba(201, 200, 200, 0.8);
@@ -91,15 +83,12 @@
 
 .past-request div {
   margin-right: 15px;
-
 }
 
 .profile-pic-past-request {
   width: 50px;
   border-radius: 12px;
 }
-
-
 
 .subject {
   word-wrap: break-word;
@@ -108,33 +97,23 @@
   width: 100%;
   font-family: "Baloo Bhai 2";
   font-weight: 900;
-
 }
-
 
 .tip {
   display: flex;
   align-content: flex-start;
-
 }
 
 .score {
   display: flex;
   align-content: flex-start;
-
 }
-
 
 .detail-button-container {
   display: flex;
   align-items: center;
   margin: 0 !important;
-
-
 }
-
-
-
 
 .detail-btn,
 .start-call-btn {
@@ -151,13 +130,12 @@
 }
 
 .start-call-btn:hover {
-  background: rgba(0, 0, 0, 0.7)
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .detail-btn:hover {
-  background: rgba(0, 0, 0, 0.7)
+  background: rgba(0, 0, 0, 0.7);
 }
-
 
 .noRequests {
   height: 10vh;
@@ -166,11 +144,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
-@media only screen and (max-width: 960px) {}
-
+@media only screen and (max-width: 960px) {
+}
 
 .past-request-carrousel::-webkit-scrollbar {
   width: 3px;
@@ -186,8 +163,6 @@
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.2);
 }
-
-
 
 .start-call-btn-accept {
   font-size: 13px;
@@ -225,7 +200,6 @@
   cursor: pointer;
 }
 
-
 .accept-button {
   font-size: 15px;
   font-family: Verdana;
@@ -238,10 +212,7 @@
   cursor: pointer;
   border: none;
   margin: 0px 0px 15px 0px;
-
 }
-
-
 
 @media screen and (max-width: 780px) {
   .RequestHistory-wrapper {
@@ -255,5 +226,4 @@
     width: 90%;
     margin: auto;
   }
-
 }
