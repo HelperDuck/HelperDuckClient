@@ -13,8 +13,6 @@ export const IncomingRequestsCarrousel = (props: Props) => {
   const user = useSelector((state: any) => state.user.value);
   const userTechs = user.technologies.map((item: any) => item.technology.name);
 
-  console.log("userUid", user.uid);
-
   const filteredHR = allHelpRequests
     .filter((helpRequest: any) => {
       if (
