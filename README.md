@@ -13,7 +13,15 @@ The frontend for helperDuck.com, the place to find your talking helper duck.
 - Mauricio Scain - github.com/scainMauricio
 - Noel Vieira - github.com/noelcv
 
-Codeworks Barcelona 
+
+### User Dashboard:
+<img src="https://res.cloudinary.com/brnl/image/upload/v1657617643/brnl/helper-duck-dashboard_vznyvw.jpg"></img>
+
+
+
+### User Profile:
+<img src="https://res.cloudinary.com/brnl/image/upload/v1657617811/brnl/helper-duck-profile_sk0bho.png"></img>
+
 
 ### Setup
 Install the necessary packages - npm install
