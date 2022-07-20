@@ -1,11 +1,11 @@
 # HelperDuck
 
-The frontend for <a href="www.helperduck.com" target="_blank">helperduck.com</a>, a platform that enables real-time communication between developers and rewards them with tips for their help.
+Frontend repository of <a href="www.helperduck.com" target="_blank">helperduck.com</a>, a platform that enables real-time communication between developers and rewards them with tips for their help.
 
 ## Create help requests and be assisted by other other developers on a 1-on-1 video call
 ### Watch a demo on [Youtube](https://www.youtube.com/watch?v=MDiG2i5okxg)
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/MDiG2i5okxg/0.jpg)](https://www.youtube.com/watch?v=MDiG2i5okxg)
-### Customer Journey
+### User Journey
 
 1. Authentication: The user may create an account and sign-in using Gmail, GitHub or email.
 2. Profile and Payments: Once signed in, the user can edit the profile, add the technologies in which is willing to help other developers, and purchase credits using a credit card.
@@ -22,6 +22,10 @@ The frontend for <a href="www.helperduck.com" target="_blank">helperduck.com</a>
 - Noel Vieira - github.com/noelcv
 - Siebe Kylstra - github.com/siebe88
 
+### Authentication
+
+<img src="./src/media/screenshots/Screenshot_Authentication.png"></img>
+
 ### User Dashboard
 
 <img src="https://res.cloudinary.com/brnl/image/upload/v1657617643/brnl/helper-duck-dashboard_vznyvw.jpg"></img>
@@ -29,6 +33,10 @@ The frontend for <a href="www.helperduck.com" target="_blank">helperduck.com</a>
 ### User Profile
 
 <img src="https://res.cloudinary.com/brnl/image/upload/v1657617811/brnl/helper-duck-profile_sk0bho.png"></img>
+
+### Payment - Stripe Integration
+
+<img src="./src/media/screenshots/Screenshot_STRIPE_Payment.png"></img>
 
 ### Create Help Request
 
@@ -46,9 +54,6 @@ The frontend for <a href="www.helperduck.com" target="_blank">helperduck.com</a>
 ### Review and Tipping
 <img src="./src/media/screenshots/Screenshot_Review.png"></img>
 
-### Payment - Stripe Integration
-
-<img src="./src/media/screenshots/Screenshot_STRIPE_Payment.png"></img>
 
 ### Setup
 
