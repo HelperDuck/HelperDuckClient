@@ -1,13 +1,13 @@
 # HelperDuck
 
-The frontend for <a href="www.helperduck.com" target="_blank">helperduck.com</a>, a platform where developers help each other by sharing knowledge and are rewarded with tips.
+The frontend for <a href="www.helperduck.com" target="_blank">helperduck.com</a>, a platform that enables real-time communication between developers and rewards them with tips for their help.
 
-## Create your help requests and get assisted by other other developers on a 1-on-1 video call
+## Create help requests and be assisted by other other developers on a 1-on-1 video call
 ### Watch a demo on [Youtube](https://www.youtube.com/watch?v=MDiG2i5okxg)
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/MDiG2i5okxg/0.jpg)](https://www.youtube.com/watch?v=MDiG2i5okxg)
 ### Customer Journey
 
-1. Sign-in: The user may create an account using Gmail, GitHub or email.
+1. Authentication: The user may create an account and sign-in using Gmail, GitHub or email.
 2. Profile and Payments: Once signed in, the user can edit the profile, add the technologies in which is willing to help other developers, and purchase credits using a credit card.
 3. Create Help Request: Provide a description of the problem you are facing, include a code snippet and choose the related technologies.
 4. Matching help requests: The help request will be broadcasted to other users who have the mentioned technologies among their expertise.
@@ -18,9 +18,9 @@ The frontend for <a href="www.helperduck.com" target="_blank">helperduck.com</a>
 ### Created by
 
 - Fernanda Rodrigues - github.com/fegananca
-- Siebe Kylstra - github.com/siebe88
 - Mauricio Scain - github.com/scainMauricio
 - Noel Vieira - github.com/noelcv
+- Siebe Kylstra - github.com/siebe88
 
 ### User Dashboard
 
@@ -30,11 +30,21 @@ The frontend for <a href="www.helperduck.com" target="_blank">helperduck.com</a>
 
 <img src="https://res.cloudinary.com/brnl/image/upload/v1657617811/brnl/helper-duck-profile_sk0bho.png"></img>
 
+### Create Help Request
+
+<img src="./src/media/screenshots/Screenshot_Help_Request.png"></img>
+
+### Matching and Accepting Help Request
+
+<img src="./src/media/screenshots/Screenshot_Accept.png"></img>
 
 ### Video Call
 
 <img src="./src/media/screenshots/Screenshot_Video_Call.png"></img>
 
+
+### Review and Tipping
+<img src="./src/media/screenshots/Screenshot_Review.png"></img>
 
 ### Payment - Stripe Integration
 
