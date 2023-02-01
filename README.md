@@ -3,8 +3,7 @@
 Frontend repository of <a href="www.helperduck.com" target="_blank">helperduck.com</a>, a platform that enables real-time communication between developers and rewards them with tips for their help.
 
 ## Create help requests and be assisted by other other developers on a 1-on-1 video call
-### Watch a demo on [Youtube](https://www.youtube.com/watch?v=MDiG2i5okxg)
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/MDiG2i5okxg/0.jpg)](https://www.youtube.com/watch?v=MDiG2i5okxg)
+ 
 ### User Journey
 
 1. Authentication: The user may create an account and sign-in using Gmail, GitHub or email.
